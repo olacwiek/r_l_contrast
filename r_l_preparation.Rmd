@@ -1,0 +1,809 @@
+---
+title: "R/L across languages: Preparation"
+author: "Aleksandra Ćwiek"
+date: "2023-10-26"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    df_print: paged
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: '3'
+  html_notebook:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data preparation
+
+```{r pckgs}
+library(tidyverse)
+
+# Set the script's path as working directory
+parentfolder = rstudioapi::getActiveDocumentContext()$path 
+setwd(dirname(parentfolder))
+parentfolder <- getwd()
+
+models        <- paste0(parentfolder, '/models/')
+plots         <- paste0(parentfolder, '/plots/')
+data          <- paste0(parentfolder, '/data/')
+```
+
+Load the data
+
+```{r load data}
+field <- read.csv(paste0(data, "fieldwork-responses-rest.csv"), sep = ";")
+
+web <- read.csv(paste0(data, "r_l_web.csv"), sep = ",")
+```
+
+# Online experiment
+
+## Data cleaning & exclusions
+
+Languages are stored in the format "AL", "EN" etc. Let's process the "experiment" column so that it has only those strings:
+
+```{r extract languages}
+web <- mutate(web,
+              Language = str_extract(experiment, '[A-Z]{2,2}'))
+```
+
+Just in case some session IDs recur across the different experiments, let's create a unique identifier column by pasting languages and session IDs together:
+
+```{r create identifier}
+web <- mutate(web,
+              ID = str_c(Language, '_', session))
+```
+
+Exclude those that have 'l1' == 'q' or 'b' which is Ola's code for her own test runs.
+
+```{r filtering tests}
+web <- filter(web,
+              l1 != 'q')
+web <- filter(web,
+              l1 != 'b')
+web <- filter(web,
+              firstlanguage != 'q')
+```
+
+How many participants is that before exclusions (because of playbacks etc.)?
+
+```{r how many}
+length(unique(web$ID))
+```
+
+Check number of playbacks:
+
+```{r playcheck}
+table(web$playbacks)
+```
+
+Exclude 0 playbacks (didn't listen to the sound):
+
+```{r playrid}
+web <- filter(web, playbacks != 0)
+```
+
+Check ages:
+
+```{r agecheck}
+table(web$participantage)
+```
+
+Get rid of everybody below 18:
+
+```{r agerid}
+web <- filter(web, participantage >= 18)
+```
+
+Check input values:
+
+```{r check input}
+table(web$inputvalue)
+```
+
+Get rid of the responses that are neither "r" nor "l":
+
+```{r exclude false input}
+web <- filter(web, !inputvalue %in% c('klein', 'ogień'))
+```
+
+## Process L1 information:
+
+Create a table with one data point per participant with L2 information:
+
+```{r create l2 info}
+L2_info <- filter(web, !duplicated(ID)) %>% select(ID, Language, l1, l2)
+```
+
+Get rid of trailing spaces:
+
+```{r remove trailing}
+L2_info <- mutate(L2_info,
+                  l1 = str_trim(l1))
+```
+
+That one Chinese person who wrote "hi" in the language field probably knows English given that they used this word... this is the more conservative choice (working against our hypothesis):
+
+```{r adapt l2 info}
+L2_info[L2_info$l1 == 'hi', ]$l1 <- 'chinese'
+L2_info[which(L2_info$l2 == 'hi'), ]$l2 <- 'english'
+```
+
+Perform replacements — for this, we take whatever is the person's first-listed language as their primary L1 (this only applies to a few cases anyway). In a few cases where there is overlap with another language of which we have multile speakers in the sample, the assignment will be done this way, e.g., "ukrainian, russian" -> "russian"
+
+```{r replacements l2 info}
+L2_info <- mutate(L2_info,
+                  l1 = str_replace(l1, 'isizulu', 'zulu'),
+                  l1 = str_replace(l1, 'turkce', 'turkish'),
+                  l1 = str_replace(l1, 'swedish, korean', 'swedish'),
+                  l1 = str_replace(l1, 'french, spanish', 'french'),
+                  l1 = str_replace(l1, 'ukrainian, russian', 'russian'),
+                  l1 = str_replace(l1, 'portuguese, french, danish', 'portuguese'),
+                  l1 = str_replace(l1, 'finnish, estonian', 'finnish'),
+                  l1 = str_replace(l1, 'albanianja', 'albanian'),
+                  l1 = str_replace(l1, 'armenian, russian', 'armenian'),
+                  l1 = str_replace(l1, 'swissgerman', 'german'),
+                  l1 = str_replace(l1, 'austriangerman', 'german'),
+                  l1 = str_replace(l1, 'german, turkish', 'german'),
+                  l1 = str_replace(l1, 'german, english', 'german'),
+                  l1 = str_replace(l1, 'konkani, english', 'english'),
+                  l1 = str_replace(l1, 'español', 'spanish'),
+                  l1 = str_replace(l1, 'spanish, german', 'spanish'),
+                  l1 = str_replace(l1, 'italian, german', 'italian'),
+                  l1 = str_replace(l1, 'italian, german', 'italian'),
+                  l1 = str_replace(l1, 'italia', 'italian'),                  
+                  l1 = str_replace(l1, 'italiann', 'italian'),
+                  l1 = str_replace(l1, 'catalan', 'spanish'), # spanish experiment
+                  l1 = str_replace(l1, 'esperanto', 'spanish'), # spanish experiment
+                  l1 = str_replace(l1, 'polish, silesian', 'polish'),
+                  l1 = str_replace(l1, 'swedish, finnish', 'swedish'),
+                  l1 = str_replace(l1, 'greek, german', 'greek'),
+                  l1 = str_replace(l1, 'russian, belarusian', 'russian'),
+                  l1 = str_replace(l1, 'georgian, mingrelian', 'georgian'),
+                  l1 = str_replace(l1, 'hi', 'chinese'),
+                  l1 = str_replace(l1, 'cchinesenese', 'chinese'),
+                  l1 = str_replace(l1, 'zhuang', 'chinese')) # chinese experiment
+```
+
+## Process L2 information:
+
+Transform NAs into "this person knows no L2":
+
+```{r no l2 info}
+L2_info <- mutate(L2_info,
+                  l2 = ifelse(is.na(l2), 'no_L2', l2))
+```
+
+Extract whether the person reports any English:
+
+```{r english as l2}
+L2_info <- mutate(L2_info,
+                  EnglishL2YesNo = str_detect(l2, 'english'))
+```
+
+Conversions:
+
+```{r ls info cleaning}
+L2_info <- mutate(L2_info,
+                  l2 = str_replace(l2, 'potuguese', 'portuguese'),
+                  l2 = str_replace(l2, 'spanich', 'spanish'),
+                  l2 = str_replace(l2, 'calatan', 'catalan'),
+                  l2 = str_replace(l2, 'ancient greek', 'greek'),
+                  l2 = str_replace(l2, 'rumanian', 'romanian'),
+                  l2 = str_replace(l2, 'estniska', 'estonian'),
+                  l2 = str_replace(l2, 'calabrese', 'italian'),
+                  l2 = str_replace(l2, 'dari', 'farsi'),
+                  l2 = str_replace(l2, '\\(german\\)', 'german'),
+                  l2 = str_replace(l2, 'sami', 'saami'))
+```
+
+Get all languages spoken:
+
+```{r all l2 info}
+all_L2s <- str_replace_all(L2_info$l2, "(a little bit )|(a little )", "")
+all_L2s <- unlist(str_split(all_L2s, "(, )|(,)|(，)|(\\.)|( )"))
+all_L2s <- str_trim(all_L2s)
+all_L2s <- sort(unique(all_L2s))
+all_L2s <- all_L2s[!all_L2s %in% c("", "no_L2")]
+
+# Print:
+
+all_L2s
+```
+
+Put into table and match script as well as whether they are IE:
+
+```{r l2 info table}
+L2_lang_info <- tibble(L2 = all_L2s)
+```
+
+Fill in R/L distinction info:
+
+```{r r-l distinction}
+# Create R/L distinction column:
+
+L2_lang_info$R_L_distinction <- as.character(rep(NA, nrow(L2_lang_info)))
+
+# For reference:
+
+L2_lang_info[L2_lang_info$L2 == 'afrikaans', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'arabic', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'armenian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'asl', ]$R_L_distinction <- 'sign_language'
+L2_lang_info[L2_lang_info$L2 == 'basque', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'bulgarian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'catalan', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'chinese', ]$R_L_distinction <- 'no' ## CONTINUE
+L2_lang_info[L2_lang_info$L2 == 'creole', ]$R_L_distinction <- 'approximant'
+L2_lang_info[L2_lang_info$L2 == 'croatian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'czech', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'danish', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'dutch', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'english', ]$R_L_distinction <- 'approximant'
+L2_lang_info[L2_lang_info$L2 == 'esperanto', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'estonian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'farsi', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'finnish', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'french', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'georgian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'german', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'greek', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'hebrew', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'hindi', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'hungarian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'inari', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'icelandic', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'indonesian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'irish', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'italian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'japanese', ]$R_L_distinction <- 'no'
+L2_lang_info[L2_lang_info$L2 == 'korean', ]$R_L_distinction <- 'no'
+L2_lang_info[L2_lang_info$L2 == 'latin', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'latvian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'limburgish', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'macedonian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'nepali', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'NGT', ]$R_L_distinction <- 'sign_language'
+L2_lang_info[L2_lang_info$L2 == 'norwegian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'polish', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'portuguese', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'romanian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'russian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'saami', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'sanskrit', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'serbian', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'slovak', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'sotho', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'spanish', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'swahili', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'swazi', ]$R_L_distinction <- 'no'
+L2_lang_info[L2_lang_info$L2 == 'swedish', ]$R_L_distinction <- 'approximant'
+L2_lang_info[L2_lang_info$L2 == 'tamil', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'turkish', ]$R_L_distinction <- 'trill'
+L2_lang_info[L2_lang_info$L2 == 'vietnamese', ]$R_L_distinction <- 'no'
+L2_lang_info[L2_lang_info$L2 == 'xhosa', ]$R_L_distinction <- 'no'
+
+# All the information according to Phoible database, 2023-10-26
+
+```
+
+Get big regular expressions out of those that have different R/L distinctions:
+
+```{r r-l regex}
+# No distinction:
+no_regex <- str_c(filter(L2_lang_info, R_L_distinction == 'no')$L2,
+                     collapse = '|')
+# Approximant rhotic:
+approximant_regex <- str_c(filter(L2_lang_info, R_L_distinction == 'approximant')$L2,
+                     collapse = '|')
+# Trill:
+trill_regex <- str_c(filter(L2_lang_info, R_L_distinction == 'trill')$L2,
+                     collapse = '|')
+# Collapsed approximant and trill:
+rhotic_regex <- str_c(filter(L2_lang_info, R_L_distinction == 'trill' | 
+                              R_L_distinction == 'approximant')$L2,
+                     collapse = '|')
+
+```
+
+Create variables based on that for all speakers. First, whether they know at least one language that has no distinction, then at least one that has a trill, then at least one that has approximant. This will allow us for fine-grained distinction:
+
+```{r add rhotics info to l2}
+L2_info <- L2_info %>%  
+  mutate(no_dist_L2 = str_detect(l2, no_regex),
+         trill_L2 = str_detect(l2, trill_regex),
+         approximant_L2 = str_detect(l2, approximant_regex))
+```
+
+Match this with the "web" data frame:
+
+```{r l2 and web}
+web <- left_join(web, select(L2_info, -Language), by = c('ID' = 'ID'))
+```
+
+Rename:
+
+```{r rename vars}
+web <- rename(web,
+              L1_raw = l1.x,
+              L2_raw = l2.x,
+              L1_cleaned = l1.y,
+              L2_cleaned = l2.y)
+```
+
+Add also a variable that tells whether L1 is no distinction:
+
+```{r l1_type}
+web <- web %>%
+  mutate(L1_distinction = NA_character_) %>%
+  mutate(L1_distinction = case_when(
+    L1_cleaned %in% c('albanian', 'armenian', 'russian', 'german', 'czech', 'dutch', 'danish', 'estonian', 'italian', 'latvian', 'polish', 'spanish', 'arabic', 'portuguese','zulu', 'finnish', 'thai', 'farsi', 'pashto', 'french', 'wolof', 'georgian', 'greek', 'hungarian', 'malay', 'romanian', 'macedonian', 'tamil', 'turkish', 'kurdish') ~ 'trill',
+    L1_cleaned %in% c('english', 'swedish') ~ 'approximant',
+    L1_cleaned %in% c('japanese', 'korean', 'chinese') ~ 'no',
+    TRUE ~ L1_distinction
+  ))
+
+# All according to Phoible, 2023-10-26; Zulu marginal
+
+```
+
+
+## Exclusions based on insufficient data:
+
+How many data per participant?
+
+```{r how many per participant}
+ppt_N <- web %>% count(ID)
+```
+
+
+Check whether there's anybody who doesn't have 2 responses?
+
+```{r check response N}
+all(ppt_N$n == 2)
+```
+
+Which one?
+
+```{r check who}
+filter(ppt_N, n != 2)
+```
+
+Get rid of these participants:
+
+```{r remove less than 2}
+# Vector of participants to exclude:
+
+excludes <- filter(ppt_N, n != 2) %>% pull(ID)
+
+# Exclude:
+
+web <- filter(web, !(ID %in% excludes))
+```
+
+Count data per language:
+
+```{r counts per lang}
+web %>% count(Language) %>% 
+  mutate(n = n / 2) %>% 
+  print()
+```
+
+Not enough data for MS (only data from one speaker), as well as Tamil (only two speakers).
+
+```{r remove too few}
+web <- filter(web, Language != "MS")
+web <- filter(web, Language != "TA")
+```
+
+Get rid of L1 speakers that differ from the sample they are supposed to belong to:
+
+```{r sort l1}
+web <- filter(web,
+              !L1_cleaned %in% c('arabic',
+                                 'kurdish', 'pashto',
+                                 'wolof'))
+
+# Close enough for our purposes from the perspective of kiki/bouba and the fact that language families don't cross — sorry if you are a speaker of one of these languages as we recognize the difference, but the most important thing is that these do not exert a bias from a "macro perspective" of language families:
+
+web[web$L1_cleaned == 'dutch', ]$L1_cleaned <- 'german'
+web[web$L1_cleaned == 'czech', ]$L1_cleaned <- 'polish'
+web[web$L1_cleaned == 'latvian', ]$L1_cleaned <- 'polish'
+```
+
+Check which ones are misaligned:
+
+```{r clean l1}
+table(web$L1_cleaned, web$Language)
+web[web$L1_cleaned == 'russian', ]$Language <- 'RU'
+web[web$L1_cleaned == 'armenian', ]$Language <- 'AM'
+web[web$L1_cleaned == 'chinese', ]$Language <- 'CN'
+web[web$L1_cleaned == 'english', ]$Language <- 'EN'
+web[web$L1_cleaned == 'estonian', ]$Language <- 'EE'
+web[web$L1_cleaned == 'german', ]$Language <- 'DE'
+web[web$L1_cleaned == 'finnish', ]$Language <- 'FI'
+web[web$L1_cleaned == 'french', ]$Language <- 'FR'
+web[web$L1_cleaned == 'italian', ]$Language <- 'IT'
+web[web$L1_cleaned == 'korean', ]$Language <- 'KR'
+web[web$L1_cleaned == 'polish', ]$Language <- 'PL'
+web[web$L1_cleaned == 'zulu', ]$Language <- 'ZU'
+web[web$L1_cleaned == 'spanish', ]$Language <- 'ES'
+web[web$L1_cleaned == 'swedish', ]$Language <- 'SE'
+web[web$L1_cleaned == 'portuguese', ]$Language <- 'PT'
+web[web$L1_cleaned == 'thai', ]$Language <- 'TH'
+```
+
+## Add language info:
+
+Load language file:
+
+```{r load lang file, message = FALSE}
+langs <- read_csv(paste0(data, 'language_info.csv'))
+```
+
+Merge:
+
+```{r merge lang}
+web <- left_join(web, langs)
+```
+
+## Create response variable
+
+Change main response to "Resp":
+
+```{r add resp}
+web <- rename(web,
+               Resp = inputvalue)
+```
+
+Let's process the main predictor (the audio file shown):
+
+```{r add condition}
+web <- mutate(web,
+              Condition = str_replace(audio, '\\.wav', ''))
+```
+
+Create congruent/incongruent responses:
+
+```{r congruency}
+web$match = web$Condition == web$Resp
+```
+
+Add trial order info (more efficient code by reviewer 1 sister study):
+
+```{r trial}
+web$sound <- xfun::sans_ext(web$audio)
+web$match <- web$sound == web$Resp
+table(web$match)
+# add trial
+web$trial <- NA
+for (subject in unique(web$ID)) {
+  idx <- which(web$ID == subject)
+  web$trial[idx] <- 1:length(idx)
+}
+table(web$trial)
+
+out <- web[, c('ID', 'Language', 'Name', 'Script', 'Family', 'Autotyp_Area', 'trial', 'sound', 'match')]
+
+# Rename column names for consistency with the main analysis:
+
+out <- rename(out, Condition = sound)
+
+write_csv(out, paste0(data,'web_raw_trials.csv'))
+```
+
+
+## By-participant preprocessing
+
+Arguably, the responses to "r" and "l", since they immediately followed each other, are not independent. 
+
+Let's create a file of matching versus non-matching participants. First, create a vector of Condition/Resp contingency tables broken up by participant:
+
+```{r ID tabs}
+ID_tabs <- with(web, table(Condition, Resp, ID))
+```
+
+Loop through this and save whether they were 100% matching:
+
+```{r matches}
+matches <- numeric(dim(ID_tabs)[3])
+
+for (i in seq_along(matches)) {
+  matches[i] <- as.integer(sum(diag(ID_tabs[, , i])) == 2)
+}
+```
+
+Put this together with ID info into a table:
+
+```{r ids}
+ids <- unique(web$ID)
+r_ppt <- tibble(ID = ids, Match = matches)
+```
+
+
+```{r get order for r_ppt}
+web <- web %>%
+  group_by(ID) %>%
+  mutate(Order = ifelse(trial == 1 & n() == 2, 
+                        ifelse(sound == "l", "l_first", "r_first"),
+                        NA)) %>%
+  fill(Order, .direction = "updown") %>%
+  ungroup()
+```
+
+Merge this with the relevant info:
+
+```{r merge ppt}
+r_ppt$Language <- web[match(r_ppt$ID, web$ID), ]$Language
+r_ppt$Name <- web[match(r_ppt$ID, web$ID), ]$Name
+r_ppt$Script <- web[match(r_ppt$ID, web$ID), ]$Script
+r_ppt$Family <- web[match(r_ppt$ID, web$ID), ]$Family
+r_ppt$Autotyp_Area <- web[match(r_ppt$ID, web$ID), ]$Autotyp_Area
+r_ppt$L2 <- web[match(r_ppt$ID, web$ID), ]$L2_raw
+r_ppt$EnglishL2YesNo <- web[match(r_ppt$ID, web$ID), ]$EnglishL2YesNo
+r_ppt$Order <- web[match(r_ppt$ID, web$ID), ]$Order
+r_ppt$L1_distinction <- web[match(r_ppt$ID, web$ID), ]$L1_distinction
+r_ppt$no_dist_L2 <- web[match(r_ppt$ID, web$ID), ]$no_dist_L2
+r_ppt$trill_L2 <- web[match(r_ppt$ID, web$ID), ]$trill_L2
+r_ppt$approximant_L2 <- web[match(r_ppt$ID, web$ID), ]$approximant_L2
+```
+
+Write to file:
+
+```{r save cleaned data}
+write_csv(r_ppt, paste0(data, 'web_experiment_cleaned.csv'))
+```
+
+# Field experiment
+
+```{r load demographics field, message = FALSE}
+# Load:
+demographics <- read_delim(paste0(data, 'fieldwork-personal-data.csv'), delim = ';')
+```
+
+## Data cleaning & exclusions
+
+Fix last column name:
+
+```{r fix colname}
+colnames(field)[ncol(field)] <- 'PA08'
+```
+
+The field response file is wide format. Let's transform this to long format:
+
+```{r reshape table}
+# Remove rows with names "bouba-ort", "bouba-aud", "kiki-ort", and "kiki-aud"
+field <- field %>%
+  filter(!file %in% c("bouba-ort", "bouba-aud", "kiki-ort", "kiki-aud"))
+
+field[1, -1] <- gsub("rock", "r", field[1, -1])
+
+field <- field %>%
+  select(-file) %>%
+  pivot_longer(everything(), names_to = "ID", values_to = "value") %>%
+  arrange(ID) %>%  # Arrange by ID
+  group_by(ID) %>%
+  mutate(audio = rep(c("r", "l"), each = n() / 2),  # Repeat "r" and "l" for each ID
+         response = ifelse(value %in% c("0", "NA", " "), NA, value)) %>%
+  ungroup() %>%
+  select(-value)  # Remove the original "value" column
+```
+
+Get the language info out of the ID column:
+
+```{r}
+field <- mutate(field,
+                Language = str_extract(ID, '[A-Z]+'),
+                Participant = str_extract(ID, '\\d+'))
+```
+
+Add age and gender info:
+
+```{r}
+# Rename so that key columns match names:
+
+demographics <- rename(demographics,
+                       ID = subject,
+                       Age = age,
+                       Sex = gender,
+                       L2 = "other-lang")
+
+# Get only that what is needed:
+
+demographics <- select(demographics,
+                       ID, Age, Sex, L2)
+
+# Join:
+
+field <- left_join(field, demographics)
+
+```
+
+Exclude participants under 18:
+
+```{r}
+field <- filter(field, Age > 18)
+```
+
+Discard Polish (only one data point) and US (no data collected for this part of the experiment):
+
+```{r}
+field <- filter(field, Language != 'US')
+field <- filter(field, Language != 'PL')
+```
+
+## Add info on L1 and R/L contrast
+
+Add language name information to the data frame:
+
+```{r}
+field$Name <- NA
+field[field$Language == 'BE', ]$Name <- 'English'
+field[field$Language == 'DE', ]$Name <- 'German'
+field[field$Language == 'SR', ]$Name <- 'Portuguese'
+field[field$Language == 'VA', ]$Name <- 'Daakie'
+field[field$Language == 'BR', ]$Name <- 'Tashlhiyt Berber'
+field[field$Language == 'PA', ]$Name <- 'Palikur'
+```
+
+Add info on R/L contrast:
+
+```{r}
+field <- field %>%
+  mutate(L1_distinction = NA_character_) %>%
+  mutate(L1_distinction = case_when(
+    Name %in% c('German', 'Portuguese', 'Tashlhiyt Berber', 'Palikur', 'Daakie') ~ 'trill',
+    Name %in% c('English') ~ 'approximant',
+    TRUE ~ L1_distinction
+  ))
+```
+
+
+## Process L2 info:
+
+Create a table with one data point per participant with L2 information:
+
+```{r}
+L2_info_field <- filter(field, !duplicated(ID)) %>% select(ID, Language, Name, L2)
+```
+
+Transform NAs into "this person knows no L2":
+
+```{r}
+L2_info_field <- L2_info_field %>% 
+  mutate(L2 = ifelse(L2 %in% c('0', 'NA', ' '), NA, L2)) %>% 
+  mutate(L2 = ifelse(is.na(L2), 'no_L2', L2))
+```
+
+Extract whether the person reports any English:
+
+```{r}
+L2_info_field <- mutate(L2_info_field,
+                  EnglishL2YesNo = ifelse(grepl('english', L2, ignore.case = TRUE), TRUE, FALSE))
+```
+
+Conversions:
+
+```{r}
+L2_info_field <- mutate(L2_info_field,
+                  L2 = str_replace(L2, 'British Sign Language', 'BSL'))
+```
+
+Get all languages spoken:
+
+```{r}
+all_L2s_field <- sub("\\s*\\(restricted reading skills\\)", "", L2_info_field$L2)
+all_L2s_field <- unlist(str_split(all_L2s_field, "(, )|(,)|(，)|(\\.)"))
+all_L2s_field <- str_trim(all_L2s_field)
+all_L2s_field <- sort(unique(all_L2s_field))
+all_L2s_field <- all_L2s_field[!all_L2s_field %in% c("", "no_L2")]
+
+# Print:
+
+all_L2s_field
+```
+
+
+Put into table and match script as well as whether they are IE:
+
+```{r}
+L2_lang_field_info <- tibble(L2 = all_L2s_field)
+```
+
+
+Fill in R/L distinction info:
+
+```{r r-l distinction field}
+# Create R/L distinction column:
+
+L2_lang_field_info$R_L_distinction <- as.character(rep(NA, nrow(L2_lang_field_info)))
+
+# For reference:
+
+L2_lang_field_info[L2_lang_field_info$L2 == 'Bislama', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'BSL', ]$R_L_distinction <- 'sign_language'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Cantonese', ]$R_L_distinction <- 'no'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Dutch', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'English', ]$R_L_distinction <- 'approximant'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Finnish', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'French', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'German', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Hebrew', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Italian', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Kurdish', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Mandarin', ]$R_L_distinction <- 'no'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Moroccan Arabic', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Polish', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Portuguese', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Punjabi', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Russian', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Spanish', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Standard Arabic', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Swedish', ]$R_L_distinction <- 'approximant'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Urdu', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Welsh', ]$R_L_distinction <- 'trill'
+L2_lang_field_info[L2_lang_field_info$L2 == 'Yoruba', ]$R_L_distinction <- 'Trill'
+
+# All the information according to Phoible database, 2023-10-30
+
+```
+
+Get big regular expressions out of those that have different R/L distinctions:
+
+```{r r-l regex field}
+# No distinction:
+no_regex <- str_c(filter(L2_lang_field_info, R_L_distinction == 'no')$L2,
+                     collapse = '|')
+# Approximant rhotic:
+approximant_regex <- str_c(filter(L2_lang_field_info, R_L_distinction == 'approximant')$L2,
+                     collapse = '|')
+# Trill:
+trill_regex <- str_c(filter(L2_lang_field_info, R_L_distinction == 'trill')$L2,
+                     collapse = '|')
+# Collapsed approximant and trill:
+rhotic_regex <- str_c(filter(L2_lang_field_info, R_L_distinction == 'trill' | 
+                              R_L_distinction == 'approximant')$L2,
+                     collapse = '|')
+
+```
+
+Create variables based on that for all speakers. First, whether they know at least one language that has no distinction, then at least one that has a trill, then at least one that has approximant. This will allow us for fine-grained distinction:
+
+```{r add rhotics info to l2}
+L2_info_field <- L2_info_field %>%  
+  mutate(no_dist_L2 = str_detect(L2, no_regex),
+         trill_L2 = str_detect(L2, trill_regex),
+         approximant_L2 = str_detect(L2, approximant_regex))
+```
+
+Match this with the "web" data frame:
+
+```{r l2 and web}
+field <- left_join(field, select(L2_info_field, -Language), by = c('ID' = 'ID'))
+```
+
+Rename:
+
+```{r rename vars}
+field <- rename(field,
+              L2_raw = L2.x,
+              L2_cleaned = L2.y)
+```
+
+I will stop here, because I don't know what to do with DE08 and DE09.
+
+
+

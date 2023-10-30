@@ -1,0 +1,313 @@
+---
+title: "R/L across languages: Modeling"
+author: "Aleksandra Ćwiek"
+date: "2023-10-26"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    df_print: paged
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: '3'
+  html_notebook:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Introduction:
+
+This script uses the output of "r_l_preparation.Rmd" and returns all values reported in the paper.
+
+# Setup:
+
+Load packages:
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse) # data processing
+library(brms) # bayesian models
+library(cmdstanr)
+library(ggdist) # for plotting
+# option for Bayesian regression models:
+# use all available cores for parallel computing
+options(mc.cores = parallel::detectCores())
+
+# Set the script's path as working directory
+parentfolder = rstudioapi::getActiveDocumentContext()$path 
+setwd(dirname(parentfolder))
+parentfolder <- getwd()
+
+models        <- paste0(parentfolder, '/models/')
+plots         <- paste0(parentfolder, '/plots/')
+data          <- paste0(parentfolder, '/data/')
+```
+
+For reproducible reporting:
+
+```{r, message = FALSE, warning = FALSE}
+packageVersion('tidyverse')
+packageVersion('brms')
+packageVersion('cmdstanr')
+packageVersion('ggdist')
+```
+
+Load ggplot2 theme:
+
+```{r}
+source('theme_timo.R')
+```
+
+Load data:
+
+```{r, message = FALSE, warning = FALSE}
+web <- read_csv(paste0(data, 'web_experiment_cleaned.csv'))
+web_raw <- read_csv(paste0(data, '/web_raw_trials.csv'))
+```
+
+# Online experiment
+
+## Descriptive statistics
+
+First, how many participants?
+
+```{r}
+nrow(web)
+```
+
+First, how many languages?
+
+```{r}
+web %>% count(Language) %>% nrow()
+```
+
+How many families?
+
+```{r}
+web %>% count(Family) %>% nrow()
+```
+
+
+How many non-R/L-distinct L1 among the languages?
+
+```{r}
+web %>% count(Language, L1_distinction) %>% count(L1_distinction)
+```
+
+
+What is the grand average congruent behavior?
+
+```{r}
+mean(web$Match)
+```
+
+87%
+
+What about only among those who have L1 without the distinction?
+
+```{r}
+web %>%
+  filter(L1_distinction == "no") %>%
+  summarize(mean_match = mean(Match, na.rm = TRUE))
+```
+
+84%
+
+What about only among those who have L1 without the distinction and no L2 that distinguishes?
+
+```{r}
+web %>%
+  filter(L1_distinction == 'no') %>%
+  filter(!EnglishL2YesNo) %>% 
+  filter(no_dist_L2 == 'FALSE') %>% 
+  summarize(mean_match = mean(Match, na.rm = TRUE))
+```
+
+Also 84%
+
+Compute average matching behavior per language and sort:
+
+```{r}
+web_avg <- web %>%
+  group_by(Language) %>% 
+  summarize(M = mean(Match)) %>% 
+  arrange(desc(M)) %>% 
+  mutate(percent = round(M, 2) * 100,
+         percent = str_c(percent, '%'))
+
+# Show:
+
+web_avg %>% print(n = Inf)
+```
+
+Check some demographics, also to report in the paper. First, the number of participants per language:
+
+```{r}
+web %>% 
+  count(Name, sort = TRUE) %>% print(n = Inf)
+```
+
+
+Then, the number of L1 speakers who have R/L distinction vs. who don't (we can think if we put the approximant and trill together):
+
+```{r}
+web %>% count(L1_distinction) %>%
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+How many people are not bilinguals?
+
+```{r}
+sum(is.na(web$L2)) / nrow(web)
+
+# bilinguals:
+
+1 - sum(is.na(web$L2)) / nrow(web)
+```
+
+Check how many people knew English as their L2:
+
+```{r}
+web %>% count(EnglishL2YesNo) %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+Of those that don't use a R/L distinction in their L1, how many use R/L distinction in their L2? (double-check if logic alright!)
+
+```{r}
+web %>%
+  filter(L1_distinction == 'no') %>% 
+  count(no_dist_L2 == FALSE) %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+How many "pure" speakers were there?, i.e., those people that 1) don't know English, 2) don't use an L1 with a R/L distinction, and 3) don't know an L2 that distinguishes R/L.
+
+```{r}
+web %>% 
+  filter(L1_distinction == 'no') %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(no_dist_L2 == 'FALSE') %>% 
+  nrow()
+```
+
+43 people.
+
+Let's check if this is correct. This gives the list of all participants for whom this applies.
+
+```{r}
+web %>% 
+    filter(L1_distinction == 'no' & !EnglishL2YesNo & no_dist_L2 == FALSE) %>% 
+    print(n = 50)
+```
+
+Are these really "pure"? What languages do they speak?
+
+```{r}
+web %>% 
+  filter(L1_distinction == 'no') %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(no_dist_L2 == 'FALSE') %>% 
+  count(Language)
+```
+
+Mostly Chinese and Japanese.
+
+
+Nevertheless, let's explore whether these also show kiki/bouba matches?
+
+```{r}
+web %>% 
+  filter(L1_distinction == 'no') %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(no_dist_L2 == 'FALSE') %>% 
+  count(Match) %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+Yes, as shown above 84%.
+
+## Main model:
+
+
+Set parameters that will be used for all MCMC sampling:
+
+```{r}
+mywarmup <- 4000
+myiter <- 6000
+```
+
+Check the distribution of scripts across families to make decisions about random effects structure:
+
+```{r}
+table(web$Family, web$L1_distinction)
+```
+
+
+Let's factor code the Order and L1_distinction effects:
+
+```{r}
+web <- mutate(web,
+               Order = factor(Order, levels = c('r_first', 'l_first')),
+               L1_distinction = factor(L1_distinction, levels = c('no', 'approximant', 'trill')))
+```
+
+Check that the order effect is approximately balanced:
+
+```{r}
+web %>% count(Order) %>%
+  mutate(prop = n / sum(n))
+```
+
+I omit some things for now... Because for now, L1_distinction is three-way.
+
+```{r}
+web <- mutate(web,
+               order_num = ifelse(Order == 'r_first', -0.5, +0.5))
+```
+
+The main model with Order and L1_distinction fixed effects, as well as Language and Family random effects.
+
+```{r, message = FALSE, warning = FALSE}
+web_mdl <- brm(Match ~ 1 + order_num + L1_distinction +
+                 (1 + order_num|Language) + 
+                 (1 + order_num|Family),
+                data = web,
+                family = bernoulli(link = 'logit'),
+                backend = "cmdstanr",
+                seed = 42,
+                cores = 4,
+                iter = 2000,
+                warmup = 1000,
+                control = list(adapt_delta = 0.995,
+                               max_treedepth = 13),
+                file = paste0(models, "web_mdl.rds"))
+```
+
+Show the model:
+
+```{r}
+web_mdl
+```
+
+
+

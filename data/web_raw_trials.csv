@@ -1,0 +1,1807 @@
+ID,Language,Name,Script,Family,Autotyp_Area,trial,Condition,match
+AL_2137891,AL,Albanian,roman,IE,Europe,1,l,TRUE
+AL_2137891,AL,Albanian,roman,IE,Europe,2,r,TRUE
+AL_2142091,AL,Albanian,roman,IE,Europe,1,l,FALSE
+AL_2142091,AL,Albanian,roman,IE,Europe,2,r,TRUE
+AL_2142743,AL,Albanian,roman,IE,Europe,1,l,FALSE
+AL_2142743,AL,Albanian,roman,IE,Europe,2,r,TRUE
+AL_2143087,AL,Albanian,roman,IE,Europe,1,r,FALSE
+AL_2143087,AL,Albanian,roman,IE,Europe,2,l,TRUE
+AL_2144707,AL,Albanian,roman,IE,Europe,1,r,TRUE
+AL_2144707,AL,Albanian,roman,IE,Europe,2,l,TRUE
+AL_2145197,AL,Albanian,roman,IE,Europe,1,r,TRUE
+AL_2145197,AL,Albanian,roman,IE,Europe,2,l,TRUE
+AL_2200030,AL,Albanian,roman,IE,Europe,1,r,TRUE
+AL_2200030,AL,Albanian,roman,IE,Europe,2,l,TRUE
+AL_2200491,AL,Albanian,roman,IE,Europe,1,l,TRUE
+AL_2200491,AL,Albanian,roman,IE,Europe,2,r,TRUE
+AL_2200597,AL,Albanian,roman,IE,Europe,1,l,TRUE
+AL_2200597,AL,Albanian,roman,IE,Europe,2,r,TRUE
+AL_2201480,AL,Albanian,roman,IE,Europe,1,r,TRUE
+AL_2201480,AL,Albanian,roman,IE,Europe,2,l,TRUE
+AM_2085826,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2085826,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2086395,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2086395,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2089819,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2089819,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2090125,AM,Armenian,different,IE,Greater Mesopotamia,1,r,TRUE
+AM_2090125,AM,Armenian,different,IE,Greater Mesopotamia,2,l,TRUE
+AM_2110154,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2110154,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2113553,AM,Armenian,different,IE,Greater Mesopotamia,1,r,TRUE
+AM_2113553,AM,Armenian,different,IE,Greater Mesopotamia,2,l,TRUE
+AM_2124652,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+AM_2124652,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+AM_2126284,AM,Armenian,different,IE,Greater Mesopotamia,1,l,FALSE
+AM_2126284,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2129759,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2129759,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2131367,AM,Armenian,different,IE,Greater Mesopotamia,1,r,FALSE
+AM_2131367,AM,Armenian,different,IE,Greater Mesopotamia,2,l,TRUE
+AM_2131473,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2131473,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2131488,AM,Armenian,different,IE,Greater Mesopotamia,1,l,FALSE
+AM_2131488,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2131538,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2131538,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2131978,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2131978,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2132050,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2132050,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2132352,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2132352,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2132489,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2132489,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2135059,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2135059,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2135205,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2135205,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+AM_2135351,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+AM_2135351,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+AM_2135714,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
+AM_2135714,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
+CN_2085682,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,FALSE
+CN_2085682,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,FALSE
+CN_2090343,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2090343,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2090516,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2090516,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2090559,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2090559,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2090893,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,FALSE
+CN_2090893,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,FALSE
+CN_2091068,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2091068,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2091116,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2091116,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2091224,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
+CN_2091224,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,FALSE
+CN_2091379,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2091379,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2091417,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
+CN_2091417,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2091465,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2091465,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,FALSE
+CN_2091749,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2091749,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2091822,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2091822,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2092002,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2092002,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2092150,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2092150,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2092280,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2092280,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2092469,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2092469,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2092617,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2092617,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2092884,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2092884,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2093102,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2093102,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2093540,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2093540,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2093752,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2093752,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2093858,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2093858,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2093964,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2093964,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2094119,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
+CN_2094119,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2094331,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2094331,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2094333,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2094333,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2094542,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2094542,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2094865,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2094865,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2095104,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2095104,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,FALSE
+CN_2095358,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2095358,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2095401,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2095401,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2096079,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2096079,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2096196,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2096196,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2096588,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+CN_2096588,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2096696,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2096696,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2096717,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
+CN_2096717,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2096896,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
+CN_2096896,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2096947,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2096947,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2096959,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
+CN_2096959,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
+CN_2097226,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
+CN_2097226,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2097291,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
+CN_2097291,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+CN_2099532,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
+CN_2099532,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+DE_2002066,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2002066,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2002181,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2002181,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2003687,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2003687,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2006973,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2006973,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2006992,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2006992,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2007185,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2007185,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2007197,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2007197,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2007257,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2007257,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2007505,PL,Polish,roman,IE,Europe,1,r,TRUE
+DE_2007505,PL,Polish,roman,IE,Europe,2,l,TRUE
+DE_2007575,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2007575,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2007595,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2007595,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2007942,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2007942,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2008182,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2008182,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2008469,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2008469,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2009354,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2009354,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2009820,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2009820,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2009857,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2009857,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2009902,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2009902,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2010153,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2010153,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2010577,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2010577,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2011490,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2011490,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2011955,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2011955,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2013436,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2013436,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2015119,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2015119,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2015371,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2015371,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2016147,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2016147,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2016253,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2016253,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2016675,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2016675,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2017196,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2017196,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2017541,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2017541,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2017558,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2017558,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2017828,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2017828,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2018342,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2018342,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2018651,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2018651,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2019007,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2019007,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2019115,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2019115,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2019961,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2019961,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2020666,DE,German,roman,IE,Europe,1,r,FALSE
+DE_2020666,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2020772,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2020772,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2020887,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2020887,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2021088,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2021088,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2021203,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2021203,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2021892,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2021892,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2021951,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+DE_2021951,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+DE_2022038,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2022038,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2022372,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2022372,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2024982,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2024982,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2025088,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2025088,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2025321,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2025321,DE,German,roman,IE,Europe,2,r,FALSE
+DE_2026290,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2026290,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2026502,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2026502,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2026608,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2026608,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2028933,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2028933,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2032454,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2032454,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2035082,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2035082,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2035188,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2035188,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2035314,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2035314,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2036644,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2036644,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2036752,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2036752,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2037056,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2037056,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2037869,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2037869,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2037989,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2037989,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2038461,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2038461,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2038972,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2038972,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2039334,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2039334,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2039440,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2039440,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2039750,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2039750,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2040180,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2040180,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2043127,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2043127,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2043880,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2043880,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2043986,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2043986,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2044122,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2044122,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2046800,DE,German,roman,IE,Europe,1,l,FALSE
+DE_2046800,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2055195,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2055195,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2055406,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2055406,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2055806,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2055806,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2072116,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2072116,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2074160,AM,Armenian,different,IE,Greater Mesopotamia,1,r,TRUE
+DE_2074160,AM,Armenian,different,IE,Greater Mesopotamia,2,l,TRUE
+DE_2090015,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2090015,DE,German,roman,IE,Europe,2,r,TRUE
+DE_2109173,DE,German,roman,IE,Europe,1,r,TRUE
+DE_2109173,DE,German,roman,IE,Europe,2,l,TRUE
+DE_2117137,DE,German,roman,IE,Europe,1,l,TRUE
+DE_2117137,DE,German,roman,IE,Europe,2,r,TRUE
+DK_2102760,DK,Danish,roman,IE,Europe,1,r,TRUE
+DK_2102760,DK,Danish,roman,IE,Europe,2,l,TRUE
+DK_2102868,DK,Danish,roman,IE,Europe,1,r,TRUE
+DK_2102868,DK,Danish,roman,IE,Europe,2,l,TRUE
+DK_2136830,DK,Danish,roman,IE,Europe,1,r,TRUE
+DK_2136830,DK,Danish,roman,IE,Europe,2,l,TRUE
+DK_2137122,DK,Danish,roman,IE,Europe,1,r,TRUE
+DK_2137122,DK,Danish,roman,IE,Europe,2,l,TRUE
+DK_2142486,DK,Danish,roman,IE,Europe,1,l,TRUE
+DK_2142486,DK,Danish,roman,IE,Europe,2,r,TRUE
+DK_2142540,DK,Danish,roman,IE,Europe,1,r,TRUE
+DK_2142540,DK,Danish,roman,IE,Europe,2,l,TRUE
+DK_2142882,DK,Danish,roman,IE,Europe,1,l,TRUE
+DK_2142882,DK,Danish,roman,IE,Europe,2,r,TRUE
+DK_2143010,DK,Danish,roman,IE,Europe,1,r,TRUE
+DK_2143010,DK,Danish,roman,IE,Europe,2,l,TRUE
+DK_2143222,DK,Danish,roman,IE,Europe,1,r,TRUE
+DK_2143222,DK,Danish,roman,IE,Europe,2,l,TRUE
+DK_2143457,DK,Danish,roman,IE,Europe,1,l,TRUE
+DK_2143457,DK,Danish,roman,IE,Europe,2,r,TRUE
+DK_2143615,DK,Danish,roman,IE,Europe,1,l,TRUE
+DK_2143615,DK,Danish,roman,IE,Europe,2,r,TRUE
+DK_2143723,DK,Danish,roman,IE,Europe,1,l,TRUE
+DK_2143723,DK,Danish,roman,IE,Europe,2,r,TRUE
+DK_2143829,DK,Danish,roman,IE,Europe,1,l,TRUE
+DK_2143829,DK,Danish,roman,IE,Europe,2,r,TRUE
+DK_2144114,DK,Danish,roman,IE,Europe,1,l,TRUE
+DK_2144114,DK,Danish,roman,IE,Europe,2,r,TRUE
+DK_2144894,DK,Danish,roman,IE,Europe,1,r,TRUE
+DK_2144894,DK,Danish,roman,IE,Europe,2,l,FALSE
+DK_2147661,DK,Danish,roman,IE,Europe,1,r,TRUE
+DK_2147661,DK,Danish,roman,IE,Europe,2,l,TRUE
+DK_2149822,DK,Danish,roman,IE,Europe,1,l,TRUE
+DK_2149822,DK,Danish,roman,IE,Europe,2,r,TRUE
+DK_2149901,DK,Danish,roman,IE,Europe,1,l,TRUE
+DK_2149901,DK,Danish,roman,IE,Europe,2,r,TRUE
+EE_2051870,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2051870,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2054453,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2054453,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2056161,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2056161,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2056593,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2056593,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2056729,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2056729,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2056747,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2056747,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2056947,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2056947,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2057308,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2057308,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,FALSE
+EE_2057346,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2057346,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2057447,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2057447,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2057608,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,FALSE
+EE_2057608,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2057838,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2057838,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2057944,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2057944,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,FALSE
+EE_2058050,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,FALSE
+EE_2058050,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2058156,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2058156,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2058368,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2058368,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2058474,IT,Italian,roman,IE,Europe,1,l,TRUE
+EE_2058474,IT,Italian,roman,IE,Europe,2,r,TRUE
+EE_2058528,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2058528,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2058541,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2058541,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2058608,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2058608,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2058898,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2058898,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2059007,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,FALSE
+EE_2059007,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,FALSE
+EE_2059148,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2059148,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2059273,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2059273,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2059385,PL,Polish,roman,IE,Europe,1,l,TRUE
+EE_2059385,PL,Polish,roman,IE,Europe,2,r,TRUE
+EE_2059514,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2059514,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2059608,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2059608,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2059961,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2059961,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2060175,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2060175,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2060749,IT,Italian,roman,IE,Europe,1,l,TRUE
+EE_2060749,IT,Italian,roman,IE,Europe,2,r,TRUE
+EE_2061100,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2061100,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2061228,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2061228,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2061330,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2061330,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2062178,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2062178,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2062405,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2062405,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2063434,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,FALSE
+EE_2063434,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2063750,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2063750,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2063940,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2063940,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2065426,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+EE_2065426,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+EE_2067135,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2067135,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2067986,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2067986,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2071211,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2071211,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2093288,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EE_2093288,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EE_2109632,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2109632,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EE_2190350,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EE_2190350,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EN_1993336,PL,Polish,roman,IE,Europe,1,l,TRUE
+EN_1993336,PL,Polish,roman,IE,Europe,2,r,TRUE
+EN_2007249,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2007249,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2009360,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2009360,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2009682,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2009682,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2011604,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2011604,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2012604,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2012604,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2014133,DE,German,roman,IE,Europe,1,l,TRUE
+EN_2014133,DE,German,roman,IE,Europe,2,r,TRUE
+EN_2015517,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2015517,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2017753,ES,Spanish,roman,IE,Europe,1,r,FALSE
+EN_2017753,ES,Spanish,roman,IE,Europe,2,l,FALSE
+EN_2025215,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,TRUE
+EN_2025215,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,FALSE
+EN_2026714,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2026714,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2027185,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2027185,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2029222,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2029222,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2029328,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2029328,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2029434,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2029434,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2029531,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2029531,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2029633,ES,Spanish,roman,IE,Europe,1,l,TRUE
+EN_2029633,ES,Spanish,roman,IE,Europe,2,r,TRUE
+EN_2029682,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2029682,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2029700,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2029700,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2029922,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2029922,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2030058,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2030058,EN,English,roman,IE,Europe,2,l,FALSE
+EN_2030330,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2030330,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2030515,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2030515,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2030623,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2030623,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2030766,ES,Spanish,roman,IE,Europe,1,l,TRUE
+EN_2030766,ES,Spanish,roman,IE,Europe,2,r,TRUE
+EN_2030899,ES,Spanish,roman,IE,Europe,1,r,TRUE
+EN_2030899,ES,Spanish,roman,IE,Europe,2,l,TRUE
+EN_2031042,IT,Italian,roman,IE,Europe,1,r,TRUE
+EN_2031042,IT,Italian,roman,IE,Europe,2,l,TRUE
+EN_2031091,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+EN_2031091,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+EN_2031265,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2031265,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2031376,IT,Italian,roman,IE,Europe,1,l,TRUE
+EN_2031376,IT,Italian,roman,IE,Europe,2,r,TRUE
+EN_2031526,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2031526,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2031667,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2031667,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2031862,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2031862,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2032036,PL,Polish,roman,IE,Europe,1,r,TRUE
+EN_2032036,PL,Polish,roman,IE,Europe,2,l,TRUE
+EN_2032142,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2032142,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2032308,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2032308,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2032689,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2032689,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2032799,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2032799,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2033313,PL,Polish,roman,IE,Europe,1,r,TRUE
+EN_2033313,PL,Polish,roman,IE,Europe,2,l,TRUE
+EN_2033419,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+EN_2033419,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+EN_2033459,SE,Swedish,roman,IE,Europe,1,l,TRUE
+EN_2033459,SE,Swedish,roman,IE,Europe,2,r,TRUE
+EN_2033631,ES,Spanish,roman,IE,Europe,1,l,TRUE
+EN_2033631,ES,Spanish,roman,IE,Europe,2,r,TRUE
+EN_2033751,IT,Italian,roman,IE,Europe,1,r,TRUE
+EN_2033751,IT,Italian,roman,IE,Europe,2,l,TRUE
+EN_2033881,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2033881,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2033987,ES,Spanish,roman,IE,Europe,1,r,TRUE
+EN_2033987,ES,Spanish,roman,IE,Europe,2,l,TRUE
+EN_2034548,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2034548,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2034937,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2034937,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2035441,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2035441,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2035547,DE,German,roman,IE,Europe,1,r,TRUE
+EN_2035547,DE,German,roman,IE,Europe,2,l,TRUE
+EN_2035653,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2035653,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2036332,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,FALSE
+EN_2036332,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
+EN_2038609,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2038609,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2039215,EN,English,roman,IE,Europe,1,r,TRUE
+EN_2039215,EN,English,roman,IE,Europe,2,l,TRUE
+EN_2040072,DE,German,roman,IE,Europe,1,r,TRUE
+EN_2040072,DE,German,roman,IE,Europe,2,l,FALSE
+EN_2043021,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+EN_2043021,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+EN_2043774,EE,Estonian,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EN_2043774,EE,Estonian,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EN_2044492,DE,German,roman,IE,Europe,1,r,TRUE
+EN_2044492,DE,German,roman,IE,Europe,2,l,TRUE
+EN_2049534,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2049534,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2056487,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2056487,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2067029,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+EN_2067029,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EN_2072464,ES,Spanish,roman,IE,Europe,1,r,TRUE
+EN_2072464,ES,Spanish,roman,IE,Europe,2,l,TRUE
+EN_2075768,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2075768,EN,English,roman,IE,Europe,2,r,TRUE
+EN_2086628,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+EN_2086628,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+EN_2094717,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+EN_2094717,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+ES_2048974,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2048974,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2064046,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2064046,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2064970,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2064970,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2065961,ES,Spanish,roman,IE,Europe,1,l,TRUE
+ES_2065961,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2066170,ES,Spanish,roman,IE,Europe,1,l,TRUE
+ES_2066170,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2071528,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2071528,ES,Spanish,roman,IE,Europe,2,l,FALSE
+ES_2072570,ES,Spanish,roman,IE,Europe,1,l,TRUE
+ES_2072570,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2079043,ES,Spanish,roman,IE,Europe,1,l,TRUE
+ES_2079043,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2080636,ES,Spanish,roman,IE,Europe,1,l,TRUE
+ES_2080636,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2083727,ES,Spanish,roman,IE,Europe,1,l,TRUE
+ES_2083727,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2084849,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2084849,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2085397,ES,Spanish,roman,IE,Europe,1,l,TRUE
+ES_2085397,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2099999,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2099999,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2100037,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2100037,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2100788,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2100788,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2102937,ES,Spanish,roman,IE,Europe,1,r,FALSE
+ES_2102937,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2104450,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2104450,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2107752,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2107752,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2107803,ES,Spanish,roman,IE,Europe,1,l,TRUE
+ES_2107803,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2107840,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2107840,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2108072,ES,Spanish,roman,IE,Europe,1,l,FALSE
+ES_2108072,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2108273,ES,Spanish,roman,IE,Europe,1,l,FALSE
+ES_2108273,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2108379,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2108379,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2108485,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2108485,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2108595,ES,Spanish,roman,IE,Europe,1,l,FALSE
+ES_2108595,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2108740,ES,Spanish,roman,IE,Europe,1,l,TRUE
+ES_2108740,ES,Spanish,roman,IE,Europe,2,r,TRUE
+ES_2109053,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2109053,ES,Spanish,roman,IE,Europe,2,l,TRUE
+ES_2110814,ES,Spanish,roman,IE,Europe,1,r,TRUE
+ES_2110814,ES,Spanish,roman,IE,Europe,2,l,TRUE
+FA_2043490,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2043490,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2068709,FA,Farsi,different,IE,Greater Mesopotamia,1,l,TRUE
+FA_2068709,FA,Farsi,different,IE,Greater Mesopotamia,2,r,TRUE
+FA_2086501,FA,Farsi,different,IE,Greater Mesopotamia,1,l,TRUE
+FA_2086501,FA,Farsi,different,IE,Greater Mesopotamia,2,r,TRUE
+FA_2103514,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2103514,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2103865,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2103865,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2104128,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2104128,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2105292,FA,Farsi,different,IE,Greater Mesopotamia,1,l,FALSE
+FA_2105292,FA,Farsi,different,IE,Greater Mesopotamia,2,r,TRUE
+FA_2120082,FA,Farsi,different,IE,Greater Mesopotamia,1,l,TRUE
+FA_2120082,FA,Farsi,different,IE,Greater Mesopotamia,2,r,TRUE
+FA_2142305,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2142305,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2147376,FA,Farsi,different,IE,Greater Mesopotamia,1,r,FALSE
+FA_2147376,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2150860,FA,Farsi,different,IE,Greater Mesopotamia,1,l,FALSE
+FA_2150860,FA,Farsi,different,IE,Greater Mesopotamia,2,r,TRUE
+FA_2150878,FA,Farsi,different,IE,Greater Mesopotamia,1,l,TRUE
+FA_2150878,FA,Farsi,different,IE,Greater Mesopotamia,2,r,TRUE
+FA_2151101,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2151101,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2151146,FA,Farsi,different,IE,Greater Mesopotamia,1,l,TRUE
+FA_2151146,FA,Farsi,different,IE,Greater Mesopotamia,2,r,TRUE
+FA_2151452,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2151452,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2151502,FA,Farsi,different,IE,Greater Mesopotamia,1,l,TRUE
+FA_2151502,FA,Farsi,different,IE,Greater Mesopotamia,2,r,TRUE
+FA_2151685,FA,Farsi,different,IE,Greater Mesopotamia,1,l,TRUE
+FA_2151685,FA,Farsi,different,IE,Greater Mesopotamia,2,r,TRUE
+FA_2151791,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2151791,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2152327,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2152327,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2152433,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2152433,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FA_2152646,FA,Farsi,different,IE,Greater Mesopotamia,1,r,TRUE
+FA_2152646,FA,Farsi,different,IE,Greater Mesopotamia,2,l,TRUE
+FI_2114535,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+FI_2114535,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+FI_2114566,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+FI_2114566,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+FI_2114593,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+FI_2114593,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+FI_2114884,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+FI_2114884,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+FI_2116020,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+FI_2116020,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+FI_2117276,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+FI_2117276,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+FI_2117492,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+FI_2117492,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+FI_2121858,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+FI_2121858,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+FI_2122176,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+FI_2122176,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+FI_2143935,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+FI_2143935,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+FI_2145326,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+FI_2145326,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+FI_2149185,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+FI_2149185,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+FI_2149332,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,r,TRUE
+FI_2149332,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,l,TRUE
+FI_2149565,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+FI_2149565,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+FI_2149709,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+FI_2149709,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+FI_2154435,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+FI_2154435,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+FI_2190244,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+FI_2190244,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+FR_2074614,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2074614,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2088693,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2088693,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2088799,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2088799,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2093434,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2093434,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2098048,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2098048,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2098380,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2098380,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2098486,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2098486,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2098592,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2098592,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2098612,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2098612,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2098726,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2098726,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2098910,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2098910,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2099016,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2099016,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2099122,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2099122,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2099228,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2099228,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2099334,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2099334,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2099642,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2099642,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2099761,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2099761,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2099763,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2099763,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2100322,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2100322,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2100536,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2100536,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2100701,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2100701,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2100714,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2100714,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2100799,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2100799,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2100971,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2100971,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2101024,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2101024,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2101380,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2101380,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2101720,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2101720,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2101747,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2101747,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2102035,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2102035,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2102295,EN,English,roman,IE,Europe,1,r,TRUE
+FR_2102295,EN,English,roman,IE,Europe,2,l,TRUE
+FR_2102421,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2102421,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2102527,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2102527,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2102654,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2102654,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2103186,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2103186,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2103402,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2103402,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2103653,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2103653,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2104234,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2104234,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2104340,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2104340,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2105020,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+FR_2105020,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+FR_2105186,RU,Russian,different,IE,Inner Asia,1,l,FALSE
+FR_2105186,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+FR_2105871,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2105871,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2105874,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2105874,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2106197,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2106197,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2106314,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2106314,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2106427,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2106427,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2106623,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2106623,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2106696,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2106696,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2107027,FR,French,roman,IE,Europe,1,r,FALSE
+FR_2107027,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2107135,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2107135,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2107395,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2107395,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2107540,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2107540,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2107646,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2107646,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2108947,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2108947,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2112372,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2112372,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2113664,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2113664,FR,French,roman,IE,Europe,2,l,TRUE
+FR_2113913,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2113913,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2119495,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2119495,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2120324,FR,French,roman,IE,Europe,1,l,TRUE
+FR_2120324,FR,French,roman,IE,Europe,2,r,TRUE
+FR_2123564,FR,French,roman,IE,Europe,1,r,TRUE
+FR_2123564,FR,French,roman,IE,Europe,2,l,TRUE
+GE_2078462,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,l,TRUE
+GE_2078462,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,r,TRUE
+GE_2110923,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,l,TRUE
+GE_2110923,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,r,TRUE
+GE_2111129,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,r,TRUE
+GE_2111129,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,l,TRUE
+GE_2111235,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,r,TRUE
+GE_2111235,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,l,TRUE
+GE_2111237,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,r,FALSE
+GE_2111237,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,l,FALSE
+GE_2111476,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,l,TRUE
+GE_2111476,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,r,TRUE
+GE_2113770,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,r,TRUE
+GE_2113770,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,l,TRUE
+GE_2130542,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,r,TRUE
+GE_2130542,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,l,TRUE
+GE_2131086,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,r,TRUE
+GE_2131086,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,l,TRUE
+GE_2131090,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+GE_2131090,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+GE_2134616,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,r,TRUE
+GE_2134616,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,l,TRUE
+GE_2144580,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,r,TRUE
+GE_2144580,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,l,TRUE
+GE_2145379,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,l,FALSE
+GE_2145379,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,r,TRUE
+GE_2148242,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,l,TRUE
+GE_2148242,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,r,TRUE
+GE_2186931,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,l,TRUE
+GE_2186931,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,r,TRUE
+GE_2199787,GE,Georgian,different,Kartvelian,Greater Mesopotamia,1,r,FALSE
+GE_2199787,GE,Georgian,different,Kartvelian,Greater Mesopotamia,2,l,TRUE
+GR_2037162,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2037162,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2037268,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2037268,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2037450,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2037450,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2037556,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2037556,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2037777,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2037777,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2038207,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2038207,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2039546,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2039546,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2041501,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2041501,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2041607,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2041607,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2041713,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2041713,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2041819,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2041819,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2041966,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2041966,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2042476,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2042476,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2047985,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2047985,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2052152,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2052152,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2052285,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2052285,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2052534,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2052534,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2052566,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2052566,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2052661,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2052661,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2052791,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2052791,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2052834,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2052834,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2052940,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2052940,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2052949,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2052949,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2053049,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2053049,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2053235,GR,Greek,different,IE,Europe,1,r,FALSE
+GR_2053235,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2053499,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2053499,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2053502,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2053502,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2053549,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2053549,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2053562,GR,Greek,different,IE,Europe,1,l,FALSE
+GR_2053562,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2053930,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2053930,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2054044,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2054044,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2054169,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2054169,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2054347,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2054347,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2054559,GR,Greek,different,IE,Europe,1,r,FALSE
+GR_2054559,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2054665,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2054665,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2054771,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2054771,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2054858,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2054858,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2054929,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2054929,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2055020,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2055020,GR,Greek,different,IE,Europe,2,l,TRUE
+GR_2055292,GR,Greek,different,IE,Europe,1,l,TRUE
+GR_2055292,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2055527,GR,Greek,different,IE,Europe,1,l,FALSE
+GR_2055527,GR,Greek,different,IE,Europe,2,r,TRUE
+GR_2144270,GR,Greek,different,IE,Europe,1,r,TRUE
+GR_2144270,GR,Greek,different,IE,Europe,2,l,TRUE
+HU_2100212,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2100212,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2114319,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2114319,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2115022,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2115022,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2115135,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2115135,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2115358,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2115358,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2115509,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2115509,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2115615,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2115615,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2115723,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2115723,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2115908,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2115908,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2116177,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2116177,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2116335,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2116335,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2116551,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2116551,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2116880,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2116880,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2117002,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,FALSE
+HU_2117002,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2117239,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2117239,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2117798,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2117798,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2117904,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2117904,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2117961,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2117961,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2118072,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2118072,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2118240,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2118240,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2118346,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2118346,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2118683,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2118683,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2118857,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2118857,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2118967,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2118967,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2119177,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2119177,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2119283,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2119283,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2119389,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2119389,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2119601,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2119601,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2147124,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2147124,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2147265,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2147265,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2147482,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2147482,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+HU_2147593,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
+HU_2147593,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2147763,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,FALSE
+HU_2147763,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
+HU_2149459,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
+HU_2149459,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
+IT_2061913,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2061913,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2062631,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2062631,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2063416,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2063416,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2068721,IT,Italian,roman,IE,Europe,1,l,FALSE
+IT_2068721,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2068921,IT,Italian,roman,IE,Europe,1,r,FALSE
+IT_2068921,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2069027,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2069027,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2069241,FR,French,roman,IE,Europe,1,l,TRUE
+IT_2069241,FR,French,roman,IE,Europe,2,r,TRUE
+IT_2069245,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2069245,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2069422,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2069422,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2069712,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2069712,IT,Italian,roman,IE,Europe,2,l,FALSE
+IT_2070120,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2070120,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2070332,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2070332,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2070438,IT,Italian,roman,IE,Europe,1,l,FALSE
+IT_2070438,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2070544,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2070544,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2070565,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2070565,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2070814,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2070814,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2070920,DE,German,roman,IE,Europe,1,l,TRUE
+IT_2070920,DE,German,roman,IE,Europe,2,r,TRUE
+IT_2073200,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2073200,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2073723,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2073723,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2074054,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2074054,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2074276,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2074276,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2074909,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2074909,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2074968,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2074968,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2075281,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2075281,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2075578,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2075578,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2076282,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2076282,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2076388,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2076388,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2076544,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2076544,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2076650,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2076650,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2076930,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2076930,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2077044,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2077044,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2077174,IT,Italian,roman,IE,Europe,1,l,FALSE
+IT_2077174,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2078568,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2078568,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2078829,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2078829,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2078935,IT,Italian,roman,IE,Europe,1,l,FALSE
+IT_2078935,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2080530,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2080530,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2081895,IT,Italian,roman,IE,Europe,1,l,FALSE
+IT_2081895,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2088910,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2088910,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2095688,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2095688,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2097463,IT,Italian,roman,IE,Europe,1,l,FALSE
+IT_2097463,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2100361,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2100361,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2100872,DE,German,roman,IE,Europe,1,l,TRUE
+IT_2100872,DE,German,roman,IE,Europe,2,r,TRUE
+IT_2103211,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2103211,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2103759,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2103759,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2105527,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2105527,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2135830,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2135830,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2146971,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2146971,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2151897,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2151897,IT,Italian,roman,IE,Europe,2,r,TRUE
+IT_2189531,IT,Italian,roman,IE,Europe,1,r,TRUE
+IT_2189531,IT,Italian,roman,IE,Europe,2,l,TRUE
+IT_2207878,IT,Italian,roman,IE,Europe,1,l,TRUE
+IT_2207878,IT,Italian,roman,IE,Europe,2,r,TRUE
+JP_2026184,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2026184,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2026396,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
+JP_2026396,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+JP_2027609,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
+JP_2027609,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
+JP_2027715,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2027715,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2027830,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2027830,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2027996,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2027996,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2028251,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2028251,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2028494,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2028494,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2029063,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2029063,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2034093,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2034093,JP,Japanese,different,Japanese,N Coast Asia,2,l,FALSE
+JP_2037664,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2037664,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2039858,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2039858,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2039918,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2039918,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2040343,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2040343,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2040449,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2040449,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2040555,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2040555,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2040621,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2040621,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2040767,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2040767,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2040873,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2040873,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2040995,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2040995,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2041101,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2041101,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2041207,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2041207,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2042158,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2042158,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2042264,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2042264,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2042370,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2042370,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2042623,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2042623,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2042737,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2042737,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2042915,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2042915,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2043233,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2043233,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2043339,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2043339,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2043601,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2043601,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2044708,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2044708,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2044816,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2044816,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2044955,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2044955,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2045099,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2045099,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2045327,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2045327,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2045448,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2045448,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2046001,JP,Japanese,different,Japanese,N Coast Asia,1,l,FALSE
+JP_2046001,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2046107,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2046107,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2046213,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2046213,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2046493,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2046493,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2046608,JP,Japanese,different,Japanese,N Coast Asia,1,l,FALSE
+JP_2046608,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2046946,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2046946,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2047059,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2047059,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2047178,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2047178,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2047291,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2047291,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2047368,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2047368,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2047549,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2047549,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2047655,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2047655,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2047879,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2047879,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2048091,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2048091,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2048197,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2048197,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2048303,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2048303,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2048409,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
+JP_2048409,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
+JP_2048515,JP,Japanese,different,Japanese,N Coast Asia,1,l,FALSE
+JP_2048515,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2048621,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2048621,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+JP_2050804,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
+JP_2050804,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
+KR_2120978,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2120978,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2121353,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
+KR_2121353,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+KR_2122536,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2122536,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2122698,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2122698,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2145708,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2145708,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2145933,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2145933,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2192134,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2192134,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2192288,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
+KR_2192288,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+KR_2192394,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
+KR_2192394,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+KR_2192500,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
+KR_2192500,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+KR_2192620,KR,Korean,different,Korean,N Coast Asia,1,r,FALSE
+KR_2192620,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2192726,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
+KR_2192726,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+KR_2192867,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2192867,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2193036,KR,Korean,different,Korean,N Coast Asia,1,l,FALSE
+KR_2193036,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+KR_2193409,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2193409,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2194038,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
+KR_2194038,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+KR_2194144,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
+KR_2194144,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+KR_2194250,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
+KR_2194250,KR,Korean,different,Korean,N Coast Asia,2,r,TRUE
+KR_2194312,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2194312,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2198888,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2198888,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+KR_2199504,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
+KR_2199504,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
+PL_1997874,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_1997874,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2009277,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2009277,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2011225,PL,Polish,roman,IE,Europe,1,l,FALSE
+PL_2011225,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2011259,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2011259,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2011661,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2011661,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2013051,PL,Polish,roman,IE,Europe,1,r,FALSE
+PL_2013051,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2013478,PL,Polish,roman,IE,Europe,1,r,FALSE
+PL_2013478,PL,Polish,roman,IE,Europe,2,l,FALSE
+PL_2014004,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2014004,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2014368,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2014368,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2014763,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2014763,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2014900,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2014900,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2014968,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2014968,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2015079,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2015079,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2015927,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2015927,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2016033,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2016033,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2017093,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2017093,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2017373,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2017373,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2018013,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2018013,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2018041,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2018041,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2018230,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2018230,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2018421,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2018421,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2018879,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2018879,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2019534,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2019534,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2020484,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2020484,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2021622,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2021622,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2021728,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2021728,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2022234,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2022234,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2022849,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2022849,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2023368,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2023368,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2023456,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2023456,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2023605,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2023605,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2023711,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2023711,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2023817,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2023817,PL,Polish,roman,IE,Europe,2,l,FALSE
+PL_2024564,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2024564,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2028145,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2028145,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2034654,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2034654,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2044384,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2044384,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2048837,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2048837,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2048976,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2048976,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2051650,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2051650,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2056018,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2056018,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2060067,PL,Polish,roman,IE,Europe,1,r,FALSE
+PL_2060067,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2060282,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2060282,PL,Polish,roman,IE,Europe,2,r,TRUE
+PL_2060528,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2060528,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2060855,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2060855,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2060961,PL,Polish,roman,IE,Europe,1,r,FALSE
+PL_2060961,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2061440,PL,Polish,roman,IE,Europe,1,r,TRUE
+PL_2061440,PL,Polish,roman,IE,Europe,2,l,TRUE
+PL_2081616,PL,Polish,roman,IE,Europe,1,l,TRUE
+PL_2081616,PL,Polish,roman,IE,Europe,2,r,TRUE
+PT_2121096,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2121096,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2121235,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2121235,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2121381,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2121381,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2121573,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2121573,PT,Portuguese,roman,IE,Europe,2,l,FALSE
+PT_2121716,ES,Spanish,roman,IE,Europe,1,l,FALSE
+PT_2121716,ES,Spanish,roman,IE,Europe,2,r,TRUE
+PT_2121964,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2121964,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2122070,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2122070,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2122286,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2122286,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2122428,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2122428,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2122973,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2122973,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2123079,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2123079,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2123185,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2123185,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2123458,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2123458,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2123670,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2123670,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2123780,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2123780,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2123907,DE,German,roman,IE,Europe,1,l,TRUE
+PT_2123907,DE,German,roman,IE,Europe,2,r,TRUE
+PT_2124013,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2124013,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2124119,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2124119,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2124225,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2124225,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2124331,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2124331,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2124444,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2124444,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2124550,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2124550,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2124762,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2124762,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2124772,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2124772,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2125094,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2125094,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2125371,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2125371,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2125477,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2125477,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2125583,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2125583,PT,Portuguese,roman,IE,Europe,2,r,FALSE
+PT_2125757,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2125757,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2127150,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2127150,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2127347,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2127347,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2127456,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2127456,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2127615,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2127615,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2127988,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2127988,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2128094,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2128094,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2128268,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2128268,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2128377,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2128377,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2128893,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2128893,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2129023,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2129023,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2129128,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2129128,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2129331,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2129331,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2129609,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2129609,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2130648,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2130648,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2130955,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2130955,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2132703,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2132703,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2132705,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2132705,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2132707,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2132707,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2132709,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2132709,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2132711,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2132711,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2132713,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2132713,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2132715,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2132715,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2132718,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2132718,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2132737,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2132737,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2132809,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2132809,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2132862,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2132862,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2133628,PT,Portuguese,roman,IE,Europe,1,l,FALSE
+PT_2133628,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2133765,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2133765,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2133859,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2133859,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2133956,PT,Portuguese,roman,IE,Europe,1,r,TRUE
+PT_2133956,PT,Portuguese,roman,IE,Europe,2,l,TRUE
+PT_2134012,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2134012,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+PT_2134018,PT,Portuguese,roman,IE,Europe,1,l,TRUE
+PT_2134018,PT,Portuguese,roman,IE,Europe,2,r,TRUE
+RO_2049567,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2049567,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2049681,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2049681,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2049802,RO,Romanian,roman,IE,Europe,1,l,FALSE
+RO_2049802,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2049923,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2049923,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2050066,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2050066,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2050176,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2050176,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2050221,RO,Romanian,roman,IE,Europe,1,r,FALSE
+RO_2050221,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2050433,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2050433,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2050571,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2050571,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2050718,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2050718,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2050993,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2050993,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2051116,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2051116,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2051390,RO,Romanian,roman,IE,Europe,1,l,FALSE
+RO_2051390,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2051756,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2051756,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2052027,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2052027,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2055912,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2055912,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2056381,RO,Romanian,roman,IE,Europe,1,l,FALSE
+RO_2056381,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2058262,RO,Romanian,roman,IE,Europe,1,l,FALSE
+RO_2058262,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2060569,RO,Romanian,roman,IE,Europe,1,l,FALSE
+RO_2060569,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2068210,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2068210,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2068312,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2068312,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2068357,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2068357,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2069546,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2069546,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2071423,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2071423,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2071740,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2071740,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2071846,RO,Romanian,roman,IE,Europe,1,l,FALSE
+RO_2071846,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2072222,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2072222,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2072586,RO,Romanian,roman,IE,Europe,1,l,TRUE
+RO_2072586,RO,Romanian,roman,IE,Europe,2,r,TRUE
+RO_2089172,RO,Romanian,roman,IE,Europe,1,r,FALSE
+RO_2089172,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2104556,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2104556,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RO_2114036,RO,Romanian,roman,IE,Europe,1,r,TRUE
+RO_2114036,RO,Romanian,roman,IE,Europe,2,l,TRUE
+RU_2038822,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2038822,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2061678,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2061678,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2061788,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2061788,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2061975,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2061975,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2062520,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2062520,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2062614,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2062614,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2063000,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2063000,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2063117,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2063117,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2063228,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2063228,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2063364,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2063364,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2064048,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2064048,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2064265,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2064265,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2064657,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2064657,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2064842,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2064842,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2065108,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2065108,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2065214,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2065214,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2065320,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2065320,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2065532,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2065532,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2065638,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2065638,RU,Russian,different,IE,Inner Asia,2,r,FALSE
+RU_2065792,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2065792,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2065958,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2065958,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2066278,RU,Russian,different,IE,Inner Asia,1,l,FALSE
+RU_2066278,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2066433,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2066433,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2066663,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2066663,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2066788,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2066788,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2067357,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2067357,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2067463,RU,Russian,different,IE,Inner Asia,1,r,FALSE
+RU_2067463,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2067569,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2067569,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2067617,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2067617,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2067835,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2067835,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2068102,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2068102,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2069133,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2069133,RU,Russian,different,IE,Inner Asia,2,r,FALSE
+RU_2069776,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2069776,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2070226,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2070226,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2071317,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2071317,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2072920,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2072920,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2082071,RU,Russian,different,IE,Inner Asia,1,r,FALSE
+RU_2082071,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2095225,RU,Russian,different,IE,Inner Asia,1,l,TRUE
+RU_2095225,RU,Russian,different,IE,Inner Asia,2,r,TRUE
+RU_2095582,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2095582,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+RU_2205067,RU,Russian,different,IE,Inner Asia,1,r,TRUE
+RU_2205067,RU,Russian,different,IE,Inner Asia,2,l,TRUE
+SE_2066393,SE,Swedish,roman,IE,Europe,1,l,TRUE
+SE_2066393,SE,Swedish,roman,IE,Europe,2,r,TRUE
+SE_2069926,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2069926,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2079324,SE,Swedish,roman,IE,Europe,1,r,FALSE
+SE_2079324,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2079521,SE,Swedish,roman,IE,Europe,1,l,TRUE
+SE_2079521,SE,Swedish,roman,IE,Europe,2,r,TRUE
+SE_2080068,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2080068,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2080848,SE,Swedish,roman,IE,Europe,1,l,TRUE
+SE_2080848,SE,Swedish,roman,IE,Europe,2,r,TRUE
+SE_2080954,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2080954,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2081264,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2081264,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2082177,SE,Swedish,roman,IE,Europe,1,l,TRUE
+SE_2082177,SE,Swedish,roman,IE,Europe,2,r,TRUE
+SE_2084957,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2084957,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2085984,SE,Swedish,roman,IE,Europe,1,l,TRUE
+SE_2085984,SE,Swedish,roman,IE,Europe,2,r,TRUE
+SE_2104005,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2104005,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2125928,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2125928,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2125930,SE,Swedish,roman,IE,Europe,1,l,TRUE
+SE_2125930,SE,Swedish,roman,IE,Europe,2,r,TRUE
+SE_2126166,SE,Swedish,roman,IE,Europe,1,l,TRUE
+SE_2126166,SE,Swedish,roman,IE,Europe,2,r,TRUE
+SE_2126421,SE,Swedish,roman,IE,Europe,1,l,TRUE
+SE_2126421,SE,Swedish,roman,IE,Europe,2,r,TRUE
+SE_2126527,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2126527,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2126645,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2126645,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2126751,SE,Swedish,roman,IE,Europe,1,r,TRUE
+SE_2126751,SE,Swedish,roman,IE,Europe,2,l,TRUE
+SE_2126867,SE,Swedish,roman,IE,Europe,1,l,TRUE
+SE_2126867,SE,Swedish,roman,IE,Europe,2,r,TRUE
+SE_2127135,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
+SE_2127135,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+TH_2109740,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2109740,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2109940,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2109940,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2109951,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2109951,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2110260,TH,Thai,different,Tai-Kadai,Southeast Asia,1,l,FALSE
+TH_2110260,TH,Thai,different,Tai-Kadai,Southeast Asia,2,r,FALSE
+TH_2110708,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2110708,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2111627,TH,Thai,different,Tai-Kadai,Southeast Asia,1,l,TRUE
+TH_2111627,TH,Thai,different,Tai-Kadai,Southeast Asia,2,r,TRUE
+TH_2111742,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2111742,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,FALSE
+TH_2111848,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2111848,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2111850,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2111850,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2112079,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2112079,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2112187,TH,Thai,different,Tai-Kadai,Southeast Asia,1,l,FALSE
+TH_2112187,TH,Thai,different,Tai-Kadai,Southeast Asia,2,r,TRUE
+TH_2112538,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2112538,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2113134,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2113134,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2113338,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2113338,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2113447,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2113447,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2114194,TH,Thai,different,Tai-Kadai,Southeast Asia,1,l,TRUE
+TH_2114194,TH,Thai,different,Tai-Kadai,Southeast Asia,2,r,TRUE
+TH_2116679,TH,Thai,different,Tai-Kadai,Southeast Asia,1,l,FALSE
+TH_2116679,TH,Thai,different,Tai-Kadai,Southeast Asia,2,r,TRUE
+TH_2119707,TH,Thai,different,Tai-Kadai,Southeast Asia,1,r,TRUE
+TH_2119707,TH,Thai,different,Tai-Kadai,Southeast Asia,2,l,TRUE
+TH_2122861,TH,Thai,different,Tai-Kadai,Southeast Asia,1,l,TRUE
+TH_2122861,TH,Thai,different,Tai-Kadai,Southeast Asia,2,r,TRUE
+TR_2062299,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2062299,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2074403,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2074403,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2074723,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2074723,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2075197,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2075197,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2075284,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2075284,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2075874,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2075874,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2075980,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2075980,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2076142,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2076142,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2076166,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2076166,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2076716,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2076716,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2077434,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,FALSE
+TR_2077434,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2077540,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2077540,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2077544,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2077544,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2077752,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2077752,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2077860,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2077860,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2078008,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2078008,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2078114,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2078114,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2078356,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,FALSE
+TR_2078356,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,FALSE
+TR_2078674,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,FALSE
+TR_2078674,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2079785,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2079785,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2079958,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2079958,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2080114,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2080114,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2080424,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,FALSE
+TR_2080424,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2084037,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2084037,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2084198,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2084198,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2084317,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2084317,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2084320,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2084320,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2084517,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,FALSE
+TR_2084517,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2084575,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2084575,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2084829,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,FALSE
+TR_2084829,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2087035,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2087035,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2088320,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2088320,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2112699,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,FALSE
+TR_2112699,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2112805,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2112805,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2113015,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2113015,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+TR_2119813,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,r,TRUE
+TR_2119813,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,l,TRUE
+TR_2119957,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
+TR_2119957,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
+ZU_2057083,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2057083,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2105421,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2105421,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2106921,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2106921,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2109362,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2109362,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2129446,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,TRUE
+ZU_2129446,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
+ZU_2136573,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,TRUE
+ZU_2136573,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
+ZU_2136679,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2136679,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2138105,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2138105,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2138774,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2138774,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2139026,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2139026,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2139132,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,FALSE
+ZU_2139132,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
+ZU_2139238,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2139238,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2139344,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2139344,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2139788,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,TRUE
+ZU_2139788,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
+ZU_2139894,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2139894,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
+ZU_2140000,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,TRUE
+ZU_2140000,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
+ZU_2140141,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,FALSE
+ZU_2140141,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
+ZU_2140360,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,TRUE
+ZU_2140360,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
+ZU_2140466,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
+ZU_2140466,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE

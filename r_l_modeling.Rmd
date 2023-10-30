@@ -310,4 +310,202 @@ web_mdl
 ```
 
 
+Compute grand averages with 95% lower and upper bound of credible interval to report:
+
+```{r}
+plogis(fixef(web_mdl)[1, ][1])
+plogis(fixef(web_mdl)[1, ][3]) # lwr bound
+plogis(fixef(web_mdl)[1, ][4]) # upr bound
+```
+
+Perform hypothesis tests:
+
+```{r}
+hypothesis(web_mdl, 'Intercept > 0')
+hypothesis(web_mdl, 'L1_distinctionapproximant > 0')
+hypothesis(web_mdl, 'L1_distinctiontrill > 0')
+hypothesis(web_mdl, 'order_num > 0')
+```
+
+Check the descriptive averages for script and order:
+
+```{r}
+web %>% 
+  group_by(L1_distinction) %>% 
+  summarize(prop = mean(Match)) %>% 
+  mutate(percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+
+```{r}
+web %>% 
+  group_by(Order) %>% 
+  summarize(prop = mean(Match)) %>% 
+  mutate(percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+
+Extract the posteriors:
+
+```{r}
+posts <- posterior_samples(web_mdl)
+posts <- select(posts,
+                b_Intercept:b_L1_distinctiontrill)
+```
+
+
+Make the posteriors into long format for plotting (Figure 3):
+
+```{r}
+posts <- pivot_longer(posts,
+                      cols = b_Intercept:b_L1_distinctiontrill,
+                      names_to = 'coefficient',
+                      values_to = 'posterior')
+```
+
+Change names for plotting and order:
+
+```{r}
+posts <- posts %>%
+  mutate(coefficient = ifelse(coefficient == 'b_Intercept', 'Intercept', coefficient),
+         coefficient = ifelse(coefficient == 'b_order_num', 'Order', coefficient),
+         coefficient = ifelse(coefficient == 'b_L1_distinctionapproximant', 'L1 approximant', coefficient),
+         coefficient = ifelse(coefficient == 'b_L1_distinctiontrill', 'L1 trill', coefficient),
+         coefficient = factor(coefficient,
+                              levels = rev(c('Intercept', 'Order', 'L1 approximant', 'L1 trill'))))
+```
+
+Make a plot of this:
+
+```{r, fig.width = 8, fig.height = 7}
+# Aesthetics and geom:
+
+p <- posts %>% ggplot(aes(y = coefficient, x = posterior)) +
+  geom_vline(aes(xintercept = 0), linetype = 2) +
+  stat_halfeye(alpha = 0.5, fill = 'steelblue')
+
+# Axis labels and coordinates:
+
+p <- p +
+  coord_cartesian(xlim = c(-4, +6)) +
+  scale_x_continuous(breaks = seq(-4, 6, 1)) +
+  xlab('Coefficient') +
+  ylab(NULL)
+
+# Tweak cosmetics:
+
+p <- p +
+  theme_timo + 
+  theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                    r = 0, l = 0),
+                                    face = 'bold', size = 14),
+        axis.text.x = element_text(face = 'bold', size = 12),
+        axis.text.y = element_text(face = 'bold', size = 12))
+
+# Show and save:
+
+p
+ggsave(plot = p, filename = paste0(plots, 'main_model_coefficients.pdf'),
+       width = 8, height = 6)
+```
+
+
+For Figure 4, we want to combine the predictions for each language with the averages of each language. First, we need to get the predictions from the model:
+
+```{r}
+# Setup data frame with predictors to get predictions for:
+newdata <- data.frame(Language = unique(web$Language))
+newdata$order_num <- 0
+newdata$L1_distinction <- web[match(newdata$Language, web$Language), ]$L1_distinction
+newdata$Family <- web[match(newdata$Language, web$Language), ]$Family
+
+# Get predictions and append to dataframe:
+
+fit <- fitted(web_mdl, newdata = newdata,
+              re_formula = NULL, robust = TRUE)
+colnames(fit) = c('fit', 'se', 'lwr', 'upr')
+newdata <- cbind(newdata, fit)
+
+# Order predictions by descriptive average:
+
+newdata <- arrange(newdata, fit)
+newdata <- mutate(newdata,
+                  Language = factor(Language, levels = newdata$Language))
+```
+
+How many languages are over 0.5? (will be reported in paper)
+
+```{r}
+sum(newdata$lwr > 0.5)
+```
+
+Finally, add the averages to the plot:
+
+```{r}
+newdata$avg <- web_avg[match(newdata$Language, web_avg$Language), ]$M
+```
+
+Match language names into there and order:
+
+```{r}
+newdata$Language <- web[match(newdata$Language, web$Language), ]$Name
+newdata[newdata$Language == 'Chinese', ]$Language <- 'Mandarin Chinese'
+
+newdata <- mutate(newdata,
+                  Language = factor(Language, levels = newdata$Language))
+```
+
+Setup the plot:
+
+```{r, fig.width = 8, fig.height = 6}
+# Aesthetics and geom:
+
+p <- newdata %>% 
+  ggplot(aes(x = Language, col = L1_distinction, y = fit,
+      ymin = lwr, ymax = upr)) +
+  geom_errorbar(aes(col = L1_distinction),
+                size = 1.6, width = 0.6) +
+  geom_point(size = 9, shape = 15) +
+  geom_hline(yintercept = 0.5, linetype = 2, size = 1.5, col = 'grey') + 
+  geom_point(aes(y = avg), col = 'black', shape = 23, size = 8.5,
+             fill = 'white', stroke = 1.5)
+  
+# Axis labels:
+
+p <- p +
+  labs(x = '', y = 'Proportion\nof congruent responses') +
+  ggtitle('Posterior medians and descriptive averages of\ncongruent responses by language and R/L contrast') 
+
+# Tweak cosmetics:
+
+p <- p +
+  #scale_color_manual(values = c('#9C1437', '#355691')) + # ZAS-COLORS
+  theme_timo + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, face = 'bold',
+                                   size = 30),
+        axis.text.y = element_text(face = 'bold', size = 24),
+        axis.title = element_text(face = 'bold', size = 40),
+        axis.title.y = element_text(face = 'bold', size = 40,
+                                    margin = margin(t = 0, r = 35,
+                                                    b = 0, l = 0)),
+        plot.title = element_text(face = 'bold', size = 40,
+                                  margin = margin(t = 0, r = 0,
+                                                  b = 30, l = 0)),
+        legend.text = element_text(size = 30),
+        legend.title = element_blank(),
+        legend.position = c(0.95, 0.15),
+        legend.justification = c('right', 'bottom'))
+
+# Show and save:
+
+p
+ggsave(plot = p, filename = paste0(plots, 'by_language_results.pdf'),
+       width = 28, height = 12)
+```
+
+
+
+
 

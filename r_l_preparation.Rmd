@@ -565,6 +565,8 @@ Write to file:
 
 ```{r save cleaned data}
 write_csv(r_ppt, paste0(data, 'web_experiment_cleaned.csv'))
+
+web <- read_csv(paste0(data, 'web_experiment_cleaned.csv'))
 ```
 
 # Field experiment
@@ -604,7 +606,7 @@ field <- field %>%
 
 Get the language info out of the ID column:
 
-```{r}
+```{r get lang info}
 field <- mutate(field,
                 Language = str_extract(ID, '[A-Z]+'),
                 Participant = str_extract(ID, '\\d+'))
@@ -612,7 +614,7 @@ field <- mutate(field,
 
 Add age and gender info:
 
-```{r}
+```{r add age gender}
 # Rename so that key columns match names:
 
 demographics <- rename(demographics,
@@ -634,13 +636,13 @@ field <- left_join(field, demographics)
 
 Exclude participants under 18:
 
-```{r}
+```{r exclude field}
 field <- filter(field, Age > 18)
 ```
 
 Discard Polish (only one data point) and US (no data collected for this part of the experiment):
 
-```{r}
+```{r exclude polish}
 field <- filter(field, Language != 'US')
 field <- filter(field, Language != 'PL')
 ```
@@ -649,7 +651,7 @@ field <- filter(field, Language != 'PL')
 
 Add language name information to the data frame:
 
-```{r}
+```{r add info on contrast}
 field$Name <- NA
 field[field$Language == 'BE', ]$Name <- 'English'
 field[field$Language == 'DE', ]$Name <- 'German'
@@ -661,7 +663,7 @@ field[field$Language == 'PA', ]$Name <- 'Palikur'
 
 Add info on R/L contrast:
 
-```{r}
+```{r add info on contrast ctd}
 field <- field %>%
   mutate(L1_distinction = NA_character_) %>%
   mutate(L1_distinction = case_when(
@@ -676,13 +678,13 @@ field <- field %>%
 
 Create a table with one data point per participant with L2 information:
 
-```{r}
+```{r process l2}
 L2_info_field <- filter(field, !duplicated(ID)) %>% select(ID, Language, Name, L2)
 ```
 
 Transform NAs into "this person knows no L2":
 
-```{r}
+```{r add no l2}
 L2_info_field <- L2_info_field %>% 
   mutate(L2 = ifelse(L2 %in% c('0', 'NA', ' '), NA, L2)) %>% 
   mutate(L2 = ifelse(is.na(L2), 'no_L2', L2))
@@ -690,21 +692,21 @@ L2_info_field <- L2_info_field %>%
 
 Extract whether the person reports any English:
 
-```{r}
+```{r add english}
 L2_info_field <- mutate(L2_info_field,
                   EnglishL2YesNo = ifelse(grepl('english', L2, ignore.case = TRUE), TRUE, FALSE))
 ```
 
 Conversions:
 
-```{r}
+```{r l2 conversions}
 L2_info_field <- mutate(L2_info_field,
                   L2 = str_replace(L2, 'British Sign Language', 'BSL'))
 ```
 
 Get all languages spoken:
 
-```{r}
+```{r add spoken langs}
 all_L2s_field <- sub("\\s*\\(restricted reading skills\\)", "", L2_info_field$L2)
 all_L2s_field <- unlist(str_split(all_L2s_field, "(, )|(,)|(，)|(\\.)"))
 all_L2s_field <- str_trim(all_L2s_field)
@@ -719,7 +721,7 @@ all_L2s_field
 
 Put into table and match script as well as whether they are IE:
 
-```{r}
+```{r make table}
 L2_lang_field_info <- tibble(L2 = all_L2s_field)
 ```
 
@@ -782,7 +784,7 @@ rhotic_regex <- str_c(filter(L2_lang_field_info, R_L_distinction == 'trill' |
 
 Create variables based on that for all speakers. First, whether they know at least one language that has no distinction, then at least one that has a trill, then at least one that has approximant. This will allow us for fine-grained distinction:
 
-```{r add rhotics info to l2}
+```{r add rhotics info to l2 again}
 L2_info_field <- L2_info_field %>%  
   mutate(no_dist_L2 = str_detect(L2, no_regex),
          trill_L2 = str_detect(L2, trill_regex),
@@ -791,19 +793,27 @@ L2_info_field <- L2_info_field %>%
 
 Match this with the "web" data frame:
 
-```{r l2 and web}
+```{r l2 and field}
 field <- left_join(field, select(L2_info_field, -Language), by = c('ID' = 'ID'))
 ```
 
 Rename:
 
-```{r rename vars}
-field <- rename(field,
-              L2_raw = L2.x,
-              L2_cleaned = L2.y)
+```{r rename vars field}
+field <- field %>% 
+  rename(Name = Name.x,
+         L2_raw = L2.x,
+         L2_cleaned = L2.y) %>% 
+  select(-Name.y)
 ```
 
-I will stop here, because I don't know what to do with DE08 and DE09.
+## Exclusions
 
+We decided to exclude DE08 and DE09 for not following instructions
+
+```{r exclude}
+field <- field %>%
+  filter(!(ID %in% c("DE08", "DE09")))
+```
 
 

@@ -1,0 +1,569 @@
+---
+title: "Language coding"
+author: "Rémi Anselme"
+date: "2023-10-26"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    df_print: paged
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: '3'
+  html_notebook:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+`%>%` <- magrittr::`%>%`
+```
+
+
+# Data preparation - From Aleksandra Ćwiek
+
+```{r pckgs}
+#library(tidyverse)
+
+# Set the script's path as working directory
+parentfolder = rstudioapi::getActiveDocumentContext()$path 
+#setwd(dirname(parentfolder))
+parentfolder <- getwd()
+
+data <- paste0(parentfolder, '/data/')
+```
+
+Load the data
+
+```{r load data}
+web <- read.csv(paste0(data, "r_l_web.csv"), sep = ",")
+```
+
+## Web dataset cleaning
+
+Before cleaning we have `r length(unique(web$l1))` languages in the column `l1`.  
+Before cleaning we have `r length(unique(web$l2))` languages in the column `l2`.  
+Before cleaning we have `r length(unique(web$firstlanguage))` languages in the column `firstlanguage`.  
+Before cleaning we have `r length(unique(web$foreignlanguages))` combinations for languages in the column `foreignlanguages`.  
+For the data coding, I won't work with `firstlanguage` column and `foreignlanguages`.
+
+```{r}
+#I looked languages that have not a language name (some are Aleksandra trials)
+to_del <- c("b","q","3","hi") 
+
+web <- web %>% 
+  dplyr::filter(!(l1 %in% to_del) & !is.na(l1))
+
+languages <- web %>% 
+                dplyr::mutate(L1 = stringr::str_extract_all(l1, "\\b[:alpha:]+\\b"),
+                             L2 = stringr::str_extract_all(l2, "\\b[:alpha:]+\\b")) 
+
+#Some of the languages have been replaced based on Aleksandra's preparation script
+#The objective here is to have a maximum of languages to code
+
+languages_data <- unique(c(unlist(languages$L1),unlist(languages$L2))) %>% 
+                as.data.frame() %>% 
+                dplyr::rename(Languages = 1) %>% 
+                dplyr::mutate(Languages = as.character(Languages)) %>% 
+                dplyr::distinct() %>% 
+                dplyr::filter(!is.na(Languages) & Languages != "a" & Languages != "little" & Languages != "bit") %>% 
+                dplyr::mutate(Languages = stringr::str_replace(Languages, 'isizulu', 'zulu'),
+                              Languages = stringr::str_replace(Languages, 'turkce', 'turkish'),
+                              Languages = stringr::str_replace(Languages, 'albanianja', 'albanian'),
+                              Languages = stringr::str_replace(Languages, 'español', 'spanish'),
+                              Languages = stringr::str_replace(Languages, 'italia', 'italian'),                  
+                              Languages = stringr::str_replace(Languages, 'italiann', 'italian'),
+                              Languages = stringr::str_replace(Languages, 'ancient', 'ancient greek'),
+                              Languages = stringr::str_replace(Languages, 'potuguese', 'portuguese'),
+                              Languages = stringr::str_replace(Languages, 'spanich', 'spanish'),
+                              Languages = stringr::str_replace(Languages, 'calatan', 'catalan'),
+                              Languages = stringr::str_replace(Languages, 'rumanian', 'romanian'),
+                              Languages = stringr::str_replace(Languages, 'estniska', 'estonian'),
+                              Languages = stringr::str_replace(Languages, 'dari', 'farsi'),
+                              Languages = stringr::str_replace(Languages, 'sami', 'saami')) %>% 
+                dplyr::distinct() %>% 
+                dplyr::arrange(Languages) %>% 
+  dplyr::mutate(glottocode = as.character(NA),
+                r_l_distinction = as.integer(NA),
+                trill_real = as.integer(NA),
+                trill_occ = as.integer(NA))
+
+```
+
+In total, we have `r length(unique(languages_data$Languages))` languages to check.
+
+
+```{r}
+unique(languages_data$Languages)
+```
+# Coding
+
+## Langue - Exemple
+
+```{r}
+# languages_data <- languages_data %>% 
+#     dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+# languages_data <- languages_data %>% 
+#     dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+# 
+# languages_data <- languages_data %>% 
+#     dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+# 
+# languages_data <- languages_data %>% 
+#     dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## NGT
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(glottocode = ifelse(Languages=="NGT","dutc1253",glottocode))
+```
+
+Phoible : NA  
+
+Wikipedia :  
+https://en.wikipedia.org/wiki/Dutch_Sign_Language
+
+Glottologue :    
+https://glottolog.org/resource/languoid/id/dutc1253
+
+Autres sources : NA  
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(r_l_distinction = ifelse(Languages=="NGT",as.integer(NA),r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="NGT",as.integer(NA),trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="NGT",as.integer(NA),trill_occ))
+```
+
+## afrikaans
+
+```{r}
+languages_data <- languages_data %>% 
+    dplyr::mutate(glottocode = ifelse(Languages=="afrikaans","afri1274",glottocode))
+```
+
+Phoible :   
+https://phoible.org/inventories/view/1395  
+      - r allophone r  ; contrast r/l
+
+Donaldson, Bruce C. 1993. A grammar of Afrikaans. Mouton de Gruyter.  
+  - Page 15 : 1.4.12. The consonant r [r]  
+              Examples: rot [rot] 'rat', raar [ra:r] 'queer*, verder [f^rdar] 'further'.  
+              R is trilled in Afrikaans. In various areas of the Cape uvular r, both [R] and [ʁ], occurs and in the north is regarded as a shibboleth of a "Capie" (see               footnote 9). It is called gebryde r, e.g. Hy bry, want hy kom van Malmesbury se wêreld αf 'He has a uvular r because he comes from the Malmesbury area'.  
+  - Footnote 9 Page 6 : If one wants to parody a Transvaler, one uses this sound, whereas the countryside of the Western Cape is parodied by using the uvular r and raising ee and oo to [i] and [u], e.g. lees [lis] 'to read', brood [bRut]'bread'.  
+  
+Wikipedia :   
+https://en.wikipedia.org/wiki/Afrikaans  
+  - Rhotic r  
+  - /r/ is usually an alveolar trill [r] or tap [ɾ].[109] In some parts of the former Cape Province, it is realized uvularly, either as a trill [ʀ] or a fricative [ʁ].[110]
+    [109] - Lass, Roger (1987), "Intradiphthongal Dependencies", in Anderson, John; Durand, Jacques (eds.), Explorations in Dependency Phonology, Dordrecht: Foris Publications Holland, pp. 109–131, ISBN 90-6765-297-0  
+    [110] - Donaldson (1993), p. 15.  
+    
+Glottologue :  
+https://glottolog.org/resource/languoid/id/afri1274  
+
+Autres sources :  
+
+Wissing, D. (2020). Afrikaans. Journal of the International Phonetic Association, 50(1), 127-140. doi:10.1017/S0025100318000269  
+  - Page 130 : Trill r  ʀ
+  - Page 131 : The alveolar trill [r] varies with the uvular trill [ʀ], the latter found notably in the Boland region of the Western Cape, but also quite frequently in other areas of SA (Pienaar 2017 provides an overview and mentions relevant literature; see also Ribbens-Klein 2016).  
+  - Page 132 : In colloquial speech, the voiced alveolar trill /r/ tends to be omitted in syllable-final position. This happens mostly in unstressed syllables, and regularly in the prefix ver-, as in /fərˈkeːrd/ > [fəkiərt] verkeerd ‘wrong’. In word-final position, as in /lɛkər/ > [lækə] lekker ‘nice’, /r/-deletion is quite common across the board, especially in function words like daar, maar, hier, vir: /daːr/ > [daː] daar ‘there’, /maːr/ > [maː]7 maar ‘but’, /foːr/ > [fuə] voor ‘in front of’, and /fər/ > [fə] vir8 ‘for’. This phenomena is widely present in Malayan Afrikaans. Kotz ́e (1983) mentions similar examples, but adds to these the loss of /r/, even in complex codas, e.g. [fəket] verkeerd ‘wrong’, [bɔːs] bors ‘breast’, and [kənəs] kinders ‘children’ –transcriptions are Kotz ́e’s.  
+
+```{r}
+languages_data <- languages_data %>% 
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="afrikaans",1,r_l_distinction))
+
+languages_data <- languages_data %>% 
+    dplyr::mutate(trill_real = ifelse(Languages=="afrikaans",1,trill_real))
+
+languages_data <- languages_data %>% 
+    dplyr::mutate(trill_occ = ifelse(Languages=="afrikaans",1,trill_occ))
+```
+
+## albanian
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(glottocode = ifelse(Languages=="albanian","tosk1239",glottocode))
+```
+
+Phoible :   
+https://phoible.org/languages/tosk1239  
+  - SPA r allophones ɾ r  ; contrast r/l
+  - UPSID r̪|r pas d'allophones  ; contrast 	r̪|r/l
+  - EA r pas d'allophones  ; contrast  r/l
+
+Newmark, Leonard. 1957. Structural Grammar of Albanian. (International Journal of American Linguistics, 23.) Bloomington: Indiana University.  
+
+Klippenstein, Rachel. 2010. Word-initial consonant clusters in Albanian. In Lesho, Marivic and Smith, Bridget J. and Campbell-Kibler, Kathryn and Culicover, Peter W. (eds.), Working Papers in Linguistics, 10–32.  
+
+Camaj, Martin and Fox, Leonard. 1984. Albanian grammar: with exercises, chrestomathy and glossaries. Otto Harrassowitz Verlag.  
+
+Wikipedia :    
+https://en.wikipedia.org/wiki/Tosk_Albanian  
+
+https://en.wikipedia.org/wiki/Albanian_language#Phonology  
+  - Flap 			ɾ 					  
+    Trill 			r  
+  - The contrast between flapped r and trilled rr is the almost the same as in Spanish or Armenian. However, in most of the dialects, as also in standard Albanian, the single "r" changes from an alveolar flap /ɾ/ to an alveolar approximant [ɹ].  
+  
+Glottologue :   
+https://glottolog.org/resource/languoid/id/tosk1239  
+
+Autres sources :  
+
+Coretta, S., Riverin-Coutlée, J., Kapia, E., & Nichols, S. (2022). Northern Tosk Albanian. Journal of the International Phonetic Association, 1-23. doi:10.1017/S0025100322000044  
+  - Page 3 : Trill r  
+             Flap ɽ  
+  - Page 8 :  Rhotics  
+              Northern Tosk contrasts two rhotics, written as ⟨r⟩ and ⟨rr⟩, both of which can occur word initially, medially and finally. While our speakers always realised ⟨rr⟩ as an alveolar trill [r], ⟨r⟩ was characterised by a great deal of allophonic variation, as also previously noted by Belluscio (Reference Belluscio, Gesuato and Grazia Busà2014). Among the range of realisations for ⟨r⟩, we found retroflex flaps [ɽ] and retroflex approximants [ɻ]. These seem to be in complementary distribution, with [ɻ] tending to appear in coda position, although for some speakers and in some words, word-initial /r/ was also realised as a retroflex approximant [ɻ]. Impressionistic studies and some case-study analyses suggest that /r/ may increasingly be realised as [ɻ] or variants thereof in different varieties of Albanian (Hysenaj Reference Hysenaj2009, Jubani-Bengu Reference Jubani-Bengu2012, Belluscio Reference Belluscio2016). Figure 8 shows illustrative examples of the three main rhotic allophones. The limited set of contexts in the words collected does not allow us to make definitive generalisations about the distribution of these allophones and future work is warranted on this matter. We have chosen to use /r/ for ⟨rr⟩ and /ɽ/ for ⟨r⟩, though as noted above, /ɽ/ is frequently realised as [ɻ].         
+
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(r_l_distinction = ifelse(Languages=="albanian",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="albanian",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="albanian",1,trill_occ))
+```
+
+## ancient greek
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(glottocode = ifelse(Languages=="ancient greek","anci1242",glottocode))
+```
+
+Phoible : NA  
+
+Wikipedia :   
+https://en.wikipedia.org/wiki/Ancient_Greek  
+  - Trill 		ρ r
+  - /r/ was probably voiceless when word-initial and geminated (written ῥ and ῥῥ).
+  => il y a un contrast entre un r et un l
+  
+Glottologue :  
+https://glottolog.org/resource/languoid/id/anci1242  
+
+van Emde Boas, Evert and Rijksbaron, Albert and Huitink, Luuk and de Bakker, Mathieu. 2019. The Cambridge Grammar of Classical Greek. Cambridge: Cambridge University Press.
+  - Page 11 : p [r] \rho\epsilon\omega [r^héo:] flow rhyme(rolling r)
+  - Page 12 : The category of resonants consists of the nasal consonants \micro and v (and in certain cases \gamma) and the so-called‘liquids’ \lambda and \rho.
+  - Page 13 : Liquids: two Greek letters belong to the class of liquids - \lambda and \rho: - a lateral consonant, \lambda [l]: air escapes along the sides of the tongue, but not through the middle of the mouth; - a rhotic consonant (or ‘tremulant’), \rho [r]: this was pronounced as a rolling, ‘alveolar trill’ sound, with the tongue vibrating against the gums. At the beginning of a word (and in somecases in the middle of a word), this sound was pronouncedwith aspiration (hence word-initial rho is always written \rho(avec diacritic au dessus])).
+
+Autres sources : NA 
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(r_l_distinction = ifelse(Languages=="ancient greek",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="ancient greek",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="ancient greek",1,trill_occ))
+```
+
+## arabic
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(glottocode = ifelse(Languages=="arabic","stan1318",glottocode))
+```
+
+Phoible :   
+https://phoible.org/languages/stan1318
+  - r allophone r ; contrast r/l
+  
+Wikipedia :   
+https://en.wikipedia.org/wiki/Modern_Standard_Arabic
+  - Trill 			r ⟨ر⟩
+
+https://en.wikipedia.org/wiki/Arabic_phonology
+  - Trill 			r^[l]
+  - [l] Emphatic [rˤ] exists in Northwestern African pronunciations and in Egypt when accompanied by /a/ or /u/ and plain when accompanied by /i/ or /j/; in closed syllables, then it is plain when the first preceding voweled consonant has /i/ or if /j/ is present, but emphatic if the first preceding voweled letter is accompanied by /a/ or /u/. The trill /r/ is sometimes reduced to a single vibration when single, but it remains potentially a trill, not a flap [ɾ]: the pronunciation of this single trill is between a trill [r] and a flap [ɾ]. ⟨r⟩ is in free variation between a trill [r] and a flap [ɾ] in Egypt and the Levant.
+  
+Glottologue :  
+https://glottolog.org/resource/languoid/id/stan1318
+
+Ryding, Karin C. 2005. A reference grammar of modern standard Arabic. New York: Cambridge Univ. Press. xxv+708pp. (Includes bibliographical references (p. 691-699) and index.)
+  - Page 13 : Flaps r
+  - Page 14 : raa (r) (symbole arabe) voiced alveolar flap or trill: as /r/ in Italian or Spanish; a good example in English is to pronounce the word "very" as "veddy"
+  
+Autres sources :
+
+Thelwall, R., & Sa'Adeddin, M. (1990). Arabic. Journal of the International Phonetic Association, 20(2), 37-39. doi:10.1017/S0025100300004266
+  - Page 37 : Trill r
+  
+Bahrani, N., & Modarresi Ghavami, G. (2021). Khuzestani Arabic. Journal of the International Phonetic Association, 51(2), 299-313. doi:10.1017/S0025100319000203 [Pas mis au propre]
+  - Page 301 : Tap 
+               R /Ri ˘l/ ﺭﻳﻞ foot 
+               R ≥ /R ≥a ˘d/ [R ≥A˘d] ﺭﺍﺩ (he) wanted
+  - Page 303 : Sonorant consonants include /m n R R ≥ l l ≥ j w ÷/
+  
+Cotter, W. (2022). The Arabic dialect of Gaza City. Journal of the International Phonetic Association, 52(1), 122-134. doi:10.1017/S0025100320000134 [Pas mis au propre]
+  - Page 124 : Trill r
+  - Page 126 : /r/ [r] [ˈraː.ʤɪl] ‘man’
+  - Page 128 : /r/ in Gaza City Arabic is realized both as a true trilled [r], as well as a pharyngealized [r≥]. Pharyngealized [r≥] generally occurs in the environment of low vowels. Examples of pharyngealized [r≥] are readily available and can be seen in cases such as [b“r≥a] ‘outside’.
+Trilled /r/ can be seen in cases such as [ra'Il] ‘man’. In connected speech contexts /r/ is also often realized as a tap [R], e.g. [nUÂRUt] ‘we farm’.
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(r_l_distinction = ifelse(Languages=="arabic",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="arabic",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="arabic",1,trill_occ))
+```
+
+## armenian
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(glottocode = ifelse(Languages=="armenian","nucl1235",glottocode))
+```
+
+Phoible :   
+https://phoible.org/languages/nucl1235  
+2 inventaires :  
+  - SPA r allophone r   ; contrast r/l
+  - UPSID r pas d'allophone  ; contrast r/l
+
+Allen, W. Sidney. 1950. Notes on the Phonetics of an Eastern Armenian Speaker. Transactions of the Philological Society. 180–206. (Reprint by Hertford 1951).  
+
+Wikipedia :    
+https://en.wikipedia.org/wiki/Armenian_language  
+  - Trill 		/r/ ռ – ṙ 	 
+    Flap 		/ɾ/ ր – r 	  
+
+Dum-Tragut, Jasmine (2009), Armenian: Modern Eastern Armenian, Amsterdam: John Benjamins Publishing Company  
+  - Page 13 : ռ r̊ [r]  
+              ր r [ɾ]   
+  - Page 19 : Rhotics  
+                    alveolar  
+              flap      ɾ  
+              trill     r  
+In SMEA the flap n is much more wide-spread than its trill counterpart.  
+The flap [ɾ] can be found in all positions, whereas the distribution of trill [r] is comparatively restricted.  
+The trill [r] seldom occurs in the initial position, with the exception of some words among that ṙus [rus] “Russian” and its derivations as well as of loans with initial trill [r], [...]. In medial position, trill r [r] occurs frequently [...].  
+  - Page 20 :  In final position trill r [r] is also found; also in some words which have lost their originally final n from Classical Armenian [...].  
+  
+Glottologue :    
+https://glottolog.org/resource/languoid/id/nucl1235  
+
+Autres sources :    
+
+Catford, J. (2001). On Rs, rhotacism and paleophony. Journal of the International Phonetic Association, 31(2), 171-185. doi:10.1017/S0025100301002018  
+  - Page 180 : The case of Armenian  
+               Classical (and at least some modern dialects of ) Armenian have two r-phonemes ± a trill and a fricative or, perhaps less commonly, a single tap. The untrilled r appears to be what Armenian normally inherited from Indo-European, the trill having various secondary sources  
+
+Seyfarth, S., Dolatian, H., Guekguezian, P., Kelly, N., & Toparlak, T. (2023). Armenian (Yerevan Eastern Armenian and Beirut Western Armenian). Journal of the International Phonetic Association, 1-34. doi:10.1017/S0025100323000130
+  - Page 3 : Trill (r)
+             Tap ɾ
+  - Page 4 : Yerevan Armenian also has a phonemic trill, which is merged to the tap in Beirut Armenian^5
+            [5] The Armenian tap has a fricative variant in syllable codas, discussed in Sonorants. We chose the tap as the basic symbol because (i) the tap has a wider distribution, (ii) a tap spirantization process seems more phonetically natural than a fricative tapping process, (iii) coauthor PG reports that some Armenian varieties do not have a fricative variant, and (iv) the tap follows the convention in Armenian linguistics literature.
+  - Page 5 : r rɑmkɑˈkɑn ռամկական ‘democratic’
+  - Page 6 : ɾ   ɾɑˈfi  ɾɑˈfi    Րիֆֆա    'Raffi (name')
+  - Page 15 : The rhotics /r, R/ are contrastive in Yerevan Armenian, with minimal pairs such as the following:
+              [examples]
+               forms and in emphatic speech.Footnote 8 For example, SK’s recordings contrast /ˈseɾ/ and /ˈser/ primarily via louder frication noise for the tap /ɾ/ with a low spectral peak around 4 kHz (perhaps non-sibilant postalveolar fricative [ɹ̝̊])Footnote 9. However, word-final /ɾ/ is often unambiguously tapped or approximated in connected speech, such as in the accompanying recordings of the North Wind and Sun by HD and SK (see Transcription of recorded passage). Tap and approximant variants are both common in intervocalic position. The recordings of /kʰɑˈɾi/ ‘rock (DAT.GEN)’ and /χɑˈɾisχ/ ‘anchor’ contributed by SK illustrate approximant variants of /ɾ/.
+
+The recording of /ˈser/ is not trilled, but has a falling third formant that is excited by aspiration without voicing, and only weak or absent oral frication noise. Most of the coda trills in the accompanying recordings contributed by SK are voiceless and/or spirantized. For example, the recording of /ˈ t͡sɑr/ ‘tree’ in the section Vowels (below) includes a voiceless trill, while the recording of the same word in the Consonants table is more similar to the variant in /ˈser/. A voiced trill coda is illustrated in the recording of /ˈkor/ ‘coerced labor (archaic)’, from the speaker who contributed /ˈkoʁ/ ‘rib’ in the subsection Yerevan Armenian plosives.
+
+Although the two rhotics are contrastive in Yerevan Armenian, the tap is sometimes trilled before coronals (Xačatryan Reference Xačatryan1988: 108; Vaux Reference Vaux1998: 19; also noted by speaker VP), and word-initial trills are often reduced to the tap.Footnote 10
+
+In Western Armenian, both sounds are merged to the tap /ɾ/ in all environments (Vaux Reference Vaux1998), though they are prescriptively taught as contrastive in Canadian Armenian language schools (Talia Tahtadjian, p.c.) and some Western Armenian dictionaries (Sak’apetoyean Reference Sak’apetoyean2011; also in Fairbanks Reference Fairbanks1948). For the Western Armenian community in Canada, Tahtadjian (Reference Tahtadjian2020) reports that the Western Armenian tap and trill are acoustically distinguishable: the Western trill sometimes has multiple articulator contacts (occurring in about 30 of onset trills produced by older speakers, and <15 of other trills), and the trill is about 2 ms longer in onset position and 4 ms longer in coda position. These differences are probably too small or too variable to reliably index a category difference. In the accompanying recording of Beirut Armenian [rɑzmɑˈɡɑn] ‘military’ contributed by HD, the onset consonant has multiple contacts, but HD indicates that the tap and trill were perceptually indistinguishable for his peer group in a Lebanese Armenian school.
+
+In both dialects, the two rhotics are rare word-initially. While there are some native rhotic-initial words such as Yerevan /rɑmkɑˈkɑn/ ‘democratic’, most such words are names like Yerevan /rɑfɑˈjel/ ‘Raphael (name)’ and borrowings such as Yerevan /rɑˈbi/ ‘rabbi’. For these words, the Beirut forms use a tap instead of the trill: /ɾɑmɡɑˈɡɑn/, /ɾɑfɑˈjel/ (), /ɾɑˈpʰi/. Both rhotics are more frequent medially and finally, and occur in Yerevan minimal pairs such as the above.
+
+Most sources treat /j/ as phonemic (in contrast with Vaux Reference Vaux1998), though it has a limited distribution. In word-initial position, the palatal approximant /j/ primarily occurs before /e/, such as in /ˈjeɾpʰ/ ‘when’ (see Vaux Reference Vaux1998: 13 for a phonological analysis and Dum-Tragut Reference Dum-Tragut2009: 14–17 for a lexical catalog; see also Vowels). All attested word-initial /jɑ/ are borrowings, such as /ˈjɑvɾəm/ , ‘my dear’ from Turkish. It is also found word-initially before the back vowels /u/ and /o/ in a handful of native words, such as /ˈjuʁ/ , ‘oil’ and /ˈjotʰə/ , ‘seven’. In some words, the Yerevan Armenian sequence /ju/ is pronounced [ʏ] in Beirut Armenian, though there is substantial variation (Khanjian Reference Khanjian2011). For example, Yerevan /ˈɡjuʁ/ ‘village’ corresponds to Beirut [ˈkʰʏʁ] ∼ [ˈkʰjʏʁ] ∼ [ˈkʰjuʁ] .
+
+In native words, coda /j/ does not appear after /ə/, or word-finally after /i/ or /u/. It occurs in native complex codas only after /ɑ/ and /u/, such as in /ˈhɑjɾ/ ‘father’. Word-medially, /Cj/ sequences may have ambiguous onset syllabification (Margaryan Reference Margaryan1997: 55), such as in Yerevan /sen.jɑk, se.njɑk/ and Beirut /sen.jɑɡ, se.njɑɡ/ ‘room’ (see also Syllable structure). 
+
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(r_l_distinction = ifelse(Languages=="armenian",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="armenian",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="armenian",1,trill_occ))
+```
+
+## asl
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(glottocode = ifelse(Languages=="asl","amer1248",glottocode))
+```
+
+Phoible : NA  
+
+Wikipedia :  
+https://en.wikipedia.org/wiki/American_Sign_Language
+
+Glottologue :    
+https://glottolog.org/resource/languoid/id/amer1248    
+
+Autres sources : NA  
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(r_l_distinction = ifelse(Languages=="asl",as.integer(NA),r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="asl",as.integer(NA),trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="asl",as.integer(NA),trill_occ))
+```
+
+## austriangerman
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="austriangerman","uppe1398",glottocode))
+#We use Dialect: Upper Austria Bavarian for the glottocode
+```
+
+Phoible : NA  
+
+Wikipedia :   
+https://en.wikipedia.org/wiki/Austrian_German
+
+Glottologue :  
+https://glottolog.org/resource/languoid/id/uppe1398
+
+Autres sources :  
+
+Moosmüller, S., Schmid, C., & Brandstätter, J. (2015). Standard Austrian German. Journal of the International Phonetic Association, 45(3), 339-348. doi:10.1017/S0025100315000055
+  - Page 340 : Trill r
+              The table presents the consonant phonemes of SAG. A speaker-specific representation has to be assumed regarding the trill. The chart lists both the uvular trill and the alveolar trill. Most speakers make use of a uvular production (either trill or fricative). However, for those speakers who exclusively apply an alveolar production (either trill or approximant), /r/ has to be assumed.
+  - Page 341 : /ʀ/ [ˈʁoːsɛ] Rose ‘rose’
+                   [ˈleːɐʁɐ] Lehrer ‘teacher’
+                   
+              SAG features a wide variety of realisations of the trill. In approximately the past 40 years, the pronunciation norm has changed from an alveolar to a uvular trill. The latter is mostly pronounced as a fricative, either voiced or voiceless. Alveolar trills are still in use, mostly pronounced as an approximant. In final position and before consonants, the /ʀ/ is vocalised to either [ɐ̯ ] or [ɐ], e.g. Vater [ˈfɑːtɛɐ̯ ] or [ˈfɑːtɐ] ‘father’ or Kirche [ˈkIɐ̯ xɛ]6 ‘church’. Preceding /ʀ/, the vowel quality of [+constricted]7 vowels usually changes to [–constricted], before r-vocalisation takes place, e.g. Moor [mɔɐ̯ ]8 ‘bog’. Reduction of the sequence er to [ɐ] is only allowed in unstressed prefixes, e.g. verkaufen [fɛɐ̯ ˈkɑɔ̯ fɱ̩] or [fɐˈkɑɔ̯ fɱ̩] ‘to sell’. However, reduction to [ɐ] is not allowed in prefixes without consonantal onset, e.g. erlauben [ɛɐ̯ ˈlɑɔ̯ bm̩ ]9 ‘to allow’. Following /ɑ/, /ʀ/ is vocalised as well, however, the result of vocalisation, [ɐ̯ ], is absorbed, e.g. Parlament [pɑːlɑˈmɛnt] ‘parliament’, rar [ʀɑː] ‘scarce’. In intervocalic position, /ʀ/ is preserved. Again, in case of a preceding [+constricted] vowel, a change in vowel quality takes place and [ɐ̯ ] emerges, e.g. Lehrer [ˈlɛɐ̯ ʀɐ] ‘teacher’.
+              
+  - Page 345-346 : Aucun r dans la transcription, d'autres types de r
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="austriangerman",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="austriangerman",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="austriangerman",1,trill_occ))
+```
+
+## basque
+
+
+## belarusian
+
+
+## breton
+
+
+## bulgarian
+
+
+## calabrese
+
+
+## catalan
+
+
+## chinese
+
+
+## creole
+
+
+## croatian
+
+
+## czech
+
+
+## danish
+
+
+## dutch
+
+
+## english
+
+
+## esperanto
+
+
+## estonian
+
+
+## farsi
+
+
+## finnish
+
+
+## french
+
+
+## 
+
+
+## 
+
+
+## 
+
+
+## 
+
+
+## 
+
+
+## 
+
+
+## 
+
+
+## 
+
+
+## 

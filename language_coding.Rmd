@@ -490,57 +490,781 @@ languages_data <- languages_data %>%
 
 ## basque
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="basque","basq1248",glottocode))
+```
+
+Phoible :   
+https://phoible.org/languages/basq1248
+  - SPA r allophones r ʁ; et ɾ allophones ɾ   ; contrast r/l
+  - UPSID r̪|r pas d'allophones; et	ɾ̪|ɾ pas d'allophones   ; contrast r̪|r/l̪|l
+  - UZ r allophones r; ɾ allophones ɾ r   ; contrast r/l
+  - EA 2340 r̺  pas d'allophones; et ɾ̺ pas d'allophones  ; contrast r̺/l̺
+  - EA 2349 r̺  pas d'allophones; et ɾ̺ pas d'allophones    ; contrast r̺/l̺
+  - EA 2583 r̺  pas d'allophones; et ɾ̺ pas d'allophones    ; contrast r̺/l̺
+  - EA 2615 r̺  pas d'allophones; et ɾ̺ pas d'allophones    ; contrast r̺/l̺
+  
+Wikipedia :   
+https://en.wikipedia.org/wiki/Basque_language
+  - Rhotic[a] 	Trill 			r-, -rr-, -r
+                                /r/ 			
+                Tap 			-r-, -r
+                                 /ɾ/ 			
+  - Basque's two rhotics only contrast when between vowels, where the trill is written as -rr- and the tap as -r-. When a suffix is added to a word ending in -r, a trill is generally used, as in ederrago 'more beautiful', from eder 'beautiful' and -ago. There is a small number of words which are exceptions to this rule, with de Rijk listing the following ten common ones: zer, ezer, nor, inor, hor, paper, plater, plazer, ur, and zur.[61]
+  - Unless they are recent loanwords (e.g. Ruanda "Rwanda", radar, robot ... ), words may not have initial ⟨r⟩. In older loans, initial r- took a prosthetic vowel, resulting in err- (Erroma "Rome", Errusia "Russia"), more rarely irr- (for example irratia "radio", irrisa "rice") and arr- (for example arrazional "rational").[66]
+
+[61] de Rijk, Rudolf P. G. (2008). Standard Basque: a progressive grammar. Cambridge, MA: MIT Press. ISBN 978-0-262-04242-0. OCLC 636283146.pp. 7–8
+[66] de Rijk, Rudolf P. G. (2008). Standard Basque: a progressive grammar. Cambridge, MA: MIT Press. ISBN 978-0-262-04242-0. OCLC 636283146.p.8
+
+Glottologue :  
+https://glottolog.org/resource/languoid/id/basq1248
+
+Autres sources :  
+
+N'diaye, Geneviéve. 1970. Structure du dialécte basque de maya. The Hague: Mouton.  
+Gavel, Henri. 1929. Grammaire Basque. Bayonne: Courrier.  
+Hualde, José Ignacio and Lujanbio, Oihana. 2010. Illustrations of the IPA: Goizueta Basque. Journal of the International Phonetic Association 40. 113–127. Cambridge University Press.  
+  - Page 113 : Rhotic tap ɾ <-r->  
+               Rhotic trill <r->,  
+                          <-rr->  
+  - Page 115 : /ɾ/ Initial: —– Medial: p are /p aɾe/ ‘pair’ Final: —–  
+              /r/ Initial: ro  ́ eri /ro ́ e ɾi ‘drug store’ Medial: / arr ́ ai /ar ́ ai/  ‘fish’ Final: am ́ ar /am ́ ar/ ‘ten’  
+  - Page 120 : Rhotics As in Spanish, the contrast between rhotic tap and trill is only made in word-internal intervocalic position. Elsewhere the distinction is neutralized. Unlike in Spanish, this neutralization in Basque is generally in favor of the trill. Neither rhotic is found in wordinitial position in the native lexicon, although the trill is found in a few recent borrowings from Spanish, e.g. r` adio ‘radio’. Notice also ro  ́ eri /ro ́ eɾi/ ‘drugstore’ < Sp. droguer ́ıa. Phonetically (also as in Spanish), rhotics are often realized without full contact, as approximants or fricatives.            
+  
+Hualde, José Ignacio. 1991. Basque phonology. (Theoretical linguistics.) London and New York: Routledge. xiv+210pp. (Rev. version of author's University of Southern California dissertation Includes bibliographical references (p. [199]-206) and index).  
+  - Page 7 du document : Basque orthography  
+                         rr = rhotic trill, []  
+                         r = rhotic flap [r] between vowels. Elsewhere the distinction between the rhotics is neutralized.  
+  - Page 8 du document : Phonetic symbols used in Basque transcriptions  
+                         [r] alveolar rhotic flap  
+                         [r̄] alveolar rhotic trill  
+  - Page 10 : r  
+              r̄  
+              the sonorants /r,r̄/ are alveolar.  
+  - Page 11 : The two rhotics segments, flap /r/ and trill /r̄/, only contrast intervocally, as in Spanish: erre [ere] 'also', erre [er̄e] 'to burn'. Elsewhere the distinction is neutralized. Unlike Spanish, in pre-or-postconsonantal position the realization is a trilled [r̄] in many Basque dialects arto [ar̄to] 'corn', andre [andr̄e] 'woman'. In the spelling, the double grapheme indicated the trill [r̄] between vowels; r is a flap [r] intervocalically.  
+  - Page 12 : Word-initially, the two rhotics, [r], [r̄] do not occur in native words. Assimilated borrowings from Spanish with initial [r̄] (orthographic r-) in the lender language undergo epenthesis, generally of [e-], although there is some variation.  
+  - Page 40 : In many dialects, some long vowels may be created by the optional deletion of a consonant [... r] between two identical vowels [paratu], [paatu] 'to put'. In Arbizy, on the other hand, vowel lenght is a distinctve feature.  
+  - Page 54 : GERNIKA  
+              As in all other dialect, the rhotics are not found word-initially. The trill [r̄] only appears word initially in unassimilated borrowings. [...] In assimilated borrowings there is epenthesis. The epenthetic vowel is [e] more consistently than in other dialects.  
+  - Page 76 : Flapping  
+              In the variety ofOndarroa, intervocalic /d/ can optionally be realized as [r]. In this position, there is free variation between the two allophones [ð] and [r], although the [r] realization is preferred in rapid speech. This alternation, however, is limited to certain lexical domains, including seemingly all suffixation and cliticization of /d/-initial third person conjugated verbal forms; see (119a). On the other hand, across word-boundaries, outside of cliticization, and even across the members of a compound, only [ð] and never [r] can be the surface realization of intervocalic /d/, as shown in (119b):
+              (120) Flapping  
+                    /d/ -> [+son] / V_V (optional)  
+  - Page 84 : If, after final-vowel truncation, the final consonant is /r/, it is changed to /l/:  
+              The consonantal change in (8) reflects a historical change in the opposite direction, which changed I tor intervocalically:  
+              (9) l > r / V_V  
+              This historical change is readily observable in the treatment of Latin loans (the examples are from Mujika (l982a)):
+              In contemporary Basque, however, rule (9) not only is not productive, but does not even reflect a lexical regularity, since words with intervocalic 0] are quite common . The lexical generalization that holds is, rather, that stems ending in /VrV/, not falling into the category to which rule (2) (Lowering) applies, change their /r/ into [1] in their derivational form. This is thus a case of historical rule inversion (cf. Vennemann (1972); see also Hyman (1975: 176-178)). This rule, like the other rules discussed above, can still be applied to new words which fulfil the necessary requirements, even though its application is by no means obligatory.  
+  - Page 122 : The only coronal that is never affected by Affective Palatalization is the trill [r̄]. The other rhotic, the flap [r], shows a variable behaviour; it may become (j) or [ʎ], it may be deleted, or it may be unaffected.  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="basque",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="basque",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="basque",1,trill_occ))
+```
 
 ## belarusian
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="belarusian","bela1254",glottocode))
+```
+
+Phoible : NA  
+
+Wikipedia :  
+https://en.wikipedia.org/wiki/Belarusian_language  
+https://en.wikipedia.org/wiki/Belarusian_phonology  
+  - Trill r  
+  
+Mayo, Peter (2002), "Belorussian", in Comrie, Bernard; Corbett, G. G. (eds.), The Slavonic Languages, London: Routledge, pp. 887–946, ISBN 0-415-28078-8  
+
+  => contrast r/l̪
+  
+Glottologue :    
+https://glottolog.org/resource/languoid/id/bela1254  
+
+Autres sources :   
+
+Bird, S., & Litvin, N. (2021). Belarusian. Journal of the International Phonetic Association, 51(3), 450-467. doi:10.1017/S0025100319000288  
+  - Page 453 : Trill r  
+  Présence de trills dans les audios joints à l'article  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="belarusian",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="belarusian",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="belarusian",1,trill_occ))
+```
 
 ## breton
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="breton","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+https://phoible.org/languages/bret1244
+  - SPA r allophones ʁ r ɾ r̩ ɹ ; contrast r/l
+  - UPSID Null ; just a l
+  - EA r pas d'allophone; r̥ pas d'allophone ; contrast r/l
+  
+Ternes, Elmer. 1970. Grammaire Structurale du Breton de l'Ile de Groix. Heidelberg: Carl Winter.
+  - Page 1 : Vibrante dental r
+  - Page 5 : l - r lout "part, partie" - rout "oue
+             r - s raj "raie (poisson)" - saj "robe"
+  - Page 18 : r Ce phoneme comprend deux allophones principaux, à points d'articulation entièrement différents:
+              1° fricative postdorso-uvulaire sonore [ʁ].
+              Cet allophone se rouve dans la seule position devant /l/.
+              [examples]
+              2° vibrante apico-alvéolaire : [r].
+              Cet allophone principal se trouve dans toutes les positions sauf devant /l/.
+              En position finale (devant #), /r/ comprend un à deux battements après lesquels une sorte de détente [etc.]
+  - Page 19 : Dans les positions /CrəC/ et, plus rarement, /CərC/, /ə/ tend à se perdre, surtout dans un débit rapide. On a dans ces cas un [r̩] formant syllabe, dont la force articulatoire est en général assez importante. Il comporte un à trois battements. La variation entre [rə], [ər] et [r̩]  est libre et dépend en partie de la rapidité du débit.
+  [examples]
+              Les remarques suivantes sont d'un caractères général. Elles concernent la force articulatoire et le nombre des vibrations de [r] dans certaines positions par rapport à certaines autres positions. Les fluctuations de prononciation sont pourtant considérables. Les indications suivantes ne sont que la moyenne des réalisations possibles.
+              - En position initiale (après #), [r] est généralement plus fortement articulé (deux à trois vibrations) que dans toutes les autres positions.
+              [examples]
+  - Page 20 : Dans les syllabes à accent primaire ou secondaire (pg. 3.4.), [r] est plus fortement articulé (et comprend plus de vibrations) que dans des syllabes non-accentuées. P.ex. le premier [r] est plus faible que le second dans (la noation de l'accent est non-phonémique):
+              u[r]gà[r]tén "une carte"
+              -Plus le [r] se trouve éloigné de l'accent primaire, plus son articulation est faible (et moins il comprend de vibrations). P.ex. le [r] du premier ùpt est plus fort que celui du second (la notation de l'accent est non-phonémique):
+              ə[r]gàrtén "la carte"
+              ə[r]gàləxǿyl "le tapage (que font les enfants)"
+              -La force articulatoire de [r] dans le groupe /rC/ dépend de la nature de C:
+              Elle est relativement forte devant /p, t, k, b, d, g/ (deux à trois vibrations)
+              Elle est moyenne devant /m, n, w', w/ (une à trois vibrations)
+              Elle est relativement faible devant /c^v, j^v, f, s, s^v, x, v, z, z^v, j/ une à deux vibrations
+              /r/ ne forme pas de groupes avec /gn, ng,w~/. Pour /rl/, v. 1° ci-dessus (p.18).
+              Exemples en syllabe à accent primaire:
+              [examples]
+              Exemples en syllabe à accent secondaire:
+              [examples]
+  - Page 21 : Exemples en syllabe non-accentuée (articulation plus faible, moins de vibrations) :
+              [examples]
+              - La force articulatoire de [r] dans le groupe /Cr/ est indépendante de la nature de C. Elle est relativement forte (deux à trois vibrations). Elle est un peu moins forte dans le groupe /CCr/ (une à deux vibrations).
+              [examples]
+              Dans les positions suivantes, /r/ comprend très rarement plus d'un seul battement: [ɾ]. Par contre, ce dernier peut varier librement, surtout dans un début rapide avec une fricative alvéolaire sonore ressemblant au [ɹ] anglais, mais avec très peu de frication, formant presque une semi-voyelle  [ɹ̯].
+              - Cette variation libre avec [ɹ̯] est particulièrement fréquente devant /xl/ et /xr/. Dans ces cas, [ɹ̯] peut même varier librement avec [ø], s'amalgamant avec le /x/ suivant dans une fricative glottale sonore [ɦ] :
+              [examples]
+  - Page 22 : En syllable non-accentué se trouvant entre deux syllabes dont la précédente porte l'accent secondaire et la suivante l'accent primaire (la noation de l'accent est non-phonémique: v. pg. 3.4):
+              [examples]
+              - Dans une position relativement éloignée de l'accent primaire suivant, surtout en position préconsonantique (la notation de l'accent est non-phonémique):
+              [examples]
+              -En position intervolcaique (rare):
+              [examples]
+              
+Bothorel, A. 1982. Etude Phonétique et Phonologique du Breton Parlé à Argol (Finistere-Sud). Lille: Atelier National Reproduction des Thèses, Université Lille III. [pas cherché]
+
+Iosad, Pavel. 2013. Representation and variation in substance-free phonology: A case study in Celtic. (Doctoral dissertation, Universitetet i Tromso). [pas cherché]
+
+Wikipedia :   
+https://en.wikipedia.org/wiki/Breton_language
+  - Trill 			r /r/          (r /ʁ/) 
+    Approximant 	central 				(r /ɹ/) 
+    The pronunciation of the letter ⟨r⟩ varies nowadays: [ʁ] is used in the French-influenced standard language and, generally speaking, in the central parts of Lower Brittany (including the south of Trégor, the west of Vannetais and virtually all parts of Cornouaille) whereas [r] is the common realisation in Léon and often in the Haut-Vannetais dialect of central Morbihan (in and around the city of Vannes and the Pays de Pontivy), though in rapid speech mostly a tapped [ɾ] occurs. In the other regions of Trégor [ɾ] or even [ɹ] may be found.
+    
+Glottologue :  
+https://glottolog.org/resource/languoid/id/bret1244  
+
+Autres sources : NA
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="breton",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="breton",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="breton",1,trill_occ))
+```
 
 ## bulgarian
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="bulgarian","bulg1262",glottocode))
+```
+
+Phoible :    
+https://phoible.org/languages/bulg1262  
+4 inventaires  
+  - SPA r allophone r; rʲ allophone rʲ   ; contrast 	r/lˠ (allophones of lˠ -> l lˠ)
+  - UPSID r pas d'allophone; rʲ pas d'allophone   ; contrast r/l̪ˠ
+  - UZ r̟ allophone r̟    ;  contrast r̟/l̟
+  - EA r pas d'allophone; rʲ pas d'allophone   ; contrast r/ɫ̪ (on a aussi ʎ dans l'inventaire)
+  
+Klagstad, H. 1958. The Phonemic System of Colloquial Standard Bulgarian. Slavic and East European Journal 16. 42–54.  
+Aronson, H. I. 1968. Bulgarian Inflectional Morphophonology. The Hague: Mouton.  
+Bidwell, C. 1968. The Stress Patterns of the Noun in Bulgarian. Studies in Linguistics 20. 41–47.  
+Scatton, Ernest A. 1984. A Reference Grammar of Modern Bulgarian. Columbus, Ohio: Slavica Publishers.  
+Бояджиев, Тодор Апостолов and Куцаров, Иван and Йордан, Пенчев. 1999. Съвременен български език: фонетика, лексикология, словообразуване, морфология, синтаксис: учебник за студенти от филологическите факултети и педагогическите институти. Петър Берон.  
+
+
+Ternes, Elmar and Vladimirova-Buhtz, Tatjana. 1990. Illustrations of the IPA: Bulgarian. Journal of the International Phonetic Association 20. 45–47. Cambridge University Press.  
+  - Page 45 : Trill r  
+              r roza 'rose'  
+  - Page 46 : An alternative analysis postulates the following palatalized consonants: /... rʲ .../  
+              /r/ is a trill.  
+
+Wikipedia :      
+https://en.wikipedia.org/wiki/Bulgarian_language  
+https://en.wikipedia.org/wiki/Bulgarian_phonology  
+  - Trill r	rʲ 	  
+
+  => contrast r/l̪
+  
+Glottologue :     
+https://glottolog.org/resource/languoid/id/bulg1262    
+
+Autres sources : NA
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="bulgarian",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="bulgarian",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="bulgarian",1,trill_occ))
+```
 
 ## calabrese
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="calabrese","sout2616",glottocode))
+# Mais comme dialect of Sicilian, on recherche infos pour Sicilian
+```
+
+Phoible : NA
+
+Wikipedia :   
+https://en.wikipedia.org/wiki/Sicilian_language
+  - Trill 		r 			
+    Flap 		ɾ
+    Approximant 		l
+    
+  - RR — The digraph -rr-, depending on the variety of Sicilian, can be a long trill [rː] (hereafter transcribed without the length mark)[89] or a voiced retroflex sibilant [ʐː].[86] This innovation is also found under slightly different circumstances in Polish, where it is spelled -rz-, and in some Northern Norwegian dialects, where speakers vary between [ʐ] and [ɹ̝].[citation needed] At the beginning of a word, the single letter r is similarly always pronounced double,[clarification needed] though this is not indicated orthographically. This phenomenon, however, does not include words that start with a single r resulting from rhotacism or apheresis (see below), which should not be indicated orthographically to avoid confusion with regular double r.[citation needed]
+  - Rhotacism and apheresis — This transformation is characterized by the substitution of single d by r. In Sicilian this is produced by a single flap of the tongue against the upper alveolar ridge [ɾ]. This phenomenon is known as rhotacism, that is, the substitution of r for another consonant; it is commonly found both in Eastern and Western Sicilian, and elsewhere in Southern Italy, especially in Neapolitan. It can occur internally, or it can affect initial d, in which case it should not be represented orthographically to avoid confusion with the regular r (see above). Examples : pedi ("foot") is pronounced [ˈpɛːɾɪ]; Madonna ("Virgin Mary") is pronounced [maˈɾɔnna]; lu diri ("to say it") is pronounced [lʊ ˈɾiːɾɪ].[93] Similarly, apheresis of some clusters may occur in certain dialects, producing instances such as 'ranni [ˈɾannɪ] for granni "big".
+  
+    => contrast r/l
+
+PROPOSTA DI NORMALIZZAZIONE ORTOGRAFICA COMUNE DELLA LINGUA SICILIANA per le varietà parlate sull’isola di Sicilia, arcipelaghi ed isole satelliti, e nell’area di Reggio Calabria (2017) - 
+  - page 10 : r [ɾ]    rr [ɾ:]
+  - page 18 :  Facciamo l’esempio della parola [‘ɾ:ɔta], che pur presentando in ogni caso al suo inizio il fonema [ɾ:] tenderemo sempre a rappresentare come rota (con un solo grafema r)
+  - Page 25 : 8) Rappresentiamo il fonema [l] servendoci del grafema l e la sua controparte geminata /l:/
+come ll. Nella stragrande maggioranza dei casi si sconsiglia l'uso del grafema l raddoppiato ad
+inizio di parola, che può però essere soggetto a raddoppiamento all'interno di parola,
+tranquillamente rappresentabile con -ll-;
+  - Page 27 : 13) Rappresentiamo il fonema /ɾ/ attraverso il grafema r e la sua controparte geminata /ɾ:/ come
+rr. Nella stragrande maggioranza dei casi si sconsiglia l'uso del grafema r raddoppiato ad inizio
+di parola, che può però essere soggetto a raddoppiamento all'interno di parola, tranquillamente
+rappresentabile con rr;
+Esempio 1: la parola rota102 è un esempio di parola che vede all'inizio il grafema r non
+geminato.
+«N’ ‘o sacciu. Si non mi ritiru non ti pigghiari pena e non stari in pinseri, ca nni me
+frati, sugnu!»103
+(N. Martoglio, San Giuvanni decullatu (Atto I, scena X), in Teatro – Volume II, Messina,
+Casa Editrice G. D’Anna, 1965)
+Esempio 2: la parola arruccatu104 è un esempio di parola che vede il suono [ɾ:]
+tranquillamente rappresentato dal digramma -rr-.
+«Ddocu la menti mia ristà cunfusa! / dissi a ddu versu: É megliu ca ti chianti… / ‘Na vuci
+arrispunnì: - Sugnu la Musa, / ti suggerisciu iu, pirchì ti scanti?»105
+(G. Pace ‘Peppipaci’, Mascari di Paci, Canicattì, Tipografia Modena, 1937)
+
+Glottologue :  
+https://glottolog.org/resource/languoid/id/sici1248
+https://glottolog.org/resource/languoid/id/sout2616
+
+Joseph F. Privitera. 1998. Basic Sicilian: A brief reference grammar. Lewiston: Edwin Mellen. x+67pp.
+  - Page viii : b, f, l, n, q, t, v are prononced as in English
+                r, when single, is formed with a quick flip of the tongue on the palate behind the front teeth: as in caru, dear; puru, pure.
+                  When r is double, or when it is the first letter in a word, the tongue is suspended between the roof and the bottom of the mouth, not touching either, its sides are curved agaisnt the sides of the mouth, whil the tip is rounded to let the air escape: as in rota, wheel; carru, cart
+                
+
+Autres sources :  
+
+Antonio Pisano, Dizionario dialettale calabrese, 2011
+  - Traduit avec GoogleTrad en ligne :
+  - Page 3 du doc : Erre – R – double la consonne suivante pour la logique de notre prononciation dure, forte et marquée : scarro > scarppàru.
+
+  => on a une entrée pour le r et pour le l; le rr est présent dans le dictionnaire
+  
+https://soundcomparisons.com/#/en/Romance/languagesXwords/Lgs_Sln/Wds_Sln
+On check sur SoundComparisons:
+  - Calabria Lausb.: Oriolo [ˈʰɾaˑpə̆ðə̤] [ˌpɾɪ̆st̪ɘ̆ˈ] [ˈtɛːɹ̝ɹ̝ə] [ˈʰɾɔotʰə]
+  - Calabria N.: Cetraro [ˈzvɛ̞ˑlt̪ʰo̞] [ˈtɛ̞ˑrrɐ] [ˈrɔ̞ːta]
+  - Calabria S.: Cropani [ˈlˠestʰʊ̆] [ʔˈlˠestʰʊ̆] [ˈt̪ʰɛˑrrɐ] [ˈrɔːta̝]
+
+Le trill existe pour la géminée ?
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="calabrese",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="calabrese",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="calabrese",1,trill_occ))
+```
 
 ## catalan
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="catalan","stan1289",glottocode))
+```
+
+Phoible :     
+https://phoible.org/languages/stan1289  
+4 inventaires  
+  - PH r allophone r; ɾ allophone ɾ   ; contrast r/l
+  - EA2425 r̺ pas d'allophone; ɾ̺ pas d'allophone ; contrast r̺/l̺
+  - EA2555 r̺ pas d'allophone; ɾ̺ pas d'allophone ; contrast r̺/ɫ̺
+  - EA2594 r̺ pas d'allophone; ɾ̺ pas d'allophone ; contrast r̺/ɫ̺
+
+Carbonell, Joan F. and Llisterri, Joaquim. 1992. Illustrations of the IPA: Catalan. Journal of the International Phonetic Association 22. 53–56. Cambridge University Press.  
+  - Page 53 : Trill r  
+              Tap or Flap ɾ  
+              
+              r serra 'saw' (n.)  
+              ɾ cera 'wax'  
+Lloret, Maria-Rosa. 2011. La fonologia del catal`a. Santillana, Grup Promotor.  
+
+Wikipedia :    
+https://en.wikipedia.org/wiki/Catalan_language  
+  - Tap   ɾ  
+  - Trill r  
+  - The distribution of the two rhotics /r/ and /ɾ/ closely parallels that of Spanish. Between vowels, the two contrast, but they are otherwise in complementary distribution: in the onset of the first syllable in a word, [r] appears unless preceded by a consonant. Dialects vary in regards to rhotics in the coda with Western Catalan generally featuring [ɾ] and Central Catalan dialects featuring a weakly trilled [r] unless it precedes a vowel-initial word in the same prosodic unit, in which case [ɾ] appears.[104]  
+
+Padgett, Jaye (December 2009). "Systemic Contrast and Catalan Rhotics". The Linguistic Review. 26 (4): 431–. doi:10.1515/tlir.2009.016. S2CID 15197551  
+
+Glottologue :    
+https://glottolog.org/resource/languoid/id/stan1289  
+
+Autres sources :  NA
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="catalan",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="catalan",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="catalan",1,trill_occ))
+```
 
 ## chinese
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="chinese","GLOTTOCODE",glottocode))
+#By Chinese I'll assume Mandarin Chinese
+```
+
+Phoible :   
+https://phoible.org/languages/mand1415
+4 inventories :
+  - SPA i	allophones	i̥ ɻ̩ i s̞̩ ɻ̥̩ z̞̩ ; ʐ allophones ʐ;    presence du l allophone l
+  - UPSID ʐ pas d'allophone ; presence du l 
+  - PH ɹ allophone ɹ ;  presence du l allophone l
+  - EA ɹ̺ pas d'allophone ; ɹ̪̩ pas d'allophone  ; presence du l
+
+Chao, Yuan-Ren. 1968. A Grammar of Spoken Chinese. Berkeley: University of California Press.
+Karlgren, Berhard. 1926. Etudes sur la phonologie chinoise. (Archives d'Etudes Orientales.) K. W. Appelberg/E. J. Brill.
+Cheng, C.-C. 1973. A Synchronic Phonology of Mandarin Chinese. The Hague: Mouton.
+Dow, Francis D. M. 1972. An Outline of Mandarin Phonetics. Canberra: Faculty of Asian Studies, Australian National University.
+Hanyu, Fangyan Gaiyao. 1960. Outline of Chinese Dialects. Beijing: Wenzi Gaige Chubanshe.
+Jiahua, Y. 1960. Hanyu Fangyan Gaiyao [An Outline of the Chinese Dialects]. Beijing: Wenzi Gaige Chubanshe.
+
+
+Lee, Wai-Sum and Zee, Eric. 2003. Illustrations of the IPA: Standard Chinese (Beijing). Journal of the International Phonetic Association 33. 109–112. Cambridge University Press.
+  - Page 109 : Approximant ɹ̺
+              ɹ̺ ɹ̺ən person
+  - Page 110 : Syllabic consonants
+              ɹ̩ sɹ̩ to think
+                ʃɹ̩ poem
+  
+Wikipedia :   
+https://en.wikipedia.org/wiki/Mandarin_Chinese
+  - Sonorants 	/ɻ/ ~ /ʐ/ ⟨r⟩ 
+  - In some dialects, initial /l/ and /n/ are not distinguished. In Southwestern Mandarin, these sounds usually merge to /n/; in Lower Yangtze Mandarin,  they usually merge to /l/.[94]
+People in many Mandarin-speaking areas may use different initial sounds where Beijing uses initial r- /ɻ/. Common variants include /j/, /l/, /n/ and /w/.[93]
+  - Syllabic consonants
+
+The syllables written in pinyin as zi, ci, si, zhi, chi, shi, ri may be described as a sibilant consonant (z, c, s, zh, ch, sh, r in pinyin) followed by a syllabic consonant (also known as apical vowel in classic literature):
+    [ɹ̩ ~ z̩], a laminal denti-alveolar voiced continuant,[a] in zi, ci, si ([tsɹ̩ tsʰɹ̩ sɹ̩]);
+    [ɻ̩ ~ ʐ̩], an apical retroflex voiced continuant,[a] in zhi, chi, shi, ri ([ʈʂɻ̩ ʈʂʰɻ̩ ʂɻ̩ ɻɻ̩]).
+
+https://en.wikipedia.org/wiki/Standard_Chinese_phonology
+  - Liquid 		l 	(ɻ) 
+  - /l/ 	Like English clear l, as in RP lay (never dark, i.e. velarized)
+  - /ʐ/ ([ʐ ~ ɻ])[a] 	Similar to z in zoo in English, but with a retroflex articulation. L2 learners may pronounce it as an English R, but lips are unrounded. 
+   For pronunciation in syllable-final position, see § Rhotic coda. 
+Glottologue :  
+https://glottolog.org/resource/languoid/id/mand1415
+
+Autres sources :  
+
+https://www.youtube.com/watch?v=PQByGg0uAC4
+Los CHINOS SÍ pueden PRONUNCIAR la ERRE  -> City : Danyang https://en.wikipedia.org/wiki/Dangyang
+-> So once I found this blog:
+http://www.lawview.net/Item/Show.asp?m=1&d=2009
+The mystery of the popping tongue in the Hubei Jing (Men) and Dang (Yang) dialects
+Author: Anonymous Editor: 本站 Published: Chen Huilin Published: 2021-02-24 10:06 Last
+modified: 2021-02-24 10:06 Read: 911 times
+[I've translated with GoogleTrad to get the overall meaning]
+  - 3 endroits pour le trill en Chine : firstly, in the Xuanzhou small area of the Wu dialect region, secondly, in the Hubei small area and
+part of the Hubei small area of the Southwest official dialect region, and thirdly, in part of the Yu southeast small area of the Central Plains official dialect region.
+  - The presence of the popping tongue in the dialects of Jingdang can only be the result of the influence of languages outside the Sino-Tibetan family.
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="chinese",0,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="chinese",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="chinese",1,trill_occ))
+```
 
 ## creole
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="creole",as.character(NA),glottocode))
+```
+
+Phoible : --
+
+Wikipedia : --   
+
+Glottologue : --
+
+Autres sources : --
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="creole",as.character(NA),r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="creole",as.character(NA),trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="creole",as.character(NA),trill_occ))
+```
 
 ## croatian
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="croatian","croa1245",glottocode))
+```
+
+Phoible :   
+https://phoible.org/inventories/view/1139
+  - r allophone r ; contrast r/l
+
+Dankovičová, Jana. 1997. Illustrations of the IPA: Czech. Journal of the International Phonetic Association 27. 77–80. Cambridge University Press. [pas mis au propre]
+  - Page 77 : Trill  r r̝
+  - Page 78 : There are two trills, Irl, as in ruka /ruka/ 'hand', and Irl, as in reka /reka/ 'river'. The first one is an alveolar apical trill with 1-3 periods of vibration. It is immune from voicing assimilation and occurs voiced in all positions in the word. In case of Irl, the place of articulation is normally similar to that for Irl. Although it may be produced with the blade of the tongue, the main differentiating characteristic from Irl is the number of vibrations, which may be 1-2 greater than in Irl, and their lesser amplitude than for the vibrations in Irl. Also, the constriction is narrower and the velocity of air greater. This sound often starts as a trill but continues as a fricative and thus probably the best term for it is 'alveolar trill
+fricative' with the symbol Irl. (The laminal diacritic Irl used in Ladefoged & Maddieson (1996) does not capture the sound's defining property). A voiceless allophone of Irl occurs in places where voicing assimilation applies.
+
+Wikipedia :   
+https://en.wikipedia.org/wiki/Croatian_language
+https://en.wikipedia.org/wiki/Serbo-Croatian_phonology
+  - Trill 		r
+  - /r/ can be syllabic, short or long, and carry rising or falling tone, e.g. kȓv ('blood'), sȑce ('heart'), sŕna ('deer'), mȉlosr̄đe ('compassion'). It is typically realized by inserting a preceding or (more rarely) succeeding non-phonemic vocalic glide.
+  
+Glottologue :  
+https://glottolog.org/resource/languoid/id/croa1245
+
+Autres sources : NA 
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="croatian",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="croatian",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="croatian",1,trill_occ))
+```
 
 ## czech
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="czech","czec1258",glottocode))
+```
+
+Phoible :    
+https://phoible.org/languages/czec1258  
+3 inventaires  
+  - PH 	r̝ allophone 	r̝; r allophone r r̩   ; contrast r/l
+  - EA2274 r pas d'allophone; r̝ pas d'allophone   ; contrast r/l
+  - EA2480 r pas d'allophone; r̝ pas d'allophone   ; contrast r/l
+
+Dankovičová, Jana. 1997. Illustrations of the IPA: Czech. Journal of the International Phonetic Association 27. 77–80. Cambridge University Press.  
+  - Page 77 : Trill r  
+                    r̝  
+
+There are two trills, /r/, as in ruka /ruka/ 'hand', and /r̝/, as in řeka /r̝eka/ 'river'. The first one is an alveolar apical trill with 1-3 periods of vibration. It is immune from voicing assimilation and occurs voiced in all positions in the word. In case of /r̝/, the place of articulation is normally similar to that for /r/. Although it may be produced with the blade of the tongue, the main differentiating characteristic from /r/ is the number of vibrations, which may be 1-2 greater than in /r/, and their lesser amplitude than for the vibrations in Irl. Also, the constriction is narrower and the velocity of air greater. This sound often starts as a trill but continues as a fricative and thus probably the best term for it is 'alveolar trill fricative' with the symbol /r̝/. (The laminal diacritic /r̻/ used in Ladefoged & Maddieson (1996) does not capture the sound's defining property). A voiceless allophone of /r̝/ occurs in places where voicing assimilation applies.  
+
+Šimáčková, Šárka and Jonáš Podlipský, Václav. 2012. Illustrations of the IPA: Czech spoken in Bohemia and Moravia. Journal of the International Phonetic Association 42. 225–232. Cambridge University Press.  
+  - Page 226 : Trill r   
+                     r̝  
+  - Page 227 : Intervocalically, /d/ is sometimes reduced to [R] (Machaˇc & Skarnitzl 2009: 37–38)  
+               Both /r/ and /r̝/ are trills though commonly realized with a single contact. Phonetically, the sound /r̝/ is a period of friction interrupted at the beginning by a contact or contacts created by a retracted apico-alveolar gesture (see Figure 1).  
+               Sonorants /r/, /l/, and marginally also /m/ and /n/, become syllabic between two consonants or after a consonant at the end of a word  
+
+Wikipedia :    
+https://en.wikipedia.org/wiki/Czech_language  
+  - Trill 	plain 		r ⟨r⟩  
+  - Trill   fricative 		r̝ ⟨ř⟩  
+  - The phoneme represented by the letter ř (capital Ř) is very rare among languages and often claimed to be unique to Czech, though it also occurs in some dialects of Kashubian, and formerly occurred in Polish.[39] It represents the raised alveolar non-sonorant trill (IPA: [r̝]), a sound somewhere between Czech r and ž (example: "řeka" (river)   (help·info)),[40] and is present in Dvořák. In unvoiced environments, /r̝/ is realized as its voiceless allophone [r̝̊], a sound somewhere between Czech r and š.[41]  
+  - The consonants /r/, /l/, and /m/ can be syllabic, acting as syllable nuclei in place of a vowel. Strč prst skrz krk ("Stick [your] finger through [your] throat") is a well-known Czech tongue twister using syllabic consonants but no vowels.[42]   
+
+Glottologue :    
+https://glottolog.org/resource/languoid/id/czec1258  
+
+Autres sources : NA  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="czech",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="czech",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="czech",1,trill_occ))
+```
 
 ## danish
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
 
 ## dutch
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
 
 ## english
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
 
 ## esperanto
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
 
 ## estonian
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
 
 ## farsi
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
 
 ## finnish
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
 
 ## french
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
 
 ## 
 

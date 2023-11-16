@@ -611,7 +611,7 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="breton","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="breton","bret1244",glottocode))
 ```
 
 Phoible :   
@@ -873,7 +873,7 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="chinese","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="chinese","mand1415",glottocode))
 #By Chinese I'll assume Mandarin Chinese
 ```
 
@@ -1062,188 +1062,458 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="danish","dani1285",glottocode))
 ```
 
-Phoible :   
+Phoible :    
+https://phoible.org/languages/dani1285  
+2 inventaires  
+  - UZ r (marginal) allophones r ɐ̯ ʌ̯;	ʁ̞ allophones	ʁ̞    ;  contrast r/l
+  - EA ʁ pas d'allophone  ;  contrast  ʁ/l
+  
+Grønnum, Nina. 1998. Illustrations of the IPA: Danish. Journal of the International Phonetic Association 28. 99–105. Cambridge University Press.  
+  - Page 99 : Approximant ʁ  
+  - Page 100 : Add to this the non-syllabic manifestation of /r/ in post-vocalic position, transcribed either [ɐ̯] or (as in this paper) [ʌ̯].  
+               Note that in a narrower transcription [...] since they are in fact lenis. [...] And [ð] and [ʁ] would be [ð̞] and [ʁ̞], respectively, for the same reason.  
+               
+Wikipedia :     
+https://en.wikipedia.org/wiki/Danish_language  
+  - Approximant  ʁ  
+  - In onset /r/ is realized as a uvu-pharyngeal approximant, [ʁ], but in coda it is either realized as a non-syllabic low central vowel, [ɐ̯] or simply coalesces with the preceding vowel. The phenomenon is comparable to the r in German or in non-rhotic pronunciations of English. The Danish realization of /r/ as guttural – the so-called skarre-r – distinguishes the language from those varieties of Norwegian and Swedish that use trilled [r]. Only very few, middle-aged or elderly, speakers of Jutlandic retain a frontal /r/ which is then usually realised as a flapped [ɾ] or approximant [ɹ].   
 
-Wikipedia :   
+https://en.wikipedia.org/wiki/Danish_phonology  
+  - Syllable-initially, /r/ is a voiced uvular fricative [ʁ] or, more commonly, an approximant [ʁ̞].[25] According to Nina Grønnum, the fricative variant is voiceless [χ].[26] Its precise place of articulation has been described as pharyngeal,[27] or more broadly, as "supra-pharyngeal".[28] When emphasizing a word, word-initial /r/ may be realized as a voiced uvular fricative trill [ʀ̝].[16] In syllable-final position, /r/ is realized as [ɐ̯].[2]  
+The alveolar realization [r] of /r/ is very rare. According to Torp (2001), it occurs in some varieties of Jutlandic dialect, and only for some speakers (mostly the elderly). The alveolar realization is considered non-standard, even in classical opera singing – it is probably the only European language in which this is the case.[29] According to Basbøll (2005), it occurs (or used to occur until recently) in very old forms of certain conservative dialects in Northern Jutland and Bornholm.[30]   
 
-Glottologue :  
+Glottologue :    
+https://glottolog.org/resource/languoid/id/dani1285  
 
-Autres sources :  
-
+Autres sources : NA  
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="danish",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="danish",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="danish",1,trill_occ))
 ```
 
 ## dutch
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="dutch","dutc1256",glottocode))
 ```
 
-Phoible :   
+Phoible :    
+8 inventaires :  
+https://phoible.org/languages/dutc1256
+  - PH ʀ allophones ʀ r   ; contrast ʀ/l
+  - UZ2169 r	allophones	r r̥ ʀ ʀ̥ ʁ̞   ; contrast r/l
+  - UZ2170 r	allophones	r ʀ ɾ ɢ̆     ; contrast r/l
+  - UZ2171 ʀʁ	allophones	ʀʁ ʀ̥ʁ̥   ; contrast ʀʁ/l
+  - UZ2172 ʀʁ	allophones	ʀʁ ʀ̥ʁ̥    ; contrast ʀʁ/l
+  - UZ2173	ʀ	allophones	ʀ χ    ; contrast ʀʁ/l
+  - UZ2174 	r	allophones	r ɾ r̞ ɹ̞ ɾɹ̞    ; contrast r/l
+  - EA 	ɾ pas d'allophone     ; contrast ɾ/l
+  
+Verhoeven, Jo. 2007. Illustrations of the IPA: The Belgian Limburg dialect of Hamont. Journal of the International Phonetic Association 37. 219–225. Cambridge University Press.  
+  - Page 219 : Trill R  
+  - Page 220 : The voiced trill is typically uvular with a clear transitional aspect of articulation (Laver 1994). The devoiced uvular trill in word-final position is realised as a uvular fricative either with or without a transitional aspect.  
 
-Wikipedia :   
+Verhoeven, Jo. 2005. Illustrations of the IPA: Belgian Standard Dutch. Journal of the International Phonetic Association 35. 243–247. Cambridge University Press.  
+  - Page 243 : Trill (r)  R  
+  - Page 245 : Trills  
+The phonological system of Belgian Dutch has free variation between an alveolar and uvular trill. The alveolar trill is most frequent and geographically most widely distributed. The uvular trill is regionally confined to the cities of Ghent and Brussels and the province of Limburg, but estimates suggest that it is gaining fast in popularity (Van Reenen 1994). The alveolar/uvular trill is voiced in all positions, except word-finally as in [do:R9] ‘through’ and when followed by a voiceless stop in consonant clusters as in [va:R9t] ‘sails’. The phonetic characteristics of the uvular trill in the province of Limburg were investigated in Verhoeven (1994). It was found that uvular trills are virtually always realised with a clear transitional aspect of articulation, i.e. the uvula does actually trill against the back of the tongue. Only in a very small number of cases the uvular trill was realised phonetically as a voiced uvular approximant or a voiceless uvular fricative, i.e. without a transitional aspect. This limited phonetic variability of r-realisation in Belgian Dutch contrasts with the Netherlands where /r/ is also frequently realised as amongst others a central vowel, a retroflex approximant, an alveolar tap, an alveolar approximant or a uvular fricative (Van de Velde 1994).  
+  
+Peters, Jörg. 2006. Illustrations of the IPA: The dialect of Hasselt. Journal of the International Phonetic Association 36. 117–124. Cambridge University Press.  
+  - Page 117 : Trill r  
+  - Page 118 : The dialect has free variation between an alveolar and a uvular trill.  
+  
+Gussenhoven, Carlos and Aarts, Flor. 1999. Illustrations of the IPA: The dialect of Maastricht. Journal of the International Phonetic Association 29. 155–166. Cambridge University Press.  
+  - Page 155 : Trill  R  
+  - Page 156 : /R/ is a (pre-)uvular trill with a fricative component, the latter element being particularly prominent in the coda, where the consonant is partially devoiced.  
 
-Glottologue :  
+Heijmans, Linda and Gussenhoven, Garlos. 1998. Illustrations of the IPA: The Dutch dialect of Weert. Journal of the International Phonetic Association 28. 107–112. Cambridge University Press.  
+  - Page 107 : Trill  R  
+  - Page 108 : [ʀ] is a uvular or pre-uvular trill with a fricative component, the latter element being particularly prominent in the coda, where the consonant is partially devoiced.  
+  
+Peters, Jörg. 2010. Illustrations of the IPA: The Flemish-Brabant dialect of Orsmaal-Gussenhoven. Journal of the International Phonetic Association 40. 239–246. Cambridge University Press.  
+  - Page 239 : Trill r  
+  - page 240 : /r/ before a stressed vowel in word-initial syllables is an apicoalveolar trill or fricative. Intervocalic /r/ and /r/ in the onset after a consonant may be reduced to [ɾ]. Word-final /r/ is highly variable both within and between speakers. The most frequent variants are the apicoalveolar fricative trill [r6], the apicoalveolar fricative [®6], and an apicoalveolar affricate [ɾ®6]; the last two variants tend to become voiceless in pre-pausal position (cf. Whitley 2003).  
+  
+Wikipedia :     
+https://en.wikipedia.org/wiki/Dutch_language#Phonology  
+  - Rhotic 		r  
+  - The realization of /r/ phoneme varies considerably from dialect to dialect and even between speakers in the same dialect area. Common realisations are an alveolar trill [r], alveolar tap [ɾ], uvular trill [ʀ], voiced uvular fricative [ʁ], and alveolar approximant [ɹ].  
 
-Autres sources :  
+https://en.wikipedia.org/wiki/Dutch_phonology  
+  - Rhotic 		r  
+  - The realization of /r/ phoneme varies considerably from dialect to dialect and even between speakers in the same dialect area:  
+    The historically original pronunciation is an alveolar trill [r], with the alveolar flap [ɾ] as a common allophone.  
+    The uvular trill [ʀ] is a common alternative, found particularly in the central and southern dialect areas. Uvular pronunciations appear to be gaining ground in the Randstad.[16] Syllable-finally, it may be vocalized to [ɐ], much as in German. This is more common in the (south)eastern areas (Limburg, southeast Brabantian, Overijssel).
+    The coastal dialects of South Holland produce a voiced uvular fricative [ʁ].  
+    The velar bunched approximant [ɹ̈] (the Gooise R, which sounds similar to the retroflex approximant) is found at the end of a syllable in the pronunciation of some speakers in the Netherlands, especially those from the Randstad, but not in Belgium. Its use has been increasing in recent years.[17]  
+    
+    [16] Collins, Beverley; Mees, Inger M. (2003) [First published 1981]. The Phonetics of English and Dutch (5th ed.). Leiden: Brill Publishers. ISBN 9004103406.  
+    [17] Sebregts, Koen (2014). The Sociophonetics and Phonology of Dutch r (PDF) (dissertation). Utrecht: LOT. ISBN 978-94-6093-161-1. Archived (PDF) from the original on 4 March 2016. Retrieved 25 March 2017.  
+    
+Glottologue :    
+https://glottolog.org/resource/languoid/id/dutc1256  
+
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="dutch",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="dutch",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="dutch",1,trill_occ))
 ```
 
 ## english
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="english","stan1293",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/stan1293
+9 inventories :
+  - SPA ɻ allophones 	ʐ͇ ɾ ɻ̥ ɻ ; contrast ɻ/l
+  - UZ2175 ɹ allophone ɹ ; 	tʰ allophone tʰ t ɾ tʰɪ̯  ; n allophones n ɾ nɪ̯  ;	d allophones d d̥ ɾ dɪ̯ ;  contrast ɹ/l
+  - UZ2176 ɹ allophone ɹ ; 	tʰ allophone tʰ t ɾ tʰɪ̯  ; n allophones n ɾ nɪ̯  ;	d allophones d d̥ ɾ dɪ̯ ;  contrast ɹ/l
+  - UZ2177 ɹ allophones ɹ ɹ̥ ; 	d allophones d ɾ dʔ dⁿ dˡ d̥ ; 	tʰ allophones tʰ t t̚ ɾ tʔ ʔ tⁿ tˡ ;   contrast ɹ/l
+  - UZ2178 ɹ allophones ɹ ɾ  ; tʰ allophones  tʰ t ts θ ð h ʰsʰ ɹ ɾ ʔ   ; contrast ɹ/l
+  - UZ2179 ɹ allophones 	ɹ ɾ z s ʋ  ; ts allophones ts tʰ ɾ t tʔ ʔt ʔ ; contrast ɹ/l
+  - UZ2180 ɹ allophones ɹ ʋ w ʔ  ; contrast  ɹ/l
+  - EA2252 ɹ pas d'allophones ; contrast ɹ/l
+  - EA2515 r pas d'allophones ; contrast r/l
+
+Trnka, Bohumil. 1968. A Phonological Analysis of Present-day Standard English. (Alabama Linguistic and Philological Series, 17.) Alabama: University of Alabama Press.
+Halle, Morris. 1973. Stress Rules in English: A New Version. Linguistic inquiry 4. 451–464.
+Fudge, Erik. 1975. English Word Stress: An Examination of Some Basic Assumptions. In Goyvaerts, Didier L. and Pullum, Geoffrey K. (eds.), Essays on the Sound Pattern of English, 277–323. Ghent: E. Story-Scientia P.V.B.A.
+O'Conner, J. D. 1973. Phonetics. Middlesex: Penguin.
+Gimson, A. C. 1962. An Introduction to the Pronunciation of English. London: Edward Arnold.
+Jones, D. 2003. English Pronouncing Dictionary. (16.) In Peter Roach, James Hartman and Setter, Jane (eds.) Cambridge University Press.
+
+[I won't check the following articles because I've already checked them in the past.]
+
+Ladefoged, Peter. 1989. Illustrations of the IPA: American English. Journal of the International Phonetic Association 19. 41–44. Cambridge University Press.
+
+Hillenbrand, James M. 2003. Illustrations of the IPA: American English: Southern Michigan. Journal of the International Phonetic Association 33. 121–126. Cambridge University Press.
+
+Cox, Felicity and Palethorpe, Sallyanne. 2007. Illustrations of the IPA: Australian English. Journal of the International Phonetic Association 37. 341–350. Cambridge University Press.
+
+Watson, Kevin. 2007. Illustrations of the IPA: Liverpool English. Journal of the International Phonetic Association 37. 351–360. Cambridge University Press.
+
+Bauer, Laurie and Warren, Paul. 2007. Illustrations of the IPA: New Zealand English. Journal of the International Phonetic Association 37. 97–102. Cambridge University Press.
+
+Watt, Dominic and Allen, William. 2003. Illustrations of the IPA: Tyneside English. Journal of the International Phonetic Association 33. 267–271. Cambridge University Press.
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/English_language
+  - Approximant 						ɹ* 
+    * Conventionally transcribed /r/
+https://en.wikipedia.org/wiki/English_phonology
+  - Approximant 	r
+    This phoneme is conventionally transcribed with the basic Latin letter ⟨r⟩ (the IPA symbol for the alveolar trill), even though its pronunciation is usually a postalveolar approximant [ɹ̠]. The trill exists but is rare, found only in some Scottish, Welsh,[8] South African[9] and Indian[10] dialects. See Pronunciation of English /r/.
 
+https://en.wikipedia.org/wiki/Pronunciation_of_English_/r/
+  - "Trilled" or "Rolled" R: alveolar trill [r] (occurs in some very conservative Scottish English, South African English, some Welsh English,[4] Indian English[3] and Jersey English)
+    
 Glottologue :  
+https://glottolog.org/resource/languoid/id/stan1293
 
-Autres sources :  
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="english",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="english",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="english",1,trill_occ))
 ```
 
 ## esperanto
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="esperanto","espe1235",glottocode))
+
+#J'ai pas approfondi dans les détails de la langue
 ```
 
-Phoible :   
+Phoible : NA  
 
 Wikipedia :   
-
+https://en.wikipedia.org/wiki/Esperanto
+  - Trill 	  	r 	
+  - The sound /r/ is usually rendered as an alveolar trill [r], but can also be a uvular trill [ʀ],[80] a uvular fricative [ʁ],[81] and an alveolar approximant [ɹ].[82] Many other forms such as an alveolar tap [ɾ] are done and accepted in practice.
+  
+  [80] "PMEG – Bazaj elparolaj reguloj – Konsonanta variado". PMEG. Archived from the original on February 13, 2015. Retrieved January 31, 2018.
+  [81] "Fundamento de Esperanto – Gramatiko Franca". Akademio de Esperanto. Archived from the original on February 1, 2018. Retrieved January 31, 2018.
+  [82] "Fundamento de Esperanto – Gramatiko Angla". Akademio de Esperanto. Archived from the original on May 30, 2019. Retrieved January 31, 2018.
+   
 Glottologue :  
+https://glottolog.org/resource/languoid/id/espe1235
 
-Autres sources :  
+Autres sources : NA
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
-
+     dplyr::mutate(r_l_distinction = ifelse(Languages=="esperanto",1,r_l_distinction))
+ 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
-
+     dplyr::mutate(trill_real = ifelse(Languages=="esperanto",1,trill_real))
+ 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+     dplyr::mutate(trill_occ = ifelse(Languages=="esperanto",1,trill_occ))
 ```
 
 ## estonian
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="estonian","esto1258",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/esto1258
+2 inventaires :
+  - UZ 	r allophones r r̥ ; rː allophones rː ; 	rˑ allophones 	rˑ ; contrast r/l
+  - EA 	r pas d'allophone ; contrast r/l
+
+
+Asu, Eva Liina and Teras, Pire. 2009. Illustrations of the IPA: Estonian. Journal of the International Phonetic Association 39. 367–372. Cambridge University Press.
+  - Page 367 : Trill r
+               r raba [rapa] ‘bog’
+  - Page 368 : 
+  Voiced consonants [m n r v l] become unvoiced in word-final position after [t], [h] or [s]
+  All word-internal and word-final alveolar consonants (except /r/) can be palatalized.
+  
+Hebedová, Petra. 2013. Struvcná gramatika estonvstiny. Masarykova univerzita.
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Estonian_language
+  - Trill 		r
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/esto1258
 
-Autres sources :  
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="estonian",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="estonian",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="estonian",1,trill_occ))
 ```
 
 ## farsi
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="farsi","west2369",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/west2369  
+4 inventaires :  
+  - SPA r allophones ɾ r r̥      ; contrast r/l
+  - USPID r pas d'allophone    ; contrast r/l
+  - UZ r	allophones r ɾ ɹ    ; contrast r/l
+  - EA r̪ pas d'allophone   ; contrast r̪/l̪
 
-Wikipedia :   
+Obolensky, Serge and Panah, Kambiz Yazdan and Nouri, Fereidoun Khaje. 1963. Persian Basic Course. Washington, D.C.: Center for Applied Linguistics.  
+Windfuhr, Gernot L. 1997. Persian phonology. In Kaye, Alan S. and Daniels, Peter T. (eds.), Phonologies of Asia and Africa, 675–690. Winona Lake, Indiana: Eisenbrauns.  
 
-Glottologue :  
+Majidi, Mohammad-Reza and Ternes, Elmar. 1991. Illustrations of the IPA: Persian (Farsi). Journal of the International Phonetic Association 21. 96–98. Cambridge University Press.  
+  - Page 97 : Trill r  
+  - Page 98 : /r/ varies between [ɾ] and [ɹ]  
 
-Autres sources :  
+Wikipedia :     
+https://en.wikipedia.org/wiki/Iranian_Persian  
+https://en.wikipedia.org/wiki/Persian_phonology  
+  - Trill r 					  
+  - Tap ɾ  
+  - The flap /ɾ/ has a trilled allophone [r] at the beginning of a word;[16] otherwise, they contrast between vowels wherein a trill occurs as a result of gemination (doubling) of [ɾ], especially in loanwords of Arabic origin. Only [ɾ] occurs before and after consonants; in word-final position, it is usually a free variation between a flap or a trill when followed by a consonant or a pause, but flap is more common, only flap before vowel-initial words. An approximant [ɹ] also occurs as an allophone of /ɾ/ before /t, d, s, z, ʃ, l, ʒ/; [ɹ] is sometimes in free variation with [ɾ] in these and other positions, such that فارسی ('Persian') is pronounced [fɒːɹˈsiː] or [fɒːɾˈsiː] and سقرلات ('scarlet') [sæɣeɹˈlɒːt] or [sæɣeɾˈlɒːt]. /r/ is sometimes realized as a long approximant [ɹː].   
+
+Mahootian, Shahrzad (1997). Persian. London: Routledge. pp. 287, 292, 303, 305. ISBN 0-415-02311-4.  
+  - Page 287 : Liquid r
+  - Page 292 : Voiced nonsyllabic /r/ is made by flapping the tip of the tongue forward against the alveolar ridge. There is allophonic variation, with more trill at the beginning of a word than in the middle or at the end. Both /l/ and /r/ occur word-initially and word-finally, syllable-initially and syllable-finally as well as morpheme-initially
+and morpheme-finally. Liquids also occur in word-medial, syllablemedial and morpheme-medial positions 
+
+Glottologue :    
+https://glottolog.org/resource/languoid/id/west2369  
+
+Autres sources : NA
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="farsi",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="farsi",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="farsi",1,trill_occ))
 ```
 
 ## finnish
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="finnish","finn1318",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/finn1318  
+3 inventaires  
+  - SPA r allophones r; et rː allophones rː   ; contrast r/l
+  - UPSID	r̪|r pas d'allophones  ; contrast r̪|r/l̪
+  -EA r̺ pas d'allophones    ; contrast r̺/l̺
 
-Wikipedia :   
+Suomi, Kari and Toivanen, Juhani and Ylitalo, Riikka. 2010. Finnish sound structure: Phonetics, phonology, phonotactics and prosody. Puhe ja kieli 30. 121–124.  
+  - Page 30:  
+  The rhotic /r/  
+  It is not straightforward to determine the main allophone of /r/. Traditionally, it  
+  has been stated that the main allophone is a trill, but recent investigations suggest  
+  that the tap pronunciation ([ɾ]) is much more common than has been previously    
+  presumed. Thus Mustanoja & O’Dell (2007) observed, in two corpora (colloquial  
+  speech in Tampere and news broadcasts of the national broadcasting company)  
+  that a great majority of the single /r/ productions in word-medial intervocalic  
+  position were taps (75% and 90% in the two corpora, respectively). It seems   
+  however that in other positions, e.g. word-initially, a trill realisation is more  
+  common than the tap. Also the quantity opposition has an effect on the realisation  
+  of /r/. Thus, as just mentioned, a single /r/ (as in paras ‘best’) is often realised as  
+  [ɾ], but double /rr/ (as in parras ‘edge’) always as [r:], often with several closure  
+  periods. On the whole, it seems legitimate to conclude that the main allophone of  
+  /r/ is [r].  
+  
+  In addition, /r/ has an alveolar fricative allophone, [®3]. As was mentioned  
+  above in discussing the allophones of /s/, the sequence /sr/ does not occur inside  
+  native uncompounded words. A very likely reason for this avoidance is that the  
+  sequence of the main allophones of the two phonemes, i.e. [sr], a sequence  
+  consisting of a sibilant and a trill, is difficult to pronounce even for a native  
+  phonetician. However, the phoneme sequence /sr/ is common across a word  
+  boundary, and across a boundary between the parts of compound words. One way  
+  of avoiding the pronunciation difficulty in e.g. Israel is that the allophonic  
+  sequence [s®3] is chosen. Another way, mentioned earlier, is to choose the  
+  allophonic sequence [xr]. Thus, the difficult sequence sibilant + trill is avoided  
+  either by replacing the trill by a fricative rhotic, or by replacing the sibilant by a  
+  non-sibilant fricative. The sequence [x®3] is not attested. The following account of  
+  the allophones of /r/ is somewhat tentative:  
+  [rule]  
+  - Page 31 : In addition to these allophones proper, /r/ has more marginal realisations that  
+  occur in some speakers’ idiolects, realisations that are not dialectal properties nor  
+  due to segmental context. These include [®] and [“]. There is very little areal  
+  variation in the regular allophones of /r/, but in the Tampere area their place of  
+  articulation is further back than in other dialects, probably apical retroflex  
+  (Kuronen 2000).  
+  - Page 57 : /l/ and /s/ cannot be followed by /r/. Presumably both restrictions have a  
+  similar articulatory motivation: /r/ requires an activity of the tongue blade  
+  that is difficult to accomplish after /l/ and /s/. Exceptions: loanwords like  
+  Kilroy, Israel. The reverse sequences /rl/ and /rs/ in turn are common. Recall  
+  from above that the sequence /sr/ (which is common across a word boundary  
+  and across the boundary between the components of compound words) has  
+  the alternative pronunciations [xr] and [s®3 ]. Thus in the /sr/ sequence both  
+  phonemes are realised, but in such a way that a sibilant is not followed by a   
+  trill. In fact, this is a kind of phonetic sandhi restriction: the phonemic   
+  affiliations of the consonants do not change, but if the occurring allophone of  
+  one of the consonants is a sibilant or a trill, then the other consonant must be  
+  realised by an allophone that does not occur elsewhere.  
+
+
+Je n'ai pas regardé les sources plus vieilles de PHOIBLE :  
+Austerlitz, Robert. 1967. The Distributional Identification of Finnish Morphophonemes. Language 43. 20–33.  
+Lehtinen, M. 1964. Basic Course in Finnish. Bloomington: Indiana University.  
+Hammarberg, R. 1974. Another Look at Finnish Consonant Gradation. Soviet Finno-Ugric Studies 10. 171–178.  
+Harms, Robert T. 1966. Review Of: Proto-Finnic Final Consonants, by T. Itkonen. Language 42. 825–831.  
+Harms, Robert T. 1964. Finnish Structural Sketch. Bloomington: Indiana University Press.  
+
+Wikipedia :  
+https://en.wikipedia.org/wiki/Finnish_language  
+https://en.wikipedia.org/wiki/Finnish_phonology  
+  - Trill	r  
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/finn1318  
 
-Autres sources :  
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="finnish",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="finnish",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="finnish",1,trill_occ))
 ```
 
 ## french
 
 ```{r}
 languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="french","stan1290",glottocode))
+```
+
+Phoible :     
+https://phoible.org/languages/stan1290  
+4 inventaires :  
+  - SPA r allophones r̥ r; ʀ allophones ʀ ʁ̞ ʀ̥  
+  - UPSID  ʀ pas d'allophone  
+  - UZ ʁ allophones	ʁ ʁ̞ ʁ̥ ʀ r  
+  - EA ʁ pas d'allophone  
+  
+Sten, H. 1963. Manuel de Phonetique Francaise. Copenhagen: Munksgaard.  
+
+Fougeron, Cécile and Smith, Caroline L. 1993. Illustrations of the IPA: French. Journal of the International Phonetic Association 23. 73–76. Cambridge University Press.
+  - Page 74 : Fricative ʁ  
+              French has one rhotic, whose production varies considerably among speakers and phonetic contexts. The speaker presented here uses a uvular fricative [ʁ] that is
+sometimes reduced to an approximant [ʁ̞], particularly in final position; it may also be devoiced (for examples see the transcribed text), and can be reduced to zero in some
+word-final positions. For other speakers, a uvular trill [ʀ] is also fairly common, and an apical trill [r] occurs in some dialects. Vowels are often lengthened before this segment.  
+
+Wikipedia :   
+https://en.wikipedia.org/wiki/French_language    
+  - Fricative ʁ    
+  French has one rhotic whose pronunciation varies considerably among speakers and phonetic contexts. In general, it is described as a voiced uvular fricative, as in [ʁu] roue, "wheel". Vowels are often lengthened before this segment. It can be reduced to an approximant, particularly in final position (e.g., fort), or reduced to zero in some word-final positions. For other speakers, a uvular trill is also common, and an apical trill [r] occurs in some dialects.     
+  
+Glottologue :    
+https://glottolog.org/resource/languoid/id/stan1290    
+
+Autres sources : NA  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="french",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="french",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="french",1,trill_occ))
+```
+
+## georgian
+
+```{r}
+languages_data <- languages_data %>%
     dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
 ```
 
@@ -1266,28 +1536,538 @@ languages_data <- languages_data %>%
     dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
 ```
 
-## 
+## german
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## greek
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## hebrew
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## hindi
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## hungarian
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## icelandic
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## inari
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## indonesian
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## irish
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## italian
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## japanese
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## konkani
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## korean
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## kurdish
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## latin
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## latvian
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## limburgish
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## macedonian
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## malay
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## mingrelian
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+```
+
+Phoible :   
+
+Wikipedia :   
+
+Glottologue :  
+
+Autres sources :  
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+```
+
+## nepali
+## norwegian
+
+"norwegian"      "pashto"         "polish"         "portuguese"     "romanian"       "russian"        "saami"          "sanskrit"      
+"serbian"        "silesian"       "slovak"         "sotho"          "spanish"        "swahili"        "swazi"          "swedish"       
+"swissgerman"    "tamil"          "thai"           "turkish"        "ukrainian"      "vietnamese"     "wolof"          "xhosa"         
+"zhuang"         "zulu"
+
+##
 
 
-## 
+##
 
 
-## 
-
-
-## 
-
-
-## 
-
-
-## 
-
-
-## 
-
-
-## 
-
-
-## 
+##

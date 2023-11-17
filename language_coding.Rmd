@@ -1514,163 +1514,346 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="georgian","nucl1302",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/nucl1302  
+4 inventaires  
+  SPA r	allophones r r̥ r ɾ (ʁ allophones ʁ χ͉ ʁ)   ; contrast r/lˠ
+  UPSID	r̪|r pas d'allophones   ; contrast r̪|r/l̪ˠ|lˠ
+  UZ ɾ allophones ɾ r ɾ̩ r̩ l (l	allophones	l l̩ ɾ)  ; contrast r/l
+  EA ɾ pas d'allophones (ʁ pas d'allophones)   ; contrast  ɾ/ɫ
 
-Wikipedia :   
+Shosted, Ryan K. and Chikovani, Vakhtang. 2006. Illustrations of the IPA: Standard Georgian. Journal of the International Phonetic Association 36. 255–264. Cambridge University Press.  
+  - Page 255 : Tap/Trill ɾ/r
+  - Page 261 : Although it has been claimed that the Georgian /r/ may be ‘rolled’, this does not seem to be the case for the present speaker (Hewitt 2005: 5). In our tokens, the average closure duration for an intervocalic /r/ is quite short, on the order of 20 ms, and there is little evidence for sustained trilling in the audio signal. While the two brief reductions in oral flow observed in figure 5 may be indicative of a two-strike trill, it is probably safe to say that taps, not multiple-strikes, are the pronunciation norm in Standard Georgian.
+
+
+Aronson, Howard I. 1990. Georgian: A Reading Grammar. Corr. ed. edn. Columbus, Ohio: Slavica Publishers, Indiana University. 526pp. (Corrected version (original from 1982).)  
+  - r. Georgian r is generally formed by a single flap of the tip of the tongue to the alveolar ridge [ɾ]. It is very similar to the r in Spanish pe/r/o 'but' or the Russian r in [Word in Russian]   'break'. Between voiceless consonants it may become voiceless or drop completely.  
+Vogt, Hans. 1971. Grammaire de la langue géorgienne. Oslo: The Institute for Comparative Research in Human Culture.  
+  - sonantes r  
+  - Page 12-13 : La sonante r est un r apico-alvéolaire roulé. Le nombre des battements n'excède guère deux ou trois après consonne devant voyelle, et peut se réduire à un seul en position finale. Elle peut s'assourdir en position finale après consonne [...] et entre deux consonnes sourdes [...].  
+
+Wikipedia :    
+https://en.wikipedia.org/wiki/Georgian_language#Consonants  
+  - Vibrant r  
+  /r/ is realised as an alveolar tap [ɾ]  
+
+Avec comme source : Shosted, Ryan K.; Vakhtang, Chikovani (2006), "Standard Georgian"  
+http://accent.gmu.edu/browse_native.php?function=detail&languageid=23  
+  - tap or flap ɾ  
+  A partir de Phonologies of Asia and Africa Edited by Alan S. Kaye and Peter T. Daniels  
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/nucl1302  
 
-Autres sources :  
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="georgian",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="georgian",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="georgian",1,trill_occ))
 ```
 
 ## german
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="german","stan1295",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/stan1295  
+4 inventaires  
+  - SPA : ʀ	allophones ʌ ʌ̯ ʀ r   ; contrast ʀ/l
+  - UPSID : ʀ pas d'allophone   ; contrast ʀ/l
+  - UZ : ʁ	pas d'allophone	ʁ ʔ ʁ̥ χ ɐ  ; contrast ʁ/l
+  - EA : ʀ pas d'allophone  ; contrast ʀ/l
+  
+Moulton, William G. 1962. The Sounds of English and German. Chicago: University of Chicago Press.  
+Werner, Otmar. 1972. Phonemik des Deutschen. (Sammlung Metzler, 108.) Stuttgart: J.B. Metzler Verlagsbuchhandlung.  
+Philipp, Marthe. 1974. Phonologie des Deutschen. Stuttgart: W. Kohlhammer.  
+
+Kohler, Klaus. 1990. Illustrations of the IPA: German. Journal of the International Phonetic Association 20. 48–50. Cambridge University Press.  
+  - Page 48 : Fricative ʁ
+              ʁ Rasse 'race'
+  - Page 49 : /ʁ/ can be an approximant intervocalically (e.g. Herren ˈgentlemenˈ); after voiceless plosives and fricatives, especially those within the same word, it is devoiced (in e.g. trat ˈkickedˈ it is completely voiceless [χ]]); postvocalically before a consonant or word-final it is vocalized to [ɐ], which results in diphthongs (e.g. [ˈhaɐt] hart ˈhardˈ, [ˈoɐ] Ohr ˈearˈ, see
+the vowel chart below); the ending -er is realised as [ɐ] (e.g. [ˈbʊtɐ] Butter ˈbutterˈ); the place of articulation of the consonant varies from uvular in e.g. rot ˈredˈ to velar in e.g. treten ˈkickˈ, depending on back or front vowel contexts./ can be an approximant intervocalically (e.g. Herren ˈgentlemenˈ); after voiceless plosives and fricatives, especially those within the same word, it is devoiced (in e.g. trat ˈkickedˈ it is completely voiceless ft]); postvocalically before a consonant or word-final it
+is vocalized to [B], which results in diphthongs (e.g. [ˈham] hart ˈhardˈ, [ˈoe] Ohr ˈearˈ, see the vowel chart below); the ending -er is realised as [B] (e.g. [ˈbutB] Butter ˈbutterˈ); the place of articulation of the consonant varies from uvular in e.g. rot ˈredˈ to velar in e.g. treten ˈkickˈ, depending on back or front vowel contexts.
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/German_language
+  - Liquid r 	
+
+https://en.wikipedia.org/wiki/Standard_German_phonology
+  - Liquid r 	
+  - /r/ can be uvular, alveolar or even dental, a consonant or a semivowel, see below.
+  - /r/ has a number of possible realizations:
+    Voiced apical coronal trill [r̺],[58][59][60] either alveolar (articulated with the tip of the tongue against the alveolar ridge),[58][59][60] or dental (articulated with the tip of the tongue against the back of the upper front teeth).[58]
+    Distribution: Common in the south (Bavaria and many parts of Switzerland and Austria), but it is also found in some speakers in central and northern Germany, especially the elderly. It is also one of possible realizations of /r/ in the Standard Austrian accent, but a more common alveolar realization is an approximant [ɹ]. Even more common are uvular realizations, fricatives [ʁ ~ χ] and a trill [ʀ].[61]
+    Voiced uvular trill [ʀ],[58][59][62][63] which can be realized as voiceless [ʀ̥] after voiceless consonants (as in treten).[59] According to Lodge (2009) it is often a flap [ʀ̆] intervocalically (as in Ehre).[64]
+    Distribution: Occurs in some conservative varieties - most speakers with a uvular /r/ realize it as a fricative or an approximant.[65] It is also one of possible realizations of /r/ in the Standard Austrian accent, but it is less common than a fricative [ʁ ~ χ].[61]
+    Dorsal continuant, about the quality of which there is not a complete agreement:
+    Krech et al. (2009) describe two fricative variants, namely post-palatal [ɣ˖] and velar [ɣ]. The post-palatal variant appears before and after front vowels, while the velar variant is used in all other positions.[66]
+    Morciniec & Prędota (2005) describe it as voiced post-velar fricative [ʁ̟].[67]
+    Mangold (2005) and Kohler (1999) describe it as voiced uvular fricative [ʁ];[58][68]
+    Mangold (2005) states that "with educated professional radio and TV announcers, as with professional actors on the stage and in film, the [voiced uvular] fricative [realization of] /r/ clearly predominates."[58]
+    In the Standard Austrian accent, the uvular fricative is also the most common realization, although its voicing is variable (that is, it can be either voiced [ʁ] or voiceless [χ]).[61]
+    Kohler (1999) writes that "the place of articulation of the consonant varies from uvular in e.g. rot ('red') to velar in e.g. treten ('kick'), depending on back or front vowel contexts." He also notes that [ʁ] is devoiced after voiceless plosives and fricatives, especially those within the same word, giving the word treten as an example. According to this author, [ʁ] can be reduced to an approximant in an intervocalic position.[69]
+    Ladefoged & Maddieson (1996) describe it as a uvular fricative [ʁ] or approximant [ʁ̞]. The latter is less likely to occur word-initially.[70]
+    Distribution: Almost all areas apart from Bavaria and parts of Switzerland.
+    Near-open central unrounded vowel [ɐ] is a post-vocalic allophone of (mostly dorsal) varieties of /r/. The non-syllabic variant of it is not always near-open or central; it is similar to either [ɑ] or [ə], depending on the environment.[67]
+    distribution: Widespread, but less common in Switzerland.
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/stan1295  
 
-Autres sources :  
-
+Autres sources : NA  
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="german",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="german",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="german",1,trill_occ))
 ```
 
 ## greek
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="greek","mode1248",glottocode))
 ```
 
-Phoible :   
+Phoible :     
+https://phoible.org/languages/mode1248  
+5 inventaires:  
+  - SPA ɾ allophone ɾ   ;  contrast ɾ/l
+  - UPSID ɾ pas d'allophone    ; contrast ɾ/l̪
+  - UZ 2186	rː allophone rː; ɾ allophones ɾ rː    ; contrast  ɾ/l
+  - UZ 2187 ɾ allophones ɾ ɹ    ; contrast ɾ/l
+  - EA ɾ̠ pas d'allophone  ; contrastɾ ɾ̠/l
+ 
+Kaisse, Ellen. 1976. Stress Melodies and a Fast Speech Rule in Modern Greek. NELS VI. 165–175.  
+Newton, Brian. 1972. The Generative Interpretation of Dialect: A Study of Modern Greek Phonology. (Cambridge Studies in Linguistics, 8.) Cambridge: Cambridge University Press.  
+Kaisse, Ellen. 1975. A Mor- or Less-pheme: A Case of Delexicalization in Modern Greek. Paper delivered at the 1975 Winter Meeting of the LSA, San Francisco.  
+Householder, Fred W. and Kazasis, Kostas and Koutsoudas, Andreas. 1964. A Reference Grammar of Literary Dhimotiki. Bloomington, Indiana: Indiana University Press.  
+Pring, J. T. 1967. A Grammar of Modern Greek on a Phonetic Basis. London: Hodder & Stoughton.  
+Arvaniti, Amalia. 2007. Greek phonetics: The state of the art. Journal of Greek Linguistics 8. 97–208. Citeseer.  
 
-Wikipedia :   
+Arvaniti, Amalia. 1999. Illustrations of the IPA: Standard Modern Greek. Journal of the International Phonetic Association 29. 167–172/1–6. Cambridge University Press.  
+  - Page 167 : Tap ɾ  
+  - Page 168-169 : Rhotics. Greek has one rhotic sound. This is pronounced as an alveolar tap [ɾ] word-initially and intervocalically, or when it is followed by another consonant; in fast speech it may be pronounced as an alveolar approximate In clusters In which it is preceded by a plosive or a fricative it is pronounced as a short trill.  
+  
+Wikipedia :     
+https://en.wikipedia.org/wiki/Modern_Greek  
+https://en.wikipedia.org/wiki/Modern_Greek_phonology  
+  Tap /ɾ/ ρ  
+ 
+  The only Greek rhotic /r/ is prototypically an alveolar tap [ɾ], often retracted ([ɾ̠]). It may be an alveolar approximant [ɹ] intervocalically, and is usually a trill [r] in clusters, with two or three short cycles.[8]  
+    [8] Arvaniti, Amalia (2007). "Greek Phonetics: The State of the Art" (PDF). Journal of Greek Linguistics. 8: 97–208. CiteSeerX 10.1.1.692.1365. doi:10.1075/jgl.8.08arv. Archived from the original (PDF) on 2013-12-11.  
 
-Glottologue :  
 
-Autres sources :  
+Glottologue :    
+https://glottolog.org/resource/languoid/id/mode1248  
+
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="greek",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="greek",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="greek",1,trill_occ))
 ```
 
 ## hebrew
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="hebrew","hebr1245",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/hebr1245  
+3 inventaires  
+  - SPA	ʁ allophones ʀ ʁ   ; contrast ʁ/l
+  - UZ 	r	allophones	r ɾ; 	χ	allophones	χ    ; contrast r/l
+  - EA  ʁ pas d'allophones    ; contrast ʁ/l
+ 
+Cohen, David and Zafrani, Haim. 1968. Grammaire de l'Hebreu Vivant. Paris: Presses Universitaives de France. -> Pas cherché  
+
+Chayen, M. J. 1973. The Phonetics of Modern Hebrew. (Janua Linguarum, Series Practica, 163.) The Hague: Mouton.  
+  - Page 24 : The voiced member of this pair, /r/, is sometimes trilled with the back of the tongue tapping rapidly against the soft palate.  
+              Most recordings however show a consistent fricative /r/ with the trill rare.  
+              Arabic speakers have a tongue-trilled apical /r/ which is recommended by official bodies (the radio).[10]  
+              
+              [9] I have departed from IPA notation here and use [r] to represent fricative velar and [R] for trilled velar.  
+              [10] Y.G. Gumpertz (1953) quotes Sa'adia Gaon (10th centenry) and other early grammarians to show that Hebrew had both alveolar and uvular /r/, the former following dental consonants.  
+  - Page 25 : Both /x/ and /r/ have unrestricted distribution   
+  
+Laufer, Asher. 1990. Illustrations of the IPA: Hebrew. Journal of the International Phonetic Association 20. 40–43. Cambridge University Press.  
+  - Page 41 : Trill r  
+  - Page 42 : Usually the Oriental-Hebrew speakers pronounce /r/ as an alveolar trill (or flap) [ɾ]; in the Non-Oriental dialect it is usually a ucular approximant [ʁ] (still, some Non-Oriental speakers pronounce it as a trill).  
+  
+Bolozky, Shmuel. 1997. Israeli Hebrew Phonology. In Kaye, Alan S. and Daniels, Peter T. (eds.), Phonologies of Asia and Africa, 287–312. Winona Lake, Indiana: Eisenbrauns. -> Pas cherché  
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Modern_Hebrew  
+  - Obstruents Fricative ɣ~ʁ  
+  - Commonly transcribed /r/. This is usually pronounced as a uvular fricative or approximant [ʁ] or velar fricative [ɣ], and sometimes as a uvular [ʀ] or alveolar trill [r] or alveolar flap [ɾ], depending on the background of the speaker.  
+
+https://en.wikipedia.org/wiki/Hebrew_language  
+  - Most Israelis today also merge /ʕ ħ/ with /ʔ χ/, do not have contrastive gemination, and pronounce /r/ as a uvular fricative [ʁ] or a voiced velar fricative [ɣ] rather than an alveolar trill, because of Ashkenazi Hebrew influences.  
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/hebr1245  
 
-Autres sources :  
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="hebrew",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="hebrew",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="hebrew",1,trill_occ))
 ```
 
 ## hindi
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="hindi","hind1269",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/hind1269
+5 inventaires :
+  - SPA r allophones r ; rː allophones rː ; ɽ̃ allophones 	ɽ̃ ɽ̃ ɽ̃ ; ʁ allophone ʁ ; ɖ allophones ɖ ɖ ɳɖ ɽ ; ɖ̤ allophones ɖ̤ ɳɖ̤ ɽ̤ ; contrast r/l
+  - UPSID 	r̪|r pas d'allophones ; contrast 	r̪|r/l̪|l
+  - RA ɽ pas d'allophone ; 	ɽ̤ pas d'allophone  ; ɾ pas d'allophone  ; contrast ɾ/l
+  - UZ 	ɾ allophones ɾ r ; rː allophone rː ;  ɽ allophone ɽ ; ɽ̤ allophone ɽ̤  ; contrast	rː/l
+  - EA r pas d'allophone ; ɽ pas d'allophone ; ɽ̤ʱ pas d'allophone  ; contrast r/l
 
+Pinnow, Heinz-Jürgen. 1972. "Uber die Vokale im Hindi. Zeitschrift fur Phonetik und Allgemeine Sprachwissenschaft 7. 43–53.
+Kelkar, Ashok Ramchandra. 1968. Studies in Hindi-Urdu. Volume 1: Introduction and Word Phonology. Poona: Postgraduate and Research Institute, Deccan College.
+Vermeer, Hans J. and Sharma, Aryendra. 1966. Hindi-Lautlehre mit Einführung in die Devnagari-Schrift. Heidelberg: Julius Groos Verlag.
+Harms, Robert T. 1969. Review of Kelkar, A.R. Studies in Hindi-Urdu I. Language 45. 913–927.
+Kaye, Alan S. 1997. Hindi-Urdu phonology. In Kaye, Alan S. and Daniels, Peter T. (eds.), Phonologies of Asia and Africa, 637–652. Winona Lake, Indiana: Eisenbrauns.
+Ohala, Manjari. 1983. Aspects of Hindi Phonology. Delhi: Motilal Banarsidass. (Via https://archive.org/details/aspectsofhindiph0000ohal)
+  - Page 2 : Tap  Dental and Alveolar r r:
+             Flaps  Retroflex voiced         r.  (r̃.)
+                              breathy-voiced r.^h
+  - Page 4 : [Ça parle de r. qui ressemble à un [n]]
+  - Page 5 : [Mention d'un r syllabique -> aucune idée de la phonétique]
+  - Page 6 : [Ça parle de r. avec d.]
+  
 Wikipedia :   
+https://en.wikipedia.org/wiki/Hindi
+https://en.wikipedia.org/wiki/Hindustani_phonology
+  - Tap/Trill 	unaspirated 		r 	ɽ 				
+                aspirated 			ɽʱ
+  - /ɽ/ is lateral [ɺ̢] for some speakers.
+  - /r/ is usually flapped or trilled.[24] In intervocalic position, it may have a single contact and be described as a flap [ɾ],[25] but it may also be a clear trill, especially in word-initial and syllable-final positions, and geminate /rː/ is always a trill in Arabic and Persian loanwords, e.g. zarā [zəɾaː] (ज़रा – ذرا 'little') versus well-trilled zarrā [zəraː] (ज़र्रा – ذرّہ 'particle').[4]
+  [24] Nazir Hassan (1980) Urdu phonetic reader, Omkar Nath Koul (1994) Hindi Phonetic Reader, Indian Institute of Language Studies; Foreign Service Institute (1957) Hindi: Basic Course
+  [25] "r is a tip dental trill, and often has but one flap", Thomas Cummings (1915) An Urdu Manual of the Phonetic, Inductive Or Direct Method
+  [4] Ohala, Manjari (1999), "Hindi", in International Phonetic Association (ed.), Handbook of the International Phonetic Association: a Guide to the Use of the International Phonetic Alphabet, Cambridge University Press, pp. 100–103, ISBN 978-0-521-63751-0
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/hind1269
 
 Autres sources :  
-
+Ohala, M. (1994). Hindi. Journal of the International Phonetic Association, 24(1), 35‑38. https://doi.org/10.1017/S0025100300004990
+  - Page 35 : Tap or Flap ɾ   ɽ
+                              ɽ^h
+  - Page 36 : All consonants can also occur with distinctive length (i.e. as 'geminates') except the following: [b^h, ɽ, ɽ^h, h].
+  - Page 37 : The geminate [r] is always an alveolar trill [r]
+  
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="hindi",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="hindi",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="hindi",1,trill_occ))
 ```
 
 ## hungarian
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="hungarian","hung1274",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/hung1274
+4 inventaires :
+  - SPA	r allophone r ;	rː allophone rː ; contrast r/l 
+  - UPSID	r̪ pas d'allophone ; contrast r̪/l̪
+  - UZ 	r̪ allophone 	r̪ ; 	r̪ː allophone	r̪ː ; contrast r̪/l̪
+  - EA ɾ pas d'allophone ; contrast ɾ/l
+
+Hall, Robert Anderson. 1938. An Analytical Grammar of the Hungarian Language. Language 14. 9–113.
+Hall, Robert Anderson. 1944. Hungarian Grammar. (Language Monographs, 21.) Baltimore: Linguistic Society of America.
+Kalman, Bela. 1972. Hungarian Historical Phonology. In Benkö, Lorand and Imre, Samu (eds.), The Hungarian Language. The Hague: Mouton.
+Banhidi, Zoltan and Jokay, Zoltan and Szabo, Denes. 1965. Lehrbuch der ungarischen Sprache. Budapest: Publishing House for Textbooks.
+Gósy, Mária. 2004. Fonetika, a beszéd tudománya. Osiris.
+
+Szende, Tamás. 1994. Illustrations of the IPA: Hungarian. Journal of the International Phonetic Association 24. 91–94. Cambridge University Press.
+  - Page 91 : Trill r
+              r ro: ró 'carve'
+  - Page 93 : /r/ is a trill
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Hungarian_language
+  - Trill 			r 	
+  - A single 'r' is pronounced as an alveolar tap (akkora 'of that size'), but a double 'r' is pronounced as an alveolar trill (akkorra 'by that time'), like in Spanish and Italian. 
+
+https://en.wikipedia.org/wiki/Hungarian_phonology
+  - Trill 			r
+  - /r/ 	ró 	/roː/ 'carve' 
+  - /l/ assimilates to a following /r/ (e.g. balra [ˈbɒrːɒ], 'to the left').[27]
+  
+  [27] Vago, Robert M. (1980), The Sound Pattern of Hungarian, Washington, D.C.: Georgetown University Press
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/hung1274
 
-Autres sources :  
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="hungarian",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="hungarian",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="hungarian",1,trill_occ))
 ```
 
 ## icelandic
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="icelandic","GLOTTOCODE",glottocode))
 ```
 
 Phoible :   
@@ -1683,13 +1866,13 @@ Autres sources :
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="icelandic",10,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="icelandic",10,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="icelandic",10,trill_occ))
 ```
 
 ## inari

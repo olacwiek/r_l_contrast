@@ -1853,182 +1853,374 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="icelandic","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="icelandic","icel1247",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/icel1247  
+2 inventaires :  
+  - SPA r allophones rː rˑ r r; r̥ allophones r̥ r̥ˑ   ; contrast r/l
+  - EA r pas d'allophone; r̥ pas d'allophone    ; contrast r/l
+  
+Einarsson, Stefan. 1949. Icelandic. Baltimore: John Hopkins Press.  
+Haugen, Einar. 1958. The Phonemics of Modern Icelandic. Language 34. 55–88.  
 
-Wikipedia :   
+Thráinsson, Höskuldur. 1994. Icelandic. In König, Ekkehard and van der Auwera, Johan (eds.), The Germanic Languages, 142–189. London: Routledge.  
+  - Page 147 : The short [r] is also frequently a single flap rather than a trill  
+               Voiceless trill/flap r̥/ɾ̥ (r)  
+               Voiced trill/flap r/ɾ (r)  
+  
+Wikipedia :     
+https://en.wikipedia.org/wiki/Icelandic_language  
+  - Rhotic 		(r̥) 	r  
+    The rhotic consonants may either be trills [r̥ r] or taps [ɾ̥ ɾ], depending on the speaker.  
+ 
+Glottologue :    
+https://glottolog.org/resource/languoid/id/icel1247  
 
-Glottologue :  
-
-Autres sources :  
+Autres sources : NA
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="icelandic",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="icelandic",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="icelandic",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="icelandic",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="icelandic",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="icelandic",1,trill_occ))
 ```
 
 ## inari
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="inari","inar1241",glottocode))
 ```
 
-Phoible :   
+Phoible : NA  
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Inari_Sami  
+https://en.wikipedia.org/wiki/Inari_S%C3%A1mi_language
+  - Trill	r  
+  Consonant gradation is a pattern of alternations between pairs of consonants that appears in the inflection of words. Consonant gradation in Inari Sami is more complex than that of other Sami languages, because of the effects of the unique stress pattern of Inari Sami. Like in other Sami languages, there is a distinction between the strong and weak grade, but a second factor is whether the consonants appear in the middle of a foot (FM) or in the juncture between two feet (FJ). In the latter case, consonants are often lengthened.   
+  Q3 : rr Q2 FM: 	ṛ Q2 FJ: 	rr Q1 :	r   
+  
+  => Il y a un contrast entre r/l
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/inar1241  
 
 Autres sources :  
+               
+Äimä, Frans. 1918. Phonetik und Lautlehre des Inarilappischen. (Suomalais-Ugrilaisen Seuran Toimituksia, 42.1 + 43.) Helsinki: Suomalais - Ugrilainen Seura.  
+42 : Traduit depuis l'allemand avec Google Traduction sur mon iPhone  
+  - Page 15 : r is postaveolar, cf. the palatograms for r in koaron and korry fig. 22 and 23. It seems to me to be a little less rolled than the Finnish r; for the number of r-blows, see II,1 appendix. 2.  
+43 : Traduit depuis l'allemand avec Google Traduction sur mon iPhone  
+  - Page 217 : => fig 48, fig 28, 29 and 36 qui se trouve à la fin du livre  
+
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="inari",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="inari",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="inari",1,trill_occ))
 ```
 
 ## indonesian
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="Indonesian","indo1316",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/indo1316  
+2 inventaires  
+  - PH r allophones r ɾ   ; contrast r/l
+  - GM r allophones r   ; contrast r/l
 
+Soderberg, Craig D. and Olson, Kenneth S. 2008. Illustrations of the IPA: Indonesian. Journal of the International Phonetic Association 38. 209–213. Cambridge University Press.  
+  - Page 210 : Flap/trill r  
+               The speaker normally pronounced the alveolar rhotic /r/ as a trill [r], but he sometimes produced a flap [ɾ], especially in intervocalic position.  
+               
+Sneddon, J. Neil. 2010. Indonesian: A Comprehensive Grammar. Routledge.  
+  - Page 9 : r like an Italian or Spanish ‘r’: it is pronounced with the tip of the tongue against the alveolar ridge (the hard part immediately behind the upper teeth). Examples are rumah ‘house’,   dilarang ‘forbidden’, layar ‘sail’. Note: for those who have a hard time pronouncing this sound, try to say ‘prawn’, ‘crown’ or ‘track’ while substituting d for r in these words (hence, ‘pdawn’,   ‘cdown’, ‘tdack’) and then speed up their pronunciation: the d will soon come out like a ‘tongue-tip r’.  
+  - Page 12 : Prefixes ber-, per-, ter-  
+              1.4 Prefixes ber-, per-, ter- and circumfixes which have ber- or per- as their prefix component undergo the changes listed below:  
+              The r of the prefix is lost under the following circumstances:  
+              When the base begins with r:  
+              ber- + renang −> berenang  
+              per- + rusak −> perusak  
+              ter + rasa −> terasa  
+              When the base begins with the sound combination CerC, where C represents any consonant:  
+              ber- + serta −> beserta  
+              ber- + terbang + -an −> beterbangan  
+              per- + kerja + -an −> pekerjaan  
+              ter- + pergok −> tepergok  
+              Loss of r before a base beginning with CerC is not entirely regular; in a few words it does not occur or is optional. Thus:  
+              ter- + percaya −> tepercaya, terpercaya  
+              Prefix ter- usually becomes te- with the bases lanjur and lantar. The ter- forms are regarded by some as substandard and are not listed in all dictionaries. In some dictionaries, te- is regarded as part of the base rather than as a prefix:  
+              ter- + lanjur −> telanjur, terlanjur  
+              ter- + lantar −> telantar, terlantar  
+              With base ajar the r in ber- and per- is replaced by l:  
+              ber- + ajar −> belajar  
+              per- + ajar + -an −> pelajaran  
+  
 Wikipedia :   
+https://en.wikipedia.org/wiki/Indonesian_language  
+
+  - Trill r  
+  
+https://en.wikipedia.org/wiki/Malay_phonology -> Page redirigée  
+
+/r/ varies significantly across dialects. In addition, its position relative to schwa is ambiguous: kertas ('paper') may be pronounced [krəˈtas] or [kərəˈtas]. The trill /r/ is sometimes reduced to a single vibration when single, making it phonetically a flap [ɾ], so that the pronunciation of a single /r/ varies between trill [r], flap [ɾ] and, in some instances, postalveolar approximant [ɹ̠].  
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/indo1316  
 
 Autres sources :  
+Sneddon, James Neil and Alexander Adelaar and Dwi Noverini Djenar and Michael C. Ewing. 2010. Indonesian Reference Grammar. 2nd edn. London: Allen & Unwin. xxxiv+401pp.  
+Page 9 :  
+r like an Italian or Spanish ‘r’: it is pronounced with the tip of the tongue against the alveolar ridge (the hard part immediately behind the upper teeth). Examples are rumah ‘house’, dilarang ‘forbidden’, layar ‘sail’.  
+Note: for those who have a hard time pronouncing this sound, try to say ‘prawn’, ‘crown’ or ‘track’ while substituting d for r in these words (hence, ‘pdawn’, ‘cdown’, ‘tdack’) and then speed up their pronunciation: the d will soon come out like a ‘tongue-tip r’.  
+ 
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="Indonesian",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="Indonesian",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="Indonesian",1,trill_occ))
 ```
 
 ## irish
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="irish","iris1253",glottocode))
 ```
 
-Phoible :   
+Phoible :    
+https://phoible.org/languages/iris1253  
+5 inventaires :  
+  - SPA ɾ̥ˠ allophones 	ɾ̥ˠ ɾ̥ˠ; 	ɾˠ allophones ɾ̪ˠ ɾˠ ɾ̃ˠ ɾˠ ɾˠ; 	ɾ̥ʲ allophones ɾ̥ʲ ɾ̥ʲ; 	ɾʲ allophones ɾʲ ɾʲ ɾʲ    ; contrast ɾˠ/lˠ
+  - UPSID ɾˠ pas d'allophone; ɾʲ pas d'allophone; ɾ̥ˠ pas d'allophones; ɾ̥ʲ pas d'allophone    ; contrast l̠/ɾˠ
+  - UZ 	ɾˠ allophones 	ɾˠ ɹ ɹˠ ; ɾʲ allophones ɾʲ ʝ ɹ   ;    contrast ɾˠ/l
+  - EA 2262 ɾʲpas d'allophone; ɾˠ pas d'allophone   ; contrast ɾˠ/l
+  - EA 2521 	ɾ̪ˠ pas d'allophone; ɾ̪ʲ pas d'allophone   ; contrast ɾ̪ˠ/l̪ˠ
 
-Wikipedia :   
+Burke, John Florence. 1970. The Irish of Tourmakeady, Co. Mayo. Dublin: The Dublin Institute for Advanced Studies.  
+Mac an Fhailigh, Eamonn. 1968. The Irish of Erris, Co. Mayo. Dublin: The Dublin Institute for Advanced Studies.  
+Brothers, Christian. 1905. Aids to the Pronunciation of Irish. Dublin: M. H. Gill and Son.  
+Sommerfelt, A. 1964. Consonant Clusters or Single Phonemes in Northern Irish. In Abercrombie, D. (ed.), In Memory of Daniel Jones, 368–373. London: Longmans, Green and Co Ltd.  
+Sé, Diarmuid Ó. 2000. Gaeilge Chorca Dhuibhne. Institi'uid Teangeola'iochta 'Eireann.  
 
-Glottologue :  
+Ní Chasaide, Ailbhe. 1995. Illustrations of the IPA: Irish. Journal of the International Phonetic Association 25. 34–39. Cambridge University Press.  
+  - Page 35 : Tap ɾˠ   
+                  ɾʲ  
+  - Page 37 : Rhotics: An older four-way distinction among rhotics has been reduced to a two-way distinction in Gaoth Dobhair. Initially, the /ɾˠ ɾʲ/ distinction has been neutralized to a voiced post-alveolar approximant [ɹ], which takes its coloring from the following vowel. In non-initial position, the velarized member can be realized as either [ɾˠ] or [ɹˠ]. The historical palatalized //, which in most other dialects is a palatalized tap or apico-postalveolar fricative, may also appear in Gaoth Dobhair as a voiced palatal fricative [ʝ] in non-initial position. For both palatalized and velarized taps there is often incomplete closure with considerable frication.    
+  
+Wikipedia :     
+https://en.wikipedia.org/wiki/Irish_language  
+  - Tap 			ɾˠ 	ɾʲ  
+  
+https://en.wikipedia.org/wiki/Irish_phonology  
+  - Tap 			ɾˠ 	ɾʲ 	  
+    /ɾʲ/ has the primary allophone [ɹ̝ʲ].  
 
-Autres sources :  
+Ó Sé, Diarmuid (2000), Gaeilge Chorca Dhuibhne (in Ga), Dublin: Institiúid Teangeolaíochta Éireann, ISBN 0-946452-97-0  
+
+Glottologue :    
+https://glottolog.org/resource/languoid/id/iris1253  
+
+Autres sources :
+
+Cahill, G. (2022). The Rhotic Consonant (s) in Contemporary Modern Irish.
+  => spectro d'un "trill", mais je ne considère pas que c'est un "vrai trill", mais son variant est produit par trois locteur/rices.
+  - Page 23 :  Trills were produced by only three participants (FL4, FN1 and ML3) with only ML3 making use of the trill more than rarely
+
+Anderson, C., & Jaworski, S. (2015). The phonetics and phonology of rhotics in Modern Irish. Studia Celto-Slavica, 193-211.
+  - Page 199 : From an articulatory perspective, there was substantial variation in the characteristics of the rhotic sounds of our two informants. Although rhotics are often assumed to be trills, trilled variants are rather rare in the data. Considerable differences could also be observed between the two informants: Speaker M did not produce any trills, whereas in P’s performance, trilled variants constitute as many as 22.5% of tokens. Both participants regularly reduce the <r> sounds to approximants; however, many more approximants are found in M’s speech (62.5%), almost twice as many as in the data produced by Speaker P (33.75%). As for fricated variants, approximately one third of all tokens underwent frication and both subjects produced similar results, 32.5% and 27.5% respectively. Needless to say, palatalised rhotics are much more susceptible to frication as the raised dorsum narrows the channel through which the airstream passes, thus creating aerodynamic conditions conducive to friction. Finally, the data also include a number of tapped variants. Predictably, more taps (approximately 15%) can be found in Speaker P’s performance, as he also produced a number of trills. By comparison, in M’s speech, only 4.5% of rhotic tokens were taps.
+  - Page 201 : As a matter of fact, neither of the speakers made a single word-initial trill, which is indicative of the weakness of Irish rhotics initially. 
+  - Page 208 : Despite the fact that the phonetic data presented in the study were obtained from only two participants, several interesting conclusions can be drawn. First and foremost, one can observe a very strong tendency towards the two rhotics being quite weak from the articulatory point of view, as very few trilled and tapped variants, which require the production of a full closure, were found in the data. The Irish sounds are predominantly approximants or fricatives.
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="irish",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="irish",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="irish",1,trill_occ)) #
 ```
 
 ## italian
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="italian","ital1282",glottocode))
 ```
 
-Phoible :   
+Phoible :     
+https://phoible.org/languages/ital1282  
+3 invenaitres :  
+  - PH r allophones r rː ɾ   ; contrast r/l
+  - UZ rː allophones rː ; r allophones r ʁ ɹ ʋ ʀ   ; contrast r/l
+  - EA ɾ pas d'allophone    ; contrast  ɾ/l
 
-Wikipedia :   
+Kramer, Martin. 2009. The phonology of Italian. Oxford University Press.  
 
-Glottologue :  
+Rogers, Derek and d'Arcangeli, Luciana. 2004. Illustrations of the IPA: Italian. Journal of the International Phonetic Association 34. 117–121. Cambridge University Press.  
+  - Page 117 : Trill r  
+  - Page 118 : /r/ is a trill, but can be a tap intervocalically   
+  - Page 120 : r/ can be an approximant (plus tap) [ˈloːɹo], [ˌalˌloːɹɾa]  
 
-Autres sources :  
+Bertinetto, Pier Marco and Loporcaro, Michele. 2005. Illustrations of the IPA: The sound pattern of Standard Italian, as compared with the varieties spoken in Florence, Milan and Rome. Journal of the International Phonetic Association 35. 131–151. Cambridge University Press.  
+  - Page 132 : Trill r  
+  - Page 133 : Besides [r], which is the unmarked allophone of the rhotic phoneme, individual variants may be encountered (uvular, alveolar or labio-dental approximant; uvular trill). In intervocalic position, non-geminated [r] may often reduce in spontaneous speech to a single linguo-palatal contact; however, after pause or before a consonant, there is usually a double contact.  
+
+
+Wikipedia :     
+https://en.wikipedia.org/wiki/Italian_language  
+  - Trill r  
+
+https://en.wikipedia.org/wiki/Italian_phonology  
+  - Trill	r 	  
+  - Intervocalically, single /r/ is realised as a trill with one or two contacts.[17] Some literature treats the single-contact trill as a tap [ɾ].[18][19] Single-contact trills can also occur elsewhere, particularly in unstressed syllables.[20] Geminate /rr/ manifests as a trill with three to seven contacts.  
+    [17] Ladefoged, Peter; Maddieson, Ian (1996). The Sounds of the World's Languages. Oxford: Blackwell. ISBN 978-0-631-19815-4.  
+    [18] Rogers, Derek; d'Arcangeli, Luciana (2004). "Italian" (PDF). Journal of the International Phonetic Association. 34 (1): 117–121. doi:10.1017/S0025100304001628. S2CID 232345223  
+    [19] Luciano Canepari, A Handbook of Pronunciation, chapter 3: «Italian»  
+    [20] Romano, Antonio. "A preliminary contribution to the study of phonetic variation of /r/ in Italian and Italo-Romance." Rhotics. New data and perspectives (Proc. of’r-atics-3, Libera Università di Bolzano (2011): 209–226, pp. 213–214.  
+    
+Glottologue :    
+https://glottolog.org/resource/languoid/id/ital1282  
+
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="italian",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="italian",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="italian",1,trill_occ))
 ```
 
 ## japanese
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="japanese","nucl1643",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/nucl1643  
+3 inventaires  
+  - SPA ɾ	allophones ɾʲ ɾ ɺ   ;  une seule liquide
+  - UPSID ɾ pas d'allophones  ;   une seule liquide
+  - UZ d̠ pas d'allophones (=> je pense qu'il s'agit de la rhotique)   ;   une seule liquide
 
+Bloch, Bernard. 1950. Studies in Colloquial Japanese. Part 4: Phonemics. Language 26. 86–125.  
+Martin, Samuel E. 1952. Morphophonemics of Standard Colloquial Japanese. (Language Dissertation, 47.) Baltimore: Linguistic Society of America.  
+Jorden, Eleanor Harz. 1963. Beginning Japanese, Part 1. (Yale Linguistic Series, 5.) New Haven: Yale University Press.  
+Shibatani, Masayoshi. 1990. The Languages of Japan. (Cambridge Language Surveys.) Cambridge: Cambridge University Press.  
+  - Page 159 : r
+  - Page 163 : The flap [r] does not occur initially in native words but occurs in words from other strata of the lexicon.  
+  
+Okada, Hideo. 1991. Illustrations of the IPA: Japanese. Journal of the International Phonetic Association 21. 94–96. Cambridge University Press.  
+  - Page 95 : /ɖ/, which is often transcribed by others as /r/, is postalveolar in place rather than retroflex. Initially it tends to be slightly affricated [ɖ̠^{ɹ}]. Between vowels [ɾ] may be more frequent. A postalveolar [l̠] is not unusual in all positions.  
+
+  
 Wikipedia :   
+https://en.wikipedia.org/wiki/Japanese_language  
+  - Liquid r  
+  - The "r" of the Japanese language is of particular interest, ranging between an apical central tap and a lateral approximant.  
+
+https://en.wikipedia.org/wiki/Japanese_phonology  
+  - Realization of the liquid phoneme /r/ varies greatly depending on environment and dialect. The prototypical and most common pronunciation is an apical tap, either alveolar [ɾ] or postalveolar [ɾ̠].[7][8][5] Utterance-initially and after /N/, the tap is typically articulated in such a way that the tip of the tongue is at first momentarily in light contact with the alveolar ridge before being released rapidly by airflow.[9][8] This sound is described variably as a tap, a "variant of [ɾ]", "a kind of weak plosive",[9] and "an affricate with short friction, [d̠ɹ̝̆]".[5] The apical alveolar or postalveolar lateral approximant [l] is a common variant in all conditions,[5] particularly utterance-initially[9] and before /i, j/.[7] According to Akamatsu (1997), utterance-initially and intervocalically (that is, except after /N/), the lateral variant is better described as a tap [ɺ] rather than an approximant.[9][10] The retroflex lateral approximant [ɭ] is also found before /i, j/.[7] In Tokyo's Shitamachi dialect, the alveolar trill [r] is a variant marked with vulgarity.[7] Other reported variants include the alveolar approximant [ɹ],[5] the alveolar stop [d], the retroflex flap [ɽ], the lateral fricative [ɮ],[7] and the retroflex stop [ɖ].[11]  
+  
+[7] Labrune, Laurence (2012), The Phonology of Japanese, Oxford, England: Oxford University Press, ISBN 978-0-19-954583-4  
+[8] Vance, Timothy J. (2008), The Sounds of Japanese, Cambridge University Press, ISBN 978-0-5216-1754-3  
+[5] Okada, Hideo (1999), "Japanese", in International Phonetic Association (ed.), Handbook of the International Phonetic Association: A Guide to the Use of the International Phonetic Alphabet, Cambridge University Press, pp. 117–119, ISBN 978-0-52163751-0  
+[9] Akamatsu, Tsutomu (1997), Japanese Phonetics: Theory and Practice, München: Lincom Europa, ISBN 978-3-89586-095-9  
+[10] Akamatsu (1997) employs a different symbol, [l̆], for the lateral tap.  
+[11] Arai, Takayuki; Warner, Natasha; Greenberg, Steven (2007), "Analysis of spontaneous Japanese in a multi-language telephone-speech corpus", Acoustical Science and Technology, 28 (1): 46–48, doi:10.1250/ast.28.46  
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/nucl1643  
 
-Autres sources :  
+Autres sources : 
+Calvetti, P. (2020). Strategies of impoliteness in Japanese spontaneous talks. European approaches to Japanese language and linguistics, 99.
+  - Page 110 : Normally in Standard Japanese we have only one type of liquid consonant, the so-called apico-alveolar flap, as in bara [bɑ˹ɾɑ] ‘rose’. However, it actually seems that there are many individual variations of this: the flap can vary from an alveolar trill [r] to a retroflex flap [ɽ] or an alveolar lateral approximant [l]. In particular, the phoneme /r/ could be pronounced as an apico-alveolar trill with a strong vibration when the speaker wants to sound tough (Vance 2008, 89). This kind of sound is found in gangster slang, and it is not limited to Tōkyō’s dialect.
+  - Page 111 : In the following examples we have an exchange of utterances between a man questioned at a police check and a policeman.10 Both pronounce the word yarō, but the policeman only uses it when quoting the offensive words directed at him by the man. In this case the phoneme /r/ is realized as an apico-alveolar flap [ɾ] [fig. 3], while the young man who wanted to offend the policeman uses the marked stressed alveolar trill [r] [fig. 4], as shown by the following instrumental analysis, where the repeated vibration of the trill is evident. The same man, protesting against an underhand body search, shouts that the behaviour of the police is disgusting. He says kimochi warui n da yo (‘It’s disgusting!’) and here again the phoneme /r/ in the adjective warui (‘bad’) is pronounced loudly, with a strong stress, as an alveolar trill [fig. 5].
+   [10] 10 “Keishichō jitsuroku 24ji. Asakusa keisatsu shukumu shitsumon 2”, http://www.youtube.com/watch?v=uVoiVWmtRoQ (last accessed in November 2015).
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="japanese",0,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="japanese",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="japanese",1,trill_occ))
 ```
 
 ## konkani
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="LANGUAGE","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="konkani","konk1267",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/konk1267
+2 inventaires:
+  - UPSID ɾ pas d'allophone ; contrast ɾ/l
+  - RA ɾ pas d'allophone ; contrast ɾ/l
+
+Gajendragadkar, S. N. 1970. East Indian Fisher Folk. (Dialects in the Bombay Area, 1.) Bombay: University of Bombay.
+Madtha, William. 1984. The Christian Konkani of South Kanara (A Linguistic Analysis). Dharwad: Karnatak University.
+Major, Mehru Manecksha. 1979. Phonology of the Christian Goan Konkani Dialect (As Spoken in Nagpur). Nagpur: Nagpur Vidyapeeth Mudranalaya.
+Katre, Sumitra Mangesh. 1966. The Formation of Konkani.
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Konkani_language
+  - Liquids 	ɾ ɾʱ   ɽ
+              l lʱ 	𝼈[82] 	 -> Encoding problem?
+
+[82] Masica, Colin (1991), The Indo-Aryan Languages, Cambridge: Cambridge University Press, p. 97, ISBN 978-0-521-29944-2.
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/konk1267
 
-Autres sources :  
+Cardona, G. and Jain, D. (eds.) 2003. Konkani - Description of the language, Historical perspectives. In Cardona, G. and Jain, D. (eds.), The Indo-Aryan Languages. => A chercher
+
+Almeida, Matthew. 1985. A description of Konkani. Ann Arbor: UMI. (Doctoral dissertation, University of Georgetown; xi+338pp.) => A chercher
+
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="LANGUE",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="konkani",10,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="LANGUE",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="konkani",10,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="LANGUE",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="konkani",10,trill_occ))
 ```
 
 ## korean
@@ -2247,7 +2439,7 @@ languages_data <- languages_data %>%
 "swissgerman"    "tamil"          "thai"           "turkish"        "ukrainian"      "vietnamese"     "wolof"          "xhosa"         
 "zhuang"         "zulu"
 
-##
+## 
 
 
 ##

@@ -3114,53 +3114,91 @@ languages_data <- languages_data %>%
 ## serbian
 
 ```{r}
-# languages_data <- languages_data %>%
-#     dplyr::mutate(glottocode = ifelse(Languages=="serbian","GLOTTOCODE",glottocode))
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="serbian","sout1528",glottocode))
+#We use Serbian-Croatian-Bosnian glottolog page
 ```
 
-Phoible :   
+Phoible : NA  
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Serbo-Croatian
+  - r 	р 	/r/ 	alveolar trill 	rolled (vibrating) r as in carramba
+
+https://en.wikipedia.org/wiki/Serbo-Croatian_phonology
+  - Trill 		r
+  - /r/ can be syllabic, short or long, and carry rising or falling tone, e.g. kȓv ('blood'), sȑce ('heart'), sŕna ('deer'), mȉlosr̄đe ('compassion'). It is typically realized by inserting a preceding or (more rarely) succeeding non-phonemic vocalic glide.[8 : Trubetskoi, Nikolai S (1969), Principles of phonology. (Grundzüge der Phonologie), University of California Press, p. 59, ISBN 9780520015357] 
+
+https://en.wikipedia.org/wiki/Talk:Serbo-Croatian_phonology#%22r%22_is_not_a_trill
+  - The "r" sound is a flap. There's no continuous vibration at least in most dialects. Please correct this. — Preceding unsigned comment added by Vealsh (talk • contribs) 22:07, 23 February 2015 (UTC)
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/sout1528
 
+Hammond, Lila. 2005. Serbian: an essential grammar. (Routledge essential grammars.) London: Routledge. xiv+321pp. [le cyrilique est pas mius au propre]
+  - Page 19 : Resonant consonants – formed with the air flowing uninterruptedly from the vocal cords to the mouth or nose in a continuous sound, similar to vowels:
+в/v, р/r, ј/j, л/l, 2/lj, н/n, њ/nj, м/m
+              Dental consonants: д/d, т/t, з/z, с/s, ц/c, н/n, р/r, л/l are formed with the tongue pressing against the teeth
 Autres sources :  
+  - Page 20 : Of the remaining consonants, seven are voiced and have no unvoiced partner:
+              √/j k/l 1/lj h/r v/m y/n ¥/nj
 
+Kordić, Snježana (2006) [1st pub. 1997]. Serbo-Croatian. Languages of the World/Materials; 148. Munich & Newcastle: Lincom Europa.
+  - Page 5 : Sonorant Liquid Vibrant r
+  
+  => contrast r/l 
+
+Landau, E., Lončarić, M., Horga, D., & Škarić, I. (1995). Croatian. Journal of the International Phonetic Association, 25(2), 83‑86. https://doi.org/10.1017/S002510030000520X
+  - Page 83 : Trill r
+
+(Note to myself for the narrative : no trills in the narrative; only taps or taps with approximation or fircation; when syllabic lot of friction on the segment; and for the wordlist : attempt of trill in czar in final position otherwise taps or apps)
+  
 ```{r}
-# languages_data <- languages_data %>%
-#     dplyr::mutate(r_l_distinction = ifelse(Languages=="serbian",10,r_l_distinction))
-# 
-# languages_data <- languages_data %>%
-#     dplyr::mutate(trill_real = ifelse(Languages=="serbian",10,trill_real))
-# 
-# languages_data <- languages_data %>%
-#     dplyr::mutate(trill_occ = ifelse(Languages=="serbian",10,trill_occ))
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="serbian",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="serbian",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="serbian",1,trill_occ))
 ```
 
 ## silesian
 
 ```{r}
-# languages_data <- languages_data %>%
-#     dplyr::mutate(glottocode = ifelse(Languages=="silesian","GLOTTOCODE",glottocode))
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="silesian","sile1253",glottocode))
 ```
 
-Phoible :   
+Phoible : NA
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Silesian_language
+https://en.wikipedia.org/wiki/Cieszyn_Silesian_dialect
+  - Trill 	plain 			r 					
+            fricative 			r̝
+
+  => contrast r/l
+  
+Hannan, Kevin (1996). Borders of Language and Identity in Teschen Silesia. New York: Peter Lang. ISBN 0-8204-3365-9. [pas trouvé]
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/sile1253
 
-Autres sources :  
+Autres sources : NA
+
+=> On se base sur le Polish pour la qualité de la rhotique
 
 ```{r}
-# languages_data <- languages_data %>%
-#     dplyr::mutate(r_l_distinction = ifelse(Languages=="silesian",10,r_l_distinction))
-# 
-# languages_data <- languages_data %>%
-#     dplyr::mutate(trill_real = ifelse(Languages=="silesian",10,trill_real))
-# 
-# languages_data <- languages_data %>%
-#     dplyr::mutate(trill_occ = ifelse(Languages=="silesian",10,trill_occ))
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="silesian",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="silesian",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="silesian",1,trill_occ))
 ```
 
 ## slovak
@@ -3220,27 +3258,43 @@ languages_data <- languages_data %>%
 ## sotho
 
 ```{r}
-# languages_data <- languages_data %>%
-#     dplyr::mutate(glottocode = ifelse(Languages=="sotho","GLOTTOCODE",glottocode))
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="sotho","sout2807",glottocode))
 ```
 
-Phoible :   
+Phoible : NA  
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Sotho_language
+  - Trill 							ʀ
+  - [d] is an allophone of /l/, occurring only before the close vowels (/i/ and /u/). Dialectical evidence shows that in the Sotho–Tswana languages /l/ was originally pronounced as a retroflex flap [ɽ] before the two close vowels.
 
+https://en.wikipedia.org/wiki/Sotho_phonology
+  - Trill 			r 				ʀ
+  - [d] is an allophone of /l/, occurring only before the close vowels (/i/ and /u/). Dialectical evidence shows that in the Sotho–Tswana languages /l/ was originally pronounced as a retroflex flap [ɽ] before the two close vowels.
+  - There is one trill consonant. Originally, this was an alveolar rolled lingual, but today most individuals pronounce it at the back of the tongue, usually at the uvular position. The uvular pronunciation is largely attributed to the influence of French missionaries at Morija in Lesotho. Just like the French version, the position of this consonant is somewhat unstable and often varies even in individuals, but it generally differs from the "r"'s of most other South African language communities. The most stereotypical French-like pronunciations are found in certain rural areas of Lesotho, as well as some areas of Soweto (where this has affected the pronunciation of Tsotsitaal). 
+    Trill
+    alveolar 	/r/ 	can also be a tap 	similar to the spanish perro' 	r 	[ke.a u ɾata] kea o rata ('I love you') 
+    uvular 	/ʀ/ 		soft Parisian-type r 	r 	[muˌʀiʀi] moriri ('hair') 
+
+  => contrast r/l
+  
 Glottologue :  
+https://glottolog.org/resource/languoid/id/sout2807
 
-Autres sources :  
+Autres sources : NA  
+
+-> je prends la décision sur la base de wikipédia
 
 ```{r}
-# languages_data <- languages_data %>%
-#     dplyr::mutate(r_l_distinction = ifelse(Languages=="sotho",10,r_l_distinction))
-# 
-# languages_data <- languages_data %>%
-#     dplyr::mutate(trill_real = ifelse(Languages=="sotho",10,trill_real))
-# 
-# languages_data <- languages_data %>%
-#     dplyr::mutate(trill_occ = ifelse(Languages=="sotho",10,trill_occ))
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="sotho",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="sotho",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="sotho",1,trill_occ))
 ```
 
 ## spanish
@@ -3327,52 +3381,86 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="swahili","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="swahili","swah1253",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/swah1253
+2 inventaires :
+  - SPA r allophones r ɾ  ; contrast r/l
+  - AA	r	allophone	r ; contrast r/l
+
+Polome, Edgar C. 1967. Swahili Language Handbook. Washington, D.C.: Center for Applied Linguistics.
+  - Page 38 : Sonants : Non-nasals r
+  - Page 39 : /r/ [r] alveolar trill; 
+  - Page 44 : In colloquial speech, Swahili /r/ is commonly reflected by a short apico-alveolar trill, which can be reduced to a single tap. It accordingly appears regularly as an apico-alveolar flap[ɾ] in the pronunciation of many speakers.
+              The phonemic status of /r/ versus /l/ is clearly evidenced by such minimal pairs as [...]
+              It should, however, be pointed out that:
+              (a) most of the lexical evidence for /r/ consists of loanwords, mainly from Arabic: these loanwords often belong to a rather technical vocabulary and may contrast with Bantu words with initial /l/,e.g., mrama 'rolling(of ship)' :mlama'kind of combretum used in snake-biter emedies';
+              Upon closer examination, it seems probable that [r] was originally merely a free variant of [l]. In standard Swahili orthography either the form withr or the form with l may indifferently have been retained, hence r, e.g., in rungu 'club' orchura 'frog', also pronounced with [l]. However, the prevalence of definit espellings in cases of semantic differentiation led to the development of contrastiv epairs like linga 'measure, adjust, harmonize': ringa 'strut'. Whereas the alternation [l] [r] was originally dialectal in Bantu,the impact of Arabic influence made the distinction between /l/ and In phonemic and led to a rather arbitrary redistribution of l and r in words of Bantu stock, hence /r/ in refu 'long', kuruka 'to jump'
+or zuri 'fine, nice'. Conversely, some Arabic loans showed alternate forms with [1]and [r],e.g., lasali 'cheat' [la'ya1] [ra'yl],risasi 'bullet' [ri'sa:81] [li'sa:sI].
+    - Page 45 : [...] a typically Arabized pronunciatio nof Arabic loans can be heard. Its characteristic features are:         
+                (6) a uvular articulation [R] of /r/, e.g., tahadhar(i) 'be careful' [tahadeR] ti [tahada:ri].
+                
+Hartell, Rhonda L. (ed.) 1993. Alphabets des langues africaines. UNESCO and Société Internationale de Linguistique.
+Chanard, C. 2006. Systèmes Alphabétiques Des Langues Africaines. Online: urlhttp://sumale.vjf.cnrs.fr/phono/.
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Swahili_language
+  - Rhotic 			r 	
+  - The /r/ phoneme is realised as either a short trill [r] or more commonly as a single tap [ɾ] by most speakers.
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/swah1253
 
-Autres sources :  
+Autres sources : NAA
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="swahili",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="swahili",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="swahili",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="swahili",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="swahili",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="swahili",1,trill_occ))
 ```
 
 ## swazi
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="swazi","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="swazi","swat1243",glottocode))
 ```
 
-Phoible :   
+Phoible : NA  
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Swazi_language
+  - Orthography
+    l - [l]
+    
+    => pas de rhotique
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/swat1243
 
-Autres sources :  
+Zungu, Elphas Mphunyuzwa. 2000. A comparative phonological and morphological analysis of the North and South Lala dialects of Tekela Nguni. (Doctoral dissertation, University of South Africa (UNISA); 181pp.)
+  - Page 60 : 4.3.2 Alveolars: [l ...]
+  - Page 61 :  PB */l/ does not change. Guthrie often uses the symbol /d/ in place of Meinhof's /l/
+  
+Autres sources : NA
+
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="swazi",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="swazi",0,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="swazi",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="swazi",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="swazi",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="swazi",0,trill_occ))
 ```
 
 ## swedish
@@ -3383,126 +3471,324 @@ languages_data <- languages_data %>%
 ```
 
 Phoible :   
+https://phoible.org/languages/swed1254  
+2 inventaires :  
+  - PH ɹ allophone ɹ  
+  - EA ɹ pas d'allophone  
 
-Wikipedia :   
+Engstrand, Olle. 1990. Illustrations of the IPA: Swedish. Journal of the International Phonetic Association 20. 41–42. Cambridge University Press.  
+  - Page 42 : Approximant ɹ  
+  - Page 43 : /ɹ/ can be approximant (e.g. star/cast), voiced fricative (e.g. the first r in vandrare), or trilled; the trilled variant is restricted to emphatic stress in many speakers and does not appear in the recording.  
+  
+Wikipedia :    
+https://en.wikipedia.org/wiki/Swedish_language  
+  - There are 18 consonant phonemes, two of which, /ɧ/ and /r/, vary considerably in pronunciation depending on the dialect and social status of the speaker. In many dialects, sequences of /r/ (pronounced alveolarly) with a dental consonant result in retroflex consonants; alveolarity of the pronunciation of /r/ is a precondition for this retroflexion. /r/ has a guttural or "French R" pronunciation in the South Swedish dialects; consequently, these dialects lack retroflex consonants.[50]  
+  [50] Garlén, Claes (1988), Svenskans fonologi (in Swedish), Lund: Studentlitteratur, ISBN 978-91-44-28151-3, OCLC 67420810  
+  - Trill 		r  
 
-Glottologue :  
+https://en.wikipedia.org/wiki/Swedish_phonology  
+  - Rhotic 		r  
+  - /r/ has distinct variations in Standard Swedish. For most speakers, the realization as an alveolar trill occurs only in contexts where emphatic stress is used.[citation needed] In Central Swedish, it is often pronounced as a fricative (transcribed as [ʐ])[50] or approximant (transcribed as [ɹ]),[7] which is especially frequent in weakly articulated positions such as word-finally[29] and somewhat less frequent in stressed syllable onsets, in particular after other consonants.[50] It may also be an apico-alveolar tap.[29] One of the most distinct features of the southern varieties is the uvular realization of /r/, which may be a trill [ʀ],[51] a fricative [ʁ] or an approximant [ʁ̞]. In Finland, /r/ is usually an apical trill [r], and may be an approximant [ɹ] postvocalically.[52]   
+  [29] Andersson, Erik (2002), "Swedish", in König, Ekkehard; van der Auwera, Johan (eds.), The Germanic Languages, Routledge language family descriptions, Routledge, pp. 271–312, ISBN 0-415-28079-6  
+  [50] Elert, Claes-Christian (2000), Allmän och svensk fonetik (in Swedish) (8th ed.), Stockholm: Norstedts, ISBN 91-1-300939-7  
+  [51] Ladefoged, Peter; Maddieson, Ian (1996). The Sounds of the World's Languages. Oxford: Blackwell. ISBN 978-0-631-19815-4.  
+  [52] Riad, Tomas (2014), The Phonology of Swedish, Oxford University Press, ISBN 978-0-19-954357-1  
+  
+Glottologue :    
+https://glottolog.org/resource/languoid/id/swed1254  
 
-Autres sources :  
+Autres sources :   
+
+https://soundcomparisons.com/#/en/Germaqnic/languagesXwords/Lgs_Sln/Wds_Sln => avec plein de trills pour le Swedish  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="swedish",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="swedish",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="swedish",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="swedish",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="swedish",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="swedish",1,trill_occ))
 ```
 
 ## swissgerman
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="swissgerman","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="swissgerman","swis1247",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/swis1247
+2 inventaires :
+  - UZ	r	allophones	r ɾ ʀ ʁ ʁ̥ ʁ̞ ; contrast r/l
+  - EA 	ʀ pas d'allophones ; contrast r/l
 
+Fleischer, Jürg and Schmid, Stephan. 2006. Illustrations of the IPA: Zurich German. Journal of the International Phonetic Association 36. 243–253. Cambridge University Press.
+  - Page 244 : Trill r
+               [...] there are several allophones of the phoneme /r/ – such as the alveolar tap [ɾ] and, more frequently, the uvular variants [ʀ], [ʁ], [ʁ̥ ]or[ʁ̞].
+  - Page 249 : In some cases, a linking /r/ is introduced instead of /n/.
+  
 Wikipedia :   
-
+  For standard german :
+  https://en.wikipedia.org/wiki/Standard_German_phonology
+  - Liquid r 	
+  - /r/ can be uvular, alveolar or even dental, a consonant or a semivowel, see below.
+  - /r/ has a number of possible realizations:
+    Voiced apical coronal trill [r̺],[58][59][60] either alveolar (articulated with the tip of the tongue against the alveolar ridge),[58][59][60] or dental (articulated with the tip of the tongue against the back of the upper front teeth).[58]
+    Distribution: Common in the south (Bavaria and many parts of Switzerland and Austria), but it is also found in some speakers in central and northern Germany, especially the elderly. It is also one of possible realizations of /r/ in the Standard Austrian accent, but a more common alveolar realization is an approximant [ɹ]. Even more common are uvular realizations, fricatives [ʁ ~ χ] and a trill [ʀ].[61]
+    Voiced uvular trill [ʀ],[58][59][62][63] which can be realized as voiceless [ʀ̥] after voiceless consonants (as in treten).[59] According to Lodge (2009) it is often a flap [ʀ̆] intervocalically (as in Ehre).[64]
+    Distribution: Occurs in some conservative varieties - most speakers with a uvular /r/ realize it as a fricative or an approximant.[65] It is also one of possible realizations of /r/ in the Standard Austrian accent, but it is less common than a fricative [ʁ ~ χ].[61]
+    Dorsal continuant, about the quality of which there is not a complete agreement:
+    Krech et al. (2009) describe two fricative variants, namely post-palatal [ɣ˖] and velar [ɣ]. The post-palatal variant appears before and after front vowels, while the velar variant is used in all other positions.[66]
+    Morciniec & Prędota (2005) describe it as voiced post-velar fricative [ʁ̟].[67]
+    Mangold (2005) and Kohler (1999) describe it as voiced uvular fricative [ʁ];[58][68]
+    Mangold (2005) states that "with educated professional radio and TV announcers, as with professional actors on the stage and in film, the [voiced uvular] fricative [realization of] /r/ clearly predominates."[58]
+    In the Standard Austrian accent, the uvular fricative is also the most common realization, although its voicing is variable (that is, it can be either voiced [ʁ] or voiceless [χ]).[61]
+    Kohler (1999) writes that "the place of articulation of the consonant varies from uvular in e.g. rot ('red') to velar in e.g. treten ('kick'), depending on back or front vowel contexts." He also notes that [ʁ] is devoiced after voiceless plosives and fricatives, especially those within the same word, giving the word treten as an example. According to this author, [ʁ] can be reduced to an approximant in an intervocalic position.[69]
+    Ladefoged & Maddieson (1996) describe it as a uvular fricative [ʁ] or approximant [ʁ̞]. The latter is less likely to occur word-initially.[70]
+    Distribution: Almost all areas apart from Bavaria and parts of Switzerland.
+    Near-open central unrounded vowel [ɐ] is a post-vocalic allophone of (mostly dorsal) varieties of /r/. The non-syllabic variant of it is not always near-open or central; it is similar to either [ɑ] or [ə], depending on the environment.[67]
+    distribution: Widespread, but less common in Switzerland.
+    
+    https://en.wikipedia.org/wiki/Swiss_German
+    - Bernese German consonant system 
+      Rhotic 	 (alveolar) 	r
+      The phoneme /r/ is pronounced as an alveolar trill [r] in many dialects, but some dialects, especially in the Northeast or in the Basel region, have a uvular trill [ʀ], and other allophones resulting din fricatives and an approximant as [ʁ ʁ̥ ʁ̞] like in many German varieties of Germany. 
+    
+    => On a un contrast r/l
+    
+  https://en.wikipedia.org/wiki/Walser_German
+    => Nothing about the rhotic
+    
 Glottologue :  
+https://glottolog.org/resource/languoid/id/swis1247
 
 Autres sources :  
 
+  Ulbrich, C., & Ulbrich, H. (2007). The realisation of/r/in Swiss German and Austrian German. ICPhS XVI, 1761-1764.
+    - Beaucoup de productions alvéolaires et trillées pour Swiss German (contrairement à Austrian German)
+    
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="swissgerman",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="swissgerman",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="swissgerman",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="swissgerman",1,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="swissgerman",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="swissgerman",1,trill_occ))
 ```
 
 ## tamil
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="tamil","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="tamil","tami1289",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/tami1289  
+3 inventaires  
+  - PH ɻ allophones ɻ; ɾ allophones ɾ; 	ʈ	allophones ʈ ɖ ɽ     ; contrast 	ɾ/l
+  - RA ɾ pas d'allophones; ɽ pas d'allophones   ; contrast ɾ/l
+  - EA r̪ pas d'allophones;	r pas d'allophones   ; contrast r/l̪
 
+Keane, Elinor. 2004. Illustrations of the IPA: Tamil. Journal of the International Phonetic Association 34. 111–116. Cambridge University Press.  
+  - Page 111 : Tap ɾ  
+               Approximant ɻ  
+  - Page 113 : The orthography distinguishes between two, ர and ற: each is subject to certain distributional restrictions, but in intervocalic position they may mark a lexical contrast. Opinion is divided over whether this corresponds to a phonetic distinction in colloquial Tamil: Balasubramanian (1982a) argues that always corresponds phonetically to a tap, whilst [ɾ] and [r] are both possible realizations of ர, their distribution being determined in part by environment. Narayanan, Byrd and Kaun (1999) report a slight difference in place, rather than manner, of articulation, with ர pre-alveolar and  ற postalveolar. In most colloquial varieties, however, it seems that a merger is in progress, if not complete.  
+  
+Ramaswami, N. 1997. Diglossia: Formal and Informal Tamil. Mysore: Central Institute of Indian Languages.  
+  - Page 33 : The Southern dialect spoken in Kannyakumari district maintains the difference between the alveolar trill /r̠/ and the alveolar flap /r/ wherease the other dialect have lost it. All the other dialects have only one /r/; the alveolar flap. The Southern dialect spoken in Tirunelveli district has /t/ as the present tense marker as in collu-t-a:n 'he says' which is not found in any other dialect. The Southern and Western dialects have lost contrast between /ɻ/, the retroflex non-lateral continuant and /l./. The Northern dialect also has lost /ɻ/; it now merged with /y/ and /s./. The Eastern dialect retains /ɻ/.  
+  - Page 64 : Formal tamil:  
+              Non-lateral : r ɻ (=> je n'ai pas su interpréter le symbole dans l'ouvrage)  
+  - Page 70 : Becoming Continuant  
+              /t̠/ becomes /r/ in the intervocalic position.  
+  - Page 71 : Though /t̠/ is never realized as a stop in the surface phonetic level, it must be treated as a stop in the underlyong representation for the following reasons. It behaves like a stop in the distribution in that like all stops, it does not occur in the word final position. Traditional grammars group it with stops. It behaves like stops in certain morphophonemic alternations like doubling beforecase markers (Schiffman, 1975).  
+              [examples]  
+              But /r/ does not double.  
+              [examples]   
+              Therefore some /r/'s must be treated as /t̠/ at the phonemic level.  
+  - Page 76 : The sonorants /ɻ/, /r/ and /y/ are not deleted before consonant clusters.   
+  - Page 93 : Informal tamil:   
+              Non-lateral : r ɻ (=> je n'ai pas su interpréter le symbole dans l'ouvrage)  
+              
+Annamalai, E. and Steever, Sanford B. 1998. Modern Tamil. In Steever, Sanford B. (ed.), The Dravidian Languages, 100–128. London &New York: Routledge.  
+  - Page 102 : Tap r  
+               Flap [r̠]  
+               All consonants except r and z can occur doubled;  
+                
 Wikipedia :   
-
+https://en.wikipedia.org/wiki/Tamil_language  
+https://en.wikipedia.org/wiki/Tamil_phonology  
+  - The proto Dravidian alveolar stop * ṯ developed into an alveolar trill /r/ in many of the Dravidian languages while * ṯṯ and *ṉṯ remained. The stop sound is retained in Kota and Toda (Subrahmanyam 1983) [Krishnamurti (2003), p. 146.].  
+  
+  - Tap         ɾ ர்  
+    Trill       r ற்  
+    Approximant ɻ ழ்  
+  
+  - In SpT the /tːr/ can either be pronounced as /tːr/ or merge with /t̪t̪/.  
+  
+  - Tamil stop allophones  
+    Retroflex  ʈː    ɖ~ɽ  ɖ   
+    Alveolar   tːr 	 r 	  (d)r   
+  
+  - The t̠ became a trill r̠ eg. PD. cāṯu, Ta. ār̠u "six".  
+  
 Glottologue :  
+https://glottolog.org/resource/languoid/id/tami1289  
 
-Autres sources :  
+Autres sources : NA
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="tamil",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="tamil",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="tamil",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="tamil",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="tamil",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="tamil",1,trill_occ))
 ```
 
 ## thai
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="thai","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="thai","thai1261",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/thai1261  
+3 inventaires  
+  - SPA ɾ allophones ɾ ɾ̃ ɾ ɾ̥ ;	l allophones l r l̥ l ɻ l̃    ; contrast 	ɾ/l
+  - UPSID ɾ pas d'allophones	  ; contrast ɾ/l̪|l
+  - UZ 	l	allophones	l r ∅ ; ɾ	allophones ɾ r l ∅    ;  contrast 	ɾ/l
+
+Kruatrachue, Foongfuang. 1960. Thai and English: A Comparative Study of Phonology for Pedagogical Applications. Bloomington: Indiana University Press.  
+Noss, Richard Brainard. 1964. Thai Reference Grammar. Washington, D.C.: Foreign Service Institute, Department of State, United States Government.  
+  - Page 8 : Oral continuants /r/  
+  - Page 14 : /r/ Alveolar oral continuant  
+              Normally apico-alveolar flap, with grooving of tongue, lenis.  
+              As initial - fully voiced, little or no friction: /'raaj/ 'case'  
+              Second in cluster: - same, overlapping first member of cluster, voiced: /'traa/ 'stamp' , partrly voiceless, more frication: /'phree/ 'silk cloth'  
+              Variant (both positions): voiced retroflex spirant with low friction  
+
+Noss, Richard Brainard. 1954. An Outline of Siamese Grammar. (Doctoral dissertation, Yale University, New Haven).  
+https://www.proquest.com/openview/21dc4c7db7ab2b65de8679f56d8d72be/1?cbl=18750&diss=y&pq-origsite=gscholar&parentSessionId=cWwl24GD8CRfWGZ8tDDKf1t3FSLHAb03mBqF2xvBu%2Bo%3D  
+  - Page i : THe treatment of /r/ and /l/, alone or in clusters, varies so greatly among speakers (those who make the distinction at all) that the choice between these two phonemes in a given lexical unit is simply made in accordance with the official spelling wherever possible. The general statement can be made, however that the Central Plains dialect contains far fewer instances of /r/ than the standard language.  
+  - Pas accès à la suite...  
+  
+Abramson, Arthur S. 1962. The Vowels and Tones of Standard Thai: Acoustical Measurements and Experiments. (International Journal of American Linguistics, 28.) Bloomington: Indiana University. -> Pas trouvé  
+
+Haas, Mary Rosamond. 1956. The Thai System of Writing. (American Council of Learned Societies Program in Oriental Languages, 5.) American Council of Learned Societies.  
+  - Page ix : /r-/ Voiced retroflex or weak trill. Compare Eng. r in red.  
+  - Page xi : Vd.Trill (or Retroflex) r-  
+
+Haas, Mary R. 1964. Thai-English Student's Dictionary. Stanford: Stanford University Press.  
+  - Page xi : Sonorants: Vd. Trill or Retroflex r-   
+
+Tingsabadh, M. R. Kalaya and Abramson, Arthur S. 1993. Illustrations of the IPA: Thai. Journal of the International Phonetic Association 23. 24–28. Cambridge University Press.  
+  - Page 24 : Trill r  
+  - Page 26 : The consonant /r/ is realized most frequently as [] but also as [r]. Perceptual experiemtns (Abramson 1962: 6-9) have shown that the distinction between /r/ and /l/ is not very robust; nevertheless, the normative attitude among speakers of Standard Thai is that they are separate phonemes, as given in Thai script. This distinction is rather well maintained by some cultivated speakers, especially in formal speech; however, many show much vacillation, with a tendency to favor the lateral phone [l] in the position of a single initial consonant. As the second element of initial consonant clusters, both N and hi tend to be deleted altogether.  
+  
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Thai_language  
+  - Trill [r] ร  
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/thai1261  
 
-Autres sources :  
+James Higbie and Snea Thinsan. 2002. Thai reference grammar: The structure of spoken Thai. Bangkok: Orchid Press. 468pp.  
+  - Page xvi : r slightly rolled, pronounced "l" in colloquial Thai  
+  
+Iwasaki, Shoichi and Horie, Inkapiromu Puriya. 2005. A reference grammar of Thai. New York: Cambridge Univ. Press. xxvi+392pp.  
+  - Page 4 : Liquid /r/  
+             The lateral liquid /l/ and the trill or tap /r/ are distinguished in the orthography and prononced differently in very carefully articulated speech. However in most speech /r/ is pronounced /l/.  
+
+Autres sources : NA
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="thai",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="thai",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="thai",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="thai",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="thai",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="thai",1,trill_occ))
 ```
 
 ## turkish
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="turkish","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="turkish","nucl1301",glottocode))
 ```
 
-Phoible :   
+Phoible :  
+https://phoible.org/languages/nucl1301  
+4 inventaires  
+  - SPA ɾ	allophones	ɾ ʂ͇ ʐ͇  
+  - UPSID r pas d'allophones  
+  - UZ ɾ allophones	ɾ ɾ̥  
+  - EA ɾ̻  
+
+Jipa Illustration : Tap - Zimmer and Orgun 1992  
+
+Lees, Robert B. 1961. The Phonology of Modern Standard Turkish. (Indiana University Publications, Uralic and Altaic Series, 6.) Bloomington: Indiana University Press.  
+Underhill, Robert. 1976. Turkish Grammar. Cambridge, Mass: MIT Press.  
+Swift, Lloyd B. 1963. A Reference Grammar of Modern Turkish. Bloomington: Indiana University Press.  
+Zimmer, Karl and Orgun, Orhan. 1992. Illustrations of the IPA: Turkish. Journal of the International Phonetic Association 22. 43–45. Cambridge University Press  
+Göksel, Aslı and Kerslake, Celia. 2005. Turkish: a comprehensive grammar. London: Routledge Curzon. xl+580pp.  
+  - Page xxii : R, r  produced with the tip of the tongue touching the alveolar ridge  
+  - Page 4 : /r/  
+  - Page 9 : /r/ [r] rahat ‘comfort’, renk ‘colour’, iri ‘big’, artık ‘waste’, oruç ‘fasting’  
+                 [ɾ̥] tür ‘type’, ger- ‘stretch’, iksir ‘elixir’, kar ‘snow’, mor ‘violet’  
+             [r] is a voiced alveolar tap produced with the tip of the tongue touching the alveolar ridge. It occurs in initial and medial positions. Its devoiced counterpart [ɾ̥] occurs in word-final position. /r/ is sometimes deleted in colloquial speech, in particular in the imperfective suffix -Iyor (see 8.2.3.3 for details) and in bir ‘a’, ‘one’. In the case of bir, this usually occurs when it is not stressed (bir ev [bi év] ‘a house’) but also sometimes
+when it is stressed (bir daha [bída:] ‘again’, sadece bir ev ‘only one hourse')  
+  - Page 14 : (ii) A single consonant alternating with its doubled counterpart, e.g. sır ‘secret’ but sırrım ‘my secret’ (2.2)  
+  - Page 17 : 2.2 ALTERNATIONS OF SINGLE CONSONANTS WITH DOUBLE CONSONANTS  
+              In a small number of nouns ending in ‘b’, ‘t’, ‘d’, ‘k’, ‘l’, ‘s’, ‘z’, ‘m’ and ‘n’ the final consonant is duplicated when a vowel is attached to it. These are words borrowed from Arabic, which, in their original roots, have geminates, i.e. doubled consonants. In Turkish such words appear with a single consonant in their bare form or when followed by a suffix beginning with a consonant.  
+              sır ‘secret’  sırlar ‘secrets’  sırrımız  ‘our secret’  
+              Some of these words keep their original double consonants when they combine with the auxiliaries et- ‘do’ and ol- ‘be’ (13.3.2): hallet- ‘solve’, hallol- ‘be solved’, hisset- ‘feel’. Others appear in nominal-verb compounds with a single consonant: hak et- ‘deserve’. It should be noted that since bare stems do not give any indication that they end in geminates, such words have to be learned individually. Nouns belonging to this class are indicated in dictionary entries in the form sır (-rrı), hat (-ttı), zıt (-ddı). The form of any nominal-verb compounds derived from these words also has to be checked in a dictionary.  
 
 Wikipedia :   
-
+https://en.wikipedia.org/wiki/Turkish_language  
+  - Tap ɾ  
+https://en.wikipedia.org/wiki/Turkish_phonology  
+  - Flap ɾ  
+  - /n, t, d, s, z/ are dental [n̪, t̪, d̪, s̪, z̪], /ɫ/ is velarized dental [ɫ̪], /ɾ/ is alveolar [ɾ], whereas /l/ is palatalized post-alveolar [l̠ʲ].[1][8]  
+  - /ɾ/ is frequently devoiced word-finally and before a voiceless consonant.[3] According to one source,[9] it is only realized as a modal tap   intervocalically. Word-initially, a location /ɾ/ is restricted from occurring in native words, the constriction at the alveolar ridge narrows sufficiently to create frication but without making full contact, [ɾ̞]; the same happens in word-final position: [ɾ̞̊][9] (which can be mistaken for /ʃ/ or /ʂ/ by non-Turkish speakers).  
+  - No word-initial /ɰ/ or /ɾ/ (in native words)  
+  - In a complex coda: The first consonant is either a voiceless fricative, /ɾ/ or /l/  
+  
 Glottologue :  
+https://glottolog.org/resource/languoid/id/nucl1301  
 
-Autres sources :  
+Autres sources:   
+Gerjan van Schaaik. 2020. The Oxford Turkish Grammar. Oxford: Oxford University Press. 784pp.  
+  - Page 9 :  r   
+  - Page 10 : r radyo  radio  [r]  as in: radio  
+  - Page 11 : Two letters, r and ğ, deserve somewhat more attention. The letter r stands for a ‘rolling r’ (as in Scottish or Spanish) at the beginning of a syllable, but at the end of a word it is sounded with an extra rustle in the form of an h-like sound; that is, the final r receives strong aspiration. In this way, there is a clear audible difference between the r in the first two words and the r in the second pair of words.  
+            resim → [ re–sim ] photo  
+            para → [ pha–ra ] money  
+            var → [ var^h ] there is  
+            dur → [ dur^h ] stop  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="turkish",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="turkish",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="turkish",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="turkish",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="turkish",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="turkish",1,trill_occ))
+#Je pense que le trill doit être posssible -> à vérifier
 ```
 
 ## ukrainian

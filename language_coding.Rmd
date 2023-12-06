@@ -3787,76 +3787,173 @@ languages_data <- languages_data %>%
     dplyr::mutate(trill_real = ifelse(Languages=="turkish",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="turkish",1,trill_occ))
-#Je pense que le trill doit être posssible -> à vérifier
+    dplyr::mutate(trill_occ = ifelse(Languages=="turkish",0,trill_occ))
+#Je pense que le trill doit être posssible -> à vérifier ; mais je ne trouve pas donc je laisse en 0 pour le moment
 ```
 
 ## ukrainian
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="ukrainian","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="ukrainian","ukra1253",glottocode))
 ```
 
-Phoible :   
+Phoible :     
+https://phoible.org/languages/ukra1253    
+2 inventaires :    
+  - PH r̪ allophones	r̪ r̪ʲ   ; contrast r̪/	l̪
+  - EA r pas d'allophone, rʲ pas d'allophone   ; contrast ɫ; r
 
+Pugh, Stefan M. and Press, Ian. 1999. Ukrainian: A Comprehensive Grammar. Routledge.  
+  - Page 19 : P p [cursive Cyrillic] ep [r] r as in Spanish caro  
+  - Page 23 : Vibrant Dental r rʲ  
+  - Page 28 : hard/soft pairs : [r] - [rʲ]  
+  - Page 33 : A much broader range of consonantal alternations is as follows:  
+              [r] - [rʲ]  
+  - Page 40 It should be borne in mind that the following consonants never lengthen, but remain combined with [j]: [b], [p], [B], [m], [f], [r], namely the labials and [r]  
+
+Buk, Solomija and Mačutek, Ján and Rovenchak, Andrij. 2008. Some properties of the Ukrainian writing system. (Online:   urlhttp://arxiv.org/ftp/arxiv/papers/0802/0802.4198.pdf).  
+  - Page 3 : The first group consists of 22 phonemes: /r/  
+             The group of palatalized consonants consists of 10 phonemes: /rʲ/  
+             There is no complete agreement about the nature of the palatalization of /rʲ/, sometimes it is considered as a semi-palatalized consonant (Ponomariv 2001: 16, 20). As there is no special IPA mark for semi-palatalization, we will use a superscript dotless ‘j’, e. g., /r^J /.  
+  - Page 4 : Ukrainian has the following sonorants: /ʋ, l, lʲ, m, nʲ, r, r^J , j/.  
+  - Page 5 : It is interesting that labials /b, ʋ, m, p, f/, as well as /r/, are not geminated in such situations but appear as a ‘consonant + /j/’ combination  
+  - Page 8 : /r/ <p> pom  
+             /r^J/ <p> followed by <IOP>: ряд  
+                  < рь > only before < о >: трьох  
+   
 Wikipedia :   
+https://en.wikipedia.org/wiki/Ukrainian_phonology  
+  - Trill 		r 	rʲ  
+  - After voiceless consonants, word-final /m/, /l/, /r/ are voiceless [m̥], [l̥], [r̥].[8] For /r/, this only happens after /t/. [9]  
+  - /r/ is often realized as a single tap [ɾ].  
+  - /t, d, dʲ, n, nʲ, s, sʲ,.../ are dental [t̪, d̪, d̪ʲ , n̪, n̪ʲ, s̪, s̪ʲ, z̪,...],[13] while /tʲ, l, lʲ, r, rʲ/ are alveolar [tʲ , l, lʲ, r, rʲ].[14]
+  - The group of palatalized consonants consists of 10 phonemes: /j, dʲ, zʲ, lʲ, nʲ, rʲ, sʲ, tʲ, t͡sʲ, d͡zʲ/. All except /j/ have a soft and a hard variant. There is no agreement about the nature of the palatalization of /rʲ/; sometimes, it is considered as a semi-palatalized[clarification needed] consonant.[15]  
+  - Unpalatalized dental consonants /n, t, d, t͡s, d͡z, s, z, r, l/ become palatalized if they are followed by other palatalized dental consonants /nʲ, tʲ, dʲ, t͡sʲ, d͡zʲ, sʲ, zʲ, rʲ, lʲ/.  
+  - There are some typical deviations which may appear in spoken language (often under the influence of Russian).[20] They are usually considered phonetic errors by pedagogists.[21] : [rʲ] for /r/  
+  
+Danyenko, Andrii; Vakulenko, Serhii (1995), Ukrainian, Lincom Europa, ISBN 978-3-929075-08-3  
+  - Page 8 : p r /r/ [r] "hard alveolar voiced trill: rasa ['rasa] 'race', dar [dar] 'gift', zirka ['zi'rka] 'star'  
+                     [r [chapeau sous le r]] voiceless variant of /r/ in word-final position after /t/: centr [centr[chapeau sous le r]] 'centre'  
+                 /r'/ "soft" alveolar trill: riasa ['r'asa] 'cassock', ric [r'ic] 'thing'  
 
-Glottologue :  
+Glottologue :    
+https://glottolog.org/resource/languoid/id/ukra1253    
 
-Autres sources :  
+Autres sources :   
+
+Pompino-Marschall, B., Steriopolo, E., & Żygis, M. (2017). Ukrainian. Journal of the International Phonetic Association, 47(3), 349-357. doi:10.1017/S0025100316000372  
+  - Page 350 : Trill Plain       r  
+                     Palatalized rʲ  
+  - Page 351 :r rad рад rad ‘councillor (GEN. PL )’  
+               rʲ rʲad ряд rjad ‘row’                  
+  - Page 352 : Furthermore, the palatalized counterpart of the trill [r] is frequently realized as [ɾʲ], which is most probably due to the fact that trilling and palatalization are far more complex and effortful than the production of a palatalized flap (see ˙Zygis 2005).  
+  
+  Notes à partir des audios : no trill in the narrative… et pour la liste de mots : no trills_ taps and approximants  
+
+https://soundcomparisons.com/#/en/Slavic/language/BSv_SvE_Ukr_NW_Vol_Riv_Ostroh_Acc -> Pas de trill sauf pour вірне qui sur Praat est plus un tap suivi d'une nasal, les initiales sont des taps  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="ukrainian",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="ukrainian",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="ukrainian",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="ukrainian",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="ukrainian",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="ukrainian",1,trill_occ))
 ```
 
 ## vietnamese
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="vietnamese","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="vietnamese","viet1252",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/viet1252  
+4 inventaires   
+  - SPA pas de segment r    ; on a un l
+  - UPSID pas de segment r    ; on a un l̪
+  - UZ pas de segment r   ; on a un l̪
+  - EA pas de segment r    ; on a un l
+
+Nguyen, Phan Canh. 1974. A Contribution to the Phonological Interpretation of the Diphthongs in Modern Vietnamese. Phonetica Pregensia 4. 133–142. -> Pas cherché  
+
+Thompson, Laurence C. 1965. A Vietnamese Grammar. Seattle: University of Washington Press.  
+   - Page 7 du document : r^c initial only [z] zebra   ordinary: lenis  
+                                                       laminodental  
+                                           [r] -       careful: flap or trill   
+                                                       (distinguished from d, gi; cf. 3.21)  
+   
+Kirby, James P. 2011. Illustrations of the IPA: Vietnamese (Hanoi Vietnamese). Journal of the International Phonetic Association 41. 381–392. Cambridge University Press.  
+  - Page 382 : In syllable-initial position /p j r/ occur in a small number of foreign (mainly French) loans, e.g. [pan] < panne ‘breakdown’, [ɣara] < garage,[bija] < billiard. For many speakers, however, /p/ is realized as [b/ɓ] and /r/ as [z].  
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Vietnamese_language  
+  - Rhotic r [r]  
+  - r ([z] in the Northern dialect, [r] in the Central and Southern dialects)  
+  - There is also a merger of r and g in certain rural varieties in the South  
+  
+https://en.wikipedia.org/wiki/Vietnamese_phonology  
+  - In southern speech, the phoneme /ɺ/, generally represented in Vietnamese linguistics by the letter ⟨r⟩, has a number of variant pronunciations that depend on the speaker. More than one pronunciation may even be found within a single speaker. It may occur as a retroflex fricative [ʐ], an alveolar lateral flap [ɺ] (unrounded), a flap [ɾ] or a trill [r], especially in loanwords. Some rural speakers from Mekong Delta pronounced /ɺ/ as [ɣ] or [j], but this is not considered formal.  
+  - 6/12/2023 : In southern speech, the phoneme /r/, generally represented in Vietnamese linguistics by the letter ⟨r⟩, has a number of variant pronunciations. It may occur as a retroflex fricative [ʐ], an alveolar fricative [z], a velar fricative [ɣ], a palatal approximant [j], or a trill [r].[4 Phạm, Ben; McLeod, Sharynne (2016-03-03). "Consonants, vowels and tones across Vietnamese dialects". International Journal of Speech-Language Pathology. 18 (2): 122–134. doi:10.3109/17549507.2015.1101162. ISSN 1754-9507. PMID 27172848. S2CID 25000895.]
 
+Consonants, vowels and tones across Vietnamese dialects
+  - Page 122 : For example, the letter ‘‘r’’ is pronounced in the Standard and central dialects as the retroflex /œ/, northern dialect as the voiced alveolar fricative /z/ or the trilled /r/ and in the southern dialect as the voiced velar fricative /å/.
+  - aage 124 : The trilled consonant /r/ is included as a Vietnamese initial consonant by one author (Hoang, 2004), but it is considered to be a variant identified in some local areas and in foreign loan words by others (ÐN & e, 2005; Ðoa`n, 2003). Therefore, in the current paper, two phonemes /?,p/ will be included as initial consonants in Standard Vietnamese and the phoneme /r/ will be excluded.
+  - Page 127 : The trilled phoneme /r/ is considered to be a local variant identified in coastal areas (ÐN &Lˆ e, 2005) or in foreign loan words (Kirby, 2011).
+  - Page 128 : According to Hoang (2004), the trilled phoneme /r/ occurs in the southern dialect, but it may also be substituted by /œ,z,j, å/ (e.g. rua (turtle) may be pronounced as /ruo2/, /œuo2/, /juo2/or/åuo2/).
+  - Page 130 : Another difficulty relates to inconsistency in using Vietnamese phonetic symbols within an author’s writing and between authors. For example, the grapheme ‘‘th’’ has been transcribed as following phoneme symbols: /t’, t„},tk/. The grapheme ‘‘tr’’ has been transcribed as following phoneme symbols: /ô, Ô, T, f, Ô@/; and grapheme ‘‘r’’ has been transcribed as phoneme symbols: /Ñ, —,r,œ/. Therefore, it is ambiguous as to whether these should be count
+  
 Glottologue :  
+https://glottolog.org/resource/languoid/id/viet1252  
 
-Autres sources :  
+Autres sources : NA  
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="vietnamese",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="vietnamese",0,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="vietnamese",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="vietnamese",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="vietnamese",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="vietnamese",1,trill_occ))
 ```
 
 ## wolof
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="wolof","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="wolof","nucl1347",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/languages/nucl1347
+3 inventaires :
+  - SPA ɾ allophones 	ɾ z͇̥ ; contrast 	ɾ/l
+  - UPSID ɾ̪|ɾ pas d'allophones ; contrast ɾ̪|ɾ/l
+  - AA 	ɾ allophone ɾ ; contrast 	ɾ/l
+
+Manessy, Gabriel and Sauvageot, Serge. 1963. Notes Preliminaires to Wolof Et Serer: Etudes De Phonetique Et De Grammaire Descriptive. Dakar: Universite de Dakar.
+Ward, Ida C. 1963. A Short Phonetic Study of Wolof (Jolof) as Spoken in the Gambia and in Senegal. In Manessy, Gabriel and Sauvageot, Serge (eds.), Wolof et sér`er; études de phonétique et de grammaire descriptive, 57–63. Dakar: Université de Dakar, Faculté des lettres et sciences humaines.
+Sauvageot, Serge. 1965. Description synchronique d'un dialecte wolof: le parler du dyolof. (Mémoires de l'Institut Fondamental d'Afrique Noire, 73.) Dakar: Institut Franccais de l'Afrique Noire.
+Hartell, Rhonda L. (ed.) 1993. Alphabets des langues africaines. UNESCO and Société Internationale de Linguistique.
+Chanard, C. 2006. Systèmes Alphabétiques Des Langues Africaines. Online: urlhttp://sumale.vjf.cnrs.fr/phono/.
 
 Wikipedia :   
-
+https://en.wikipedia.org/wiki/Wolof_language
+  - Trill 		r ⟨r⟩ 	
+  - All simple nasals, oral stops apart from q and glottal, and the sonorants l r y w may be geminated (doubled), though geminate r only occurs in ideophones.[20][21] (Geminate consonants are written double.)
+  [20] Pape Amadou Gaye, Practical Cours in / Cours Practique en Wolof: An Audio–Aural Approach.
+  [21] Some are restricted or rare, and sources disagree about this. Torrence (2013) claims that all consonants but prenasalized stops may be geminate, while Diouf (2009) does not list the fricatives, q, or r y w, and does not recognize glottal stop in the inventor. The differences may be dialectical or because some sounds are rare.
+  
 Glottologue :  
+https://glottolog.org/resource/languoid/id/nucl1347
 
-Autres sources :  
+Autres sources : NA
 
 ```{r}
 languages_data <- languages_data %>%
@@ -3873,14 +3970,20 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="xhosa","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="xhosa","xhos1239",glottocode))
 ```
 
 Phoible :   
+https://phoible.org/inventories/view/1319
+  - pas de r ; on a un l
+
+Gowlett, Derek. 2003. Zone S. In Nurse, Derek and Philippson, Gérard (eds.), The Bantu Languages, 609–638. Routledge.
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Xhosa_language
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/xhos1239
 
 Autres sources :  
 
@@ -3905,8 +4008,10 @@ languages_data <- languages_data %>%
 Phoible :   
 
 Wikipedia :   
+https://en.wikipedia.org/wiki/Zhuang_languages
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/daic1237
 
 Autres sources :  
 
@@ -3925,14 +4030,20 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="zulu","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="zulu","zulu1248",glottocode))
 ```
 
 Phoible :   
-
+https://phoible.org/languages/zulu1248
+2 inventaires :
+  - SPA
+  - UPSID
+  
 Wikipedia :   
+https://en.wikipedia.org/wiki/Zulu_language
 
 Glottologue :  
+https://glottolog.org/resource/languoid/id/zulu1248
 
 Autres sources :  
 

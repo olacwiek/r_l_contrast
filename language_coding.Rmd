@@ -3779,6 +3779,27 @@ Gerjan van Schaaik. 2020. The Oxford Turkish Grammar. Oxford: Oxford University 
             var → [ var^h ] there is  
             dur → [ dur^h ] stop  
 
+https://www.quora.com/Do-you-roll-the-%E2%80%9CR%E2%80%9D-in-the-Turkish-language
+  - Do all Turkish speakers roll their R, for example in the word yürü, or is this regional or by personality? — Related (https://www.quora.com/Do-all-Turkish-speakers-roll-their-R-for-example-in-the-word-y%C3%BCr%C3%BC-or-is-this-regional-or-by-personality)
+Profile photo for Noyan Aydin
+Noyan Aydin
+Being Turk and proud at the same time needs self-improvement2y
+
+No, it is for emphasizing and expressing anger, dismissal, and contempt.
+
+You say “yürrrrüüü” to someone you agitated you and you made him ashamed somehow. When he had no answer and speechless, you dismiss him from your face. There is a common phrase for that case “yürü anca gidersin” with rolling r in yürü.
+
+Profile photo for Lee Vardar
+Lee Vardar
+Lived in Turkey
+ · 6y
+Do you roll the “R” in the Turkish language? (https://www.quora.com/Do-you-roll-the-%E2%80%9CR%E2%80%9D-in-the-Turkish-language)
+
+Typically no. Unless you're really trying to perhaps emphasise “Turkish.”
+
+Examples: “It's Turrrkish, not xyz!” I'm “Turrrkish, not xyz!” “I'm from Turrrkey I tell you!”
+Author has 522 answers and 369.1K answer views
+
 ```{r}
 languages_data <- languages_data %>%
     dplyr::mutate(r_l_distinction = ifelse(Languages=="turkish",1,r_l_distinction))
@@ -3787,8 +3808,8 @@ languages_data <- languages_data %>%
     dplyr::mutate(trill_real = ifelse(Languages=="turkish",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="turkish",0,trill_occ))
-#Je pense que le trill doit être posssible -> à vérifier ; mais je ne trouve pas donc je laisse en 0 pour le moment
+    dplyr::mutate(trill_occ = ifelse(Languages=="turkish",1,trill_occ))
+#Je pense que le trill doit être posssible -> à vérifier ; mais je ne trouve pas d'autres sources que Quora ; je pense que j'ai un mémoire d'un étudiant en Turc mais aucune idée d'où il est sur mon ordi
 ```
 
 ## ukrainian
@@ -3937,33 +3958,69 @@ https://phoible.org/languages/nucl1347
   - UPSID ɾ̪|ɾ pas d'allophones ; contrast ɾ̪|ɾ/l
   - AA 	ɾ allophone ɾ ; contrast 	ɾ/l
 
-Manessy, Gabriel and Sauvageot, Serge. 1963. Notes Preliminaires to Wolof Et Serer: Etudes De Phonetique Et De Grammaire Descriptive. Dakar: Universite de Dakar.
-Ward, Ida C. 1963. A Short Phonetic Study of Wolof (Jolof) as Spoken in the Gambia and in Senegal. In Manessy, Gabriel and Sauvageot, Serge (eds.), Wolof et sér`er; études de phonétique et de grammaire descriptive, 57–63. Dakar: Université de Dakar, Faculté des lettres et sciences humaines.
+Manessy, Gabriel and Sauvageot, Serge. 1963. Notes Preliminaires to Wolof Et Serer: Etudes De Phonetique Et De Grammaire Descriptive. Dakar: Universite de Dakar. [pas trouvé]
+Ward, Ida C. 1963. A Short Phonetic Study of Wolof (Jolof) as Spoken in the Gambia and in Senegal. In Manessy, Gabriel and Sauvageot, Serge (eds.), Wolof et sér`er; études de phonétique et de grammaire descriptive, 57–63. Dakar: Université de Dakar, Faculté des lettres et sciences humaines. [pas cherché]
 Sauvageot, Serge. 1965. Description synchronique d'un dialecte wolof: le parler du dyolof. (Mémoires de l'Institut Fondamental d'Afrique Noire, 73.) Dakar: Institut Franccais de l'Afrique Noire.
+  - Page 18 :1-19. Le phonème r.
+L'identité phonologique de ce phonème ressort des rapprochements suivants
+r/l: cf. ci-dessus sous 1-18.
+r/x: ras « mettre en plis, serrer II - xas « faire des reproches, injurier ll; l'el' « (le)
+dîner; dîner» - xex « (la) guerre; faire la guerre, combattre ".
+Le phonème l'est vibrant.
+Il est réalisé comme une vibrante sonore à battement unique. Sa vibrance est
+pertinente. Il connaît à la finale absolue une réalisation sourde fricative.
+Il apparaît dans toutes les positions de monème.
+
 Hartell, Rhonda L. (ed.) 1993. Alphabets des langues africaines. UNESCO and Société Internationale de Linguistique.
+  - Page 252 : /ɾ/ r
+               r rafet joli
+               
+               => à partir de :
+               Décret n°71-566 du 21 mai 1971 relatif à la trasncription des langues nationales du Sénégal. N° Spécial du Journal Oficiel de la République du Sénégal, 21 juin 1971, Rufisque, Imprimerie nationale; et Transcription des langues nationales, Rufisque, Imprimerie nationale - D.L. 3038 - avril 1972
+               Décret n°85-1232 du 20 novembre 1985 relatif à l'orthographe et à la séparation des mots en wolof. Journal Officiel de la République du Sénégal du 23 novembre 1985, Rufisque, Imprimerie nationale.
+               
 Chanard, C. 2006. Systèmes Alphabétiques Des Langues Africaines. Online: urlhttp://sumale.vjf.cnrs.fr/phono/.
 
 Wikipedia :   
 https://en.wikipedia.org/wiki/Wolof_language
   - Trill 		r ⟨r⟩ 	
   - All simple nasals, oral stops apart from q and glottal, and the sonorants l r y w may be geminated (doubled), though geminate r only occurs in ideophones.[20][21] (Geminate consonants are written double.)
-  [20] Pape Amadou Gaye, Practical Cours in / Cours Practique en Wolof: An Audio–Aural Approach.
+  [20] Pape Amadou Gaye, 1980. Practical Cours in / Cours Practique en Wolof: An Audio–Aural Approach.
+          - Page xiv : r reer = diner/diner radio the 'r' is like the Spanish 'r'
+          - Page xv : Toutes les consonnes sauf q, s et x se redoublent aussi bien exposition mediane que finale et dans ce cas indique un sens completement diffirea.
   [21] Some are restricted or rare, and sources disagree about this. Torrence (2013) claims that all consonants but prenasalized stops may be geminate, while Diouf (2009) does not list the fricatives, q, or r y w, and does not recognize glottal stop in the inventor. The differences may be dialectical or because some sounds are rare.
   
 Glottologue :  
 https://glottolog.org/resource/languoid/id/nucl1347
 
-Autres sources : NA
+Diouf, Jean-Léopold. 2009. Grammaire du wolof contemporain. Revue et complétée edn. Paris: L'Harmattan. 223pp.
+  - Page 13 : Les consonnes sont : [...] r [...] 
+  - Page 15 : Sourdes versus sonores
+              Les consonnes sourdes sont celles qu'on produit par la vibration de l'air contenu dans le chenal buccal. Ce sont :
+              [...] r [...]
+              
+              Contstrictives
+              Les consonnes constrictives (ou fricatives) sont celles qui se produisent avec un resserrement du passage de l'air à un point donnée du chenal bucal. Ce sont :
+              [...] r [...]
+              Simples, géminées, ou prénasales
+              Les consonnes simples (ou brèves) sont:
+              [...] r [...]
+  - Page 17 : c o n s non latérales roulée r
+  
+Autres sources : 
+
+565s -> 569s -> pronunciation of the /r/ -> trills
+https://www.youtube.com/watch?v=qvtMkkzUR1U
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="wolof",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="wolof",1,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="wolof",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="wolof",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="wolof",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="wolof",1,trill_occ))
 ```
 
 ## xhosa
@@ -3978,24 +4035,43 @@ https://phoible.org/inventories/view/1319
   - pas de r ; on a un l
 
 Gowlett, Derek. 2003. Zone S. In Nurse, Derek and Philippson, Gérard (eds.), The Bantu Languages, 609–638. Routledge.
+  - Page 615 : Pas de r pour le Xhosa (mais on a un breathy-voiced trill pour le Copi)
 
 Wikipedia :   
 https://en.wikipedia.org/wiki/Xhosa_language
-
+  - Liquid 	fully voiced 	   	r ⟨r⟩[1] 	l ⟨l⟩ 				
+            breathy voiced 		r̤ ⟨r⟩[1] 	l̤ ⟨lh⟩
+            
+            1. Two additional consonants, [r] and [r̤], are found in borrowings. Both are spelled r.
+            
 Glottologue :  
 https://glottolog.org/resource/languoid/id/xhos1239
 
 Autres sources :  
 
+VanderStouwe, C. (2013). A phonetic and phonological report on the Xhosa language. Unpublished final project. Retrieved, 8.
+   Page 8 : Trill r*
+            * [r] is found only in borrowings, and is not native to the Xhosa language. Example: [iɔrenʤi] 'orange'
+  
+Niesler, T., Louw, P., & Roux, J. (2005). Phonetic analysis of afrikaans, english, xhosa and zulu using South African speech databases. Southern African linguistics and applied language studies, 23(4), 459-474.
+  - Page 461 : Trills and flapsTwo trills and one flap were found in our data.The alveolar trill [r] was transcribed in alldatabases, although this sound occurs only inphonologised loanwords or borrowed words inEnglish, Xhosa and Zulu. The uvular trill [R]occurs only in Afrikaans and Xhosa. In the Afri-kaans data, the alveolar flap [|] is only foundwhere assimilation occurs, for example in thewords vat dit (‘take it’), while in Xhosa and Zulu itis only found in borrowed words such as quarter.
+
+Andrason, A. (2020). Ideophones as linguistic" rebels": the extra-systematicity of ideophones in Xhosa (part 1).
+  - Page 134 : Ideophones also exhibit the trill consonant [r], which, at least etymologically, is foreign to the sound system of Xhosa and other Nguni languages.65 Only recently has [r] been introduced into the Xhosa phonetic inventory due to contact with English and, albeit to a lesser extent, Afrikaans.66 In ideophones, however, r [r] seems to have been original and etymological, as illustrated by r-r, rru, re, rre, r-re ‘be mad; go fast’, rru-u ‘go steadily’, or fórnyúphù ‘worry someone’.67
+  
+  65 Cf. LOUW, J.A. The Influence of Khoi on the Xhosa Language. In Limi, 1974, Vol. 2(2), pp. 45–62; LOUW, J.A. The Influence of Khoi on Xhosa Morphology. In DE KLERK, W., PONELIS, F.A. (eds.). Gedenkbundel H. J. J. M. van der Merwe, 87–95; MSIMANG, C.T., POULOS, G. The ideophone in Zulu: A Re-examination of Conceptual and Descriptive Notions. In VOELTZ, E., KILIAN-HATZ, C. (eds.). Ideophones, p. 246.
+66 Therefore, original loanwords containing r used to exhibit l or d when introduced and adapted to Xhosa. See LOUW, J.A. The Influence of Khoi on the Xhosa Language. In Limi, 1974, Vol. 2(2), pp. 45–62; LOUW, J.A. The Influence of Khoi on Xhosa Morphology. In DE KLERK, W., PONELIS, F.A. (eds.). Gedenkbundel H. J. J. M. van der Merwe, 87–95; ANDRASON, A. The “Exotic” Nature of Ideophones – From Khoekhoe to Xhosa. In Stellenbosch Papers in Linguistics, 2017, Vol. 48, pp. 139–150. 
+67 Similarly, [r] is found in ideophones in Zulu, even though it is “foreign” to the sound system of that language. See CHILDS, T. Where Have All the Ideophones Gone? The Death of a Word Category in Zulu. In Toronto Working Papers in Linguistics, 1996, Vol. 15, p. 94; MSIMANG, C.T., POULOS, G. The ideophone in Zulu: A Re-examination of Conceptual and Descriptive Notions. In VOELTZ, E., KILIAN-HATZ, C. (eds.). Ideophones, p. 246; see also FIVAZ, D. Some Aspects of the Ideophone in Zulu, pp. 8, 9, 11, 22. Zulu ideophones contain other rare sounds, e.g. [ts], which is also the case of Xhosa (see tsé ‘be straight’ and tsákú ‘go and return quickly’). See MSIMANG, C.T., POULOS, G. The ideophone in Zulu: A Re-examination of Conceptual and Descriptive Notions. In VOELTZ, E., KILIAN-HATZ, C. (eds.). Ideophones, p. 246.
+
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="xhosa",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="xhosa",0,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="xhosa",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="xhosa",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="xhosa",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="xhosa",1,trill_occ))
 ```
 
 ## zhuang
@@ -4007,8 +4083,35 @@ languages_data <- languages_data %>%
 
 Phoible :   
 
+https://phoible.org/inventories/view/502
+  - pas de r ; on a un l et un ʐ
+https://en.wikipedia.org/wiki/N%C3%B9ng_language_(Tai)
+
+https://phoible.org/inventories/view/2361
+  - r pas d'allophones ; contrast r/l
+Gedney, William J and Hudak, Thomas J. 1993. William J. Gedney's The Saek language: glossary, texts, and translations. University of Michigan Center for.
+https://en.wikipedia.org/wiki/Saek_language
+
+https://phoible.org/languages/bouy1240
+2 inventaires :
+  - SPA r allophone r ; contrast r/l
+  - UPSID R̪|R pas d'allophone ; contrast R̪|R/	l̪|l
+Gedney, William J. 1965. Yay, a Northern Tai Language in North Vietnam. Lingua 14. 180–193.
+https://en.wikipedia.org/wiki/Bouyei_language
+  - Continuant voiced r /z/~[ð]
+  
 Wikipedia :   
 https://en.wikipedia.org/wiki/Zhuang_languages
+https://en.wikipedia.org/wiki/Standard_Zhuang
+  - Glottolog None
+  - Fricative ɣ
+  - The Alphabet in order
+    IPA /ɣ/
+    1982 R r
+    1957 R r
+    
+Wei, Qingwen 韦庆稳; Qin, Guosheng 覃国生 (1980). Zhuàngyǔ jiǎnzhì 壮语简志 [Concise Grammar of Zhuang]. Zhongguo shaoshu minzu yuyan jianzhi congshu (in Chinese). Beijing: Minzu chubanshe.
+Zhang, Junru 张均如; Liang, Min 梁敏; Ouyang, Jueya 欧阳觉亚; Zheng, Yiqing 郑贻青; Li, Xulian 李旭练; Xie, Jianyou 谢建猷 (1999). Zhuàngyǔ fāngyán yánjiū 壮语方言研究 [A Study of Zhuang Dialects] (in Chinese). Chengdu: Sichuan minzu chubanshe. ISBN 7-5409-2293-1.
 
 Glottologue :  
 https://glottolog.org/resource/languoid/id/daic1237
@@ -4036,26 +4139,41 @@ languages_data <- languages_data %>%
 Phoible :   
 https://phoible.org/languages/zulu1248
 2 inventaires :
-  - SPA
-  - UPSID
-  
+  - SPA pas de r ; on a un l
+  - UPSID r (marginal)  ; on a un l donc contrast r/l
+
+Doke, Clement M. 1961. Textbook of Zulu Grammar. Cape Town: Longmans. (6th edition (1st edition 1927)). [pas trouvé]
+Doke, Clement M. 1926. The Phonetics of the Zulu Language. (Bantu Studies.) Johannesburg: Wiwatersrand University Press. [pas trouvé]
+Rycroft, David K. and Ngcobe, A. B. 1979. Say It in Zulu. London: School of Oriental and African Studies. [pas trouvé]
+
 Wikipedia :   
 https://en.wikipedia.org/wiki/Zulu_language
-
+  - Liquid 		r 	l
+    The trill /r/ is not native to Zulu and occurs only in expressive words and in recent borrowings from European languages.
+    r 	/r/ 	iresiphi /iːrésiːpʰi/ "recipe" 
+    
 Glottologue :  
 https://glottolog.org/resource/languoid/id/zulu1248
 
-Autres sources :  
+Autres sources : 
+
+Poulos, G., & Bosch, S. E. (1997). Zulu (Languages of the World/Materials, 50). München: Lincom Europa.
+  - Page 50 : Continuant Trill r
+  
+George Poulos, Christian T. Msimang - A Linguistic Analysis of Zulu (1998, Via Africa) 
+  - Page 474 : The trill
+  There is also only one trill in Zulu. This consonant, which is represented by r in the orthography, is produced by the tip of the tongue tapping more than once against the alveolar ridge (two or three taps in succession appear to be the norma) This sound is found only in ideophones e.g. ndri (of flying).
+  Once again, there is no real build-up of pressure behing the succesive closures which occur, and in this respect, the trill, differs from the stop consonants described earlier.
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="zulu",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="zulu",0,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="zulu",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="zulu",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="zulu",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="zulu",1,trill_occ))
 ```
 
 

@@ -2692,6 +2692,12 @@ languages_data <- languages_data %>%
 
 ## norwegian
 
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="norwegian","norw1259",glottocode))
+```
+
+
 Phoible :     
 https://phoible.org/languages/norw1259   
 2 inventaires :   
@@ -3467,7 +3473,7 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="swedish","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="swedish","swed1254",glottocode))
 ```
 
 Phoible :   
@@ -4078,10 +4084,11 @@ languages_data <- languages_data %>%
 
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(glottocode = ifelse(Languages=="zhuang","GLOTTOCODE",glottocode))
+    dplyr::mutate(glottocode = ifelse(Languages=="zhuang","daic1237",glottocode))
 ```
 
 Phoible :   
+J'ai pris des inventaires aléatoirement sur la base de ce que je trouvais sur Glottolog pour daic1237.
 
 https://phoible.org/inventories/view/502
   - pas de r ; on a un l et un ʐ
@@ -4110,23 +4117,35 @@ https://en.wikipedia.org/wiki/Standard_Zhuang
     1982 R r
     1957 R r
     
-Wei, Qingwen 韦庆稳; Qin, Guosheng 覃国生 (1980). Zhuàngyǔ jiǎnzhì 壮语简志 [Concise Grammar of Zhuang]. Zhongguo shaoshu minzu yuyan jianzhi congshu (in Chinese). Beijing: Minzu chubanshe.
-Zhang, Junru 张均如; Liang, Min 梁敏; Ouyang, Jueya 欧阳觉亚; Zheng, Yiqing 郑贻青; Li, Xulian 李旭练; Xie, Jianyou 谢建猷 (1999). Zhuàngyǔ fāngyán yánjiū 壮语方言研究 [A Study of Zhuang Dialects] (in Chinese). Chengdu: Sichuan minzu chubanshe. ISBN 7-5409-2293-1.
+Wei, Qingwen 韦庆稳; Qin, Guosheng 覃国生 (1980). Zhuàngyǔ jiǎnzhì 壮语简志 [Concise Grammar of Zhuang]. Zhongguo shaoshu minzu yuyan jianzhi congshu (in Chinese). Beijing: Minzu chubanshe. [pas cherché]
+Zhang, Junru 张均如; Liang, Min 梁敏; Ouyang, Jueya 欧阳觉亚; Zheng, Yiqing 郑贻青; Li, Xulian 李旭练; Xie, Jianyou 谢建猷 (1999). Zhuàngyǔ fāngyán yánjiū 壮语方言研究 [A Study of Zhuang Dialects] (in Chinese). Chengdu: Sichuan minzu chubanshe. ISBN 7-5409-2293-1. [pas cherché]
 
 Glottologue :  
 https://glottolog.org/resource/languoid/id/daic1237
 
 Autres sources :  
 
+Diller, A., Edmondson, J., & Luo, Y. (2004). The Tai-Kadai Languages. Routledge.
+  - Page 321 : As mentioned in §9.1.3, substantial differences exist in the phonological systems of Northern and Southern Zhuang. In addition to the absence of aspirated stops in Northern Zhuang, and their presence in Southern Zhuang, Northern Zhuang has a group of /r/ sounds, represented as ɣ, r, ð, j and l according to dialects. These correspond to an array of forms in Southern Zhuang. The following examples illustrate this.
+TABLE 9.2-1: NORTHERN ZHUANG /r/ AND THEIR SOUTHERN ZHUANG COUNTERPARTS
+[table]
+  - Page 323 : 9.2.1. Fengshan Zhuang phonology
+                9.2.1.1. Consonants
+                Table 9.2.1.1-1 lists the nineteen segmental consonant phonemes in Fengshan Zhuang.
+                TABLE 9.2.1.1-1: FENGSHAN ZHUANG CONSONANTS
+                
+                => Pas de mention de r ; mais on a un j et un l
+                
 ```{r}
 languages_data <- languages_data %>%
-    dplyr::mutate(r_l_distinction = ifelse(Languages=="zhuang",10,r_l_distinction))
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="zhuang",0,r_l_distinction))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_real = ifelse(Languages=="zhuang",10,trill_real))
+    dplyr::mutate(trill_real = ifelse(Languages=="zhuang",0,trill_real))
 
 languages_data <- languages_data %>%
-    dplyr::mutate(trill_occ = ifelse(Languages=="zhuang",10,trill_occ))
+    dplyr::mutate(trill_occ = ifelse(Languages=="zhuang",1,trill_occ))
+#Je met 1 mais c'est un hypothèse sur la base que c'est une langue tai-kadai et qu'il pourrait y avoir des dialectes qui ont maintenu la rhotique comme un trill ou un tap ; mais si besoin on peut changer en 0 ; je ne sais pas d'où vient l'influence de la graphie du r
 ```
 
 ## zulu
@@ -4165,6 +4184,9 @@ George Poulos, Christian T. Msimang - A Linguistic Analysis of Zulu (1998, Via A
   There is also only one trill in Zulu. This consonant, which is represented by r in the orthography, is produced by the tip of the tongue tapping more than once against the alveolar ridge (two or three taps in succession appear to be the norma) This sound is found only in ideophones e.g. ndri (of flying).
   Once again, there is no real build-up of pressure behing the succesive closures which occur, and in this respect, the trill, differs from the stop consonants described earlier.
 
+Andrason, A. (2020). Ideophones as linguistic" rebels": the extra-systematicity of ideophones in Xhosa (part 1).
+  Page 134 : 67 Similarly, [r] is found in ideophones in Zulu, even though it is “foreign” to the sound system of that language. See CHILDS, T. Where Have All the Ideophones Gone? The Death of a Word Category in Zulu. In Toronto Working Papers in Linguistics, 1996, Vol. 15, p. 94; MSIMANG, C.T., POULOS, G. The ideophone in Zulu: A Re-examination of Conceptual and Descriptive Notions. In VOELTZ, E., KILIAN-HATZ, C. (eds.). Ideophones, p. 246; see also FIVAZ, D. Some Aspects of the Ideophone in Zulu, pp. 8, 9, 11, 22. Zulu ideophones contain other rare sounds, e.g. [ts], which is also the case of Xhosa (see tsé ‘be straight’ and tsákú ‘go and return quickly’). See MSIMANG, C.T., POULOS, G. The ideophone in Zulu: A Re-examination of Conceptual and Descriptive Notions. In VOELTZ, E., KILIAN-HATZ, C. (eds.). Ideophones, p. 246.
+
 ```{r}
 languages_data <- languages_data %>%
     dplyr::mutate(r_l_distinction = ifelse(Languages=="zulu",0,r_l_distinction))
@@ -4175,5 +4197,6 @@ languages_data <- languages_data %>%
 languages_data <- languages_data %>%
     dplyr::mutate(trill_occ = ifelse(Languages=="zulu",1,trill_occ))
 ```
+
 
 

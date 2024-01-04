@@ -1,904 +1,904 @@
-ID,Match,Language,Name,Script,Family,Autotyp_Area,L2,EnglishL2YesNo,Order,L1_distinction,no_dist_L2,trill_L2,approximant_L2
-AL_2137891,1,AL,Albanian,roman,IE,Europe,"english, italian, french ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AL_2142091,0,AL,Albanian,roman,IE,Europe,"french, italian",FALSE,l_first,trill,FALSE,TRUE,FALSE
-AL_2142743,0,AL,Albanian,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-AL_2143087,0,AL,Albanian,roman,IE,Europe,"greek, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-AL_2144707,1,AL,Albanian,roman,IE,Europe,"italian, french, german, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-AL_2145197,1,AL,Albanian,roman,IE,Europe,italian,FALSE,r_first,trill,FALSE,TRUE,FALSE
-AL_2200030,1,AL,Albanian,roman,IE,Europe,"serbian,english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-AL_2200491,1,AL,Albanian,roman,IE,Europe,"serbian, english, turkish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AL_2200597,1,AL,Albanian,roman,IE,Europe,"english,serbian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AL_2201480,1,AL,Albanian,roman,IE,Europe,"serbian, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-AM_2085826,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2086395,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, german, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2089819,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, german ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2090125,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-AM_2110154,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2113553,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-AM_2124652,1,RU,Russian,different,IE,Inner Asia,"english, armenian, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-AM_2126284,0,AM,Armenian,different,IE,Greater Mesopotamia,"english, german, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2129759,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, russian, german, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2131367,0,AM,Armenian,different,IE,Greater Mesopotamia,"english, russian, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-AM_2131473,1,AM,Armenian,different,IE,Greater Mesopotamia,"german, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2131488,0,AM,Armenian,different,IE,Greater Mesopotamia,"english, bulgarian, russian, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2131538,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, a little bit english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2131978,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2132050,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2132352,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, italian, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2132489,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2135059,1,AM,Armenian,different,IE,Greater Mesopotamia,"english,russian,spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2135205,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, russian, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2135351,1,RU,Russian,different,IE,Inner Asia,"english, french, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-AM_2135714,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-CN_2085682,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,hi,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2090343,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2090516,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-CN_2090559,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-CN_2090893,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-CN_2091068,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-CN_2091116,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2091224,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-CN_2091379,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2091417,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2091465,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-CN_2091749,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-CN_2091822,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-CN_2092002,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-CN_2092150,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2092280,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-CN_2092469,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2092617,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-CN_2092884,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-CN_2093102,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-CN_2093540,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2093752,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2093858,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english，spanish,TRUE,r_first,no,FALSE,TRUE,TRUE
-CN_2093964,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2094119,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2094331,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2094333,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2094542,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2094865,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-CN_2095104,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2095358,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-CN_2095401,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-CN_2096079,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2096196,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2096588,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2096696,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2096717,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2096896,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2096947,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2096959,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-CN_2097226,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2097291,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-CN_2099532,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-DE_2002066,1,DE,German,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-DE_2002181,1,DE,German,roman,IE,Europe,"english, french, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2003687,1,DE,German,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2006973,1,DE,German,roman,IE,Europe,"french, english, italian, vietnamese, turkish",TRUE,r_first,trill,TRUE,TRUE,TRUE
-DE_2006992,1,DE,German,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-DE_2007185,1,DE,German,roman,IE,Europe,"english, french, spanish, catalan, turkish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2007197,1,DE,German,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2007257,1,DE,German,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-DE_2007505,1,PL,Polish,roman,IE,Europe,"german, spanish, english, italian, russian, slovak, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2007575,1,DE,German,roman,IE,Europe,"english, spanish, french, dutch, hungarian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2007595,1,DE,German,roman,IE,Europe,"english, french, spanish, japanese",TRUE,r_first,trill,TRUE,TRUE,TRUE
-DE_2007942,1,DE,German,roman,IE,Europe,"english, italian, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2008182,1,DE,German,roman,IE,Europe,"english, french, spanish, dutch, danish, swedish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2008469,1,DE,German,roman,IE,Europe,"english, french, hungarian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2009354,1,DE,German,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2009820,1,DE,German,roman,IE,Europe,"english, italian, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2009857,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2009902,1,DE,German,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-DE_2010153,1,DE,German,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2010577,1,DE,German,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2011490,1,DE,German,roman,IE,Europe,"german, english, french, danish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2011955,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2013436,1,DE,German,roman,IE,Europe,"english, french, catalan, spanish, russian, czech, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2015119,1,DE,German,roman,IE,Europe,"english, french, latin",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2015371,1,DE,German,roman,IE,Europe,"english, swedish, italian, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2016147,1,DE,German,roman,IE,Europe,"english, russian, dutch",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2016253,1,DE,German,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2016675,1,DE,German,roman,IE,Europe,"english, potuguese, french, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2017196,1,DE,German,roman,IE,Europe,"english, french ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2017541,1,DE,German,roman,IE,Europe,"english, latin",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2017558,1,DE,German,roman,IE,Europe,english ,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2017828,1,DE,German,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2018342,1,DE,German,roman,IE,Europe,"english, french, a little bit italian, a little bit spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2018651,1,DE,German,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2019007,1,DE,German,roman,IE,Europe,"spanish, english, russian, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2019115,1,DE,German,roman,IE,Europe,"english, french, spanish, polish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2019961,1,DE,German,roman,IE,Europe,"english, french, spanish, latin",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2020666,0,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2020772,1,DE,German,roman,IE,Europe,"english, french, dutch",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2020887,1,DE,German,roman,IE,Europe,"english, swedish, norwegian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2021088,1,DE,German,roman,IE,Europe,"english, spanish, finnish, swedish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2021203,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2021892,1,DE,German,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2021951,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,"english, german",TRUE,l_first,no,FALSE,TRUE,TRUE
-DE_2022038,1,DE,German,roman,IE,Europe,"english, croatian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2022372,1,DE,German,roman,IE,Europe,"french, english, russian, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2024982,1,DE,German,roman,IE,Europe,"english, french, latin",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2025088,1,DE,German,roman,IE,Europe,"english, spanish, japanese, french",TRUE,r_first,trill,TRUE,TRUE,TRUE
-DE_2025321,0,DE,German,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-DE_2026290,1,DE,German,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2026502,1,DE,German,roman,IE,Europe,"english, russian, spanish, swedish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2026608,1,DE,German,roman,IE,Europe,"french, english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2028933,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2032454,1,DE,German,roman,IE,Europe,"english, dutch",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2035082,1,DE,German,roman,IE,Europe,"english, dutch",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2035188,1,DE,German,roman,IE,Europe,"english, french, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2035314,1,DE,German,roman,IE,Europe,"english, french, turkish, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2036644,1,DE,German,roman,IE,Europe,"french, english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2036752,1,DE,German,roman,IE,Europe,"french, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2037056,1,DE,German,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2037869,1,DE,German,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2037989,1,DE,German,roman,IE,Europe,"english, polish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2038461,1,DE,German,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-DE_2038972,1,DE,German,roman,IE,Europe,"english, spanish, dutch",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2039334,1,DE,German,roman,IE,Europe,"english, norwegian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2039440,1,DE,German,roman,IE,Europe,"english, swedish",TRUE,r_first,trill,FALSE,FALSE,TRUE
-DE_2039750,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2040180,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2043127,1,DE,German,roman,IE,Europe,"english, french, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2043880,1,DE,German,roman,IE,Europe,"french, swedish",FALSE,l_first,trill,FALSE,TRUE,TRUE
-DE_2043986,1,DE,German,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-DE_2044122,1,DE,German,roman,IE,Europe,"english, arabic",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2046800,0,DE,German,roman,IE,Europe,"english, french, finnish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2055195,1,DE,German,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-DE_2055406,1,DE,German,roman,IE,Europe,"english, russian, potuguese",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2055806,1,DE,German,roman,IE,Europe,"english, french, spanish, dutch, NGT, irish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2072116,1,DE,German,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2074160,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2090015,1,DE,German,roman,IE,Europe,"english, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DE_2109173,1,DE,German,roman,IE,Europe,"english, french, latin, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DE_2117137,1,DE,German,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-DK_2102760,1,DK,Danish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DK_2102868,1,DK,Danish,roman,IE,Europe,"english, german, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DK_2136830,1,DK,Danish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-DK_2137122,1,DK,Danish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DK_2142486,1,DK,Danish,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DK_2142540,1,DK,Danish,roman,IE,Europe,"english, german, dutch",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DK_2142882,1,DK,Danish,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-DK_2143010,1,DK,Danish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DK_2143222,1,DK,Danish,roman,IE,Europe,"german, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DK_2143457,1,DK,Danish,roman,IE,Europe,"english, german, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DK_2143615,1,DK,Danish,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DK_2143723,1,DK,Danish,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-DK_2143829,1,DK,Danish,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-DK_2144114,1,DK,Danish,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DK_2144894,0,DK,Danish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DK_2147661,1,DK,Danish,roman,IE,Europe,"english, german, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-DK_2149822,1,DK,Danish,roman,IE,Europe,"english, german, spanish, portuguese, russian, dutch",TRUE,l_first,trill,FALSE,TRUE,TRUE
-DK_2149901,1,DK,Danish,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2051870,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,swedish,FALSE,r_first,trill,FALSE,FALSE,TRUE
-EE_2054453,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, russian, hungarian, german, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2056161,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, russian, latvian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2056593,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"french, english, italian, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2056729,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2056747,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"german, english, finnish, hungarian, russian, swedish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2056947,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2057308,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, german, english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2057346,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2057447,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"spanish, english, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2057608,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2057838,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2057944,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-EE_2058050,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, swedish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2058156,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"german, english, hungarian, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2058368,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, latin",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2058474,1,IT,Italian,roman,IE,Europe,"estonian, english, spanish ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2058528,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, spanish, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2058541,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, german, finnish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2058608,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"german, english, norwegian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2058898,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, english, finnish, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2059007,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, russian, finnish, italian, latin, greek",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2059148,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, french, russian, finnish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2059273,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2059385,1,PL,Polish,roman,IE,Europe,"estonian, english, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2059514,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2059608,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"swedish, german, english, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2059961,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, french, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2060175,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, russian, german, swedish, italian, spanish, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2060749,1,IT,Italian,roman,IE,Europe,"russian, english, estonian, czech",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2061100,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, russian, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2061228,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, english, german, finnish, a little bit polish, a little bit spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2061330,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, german, finnish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2062178,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, finnish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2062405,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, hungarian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2063434,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, french, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2063750,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"german, english, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2063940,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, english, finnish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2065426,1,RU,Russian,different,IE,Inner Asia,"estonian, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2067135,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, french, finnish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2067986,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2071211,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"spanish, english, russian, italian, french, finnish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2093288,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, a little bit german, a little bit italian, a little bit russian ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EE_2109632,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german  ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EE_2190350,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-EN_1993336,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EN_2007249,1,EN,English,roman,IE,Europe,"german, dutch",FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2009360,1,EN,English,roman,IE,Europe,"french, german",FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2009682,1,EN,English,roman,IE,Europe,french,FALSE,l_first,approximant,FALSE,TRUE,FALSE
-EN_2011604,1,EN,English,roman,IE,Europe,"german, chinese, italian",FALSE,r_first,approximant,TRUE,TRUE,FALSE
-EN_2012604,1,EN,English,roman,IE,Europe,"french, a little bit german, a little bit japanese",FALSE,r_first,approximant,TRUE,TRUE,FALSE
-EN_2014133,1,DE,German,roman,IE,Europe,"english, german, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EN_2015517,1,EN,English,roman,IE,Europe,"a little bit german, a little french",FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2017753,0,ES,Spanish,roman,IE,Europe,"english, japanese, slovak, german",TRUE,r_first,trill,TRUE,TRUE,TRUE
-EN_2025215,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-EN_2026714,1,EN,English,roman,IE,Europe,"french, japanese, hindi, tamil",FALSE,r_first,approximant,TRUE,TRUE,FALSE
-EN_2027185,1,EN,English,roman,IE,Europe,nepali,FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2029222,1,EN,English,roman,IE,Europe,french,FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2029328,1,EN,English,roman,IE,Europe,"spanish, german, asl",FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2029434,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,approximant,FALSE,FALSE,FALSE
-EN_2029531,1,EN,English,roman,IE,Europe,"spanish, hebrew",FALSE,l_first,approximant,FALSE,TRUE,FALSE
-EN_2029633,1,ES,Spanish,roman,IE,Europe,"english, french, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EN_2029682,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,approximant,FALSE,FALSE,FALSE
-EN_2029700,1,EN,English,roman,IE,Europe,"spanish, a little bit dutch ",FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2029922,1,EN,English,roman,IE,Europe,french,FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2030058,0,EN,English,roman,IE,Europe,NA,FALSE,r_first,approximant,FALSE,FALSE,FALSE
-EN_2030330,1,EN,English,roman,IE,Europe,german,FALSE,l_first,approximant,FALSE,TRUE,FALSE
-EN_2030515,1,EN,English,roman,IE,Europe,german,FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2030623,1,EN,English,roman,IE,Europe,"asl, french",FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2030766,1,ES,Spanish,roman,IE,Europe,"english, catalan",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EN_2030899,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-EN_2031042,1,IT,Italian,roman,IE,Europe,"english, spanish, calabrese",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EN_2031091,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-EN_2031265,1,EN,English,roman,IE,Europe,"french, italian",FALSE,l_first,approximant,FALSE,TRUE,FALSE
-EN_2031376,1,IT,Italian,roman,IE,Europe,"english, french, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EN_2031526,1,EN,English,roman,IE,Europe,"turkish, spanish",FALSE,l_first,approximant,FALSE,TRUE,FALSE
-EN_2031667,1,EN,English,roman,IE,Europe,"latin, a little bit spanish",FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2031862,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,approximant,FALSE,FALSE,FALSE
-EN_2032036,1,PL,Polish,roman,IE,Europe,"english, french, italian ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EN_2032142,1,EN,English,roman,IE,Europe,"spanish, a little bit korean",FALSE,r_first,approximant,TRUE,TRUE,FALSE
-EN_2032308,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,approximant,FALSE,FALSE,FALSE
-EN_2032689,1,EN,English,roman,IE,Europe,spanish,FALSE,l_first,approximant,FALSE,TRUE,FALSE
-EN_2032799,1,EN,English,roman,IE,Europe,NA,FALSE,l_first,approximant,FALSE,FALSE,FALSE
-EN_2033313,1,PL,Polish,roman,IE,Europe,english ,TRUE,r_first,trill,FALSE,FALSE,TRUE
-EN_2033419,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-EN_2033459,1,SE,Swedish,roman,IE,Europe,"english, spanish",TRUE,l_first,approximant,FALSE,TRUE,TRUE
-EN_2033631,1,ES,Spanish,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-EN_2033751,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EN_2033881,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,approximant,FALSE,FALSE,FALSE
-EN_2033987,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-EN_2034548,1,EN,English,roman,IE,Europe,NA,FALSE,l_first,approximant,FALSE,FALSE,FALSE
-EN_2034937,1,EN,English,roman,IE,Europe,french,FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2035441,1,EN,English,roman,IE,Europe,a little bit german ,FALSE,l_first,approximant,FALSE,TRUE,FALSE
-EN_2035547,1,DE,German,roman,IE,Europe,"english, a little bit french, a little bit hindi, a little bit italian, latin ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EN_2035653,1,EN,English,roman,IE,Europe,"latin, ancient greek, german",FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2036332,0,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-EN_2038609,1,EN,English,roman,IE,Europe,french,FALSE,r_first,approximant,FALSE,TRUE,FALSE
-EN_2039215,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,approximant,FALSE,FALSE,FALSE
-EN_2040072,0,DE,German,roman,IE,Europe,"english, hebrew, german, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EN_2043021,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, french, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EN_2043774,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, swedish, dutch, german, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EN_2044492,1,DE,German,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-EN_2049534,1,EN,English,roman,IE,Europe,NA,FALSE,l_first,approximant,FALSE,FALSE,FALSE
-EN_2056487,1,EN,English,roman,IE,Europe,french,FALSE,l_first,approximant,FALSE,TRUE,FALSE
-EN_2067029,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, german, saami",TRUE,l_first,trill,FALSE,TRUE,TRUE
-EN_2072464,1,ES,Spanish,roman,IE,Europe,"english, german, dutch",TRUE,r_first,trill,FALSE,TRUE,TRUE
-EN_2075768,1,EN,English,roman,IE,Europe,vietnamese,FALSE,l_first,approximant,TRUE,FALSE,FALSE
-EN_2086628,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-EN_2094717,1,PT,Portuguese,roman,IE,Europe,"english, french, japanese",TRUE,l_first,trill,TRUE,TRUE,TRUE
-ES_2048974,1,ES,Spanish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-ES_2064046,1,ES,Spanish,roman,IE,Europe,"german, italian, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-ES_2064970,1,ES,Spanish,roman,IE,Europe,"portuguese,  english ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-ES_2065961,1,ES,Spanish,roman,IE,Europe,"french, portuguese",FALSE,l_first,trill,FALSE,TRUE,FALSE
-ES_2066170,1,ES,Spanish,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-ES_2071528,0,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ES_2072570,1,ES,Spanish,roman,IE,Europe,"english, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-ES_2079043,1,ES,Spanish,roman,IE,Europe,"catalan, english, french, basque",TRUE,l_first,trill,FALSE,TRUE,TRUE
-ES_2080636,1,ES,Spanish,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-ES_2083727,1,ES,Spanish,roman,IE,Europe,"catalan, english, french, german, italian, portuguese, swedish, japanese",TRUE,l_first,trill,TRUE,TRUE,TRUE
-ES_2084849,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ES_2085397,1,ES,Spanish,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-ES_2099999,1,ES,Spanish,roman,IE,Europe,"french, chinese, english",TRUE,r_first,trill,TRUE,TRUE,TRUE
-ES_2100037,1,ES,Spanish,roman,IE,Europe,"german, english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-ES_2100788,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ES_2102937,0,ES,Spanish,roman,IE,Europe,french,FALSE,r_first,trill,FALSE,TRUE,FALSE
-ES_2104450,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ES_2107752,1,ES,Spanish,roman,IE,Europe,"english, latin",TRUE,r_first,trill,FALSE,TRUE,TRUE
-ES_2107803,1,ES,Spanish,roman,IE,Europe,"english, basque",TRUE,l_first,trill,FALSE,TRUE,TRUE
-ES_2107840,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ES_2108072,0,ES,Spanish,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-ES_2108273,0,ES,Spanish,roman,IE,Europe,"english, basque",TRUE,l_first,trill,FALSE,TRUE,TRUE
-ES_2108379,1,ES,Spanish,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-ES_2108485,1,ES,Spanish,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-ES_2108595,0,ES,Spanish,roman,IE,Europe,"english, french ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-ES_2108740,1,ES,Spanish,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-ES_2109053,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ES_2110814,1,ES,Spanish,roman,IE,Europe,"english, italian, portuguese, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FA_2043490,1,FA,Farsi,different,IE,Greater Mesopotamia,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FA_2068709,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FA_2086501,1,FA,Farsi,different,IE,Greater Mesopotamia,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-FA_2103514,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FA_2103865,1,FA,Farsi,different,IE,Greater Mesopotamia,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FA_2104128,1,FA,Farsi,different,IE,Greater Mesopotamia,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FA_2105292,0,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FA_2120082,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FA_2142305,1,FA,Farsi,different,IE,Greater Mesopotamia,"english,french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FA_2147376,0,FA,Farsi,different,IE,Greater Mesopotamia,"spanish, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FA_2150860,0,FA,Farsi,different,IE,Greater Mesopotamia,"english, arabic, turkish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FA_2150878,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FA_2151101,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FA_2151146,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FA_2151452,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FA_2151502,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FA_2151685,1,FA,Farsi,different,IE,Greater Mesopotamia,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FA_2151791,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FA_2152327,1,FA,Farsi,different,IE,Greater Mesopotamia,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FA_2152433,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FA_2152646,1,FA,Farsi,different,IE,Greater Mesopotamia,"english, a little bit french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FI_2114535,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, swedish, (german)",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FI_2114566,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FI_2114593,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"estonian, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FI_2114884,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, swedish, estonian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FI_2116020,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"swedish, english",TRUE,l_first,trill,FALSE,FALSE,TRUE
-FI_2117276,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"swedish, english, spanish, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FI_2117492,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, french, swedish, italian, german, portuguese, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FI_2121858,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, estonian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FI_2122176,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FI_2143935,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, italian, swedish, french, estonian, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FI_2145326,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, estonian, german, swedish, spanish, french, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FI_2149185,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FI_2149332,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, french, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FI_2149565,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FI_2149709,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, swedish",TRUE,l_first,trill,FALSE,FALSE,TRUE
-FI_2154435,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, a little bit swedish, a little bit german, a little bit italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FI_2190244,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, french, spanish, swedish, a little bit portuguese, a little bit italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2074614,1,FR,French,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FR_2088693,1,FR,French,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FR_2088799,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2093434,1,FR,French,roman,IE,Europe,"english, a little bit italian, a little bit german, a little bit spanish ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FR_2098048,1,FR,French,roman,IE,Europe,"german, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FR_2098380,1,FR,French,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FR_2098486,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FR_2098592,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FR_2098612,1,FR,French,roman,IE,Europe,"english, german, a little bit indonesian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2098726,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FR_2098910,1,FR,French,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-FR_2099016,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FR_2099122,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2099228,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FR_2099334,1,FR,French,roman,IE,Europe,italian,FALSE,r_first,trill,FALSE,TRUE,FALSE
-FR_2099642,1,FR,French,roman,IE,Europe,"english, spanish, german ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2099761,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FR_2099763,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FR_2100322,1,FR,French,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FR_2100536,1,FR,French,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FR_2100701,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2100714,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2100799,1,FR,French,roman,IE,Europe,"english, spanish, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2100971,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2101024,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2101380,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2101720,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2101747,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2102035,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2102295,1,EN,English,roman,IE,Europe,french,FALSE,r_first,approximant,FALSE,TRUE,FALSE
-FR_2102421,1,FR,French,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FR_2102527,1,FR,French,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FR_2102654,1,FR,French,roman,IE,Europe,"english, a little bit japanese",TRUE,r_first,trill,TRUE,FALSE,TRUE
-FR_2103186,1,FR,French,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-FR_2103402,1,FR,French,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2103653,1,FR,French,roman,IE,Europe,english spanish,TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2104234,1,FR,French,roman,IE,Europe,"italian, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2104340,1,FR,French,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FR_2105020,1,RU,Russian,different,IE,Inner Asia,"english, french ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FR_2105186,0,RU,Russian,different,IE,Inner Asia,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2105871,1,FR,French,roman,IE,Europe,english. spanish,TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2105874,1,FR,French,roman,IE,Europe,"arabic, german, english ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FR_2106197,1,FR,French,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-FR_2106314,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2106427,1,FR,French,roman,IE,Europe,"polish, spanish, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2106623,1,FR,French,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-FR_2106696,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-FR_2107027,0,FR,French,roman,IE,Europe,"english,spanish,italian, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FR_2107135,1,FR,French,roman,IE,Europe,"english, spanish, italian, creole",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2107395,1,FR,French,roman,IE,Europe,"english, spanish, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FR_2107540,1,FR,French,roman,IE,Europe,"english, a little bit german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-FR_2107646,1,FR,French,roman,IE,Europe,"english, italian, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2108947,1,FR,French,roman,IE,Europe,"english, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2112372,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2113664,1,FR,French,roman,IE,Europe,polish,FALSE,r_first,trill,FALSE,TRUE,FALSE
-FR_2113913,1,FR,French,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2119495,1,FR,French,roman,IE,Europe,"english, a little bit italian, a little bit spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-FR_2120324,1,FR,French,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-FR_2123564,1,FR,French,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-GE_2078462,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-GE_2110923,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,trill,FALSE,TRUE,FALSE
-GE_2111129,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, turkish, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GE_2111235,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, english, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GE_2111237,0,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GE_2111476,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,trill,FALSE,TRUE,FALSE
-GE_2113770,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian, greek",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GE_2130542,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian, greek, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GE_2131086,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"russian, english, greek",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GE_2131090,1,RU,Russian,different,IE,Inner Asia,"georgian, greek",FALSE,l_first,trill,FALSE,TRUE,FALSE
-GE_2134616,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-GE_2144580,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GE_2145379,0,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GE_2148242,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,trill,FALSE,TRUE,FALSE
-GE_2186931,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,trill,FALSE,TRUE,FALSE
-GE_2199787,0,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2037162,1,GR,Greek,different,IE,Europe,"english, french, bulgarian ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2037268,1,GR,Greek,different,IE,Europe,"dutch, english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2037450,1,GR,Greek,different,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-GR_2037556,1,GR,Greek,different,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-GR_2037777,1,GR,Greek,different,IE,Europe,"english, french, portuguese, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2038207,1,GR,Greek,different,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2039546,1,GR,Greek,different,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2041501,1,GR,Greek,different,IE,Europe,"german,english, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2041607,1,GR,Greek,different,IE,Europe,"english, german ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2041713,1,GR,Greek,different,IE,Europe,"german, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2041819,1,GR,Greek,different,IE,Europe,german,FALSE,r_first,trill,FALSE,TRUE,FALSE
-GR_2041966,1,GR,Greek,different,IE,Europe,"english, german, chinese",TRUE,r_first,trill,TRUE,TRUE,TRUE
-GR_2042476,1,GR,Greek,different,IE,Europe,"german, english, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2047985,1,GR,Greek,different,IE,Europe,"english, german, spanish, turkish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2052152,1,GR,Greek,different,IE,Europe,"english, spanish, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2052285,1,GR,Greek,different,IE,Europe,"english, italian ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2052534,1,GR,Greek,different,IE,Europe,"english, french, german ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2052566,1,GR,Greek,different,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2052661,1,GR,Greek,different,IE,Europe,"english, french, turkish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2052791,1,GR,Greek,different,IE,Europe,"french, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2052834,1,GR,Greek,different,IE,Europe,"english, french, spanish, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2052940,1,GR,Greek,different,IE,Europe,"english, german, turkish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2052949,1,GR,Greek,different,IE,Europe,"english,french,italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2053049,1,GR,Greek,different,IE,Europe,"english, spanish, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2053235,0,GR,Greek,different,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2053499,1,GR,Greek,different,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2053502,1,GR,Greek,different,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2053549,1,GR,Greek,different,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2053562,0,GR,Greek,different,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-GR_2053930,1,GR,Greek,different,IE,Europe,"english,french, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2054044,1,GR,Greek,different,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2054169,1,GR,Greek,different,IE,Europe,"english, french ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2054347,1,GR,Greek,different,IE,Europe,"english, french ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2054559,0,GR,Greek,different,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-GR_2054665,1,GR,Greek,different,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-GR_2054771,1,GR,Greek,different,IE,Europe,english ,TRUE,l_first,trill,FALSE,FALSE,TRUE
-GR_2054858,1,GR,Greek,different,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2054929,1,GR,Greek,different,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2055020,1,GR,Greek,different,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-GR_2055292,1,GR,Greek,different,IE,Europe,"english, french, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2055527,0,GR,Greek,different,IE,Europe,"english, french, arabic",TRUE,l_first,trill,FALSE,TRUE,TRUE
-GR_2144270,1,GR,Greek,different,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-HU_2100212,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-HU_2114319,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-HU_2115022,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-HU_2115135,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-HU_2115358,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-HU_2115509,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-HU_2115615,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-HU_2115723,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-HU_2115908,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, german, turkish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-HU_2116177,1,HU,Hungarian,roman,Finno-Ugric,Europe,"german, english, dutch, spanish ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-HU_2116335,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-HU_2116551,1,HU,Hungarian,roman,Finno-Ugric,Europe,german,FALSE,r_first,trill,FALSE,TRUE,FALSE
-HU_2116880,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-HU_2117002,0,HU,Hungarian,roman,Finno-Ugric,Europe,"english, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-HU_2117239,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-HU_2117798,1,HU,Hungarian,roman,Finno-Ugric,Europe,german,FALSE,l_first,trill,FALSE,TRUE,FALSE
-HU_2117904,1,HU,Hungarian,roman,Finno-Ugric,Europe,russian,FALSE,l_first,trill,FALSE,TRUE,FALSE
-HU_2117961,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-HU_2118072,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, german, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-HU_2118240,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, turkish, swedish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-HU_2118346,1,HU,Hungarian,roman,Finno-Ugric,Europe,"german, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-HU_2118683,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-HU_2118857,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, slovak",TRUE,l_first,trill,FALSE,TRUE,TRUE
-HU_2118967,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-HU_2119177,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, finnish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-HU_2119283,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-HU_2119389,1,HU,Hungarian,roman,Finno-Ugric,Europe,"german, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-HU_2119601,1,HU,Hungarian,roman,Finno-Ugric,Europe,"german, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-HU_2147124,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-HU_2147265,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-HU_2147482,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-HU_2147593,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-HU_2147763,0,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-HU_2149459,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, finnish, spanish, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2061913,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-IT_2062631,1,IT,Italian,roman,IE,Europe,"english, french, german, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2063416,1,IT,Italian,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2068721,0,IT,Italian,roman,IE,Europe,"english, french, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2068921,0,IT,Italian,roman,IE,Europe,"english, french, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2069027,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2069241,1,FR,French,roman,IE,Europe,"dutch, english, italian, german, swedish, norwegian, limburgish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2069245,1,IT,Italian,roman,IE,Europe,"english, german, rumanian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2069422,1,IT,Italian,roman,IE,Europe,"spanish, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2069712,0,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2070120,1,IT,Italian,roman,IE,Europe,"french, english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2070332,1,IT,Italian,roman,IE,Europe,"german, english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2070438,0,IT,Italian,roman,IE,Europe,"french, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2070544,1,IT,Italian,roman,IE,Europe,"english, spanish, portuguese",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2070565,1,IT,Italian,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2070814,1,IT,Italian,roman,IE,Europe,"french, english, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2070920,1,DE,German,roman,IE,Europe,"italian, french, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2073200,1,IT,Italian,roman,IE,Europe,"english, german, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2073723,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2074054,1,IT,Italian,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2074276,1,IT,Italian,roman,IE,Europe,"french, english, spanish, german ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2074909,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-IT_2074968,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-IT_2075281,1,IT,Italian,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-IT_2075578,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-IT_2076282,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-IT_2076388,1,IT,Italian,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-IT_2076544,1,IT,Italian,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-IT_2076650,1,IT,Italian,roman,IE,Europe,"english, a little bit french, a little bit german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2076930,1,IT,Italian,roman,IE,Europe,"english, french, german, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2077044,1,IT,Italian,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-IT_2077174,0,IT,Italian,roman,IE,Europe,"english, french, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2078568,1,IT,Italian,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2078829,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-IT_2078935,0,IT,Italian,roman,IE,Europe,"english, french, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2080530,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-IT_2081895,0,IT,Italian,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-IT_2088910,1,IT,Italian,roman,IE,Europe,"english, a little bit spanish, latin ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2095688,1,IT,Italian,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-IT_2097463,0,IT,Italian,roman,IE,Europe,"german, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2100361,1,IT,Italian,roman,IE,Europe,"french, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2100872,1,DE,German,roman,IE,Europe,"italian, english, spanish, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2103211,1,IT,Italian,roman,IE,Europe,"german, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2103759,1,IT,Italian,roman,IE,Europe,"english, french, spanish ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2105527,1,IT,Italian,roman,IE,Europe,"english, german, spanish, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2135830,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2146971,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-IT_2151897,1,IT,Italian,roman,IE,Europe,"french, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-IT_2189531,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-IT_2207878,1,IT,Italian,roman,IE,Europe,"english, spanish, portuguese",TRUE,l_first,trill,FALSE,TRUE,TRUE
-JP_2026184,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2026396,1,KR,Korean,different,Korean,N Coast Asia,"japanese, english",TRUE,l_first,no,TRUE,FALSE,TRUE
-JP_2027609,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,"english, japanese",TRUE,l_first,no,TRUE,FALSE,TRUE
-JP_2027715,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2027830,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2027996,1,JP,Japanese,different,Japanese,N Coast Asia,"english, italian",TRUE,l_first,no,FALSE,TRUE,TRUE
-JP_2028251,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2028494,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2029063,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-JP_2034093,0,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2037664,1,JP,Japanese,different,Japanese,N Coast Asia,"english, spanish",TRUE,l_first,no,FALSE,TRUE,TRUE
-JP_2039858,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-JP_2039918,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-JP_2040343,1,JP,Japanese,different,Japanese,N Coast Asia,chinese,FALSE,l_first,no,TRUE,FALSE,FALSE
-JP_2040449,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2040555,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2040621,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2040767,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2040873,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2040995,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-JP_2041101,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2041207,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-JP_2042158,1,JP,Japanese,different,Japanese,N Coast Asia,"english,german,russian",TRUE,r_first,no,FALSE,TRUE,TRUE
-JP_2042264,1,JP,Japanese,different,Japanese,N Coast Asia,"english,french",TRUE,r_first,no,FALSE,TRUE,TRUE
-JP_2042370,1,JP,Japanese,different,Japanese,N Coast Asia,"english,french",TRUE,r_first,no,FALSE,TRUE,TRUE
-JP_2042623,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2042737,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2042915,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2043233,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2043339,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-JP_2043601,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2044708,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2044816,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2044955,1,JP,Japanese,different,Japanese,N Coast Asia,"english,german",TRUE,l_first,no,FALSE,TRUE,TRUE
-JP_2045099,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2045327,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2045448,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2046001,0,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2046107,1,JP,Japanese,different,Japanese,N Coast Asia,"english,chinese",TRUE,r_first,no,TRUE,FALSE,TRUE
-JP_2046213,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2046493,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2046608,0,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2046946,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2047059,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2047178,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-JP_2047291,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2047368,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-JP_2047549,1,JP,Japanese,different,Japanese,N Coast Asia,"english,german,korean",TRUE,r_first,no,TRUE,TRUE,TRUE
-JP_2047655,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2047879,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2048091,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2048197,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2048303,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-JP_2048409,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,no,FALSE,FALSE,FALSE
-JP_2048515,0,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2048621,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-JP_2050804,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-KR_2120978,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-KR_2121353,1,KR,Korean,different,Korean,N Coast Asia,"english, chinese",TRUE,l_first,no,TRUE,FALSE,TRUE
-KR_2122536,1,KR,Korean,different,Korean,N Coast Asia,"english, french",TRUE,r_first,no,FALSE,TRUE,TRUE
-KR_2122698,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-KR_2145708,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-KR_2145933,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-KR_2192134,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-KR_2192288,1,KR,Korean,different,Korean,N Coast Asia,"japanese, english",TRUE,l_first,no,TRUE,FALSE,TRUE
-KR_2192394,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-KR_2192500,1,KR,Korean,different,Korean,N Coast Asia,"english, chinese",TRUE,l_first,no,TRUE,FALSE,TRUE
-KR_2192620,0,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-KR_2192726,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-KR_2192867,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-KR_2193036,0,KR,Korean,different,Korean,N Coast Asia,NA,FALSE,l_first,no,FALSE,FALSE,FALSE
-KR_2193409,1,KR,Korean,different,Korean,N Coast Asia,"english, japanese",TRUE,r_first,no,TRUE,FALSE,TRUE
-KR_2194038,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-KR_2194144,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,l_first,no,FALSE,FALSE,TRUE
-KR_2194250,1,KR,Korean,different,Korean,N Coast Asia,"english, a little bit japanese",TRUE,l_first,no,TRUE,FALSE,TRUE
-KR_2194312,1,KR,Korean,different,Korean,N Coast Asia,"english, japanese",TRUE,r_first,no,TRUE,FALSE,TRUE
-KR_2198888,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-KR_2199504,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,no,FALSE,FALSE,TRUE
-PL_1997874,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2009277,1,PL,Polish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PL_2011225,0,PL,Polish,roman,IE,Europe,german,FALSE,l_first,trill,FALSE,TRUE,FALSE
-PL_2011259,1,PL,Polish,roman,IE,Europe,"english, german, hindi, sanskrit, japanese",TRUE,l_first,trill,TRUE,TRUE,TRUE
-PL_2011661,1,PL,Polish,roman,IE,Europe,"english, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2013051,0,PL,Polish,roman,IE,Europe,"english, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2013478,0,PL,Polish,roman,IE,Europe,"german, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2014004,1,PL,Polish,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PL_2014368,1,PL,Polish,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2014763,1,PL,Polish,roman,IE,Europe,"english, german, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2014900,1,PL,Polish,roman,IE,Europe,"german, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2014968,1,PL,Polish,roman,IE,Europe,"hungarian, english, german, french, russian, latin",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2015079,1,PL,Polish,roman,IE,Europe,"english, portuguese, spanish, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2015927,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2016033,1,PL,Polish,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2017093,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2017373,1,PL,Polish,roman,IE,Europe,"english, german, spanish, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2018013,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2018041,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2018230,1,PL,Polish,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PL_2018421,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2018879,1,PL,Polish,roman,IE,Europe,"spanish, english, german, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2019534,1,PL,Polish,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2020484,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2021622,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2021728,1,PL,Polish,roman,IE,Europe,"english, spanish, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2022234,1,PL,Polish,roman,IE,Europe,"german, english, norwegian, hungarian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2022849,1,PL,Polish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PL_2023368,1,PL,Polish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PL_2023456,1,PL,Polish,roman,IE,Europe,"english, german, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2023605,1,PL,Polish,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PL_2023711,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2023817,0,PL,Polish,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PL_2024564,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2028145,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2034654,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2044384,1,PL,Polish,roman,IE,Europe,"english, russian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2048837,1,PL,Polish,roman,IE,Europe,english ,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PL_2048976,1,PL,Polish,roman,IE,Europe,"english, russian, german, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2051650,1,PL,Polish,roman,IE,Europe,"spanish, english, french, italian, czech",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2056018,1,PL,Polish,roman,IE,Europe,"german, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PL_2060067,0,PL,Polish,roman,IE,Europe,"german,english, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2060282,1,PL,Polish,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PL_2060528,1,PL,Polish,roman,IE,Europe,"english, german, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2060855,1,PL,Polish,roman,IE,Europe,german ,FALSE,r_first,trill,FALSE,TRUE,FALSE
-PL_2060961,0,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2061440,1,PL,Polish,roman,IE,Europe,"german, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PL_2081616,1,PL,Polish,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PT_2121096,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2121235,1,PT,Portuguese,roman,IE,Europe,"spanish, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2121381,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PT_2121573,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2121716,0,ES,Spanish,roman,IE,Europe,"english, esperanto, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2121964,1,PT,Portuguese,roman,IE,Europe,"french, english, spanish, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2122070,0,PT,Portuguese,roman,IE,Europe,"english, spanish, french, german ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2122286,1,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2122428,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PT_2122973,1,PT,Portuguese,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2123079,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PT_2123185,1,PT,Portuguese,roman,IE,Europe,"english, german, czech, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2123458,0,PT,Portuguese,roman,IE,Europe,"english, french, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2123670,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french, calatan",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2123780,1,PT,Portuguese,roman,IE,Europe,"english, french, spanish ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2123907,1,DE,German,roman,IE,Europe,"english, portuguese, spanish, french ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2124013,0,PT,Portuguese,roman,IE,Europe,"english, spanish, french ",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2124119,1,PT,Portuguese,roman,IE,Europe,"english, italian, arabic, romanian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2124225,1,PT,Portuguese,roman,IE,Europe,"english, french ",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2124331,0,PT,Portuguese,roman,IE,Europe,"german, spanish, english, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2124444,1,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2124550,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2124762,1,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2124772,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2125094,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PT_2125371,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PT_2125477,0,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2125583,0,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2125757,1,PT,Portuguese,roman,IE,Europe,spanish,FALSE,r_first,trill,FALSE,TRUE,FALSE
-PT_2127150,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PT_2127347,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PT_2127456,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2127615,1,PT,Portuguese,roman,IE,Europe,"english, german, russian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2127988,1,PT,Portuguese,roman,IE,Europe,"spanish, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2128094,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PT_2128268,1,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2128377,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-PT_2128893,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french, italian, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2129023,1,PT,Portuguese,roman,IE,Europe,english ,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PT_2129128,0,PT,Portuguese,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-PT_2129331,1,PT,Portuguese,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-PT_2129609,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PT_2130648,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PT_2130955,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-PT_2132703,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2132705,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2132707,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2132709,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-PT_2132711,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-PT_2132713,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-PT_2132715,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-PT_2132718,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-PT_2132737,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2132809,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2132862,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-PT_2133628,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-PT_2133765,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2133859,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2133956,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-PT_2134012,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-PT_2134018,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-RO_2049567,1,RO,Romanian,roman,IE,Europe,"german, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2049681,1,RO,Romanian,roman,IE,Europe,"english, french, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2049802,0,RO,Romanian,roman,IE,Europe,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-RO_2049923,1,RO,Romanian,roman,IE,Europe,english ,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RO_2050066,1,RO,Romanian,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2050176,1,RO,Romanian,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RO_2050221,0,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RO_2050433,1,RO,Romanian,roman,IE,Europe,"english, spanish, german, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2050571,1,RO,Romanian,roman,IE,Europe,"french, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2050718,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RO_2050993,1,RO,Romanian,roman,IE,Europe,"english, italian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2051116,1,RO,Romanian,roman,IE,Europe,"english, spanish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RO_2051390,0,RO,Romanian,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2051756,1,RO,Romanian,roman,IE,Europe,"english, german, spanish, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2052027,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RO_2055912,1,RO,Romanian,roman,IE,Europe,"english, french, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RO_2056381,0,RO,Romanian,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2058262,0,RO,Romanian,roman,IE,Europe,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2060569,0,RO,Romanian,roman,IE,Europe,"english, french, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2068210,1,RO,Romanian,roman,IE,Europe,"english, french, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RO_2068312,1,RO,Romanian,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RO_2068357,1,RO,Romanian,roman,IE,Europe,"english, italian, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2069546,1,RO,Romanian,roman,IE,Europe,"english, hungarian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RO_2071423,1,RO,Romanian,roman,IE,Europe,"english, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RO_2071740,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RO_2071846,0,RO,Romanian,roman,IE,Europe,"english, hungarian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2072222,1,RO,Romanian,roman,IE,Europe,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RO_2072586,1,RO,Romanian,roman,IE,Europe,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RO_2089172,0,RO,Romanian,roman,IE,Europe,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RO_2104556,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RO_2114036,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RU_2038822,1,RU,Russian,different,IE,Inner Asia,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RU_2061678,1,RU,Russian,different,IE,Inner Asia,"german, english, french, hebrew, spanich, turkish",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RU_2061788,1,RU,Russian,different,IE,Inner Asia,"english, hebrew",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RU_2061975,1,RU,Russian,different,IE,Inner Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RU_2062520,1,RU,Russian,different,IE,Inner Asia,"english, german, french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RU_2062614,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2063000,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2063117,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2063228,1,RU,Russian,different,IE,Inner Asia,"japanese, english",TRUE,r_first,trill,TRUE,FALSE,TRUE
-RU_2063364,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2064048,1,RU,Russian,different,IE,Inner Asia,"english, german, french, hebrew",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RU_2064265,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2064657,1,RU,Russian,different,IE,Inner Asia,"english, czech",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RU_2064842,1,RU,Russian,different,IE,Inner Asia,"german, polish",FALSE,l_first,trill,FALSE,TRUE,FALSE
-RU_2065108,1,RU,Russian,different,IE,Inner Asia,"german, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RU_2065214,1,RU,Russian,different,IE,Inner Asia,"english, german, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RU_2065320,1,RU,Russian,different,IE,Inner Asia,"english, french, serbian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RU_2065532,1,RU,Russian,different,IE,Inner Asia,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-RU_2065638,0,RU,Russian,different,IE,Inner Asia,"german, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RU_2065792,1,RU,Russian,different,IE,Inner Asia,"english, german, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RU_2065958,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2066278,0,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2066433,1,RU,Russian,different,IE,Inner Asia,"english, spanish",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RU_2066663,1,RU,Russian,different,IE,Inner Asia,"english, korean",TRUE,r_first,trill,TRUE,FALSE,TRUE
-RU_2066788,1,RU,Russian,different,IE,Inner Asia,"french, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RU_2067357,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2067463,0,RU,Russian,different,IE,Inner Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RU_2067569,1,RU,Russian,different,IE,Inner Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RU_2067617,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2067835,1,RU,Russian,different,IE,Inner Asia,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-RU_2068102,1,RU,Russian,different,IE,Inner Asia,"english, czech",TRUE,l_first,trill,FALSE,TRUE,TRUE
-RU_2069133,0,RU,Russian,different,IE,Inner Asia,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-RU_2069776,1,RU,Russian,different,IE,Inner Asia,macedonian,FALSE,l_first,trill,FALSE,TRUE,FALSE
-RU_2070226,1,RU,Russian,different,IE,Inner Asia,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-RU_2071317,1,RU,Russian,different,IE,Inner Asia,"english, hebrew",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RU_2072920,1,RU,Russian,different,IE,Inner Asia,"czech, german",FALSE,l_first,trill,FALSE,TRUE,FALSE
-RU_2082071,0,RU,Russian,different,IE,Inner Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-RU_2095225,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-RU_2095582,1,RU,Russian,different,IE,Inner Asia,"german, english",TRUE,r_first,trill,FALSE,TRUE,TRUE
-RU_2205067,1,RU,Russian,different,IE,Inner Asia,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-SE_2066393,1,SE,Swedish,roman,IE,Europe,english,TRUE,l_first,approximant,FALSE,FALSE,TRUE
-SE_2069926,1,SE,Swedish,roman,IE,Europe,english,TRUE,r_first,approximant,FALSE,FALSE,TRUE
-SE_2079324,0,SE,Swedish,roman,IE,Europe,"english, french, german",TRUE,r_first,approximant,FALSE,TRUE,TRUE
-SE_2079521,1,SE,Swedish,roman,IE,Europe,"english, german, russian, chinese",TRUE,l_first,approximant,TRUE,TRUE,TRUE
-SE_2080068,1,SE,Swedish,roman,IE,Europe,"english, french, german, danish, portuguese, spanish, italian",TRUE,r_first,approximant,FALSE,TRUE,TRUE
-SE_2080848,1,SE,Swedish,roman,IE,Europe,"english, german, dutch, a little bit estniska, a little bit spanish, a little bit swahili",TRUE,l_first,approximant,FALSE,TRUE,TRUE
-SE_2080954,1,SE,Swedish,roman,IE,Europe,"english, spanish, italian",TRUE,r_first,approximant,FALSE,TRUE,TRUE
-SE_2081264,1,SE,Swedish,roman,IE,Europe,"english, dutch, french, german, spanish, icelandic",TRUE,r_first,approximant,FALSE,TRUE,TRUE
-SE_2082177,1,SE,Swedish,roman,IE,Europe,NA,FALSE,l_first,approximant,FALSE,FALSE,FALSE
-SE_2084957,1,SE,Swedish,roman,IE,Europe,"english, french, danish, portuguese",TRUE,r_first,approximant,FALSE,TRUE,TRUE
-SE_2085984,1,SE,Swedish,roman,IE,Europe,"english, german ",TRUE,l_first,approximant,FALSE,TRUE,TRUE
-SE_2104005,1,SE,Swedish,roman,IE,Europe,NA,FALSE,r_first,approximant,FALSE,FALSE,FALSE
-SE_2125928,1,SE,Swedish,roman,IE,Europe,"english, spanish, french",TRUE,r_first,approximant,FALSE,TRUE,TRUE
-SE_2125930,1,SE,Swedish,roman,IE,Europe,english,TRUE,l_first,approximant,FALSE,FALSE,TRUE
-SE_2126166,1,SE,Swedish,roman,IE,Europe,"english, german, french",TRUE,l_first,approximant,FALSE,TRUE,TRUE
-SE_2126421,1,SE,Swedish,roman,IE,Europe,"english, french",TRUE,l_first,approximant,FALSE,TRUE,TRUE
-SE_2126527,1,SE,Swedish,roman,IE,Europe,english,TRUE,r_first,approximant,FALSE,FALSE,TRUE
-SE_2126645,1,SE,Swedish,roman,IE,Europe,"english, french, german",TRUE,r_first,approximant,FALSE,TRUE,TRUE
-SE_2126751,1,SE,Swedish,roman,IE,Europe,english,TRUE,r_first,approximant,FALSE,FALSE,TRUE
-SE_2126867,1,SE,Swedish,roman,IE,Europe,"english, spanish",TRUE,l_first,approximant,FALSE,TRUE,TRUE
-SE_2127135,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-TH_2109740,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2109940,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2109951,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2110260,0,TH,Thai,different,Tai-Kadai,Southeast Asia,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-TH_2110708,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2111627,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TH_2111742,0,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2111848,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2111850,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2112079,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2112187,0,TH,Thai,different,Tai-Kadai,Southeast Asia,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-TH_2112538,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2113134,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2113338,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TH_2113447,1,TH,Thai,different,Tai-Kadai,Southeast Asia,"english, chinese",TRUE,r_first,trill,TRUE,FALSE,TRUE
-TH_2114194,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TH_2116679,0,TH,Thai,different,Tai-Kadai,Southeast Asia,"english, norwegian",TRUE,l_first,trill,FALSE,TRUE,TRUE
-TH_2119707,1,TH,Thai,different,Tai-Kadai,Southeast Asia,"english, japanese",TRUE,r_first,trill,TRUE,FALSE,TRUE
-TH_2122861,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2062299,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TR_2074403,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2074723,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,a little bit english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TR_2075197,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, german",TRUE,l_first,trill,FALSE,TRUE,TRUE
-TR_2075284,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2075874,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-TR_2075980,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-TR_2076142,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2076166,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TR_2076716,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TR_2077434,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TR_2077540,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2077544,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2077752,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TR_2077860,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english ,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TR_2078008,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-TR_2078114,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-TR_2078356,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english ,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2078674,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2079785,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, italian",TRUE,r_first,trill,FALSE,TRUE,TRUE
-TR_2079958,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-TR_2080114,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-TR_2080424,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-TR_2084037,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, a little bit french",TRUE,r_first,trill,FALSE,TRUE,TRUE
-TR_2084198,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"chinese, english, french",TRUE,l_first,trill,TRUE,TRUE,TRUE
-TR_2084317,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english ,TRUE,r_first,trill,FALSE,FALSE,TRUE
-TR_2084320,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, german",TRUE,r_first,trill,FALSE,TRUE,TRUE
-TR_2084517,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2084575,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2084829,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2087035,1,TR,Turkish,roman,Turkic,Greater Mesopotamia, ,FALSE,l_first,trill,FALSE,FALSE,FALSE
-TR_2088320,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-TR_2112699,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-TR_2112805,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,l_first,trill,FALSE,FALSE,FALSE
-TR_2113015,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, french",TRUE,l_first,trill,FALSE,TRUE,TRUE
-TR_2119813,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-TR_2119957,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-ZU_2057083,1,ZU,Zulu,roman,Benue-Congo,S Africa,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-ZU_2105421,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ZU_2106921,1,ZU,Zulu,roman,Benue-Congo,S Africa,german,FALSE,r_first,trill,FALSE,TRUE,FALSE
-ZU_2109362,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ZU_2129446,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-ZU_2136573,1,ZU,Zulu,roman,Benue-Congo,S Africa,english ,TRUE,l_first,trill,FALSE,FALSE,TRUE
-ZU_2136679,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ZU_2138105,1,ZU,Zulu,roman,Benue-Congo,S Africa,"xhosa, english, afrikaans",TRUE,r_first,trill,TRUE,TRUE,TRUE
-ZU_2138774,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ZU_2139026,1,ZU,Zulu,roman,Benue-Congo,S Africa,"english, afrikaans",TRUE,r_first,trill,FALSE,TRUE,TRUE
-ZU_2139132,0,ZU,Zulu,roman,Benue-Congo,S Africa,"sotho, english",TRUE,l_first,trill,FALSE,TRUE,TRUE
-ZU_2139238,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,trill,FALSE,FALSE,TRUE
-ZU_2139344,1,ZU,Zulu,roman,Benue-Congo,S Africa,NA,FALSE,r_first,trill,FALSE,FALSE,FALSE
-ZU_2139788,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-ZU_2139894,1,ZU,Zulu,roman,Benue-Congo,S Africa,"xhosa, english",TRUE,r_first,trill,TRUE,FALSE,TRUE
-ZU_2140000,1,ZU,Zulu,roman,Benue-Congo,S Africa,english ,TRUE,l_first,trill,FALSE,FALSE,TRUE
-ZU_2140141,0,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,l_first,trill,FALSE,FALSE,TRUE
-ZU_2140360,1,ZU,Zulu,roman,Benue-Congo,S Africa,"swazi, english",TRUE,l_first,trill,TRUE,FALSE,TRUE
-ZU_2140466,1,ZU,Zulu,roman,Benue-Congo,S Africa,"english, xhosa",TRUE,r_first,trill,TRUE,FALSE,TRUE
+ID,Match,Language,Name,Script,Family,Autotyp_Area,L2,EnglishL2YesNo,Order,r_l_distinction_L1,trill_real_L1,trill_occ_L1,r_l_distinction_L2,trill_real_L2,trill_occ_L2
+AL_2137891,1,AL,Albanian,roman,IE,Europe,"english, italian, french ",TRUE,l_first,1,1,1,1,1,1
+AL_2142091,0,AL,Albanian,roman,IE,Europe,"french, italian",FALSE,l_first,1,1,1,1,1,1
+AL_2142743,0,AL,Albanian,roman,IE,Europe,NA,FALSE,l_first,1,1,1,NA,NA,NA
+AL_2143087,0,AL,Albanian,roman,IE,Europe,"greek, english",TRUE,r_first,1,1,1,1,0,1
+AL_2144707,1,AL,Albanian,roman,IE,Europe,"italian, french, german, english",TRUE,r_first,1,1,1,1,1,1
+AL_2145197,1,AL,Albanian,roman,IE,Europe,italian,FALSE,r_first,1,1,1,1,1,1
+AL_2200030,1,AL,Albanian,roman,IE,Europe,"serbian,english",TRUE,r_first,1,1,1,1,0,1
+AL_2200491,1,AL,Albanian,roman,IE,Europe,"serbian, english, turkish",TRUE,l_first,1,1,1,1,0,1
+AL_2200597,1,AL,Albanian,roman,IE,Europe,"english,serbian",TRUE,l_first,1,1,1,1,0,1
+AL_2201480,1,AL,Albanian,roman,IE,Europe,"serbian, english",TRUE,r_first,1,1,1,1,0,1
+AM_2085826,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, german",TRUE,l_first,1,1,1,1,1,1
+AM_2086395,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, german, russian",TRUE,l_first,1,1,1,1,1,1
+AM_2089819,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, german ",TRUE,l_first,1,1,1,1,1,1
+AM_2090125,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english",TRUE,r_first,1,1,1,1,1,1
+AM_2110154,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, french",TRUE,l_first,1,1,1,1,1,1
+AM_2113553,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english ",TRUE,r_first,1,1,1,1,1,1
+AM_2124652,1,RU,Russian,different,IE,Inner Asia,"english, armenian, french",TRUE,r_first,1,1,1,1,1,1
+AM_2126284,0,AM,Armenian,different,IE,Greater Mesopotamia,"english, german, russian",TRUE,l_first,1,1,1,1,1,1
+AM_2129759,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, russian, german, spanish",TRUE,l_first,1,1,1,1,1,1
+AM_2131367,0,AM,Armenian,different,IE,Greater Mesopotamia,"english, russian, german",TRUE,r_first,1,1,1,1,1,1
+AM_2131473,1,AM,Armenian,different,IE,Greater Mesopotamia,"german, english",TRUE,l_first,1,1,1,1,0,1
+AM_2131488,0,AM,Armenian,different,IE,Greater Mesopotamia,"english, bulgarian, russian, german",TRUE,l_first,1,1,1,1,1,1
+AM_2131538,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, a little bit english",TRUE,l_first,1,1,1,1,1,1
+AM_2131978,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english",TRUE,l_first,1,1,1,1,1,1
+AM_2132050,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, german",TRUE,l_first,1,1,1,1,1,1
+AM_2132352,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, italian, russian",TRUE,l_first,1,1,1,1,1,1
+AM_2132489,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, russian",TRUE,l_first,1,1,1,1,1,1
+AM_2135059,1,AM,Armenian,different,IE,Greater Mesopotamia,"english,russian,spanish",TRUE,l_first,1,1,1,1,1,1
+AM_2135205,1,AM,Armenian,different,IE,Greater Mesopotamia,"english, russian, spanish",TRUE,l_first,1,1,1,1,1,1
+AM_2135351,1,RU,Russian,different,IE,Inner Asia,"english, french, italian",TRUE,l_first,1,1,1,1,1,1
+AM_2135714,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english",TRUE,l_first,1,1,1,1,1,1
+CN_2085682,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,hi,TRUE,r_first,0,0,1,1,0,1
+CN_2090343,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2090516,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+CN_2090559,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+CN_2090893,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+CN_2091068,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+CN_2091116,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2091224,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+CN_2091379,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2091417,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2091465,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+CN_2091749,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+CN_2091822,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+CN_2092002,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+CN_2092150,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2092280,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+CN_2092469,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2092617,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+CN_2092884,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+CN_2093102,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+CN_2093540,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2093752,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2093858,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english，spanish,TRUE,r_first,0,0,1,NA,NA,NA
+CN_2093964,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2094119,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2094331,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2094333,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2094542,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2094865,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+CN_2095104,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2095358,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+CN_2095401,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+CN_2096079,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2096196,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2096588,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2096696,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2096717,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2096896,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2096947,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2096959,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
+CN_2097226,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2097291,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+CN_2099532,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+DE_2002066,1,DE,German,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+DE_2002181,1,DE,German,roman,IE,Europe,"english, french, spanish",TRUE,r_first,1,0,1,1,1,1
+DE_2003687,1,DE,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DE_2006973,1,DE,German,roman,IE,Europe,"french, english, italian, vietnamese, turkish",TRUE,r_first,1,0,1,1,1,1
+DE_2006992,1,DE,German,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+DE_2007185,1,DE,German,roman,IE,Europe,"english, french, spanish, catalan, turkish",TRUE,r_first,1,0,1,1,1,1
+DE_2007197,1,DE,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DE_2007257,1,DE,German,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+DE_2007505,1,PL,Polish,roman,IE,Europe,"german, spanish, english, italian, russian, slovak, french",TRUE,r_first,1,1,1,1,1,1
+DE_2007575,1,DE,German,roman,IE,Europe,"english, spanish, french, dutch, hungarian",TRUE,r_first,1,0,1,1,1,1
+DE_2007595,1,DE,German,roman,IE,Europe,"english, french, spanish, japanese",TRUE,r_first,1,0,1,1,1,1
+DE_2007942,1,DE,German,roman,IE,Europe,"english, italian, french",TRUE,l_first,1,0,1,1,1,1
+DE_2008182,1,DE,German,roman,IE,Europe,"english, french, spanish, dutch, danish, swedish",TRUE,l_first,1,0,1,1,1,1
+DE_2008469,1,DE,German,roman,IE,Europe,"english, french, hungarian",TRUE,r_first,1,0,1,1,1,1
+DE_2009354,1,DE,German,roman,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+DE_2009820,1,DE,German,roman,IE,Europe,"english, italian, french",TRUE,r_first,1,0,1,1,1,1
+DE_2009857,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+DE_2009902,1,DE,German,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+DE_2010153,1,DE,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DE_2010577,1,DE,German,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+DE_2011490,1,DE,German,roman,IE,Europe,"german, english, french, danish",TRUE,r_first,1,0,1,1,0,1
+DE_2011955,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+DE_2013436,1,DE,German,roman,IE,Europe,"english, french, catalan, spanish, russian, czech, italian",TRUE,r_first,1,0,1,1,1,1
+DE_2015119,1,DE,German,roman,IE,Europe,"english, french, latin",TRUE,r_first,1,0,1,1,1,1
+DE_2015371,1,DE,German,roman,IE,Europe,"english, swedish, italian, spanish",TRUE,l_first,1,0,1,1,1,1
+DE_2016147,1,DE,German,roman,IE,Europe,"english, russian, dutch",TRUE,r_first,1,0,1,1,1,1
+DE_2016253,1,DE,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DE_2016675,1,DE,German,roman,IE,Europe,"english, potuguese, french, spanish",TRUE,r_first,1,0,1,1,1,1
+DE_2017196,1,DE,German,roman,IE,Europe,"english, french ",TRUE,r_first,1,0,1,1,0,1
+DE_2017541,1,DE,German,roman,IE,Europe,"english, latin",TRUE,l_first,1,0,1,1,1,1
+DE_2017558,1,DE,German,roman,IE,Europe,english ,TRUE,r_first,1,0,1,1,0,1
+DE_2017828,1,DE,German,roman,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+DE_2018342,1,DE,German,roman,IE,Europe,"english, french, a little bit italian, a little bit spanish",TRUE,l_first,1,0,1,1,1,1
+DE_2018651,1,DE,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DE_2019007,1,DE,German,roman,IE,Europe,"spanish, english, russian, french",TRUE,l_first,1,0,1,1,1,1
+DE_2019115,1,DE,German,roman,IE,Europe,"english, french, spanish, polish",TRUE,r_first,1,0,1,1,1,1
+DE_2019961,1,DE,German,roman,IE,Europe,"english, french, spanish, latin",TRUE,r_first,1,0,1,1,1,1
+DE_2020666,0,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+DE_2020772,1,DE,German,roman,IE,Europe,"english, french, dutch",TRUE,l_first,1,0,1,1,1,1
+DE_2020887,1,DE,German,roman,IE,Europe,"english, swedish, norwegian",TRUE,r_first,1,0,1,1,0,1
+DE_2021088,1,DE,German,roman,IE,Europe,"english, spanish, finnish, swedish",TRUE,r_first,1,0,1,1,1,1
+DE_2021203,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+DE_2021892,1,DE,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DE_2021951,1,CN,Chinese,different,Sino-Tibetan,Southeast Asia,"english, german",TRUE,l_first,0,0,1,1,0,1
+DE_2022038,1,DE,German,roman,IE,Europe,"english, croatian",TRUE,l_first,1,0,1,1,1,1
+DE_2022372,1,DE,German,roman,IE,Europe,"french, english, russian, spanish",TRUE,l_first,1,0,1,1,1,1
+DE_2024982,1,DE,German,roman,IE,Europe,"english, french, latin",TRUE,r_first,1,0,1,1,1,1
+DE_2025088,1,DE,German,roman,IE,Europe,"english, spanish, japanese, french",TRUE,r_first,1,0,1,1,1,1
+DE_2025321,0,DE,German,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+DE_2026290,1,DE,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DE_2026502,1,DE,German,roman,IE,Europe,"english, russian, spanish, swedish",TRUE,r_first,1,0,1,1,1,1
+DE_2026608,1,DE,German,roman,IE,Europe,"french, english, german",TRUE,l_first,1,0,1,1,0,1
+DE_2028933,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+DE_2032454,1,DE,German,roman,IE,Europe,"english, dutch",TRUE,r_first,1,0,1,1,1,1
+DE_2035082,1,DE,German,roman,IE,Europe,"english, dutch",TRUE,l_first,1,0,1,1,1,1
+DE_2035188,1,DE,German,roman,IE,Europe,"english, french, spanish",TRUE,l_first,1,0,1,1,1,1
+DE_2035314,1,DE,German,roman,IE,Europe,"english, french, turkish, russian",TRUE,r_first,1,0,1,1,1,1
+DE_2036644,1,DE,German,roman,IE,Europe,"french, english, spanish",TRUE,l_first,1,0,1,1,1,1
+DE_2036752,1,DE,German,roman,IE,Europe,"french, english",TRUE,r_first,1,0,1,1,0,1
+DE_2037056,1,DE,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DE_2037869,1,DE,German,roman,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+DE_2037989,1,DE,German,roman,IE,Europe,"english, polish",TRUE,l_first,1,0,1,1,1,1
+DE_2038461,1,DE,German,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+DE_2038972,1,DE,German,roman,IE,Europe,"english, spanish, dutch",TRUE,r_first,1,0,1,1,1,1
+DE_2039334,1,DE,German,roman,IE,Europe,"english, norwegian",TRUE,l_first,1,0,1,1,0,1
+DE_2039440,1,DE,German,roman,IE,Europe,"english, swedish",TRUE,r_first,1,0,1,1,0,1
+DE_2039750,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+DE_2040180,1,DE,German,roman,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+DE_2043127,1,DE,German,roman,IE,Europe,"english, french, spanish",TRUE,l_first,1,0,1,1,1,1
+DE_2043880,1,DE,German,roman,IE,Europe,"french, swedish",FALSE,l_first,1,0,1,1,0,1
+DE_2043986,1,DE,German,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+DE_2044122,1,DE,German,roman,IE,Europe,"english, arabic",TRUE,l_first,1,0,1,1,1,1
+DE_2046800,0,DE,German,roman,IE,Europe,"english, french, finnish",TRUE,l_first,1,0,1,1,1,1
+DE_2055195,1,DE,German,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+DE_2055406,1,DE,German,roman,IE,Europe,"english, russian, potuguese",TRUE,l_first,1,0,1,1,1,1
+DE_2055806,1,DE,German,roman,IE,Europe,"english, french, spanish, dutch, NGT, irish",TRUE,r_first,1,0,1,1,1,1
+DE_2072116,1,DE,German,roman,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+DE_2074160,1,AM,Armenian,different,IE,Greater Mesopotamia,"russian, english, german",TRUE,r_first,1,1,1,1,1,1
+DE_2090015,1,DE,German,roman,IE,Europe,"english, italian",TRUE,l_first,1,0,1,1,1,1
+DE_2109173,1,DE,German,roman,IE,Europe,"english, french, latin, italian",TRUE,r_first,1,0,1,1,1,1
+DE_2117137,1,DE,German,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+DK_2102760,1,DK,Danish,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DK_2102868,1,DK,Danish,roman,IE,Europe,"english, german, french",TRUE,r_first,1,0,1,1,0,1
+DK_2136830,1,DK,Danish,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+DK_2137122,1,DK,Danish,roman,IE,Europe,"english, german",TRUE,r_first,1,0,1,1,0,1
+DK_2142486,1,DK,Danish,roman,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+DK_2142540,1,DK,Danish,roman,IE,Europe,"english, german, dutch",TRUE,r_first,1,0,1,1,1,1
+DK_2142882,1,DK,Danish,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+DK_2143010,1,DK,Danish,roman,IE,Europe,"english, german",TRUE,r_first,1,0,1,1,0,1
+DK_2143222,1,DK,Danish,roman,IE,Europe,"german, english",TRUE,r_first,1,0,1,1,0,1
+DK_2143457,1,DK,Danish,roman,IE,Europe,"english, german, french",TRUE,l_first,1,0,1,1,0,1
+DK_2143615,1,DK,Danish,roman,IE,Europe,"english, german",TRUE,l_first,1,0,1,1,0,1
+DK_2143723,1,DK,Danish,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+DK_2143829,1,DK,Danish,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+DK_2144114,1,DK,Danish,roman,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+DK_2144894,0,DK,Danish,roman,IE,Europe,"english, german",TRUE,r_first,1,0,1,1,0,1
+DK_2147661,1,DK,Danish,roman,IE,Europe,"english, german, french",TRUE,r_first,1,0,1,1,0,1
+DK_2149822,1,DK,Danish,roman,IE,Europe,"english, german, spanish, portuguese, russian, dutch",TRUE,l_first,1,0,1,1,1,1
+DK_2149901,1,DK,Danish,roman,IE,Europe,"english, german",TRUE,l_first,1,0,1,1,0,1
+EE_2051870,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,swedish,FALSE,r_first,1,1,1,1,0,1
+EE_2054453,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, russian, hungarian, german, spanish",TRUE,r_first,1,1,1,1,1,1
+EE_2056161,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, russian, latvian",TRUE,r_first,1,1,1,1,1,1
+EE_2056593,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"french, english, italian, russian",TRUE,r_first,1,1,1,1,1,1
+EE_2056729,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, russian",TRUE,l_first,1,1,1,1,1,1
+EE_2056747,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"german, english, finnish, hungarian, russian, swedish",TRUE,r_first,1,1,1,1,1,1
+EE_2056947,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, english",TRUE,r_first,1,1,1,1,1,1
+EE_2057308,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, german, english, french",TRUE,r_first,1,1,1,1,1,1
+EE_2057346,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, russian",TRUE,l_first,1,1,1,1,1,1
+EE_2057447,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"spanish, english, russian",TRUE,r_first,1,1,1,1,1,1
+EE_2057608,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, german",TRUE,r_first,1,1,1,1,1,1
+EE_2057838,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, german",TRUE,l_first,1,1,1,1,1,1
+EE_2057944,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+EE_2058050,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, swedish",TRUE,l_first,1,1,1,1,1,1
+EE_2058156,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"german, english, hungarian, russian",TRUE,r_first,1,1,1,1,1,1
+EE_2058368,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, latin",TRUE,r_first,1,1,1,1,1,1
+EE_2058474,1,IT,Italian,roman,IE,Europe,"estonian, english, spanish ",TRUE,l_first,1,1,1,1,1,1
+EE_2058528,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, spanish, german",TRUE,l_first,1,1,1,1,1,1
+EE_2058541,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, german, finnish",TRUE,l_first,1,1,1,1,1,1
+EE_2058608,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"german, english, norwegian",TRUE,l_first,1,1,1,1,0,1
+EE_2058898,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, english, finnish, german",TRUE,r_first,1,1,1,1,1,1
+EE_2059007,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, russian, finnish, italian, latin, greek",TRUE,r_first,1,1,1,1,1,1
+EE_2059148,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, french, russian, finnish",TRUE,r_first,1,1,1,1,1,1
+EE_2059273,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian",TRUE,r_first,1,1,1,1,1,1
+EE_2059385,1,PL,Polish,roman,IE,Europe,"estonian, english, russian",TRUE,l_first,1,1,1,1,1,1
+EE_2059514,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian",TRUE,l_first,1,1,1,1,1,1
+EE_2059608,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"swedish, german, english, russian",TRUE,l_first,1,1,1,1,1,1
+EE_2059961,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, french, russian",TRUE,l_first,1,1,1,1,1,1
+EE_2060175,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, russian, german, swedish, italian, spanish, french",TRUE,r_first,1,1,1,1,1,1
+EE_2060749,1,IT,Italian,roman,IE,Europe,"russian, english, estonian, czech",TRUE,l_first,1,1,1,1,1,1
+EE_2061100,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, russian, french",TRUE,r_first,1,1,1,1,1,1
+EE_2061228,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, english, german, finnish, a little bit polish, a little bit spanish",TRUE,l_first,1,1,1,1,1,1
+EE_2061330,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, german, finnish",TRUE,r_first,1,1,1,1,1,1
+EE_2062178,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, russian, finnish",TRUE,r_first,1,1,1,1,1,1
+EE_2062405,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, hungarian",TRUE,l_first,1,1,1,1,1,1
+EE_2063434,0,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german, french, russian",TRUE,l_first,1,1,1,1,1,1
+EE_2063750,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"german, english, russian",TRUE,l_first,1,1,1,1,1,1
+EE_2063940,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"russian, english, finnish",TRUE,r_first,1,1,1,1,1,1
+EE_2065426,1,RU,Russian,different,IE,Inner Asia,"estonian, english",TRUE,r_first,1,1,1,1,1,1
+EE_2067135,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, french, finnish",TRUE,r_first,1,1,1,1,1,1
+EE_2067986,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish",TRUE,r_first,1,1,1,1,1,1
+EE_2071211,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"spanish, english, russian, italian, french, finnish",TRUE,l_first,1,1,1,1,1,1
+EE_2093288,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, a little bit german, a little bit italian, a little bit russian ",TRUE,l_first,1,1,1,1,1,1
+EE_2109632,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, german  ",TRUE,r_first,1,1,1,1,0,1
+EE_2190350,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,english,TRUE,r_first,1,1,1,1,0,1
+EN_1993336,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,1,1,1,1,0,1
+EN_2007249,1,EN,English,roman,IE,Europe,"german, dutch",FALSE,r_first,1,0,1,1,1,1
+EN_2009360,1,EN,English,roman,IE,Europe,"french, german",FALSE,r_first,1,0,1,1,0,1
+EN_2009682,1,EN,English,roman,IE,Europe,french,FALSE,l_first,1,0,1,1,0,1
+EN_2011604,1,EN,English,roman,IE,Europe,"german, chinese, italian",FALSE,r_first,1,0,1,1,1,1
+EN_2012604,1,EN,English,roman,IE,Europe,"french, a little bit german, a little bit japanese",FALSE,r_first,1,0,1,1,0,1
+EN_2014133,1,DE,German,roman,IE,Europe,"english, german, italian",TRUE,l_first,1,1,1,1,1,1
+EN_2015517,1,EN,English,roman,IE,Europe,"a little bit german, a little french",FALSE,r_first,1,0,1,1,0,1
+EN_2017753,0,ES,Spanish,roman,IE,Europe,"english, japanese, slovak, german",TRUE,r_first,1,1,1,1,1,1
+EN_2025215,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
+EN_2026714,1,EN,English,roman,IE,Europe,"french, japanese, hindi, tamil",FALSE,r_first,1,0,1,1,0,1
+EN_2027185,1,EN,English,roman,IE,Europe,nepali,FALSE,r_first,1,0,1,1,1,1
+EN_2029222,1,EN,English,roman,IE,Europe,french,FALSE,r_first,1,0,1,1,0,1
+EN_2029328,1,EN,English,roman,IE,Europe,"spanish, german, asl",FALSE,r_first,1,0,1,1,1,1
+EN_2029434,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+EN_2029531,1,EN,English,roman,IE,Europe,"spanish, hebrew",FALSE,l_first,1,0,1,1,1,1
+EN_2029633,1,ES,Spanish,roman,IE,Europe,"english, french, german",TRUE,l_first,1,1,1,1,0,1
+EN_2029682,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+EN_2029700,1,EN,English,roman,IE,Europe,"spanish, a little bit dutch ",FALSE,r_first,1,0,1,1,1,1
+EN_2029922,1,EN,English,roman,IE,Europe,french,FALSE,r_first,1,0,1,1,0,1
+EN_2030058,0,EN,English,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+EN_2030330,1,EN,English,roman,IE,Europe,german,FALSE,l_first,1,0,1,1,0,1
+EN_2030515,1,EN,English,roman,IE,Europe,german,FALSE,r_first,1,0,1,1,0,1
+EN_2030623,1,EN,English,roman,IE,Europe,"asl, french",FALSE,r_first,1,0,1,1,0,1
+EN_2030766,1,ES,Spanish,roman,IE,Europe,"english, catalan",TRUE,l_first,1,1,1,1,1,1
+EN_2030899,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+EN_2031042,1,IT,Italian,roman,IE,Europe,"english, spanish, calabrese",TRUE,r_first,1,1,1,1,1,1
+EN_2031091,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+EN_2031265,1,EN,English,roman,IE,Europe,"french, italian",FALSE,l_first,1,0,1,1,1,1
+EN_2031376,1,IT,Italian,roman,IE,Europe,"english, french, spanish",TRUE,l_first,1,1,1,1,1,1
+EN_2031526,1,EN,English,roman,IE,Europe,"turkish, spanish",FALSE,l_first,1,0,1,1,1,1
+EN_2031667,1,EN,English,roman,IE,Europe,"latin, a little bit spanish",FALSE,r_first,1,0,1,1,1,1
+EN_2031862,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+EN_2032036,1,PL,Polish,roman,IE,Europe,"english, french, italian ",TRUE,r_first,1,1,1,1,1,1
+EN_2032142,1,EN,English,roman,IE,Europe,"spanish, a little bit korean",FALSE,r_first,1,0,1,1,1,1
+EN_2032308,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+EN_2032689,1,EN,English,roman,IE,Europe,spanish,FALSE,l_first,1,0,1,1,1,1
+EN_2032799,1,EN,English,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+EN_2033313,1,PL,Polish,roman,IE,Europe,english ,TRUE,r_first,1,1,1,1,0,1
+EN_2033419,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+EN_2033459,1,SE,Swedish,roman,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+EN_2033631,1,ES,Spanish,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+EN_2033751,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+EN_2033881,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+EN_2033987,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+EN_2034548,1,EN,English,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+EN_2034937,1,EN,English,roman,IE,Europe,french,FALSE,r_first,1,0,1,1,0,1
+EN_2035441,1,EN,English,roman,IE,Europe,a little bit german ,FALSE,l_first,1,0,1,1,0,1
+EN_2035547,1,DE,German,roman,IE,Europe,"english, a little bit french, a little bit hindi, a little bit italian, latin ",TRUE,r_first,1,0,1,1,1,1
+EN_2035653,1,EN,English,roman,IE,Europe,"latin, ancient greek, german",FALSE,r_first,1,0,1,1,1,1
+EN_2036332,0,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,l_first,0,0,1,1,0,1
+EN_2038609,1,EN,English,roman,IE,Europe,french,FALSE,r_first,1,0,1,1,0,1
+EN_2039215,1,EN,English,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+EN_2040072,0,DE,German,roman,IE,Europe,"english, hebrew, german, french",TRUE,r_first,1,1,1,1,0,1
+EN_2043021,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, finnish, french, russian",TRUE,r_first,1,1,1,1,1,1
+EN_2043774,1,EE,Estonian,roman,Finno-Ugric,Inner Asia,"english, swedish, dutch, german, russian",TRUE,l_first,1,1,1,1,1,1
+EN_2044492,1,DE,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+EN_2049534,1,EN,English,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+EN_2056487,1,EN,English,roman,IE,Europe,french,FALSE,l_first,1,0,1,1,0,1
+EN_2067029,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, german, saami",TRUE,l_first,1,1,1,1,1,1
+EN_2072464,1,ES,Spanish,roman,IE,Europe,"english, german, dutch",TRUE,r_first,1,1,1,1,1,1
+EN_2075768,1,EN,English,roman,IE,Europe,vietnamese,FALSE,l_first,1,0,1,0,0,1
+EN_2086628,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+EN_2094717,1,PT,Portuguese,roman,IE,Europe,"english, french, japanese",TRUE,l_first,1,0,1,1,0,1
+ES_2048974,1,ES,Spanish,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+ES_2064046,1,ES,Spanish,roman,IE,Europe,"german, italian, english",TRUE,r_first,1,1,1,1,1,1
+ES_2064970,1,ES,Spanish,roman,IE,Europe,"portuguese,  english ",TRUE,r_first,1,1,1,1,0,1
+ES_2065961,1,ES,Spanish,roman,IE,Europe,"french, portuguese",FALSE,l_first,1,1,1,1,0,1
+ES_2066170,1,ES,Spanish,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+ES_2071528,0,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+ES_2072570,1,ES,Spanish,roman,IE,Europe,"english, italian",TRUE,l_first,1,1,1,1,1,1
+ES_2079043,1,ES,Spanish,roman,IE,Europe,"catalan, english, french, basque",TRUE,l_first,1,1,1,1,1,1
+ES_2080636,1,ES,Spanish,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+ES_2083727,1,ES,Spanish,roman,IE,Europe,"catalan, english, french, german, italian, portuguese, swedish, japanese",TRUE,l_first,1,1,1,1,1,1
+ES_2084849,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+ES_2085397,1,ES,Spanish,roman,IE,Europe,"english, french",TRUE,l_first,1,1,1,1,0,1
+ES_2099999,1,ES,Spanish,roman,IE,Europe,"french, chinese, english",TRUE,r_first,1,1,1,1,0,1
+ES_2100037,1,ES,Spanish,roman,IE,Europe,"german, english, french",TRUE,r_first,1,1,1,1,0,1
+ES_2100788,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+ES_2102937,0,ES,Spanish,roman,IE,Europe,french,FALSE,r_first,1,1,1,1,0,1
+ES_2104450,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+ES_2107752,1,ES,Spanish,roman,IE,Europe,"english, latin",TRUE,r_first,1,1,1,1,1,1
+ES_2107803,1,ES,Spanish,roman,IE,Europe,"english, basque",TRUE,l_first,1,1,1,1,1,1
+ES_2107840,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+ES_2108072,0,ES,Spanish,roman,IE,Europe,NA,FALSE,l_first,1,1,1,NA,NA,NA
+ES_2108273,0,ES,Spanish,roman,IE,Europe,"english, basque",TRUE,l_first,1,1,1,1,1,1
+ES_2108379,1,ES,Spanish,roman,IE,Europe,NA,FALSE,r_first,1,1,1,NA,NA,NA
+ES_2108485,1,ES,Spanish,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+ES_2108595,0,ES,Spanish,roman,IE,Europe,"english, french ",TRUE,l_first,1,1,1,1,0,1
+ES_2108740,1,ES,Spanish,roman,IE,Europe,"english, french",TRUE,l_first,1,1,1,1,0,1
+ES_2109053,1,ES,Spanish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+ES_2110814,1,ES,Spanish,roman,IE,Europe,"english, italian, portuguese, french",TRUE,r_first,1,1,1,1,1,1
+FA_2043490,1,FA,Farsi,different,IE,Greater Mesopotamia,"english, french",TRUE,r_first,1,1,1,1,0,1
+FA_2068709,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,1,1,1,1,0,1
+FA_2086501,1,FA,Farsi,different,IE,Greater Mesopotamia,NA,FALSE,l_first,1,1,1,NA,NA,NA
+FA_2103514,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,1,1,1,1,0,1
+FA_2103865,1,FA,Farsi,different,IE,Greater Mesopotamia,NA,FALSE,r_first,1,1,1,NA,NA,NA
+FA_2104128,1,FA,Farsi,different,IE,Greater Mesopotamia,"english, german",TRUE,r_first,1,1,1,1,0,1
+FA_2105292,0,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,1,1,1,1,0,1
+FA_2120082,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,1,1,1,1,0,1
+FA_2142305,1,FA,Farsi,different,IE,Greater Mesopotamia,"english,french",TRUE,r_first,1,1,1,1,0,1
+FA_2147376,0,FA,Farsi,different,IE,Greater Mesopotamia,"spanish, english",TRUE,r_first,1,1,1,1,1,1
+FA_2150860,0,FA,Farsi,different,IE,Greater Mesopotamia,"english, arabic, turkish",TRUE,l_first,1,1,1,1,1,1
+FA_2150878,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,1,1,1,1,0,1
+FA_2151101,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,1,1,1,1,0,1
+FA_2151146,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,1,1,1,1,0,1
+FA_2151452,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,1,1,1,1,0,1
+FA_2151502,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,l_first,1,1,1,1,0,1
+FA_2151685,1,FA,Farsi,different,IE,Greater Mesopotamia,"english, french",TRUE,l_first,1,1,1,1,0,1
+FA_2151791,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,1,1,1,1,0,1
+FA_2152327,1,FA,Farsi,different,IE,Greater Mesopotamia,NA,FALSE,r_first,1,1,1,NA,NA,NA
+FA_2152433,1,FA,Farsi,different,IE,Greater Mesopotamia,english,TRUE,r_first,1,1,1,1,0,1
+FA_2152646,1,FA,Farsi,different,IE,Greater Mesopotamia,"english, a little bit french",TRUE,r_first,1,1,1,1,0,1
+FI_2114535,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, swedish, (german)",TRUE,r_first,1,1,1,1,0,1
+FI_2114566,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,english,TRUE,r_first,1,1,1,1,0,1
+FI_2114593,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"estonian, english",TRUE,r_first,1,1,1,1,1,1
+FI_2114884,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, swedish, estonian",TRUE,l_first,1,1,1,1,1,1
+FI_2116020,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"swedish, english",TRUE,l_first,1,1,1,1,0,1
+FI_2117276,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"swedish, english, spanish, italian",TRUE,r_first,1,1,1,1,1,1
+FI_2117492,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, french, swedish, italian, german, portuguese, spanish",TRUE,l_first,1,1,1,1,1,1
+FI_2121858,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, estonian",TRUE,r_first,1,1,1,1,1,1
+FI_2122176,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,english,TRUE,r_first,1,1,1,1,0,1
+FI_2143935,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, italian, swedish, french, estonian, spanish",TRUE,r_first,1,1,1,1,1,1
+FI_2145326,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, estonian, german, swedish, spanish, french, russian",TRUE,l_first,1,1,1,1,1,1
+FI_2149185,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,english,TRUE,r_first,1,1,1,1,0,1
+FI_2149332,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, french, italian",TRUE,r_first,1,1,1,1,1,1
+FI_2149565,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+FI_2149709,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, swedish",TRUE,l_first,1,1,1,1,0,1
+FI_2154435,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, a little bit swedish, a little bit german, a little bit italian",TRUE,l_first,1,1,1,1,1,1
+FI_2190244,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, french, spanish, swedish, a little bit portuguese, a little bit italian",TRUE,l_first,1,1,1,1,1,1
+FR_2074614,1,FR,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+FR_2088693,1,FR,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+FR_2088799,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2093434,1,FR,French,roman,IE,Europe,"english, a little bit italian, a little bit german, a little bit spanish ",TRUE,r_first,1,0,1,1,1,1
+FR_2098048,1,FR,French,roman,IE,Europe,"german, english",TRUE,r_first,1,0,1,1,0,1
+FR_2098380,1,FR,French,roman,IE,Europe,"english, german",TRUE,r_first,1,0,1,1,0,1
+FR_2098486,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+FR_2098592,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+FR_2098612,1,FR,French,roman,IE,Europe,"english, german, a little bit indonesian",TRUE,l_first,1,0,1,1,1,1
+FR_2098726,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+FR_2098910,1,FR,French,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+FR_2099016,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+FR_2099122,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2099228,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+FR_2099334,1,FR,French,roman,IE,Europe,italian,FALSE,r_first,1,0,1,1,1,1
+FR_2099642,1,FR,French,roman,IE,Europe,"english, spanish, german ",TRUE,l_first,1,0,1,1,1,1
+FR_2099761,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+FR_2099763,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+FR_2100322,1,FR,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+FR_2100536,1,FR,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+FR_2100701,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2100714,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2100799,1,FR,French,roman,IE,Europe,"english, spanish, german",TRUE,l_first,1,0,1,1,1,1
+FR_2100971,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2101024,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2101380,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2101720,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2101747,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2102035,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2102295,1,EN,English,roman,IE,Europe,french,FALSE,r_first,1,0,1,1,0,1
+FR_2102421,1,FR,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+FR_2102527,1,FR,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+FR_2102654,1,FR,French,roman,IE,Europe,"english, a little bit japanese",TRUE,r_first,1,0,1,1,0,1
+FR_2103186,1,FR,French,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+FR_2103402,1,FR,French,roman,IE,Europe,"english, german",TRUE,l_first,1,0,1,1,0,1
+FR_2103653,1,FR,French,roman,IE,Europe,english spanish,TRUE,l_first,1,0,1,NA,NA,NA
+FR_2104234,1,FR,French,roman,IE,Europe,"italian, english",TRUE,l_first,1,0,1,1,1,1
+FR_2104340,1,FR,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+FR_2105020,1,RU,Russian,different,IE,Inner Asia,"english, french ",TRUE,r_first,1,1,1,1,0,1
+FR_2105186,0,RU,Russian,different,IE,Inner Asia,"english, french",TRUE,l_first,1,1,1,1,0,1
+FR_2105871,1,FR,French,roman,IE,Europe,english. spanish,TRUE,l_first,1,0,1,NA,NA,NA
+FR_2105874,1,FR,French,roman,IE,Europe,"arabic, german, english ",TRUE,r_first,1,0,1,1,1,1
+FR_2106197,1,FR,French,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+FR_2106314,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2106427,1,FR,French,roman,IE,Europe,"polish, spanish, english",TRUE,l_first,1,0,1,1,1,1
+FR_2106623,1,FR,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+FR_2106696,1,FR,French,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+FR_2107027,0,FR,French,roman,IE,Europe,"english,spanish,italian, german",TRUE,r_first,1,0,1,1,1,1
+FR_2107135,1,FR,French,roman,IE,Europe,"english, spanish, italian, creole",TRUE,l_first,1,0,1,1,1,1
+FR_2107395,1,FR,French,roman,IE,Europe,"english, spanish, italian",TRUE,r_first,1,0,1,1,1,1
+FR_2107540,1,FR,French,roman,IE,Europe,"english, a little bit german",TRUE,r_first,1,0,1,1,0,1
+FR_2107646,1,FR,French,roman,IE,Europe,"english, italian, spanish",TRUE,l_first,1,0,1,1,1,1
+FR_2108947,1,FR,French,roman,IE,Europe,"english, italian",TRUE,l_first,1,0,1,1,1,1
+FR_2112372,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2113664,1,FR,French,roman,IE,Europe,polish,FALSE,r_first,1,0,1,1,1,1
+FR_2113913,1,FR,French,roman,IE,Europe,"english, german",TRUE,l_first,1,0,1,1,0,1
+FR_2119495,1,FR,French,roman,IE,Europe,"english, a little bit italian, a little bit spanish",TRUE,l_first,1,0,1,1,1,1
+FR_2120324,1,FR,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2123564,1,FR,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+GE_2078462,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+GE_2110923,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,1,0,1,1,1,1
+GE_2111129,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, turkish, french",TRUE,r_first,1,0,1,1,0,1
+GE_2111235,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, english, russian",TRUE,r_first,1,0,1,1,1,1
+GE_2111237,0,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian",TRUE,r_first,1,0,1,1,1,1
+GE_2111476,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,1,0,1,1,1,1
+GE_2113770,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian, greek",TRUE,r_first,1,0,1,1,1,1
+GE_2130542,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian, greek, german",TRUE,r_first,1,0,1,1,1,1
+GE_2131086,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"russian, english, greek",TRUE,r_first,1,0,1,1,1,1
+GE_2131090,1,RU,Russian,different,IE,Inner Asia,"georgian, greek",FALSE,l_first,1,1,1,1,0,1
+GE_2134616,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,english,TRUE,r_first,1,0,1,1,0,1
+GE_2144580,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian, english",TRUE,r_first,1,0,1,1,1,1
+GE_2145379,0,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian",TRUE,l_first,1,0,1,1,1,1
+GE_2148242,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,1,0,1,1,1,1
+GE_2186931,1,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,1,0,1,1,1,1
+GE_2199787,0,GE,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian",TRUE,r_first,1,0,1,1,1,1
+GR_2037162,1,GR,Greek,different,IE,Europe,"english, french, bulgarian ",TRUE,r_first,1,0,1,1,1,1
+GR_2037268,1,GR,Greek,different,IE,Europe,"dutch, english, german",TRUE,l_first,1,0,1,1,1,1
+GR_2037450,1,GR,Greek,different,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+GR_2037556,1,GR,Greek,different,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+GR_2037777,1,GR,Greek,different,IE,Europe,"english, french, portuguese, spanish",TRUE,l_first,1,0,1,1,1,1
+GR_2038207,1,GR,Greek,different,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+GR_2039546,1,GR,Greek,different,IE,Europe,"english, german",TRUE,r_first,1,0,1,1,0,1
+GR_2041501,1,GR,Greek,different,IE,Europe,"german,english, spanish",TRUE,r_first,1,0,1,1,1,1
+GR_2041607,1,GR,Greek,different,IE,Europe,"english, german ",TRUE,l_first,1,0,1,1,0,1
+GR_2041713,1,GR,Greek,different,IE,Europe,"german, english",TRUE,l_first,1,0,1,1,0,1
+GR_2041819,1,GR,Greek,different,IE,Europe,german,FALSE,r_first,1,0,1,1,0,1
+GR_2041966,1,GR,Greek,different,IE,Europe,"english, german, chinese",TRUE,r_first,1,0,1,1,0,1
+GR_2042476,1,GR,Greek,different,IE,Europe,"german, english, italian",TRUE,l_first,1,0,1,1,1,1
+GR_2047985,1,GR,Greek,different,IE,Europe,"english, german, spanish, turkish",TRUE,l_first,1,0,1,1,1,1
+GR_2052152,1,GR,Greek,different,IE,Europe,"english, spanish, french",TRUE,l_first,1,0,1,1,1,1
+GR_2052285,1,GR,Greek,different,IE,Europe,"english, italian ",TRUE,r_first,1,0,1,1,1,1
+GR_2052534,1,GR,Greek,different,IE,Europe,"english, french, german ",TRUE,l_first,1,0,1,1,0,1
+GR_2052566,1,GR,Greek,different,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+GR_2052661,1,GR,Greek,different,IE,Europe,"english, french, turkish",TRUE,r_first,1,0,1,1,0,1
+GR_2052791,1,GR,Greek,different,IE,Europe,"french, english",TRUE,r_first,1,0,1,1,0,1
+GR_2052834,1,GR,Greek,different,IE,Europe,"english, french, spanish, german",TRUE,r_first,1,0,1,1,1,1
+GR_2052940,1,GR,Greek,different,IE,Europe,"english, german, turkish",TRUE,l_first,1,0,1,1,0,1
+GR_2052949,1,GR,Greek,different,IE,Europe,"english,french,italian",TRUE,l_first,1,0,1,1,1,1
+GR_2053049,1,GR,Greek,different,IE,Europe,"english, spanish, french",TRUE,l_first,1,0,1,1,1,1
+GR_2053235,0,GR,Greek,different,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+GR_2053499,1,GR,Greek,different,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+GR_2053502,1,GR,Greek,different,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+GR_2053549,1,GR,Greek,different,IE,Europe,"english, german",TRUE,r_first,1,0,1,1,0,1
+GR_2053562,0,GR,Greek,different,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+GR_2053930,1,GR,Greek,different,IE,Europe,"english,french, italian",TRUE,r_first,1,0,1,1,1,1
+GR_2054044,1,GR,Greek,different,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+GR_2054169,1,GR,Greek,different,IE,Europe,"english, french ",TRUE,r_first,1,0,1,1,0,1
+GR_2054347,1,GR,Greek,different,IE,Europe,"english, french ",TRUE,l_first,1,0,1,1,0,1
+GR_2054559,0,GR,Greek,different,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+GR_2054665,1,GR,Greek,different,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+GR_2054771,1,GR,Greek,different,IE,Europe,english ,TRUE,l_first,1,0,1,1,0,1
+GR_2054858,1,GR,Greek,different,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+GR_2054929,1,GR,Greek,different,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+GR_2055020,1,GR,Greek,different,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+GR_2055292,1,GR,Greek,different,IE,Europe,"english, french, german",TRUE,l_first,1,0,1,1,0,1
+GR_2055527,0,GR,Greek,different,IE,Europe,"english, french, arabic",TRUE,l_first,1,0,1,1,1,1
+GR_2144270,1,GR,Greek,different,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+HU_2100212,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+HU_2114319,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,1,1,1,NA,NA,NA
+HU_2115022,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,1,1,1,1,0,1
+HU_2115135,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,r_first,1,1,1,NA,NA,NA
+HU_2115358,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+HU_2115509,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,1,1,1,NA,NA,NA
+HU_2115615,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,1,1,1,NA,NA,NA
+HU_2115723,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+HU_2115908,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, german, turkish",TRUE,l_first,1,1,1,1,0,1
+HU_2116177,1,HU,Hungarian,roman,Finno-Ugric,Europe,"german, english, dutch, spanish ",TRUE,r_first,1,1,1,1,1,1
+HU_2116335,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,r_first,1,1,1,NA,NA,NA
+HU_2116551,1,HU,Hungarian,roman,Finno-Ugric,Europe,german,FALSE,r_first,1,1,1,1,0,1
+HU_2116880,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,1,1,1,1,0,1
+HU_2117002,0,HU,Hungarian,roman,Finno-Ugric,Europe,"english, russian",TRUE,l_first,1,1,1,1,1,1
+HU_2117239,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,r_first,1,1,1,1,0,1
+HU_2117798,1,HU,Hungarian,roman,Finno-Ugric,Europe,german,FALSE,l_first,1,1,1,1,0,1
+HU_2117904,1,HU,Hungarian,roman,Finno-Ugric,Europe,russian,FALSE,l_first,1,1,1,1,1,1
+HU_2117961,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,1,1,1,1,0,1
+HU_2118072,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, german, italian",TRUE,r_first,1,1,1,1,1,1
+HU_2118240,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, turkish, swedish",TRUE,r_first,1,1,1,1,0,1
+HU_2118346,1,HU,Hungarian,roman,Finno-Ugric,Europe,"german, english",TRUE,r_first,1,1,1,1,0,1
+HU_2118683,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,r_first,1,1,1,1,0,1
+HU_2118857,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, slovak",TRUE,l_first,1,1,1,1,1,1
+HU_2118967,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,r_first,1,1,1,NA,NA,NA
+HU_2119177,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, finnish",TRUE,l_first,1,1,1,1,1,1
+HU_2119283,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,1,1,1,1,0,1
+HU_2119389,1,HU,Hungarian,roman,Finno-Ugric,Europe,"german, english",TRUE,r_first,1,1,1,1,0,1
+HU_2119601,1,HU,Hungarian,roman,Finno-Ugric,Europe,"german, english",TRUE,l_first,1,1,1,1,0,1
+HU_2147124,1,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,1,1,1,NA,NA,NA
+HU_2147265,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,r_first,1,1,1,1,0,1
+HU_2147482,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, spanish",TRUE,r_first,1,1,1,1,1,1
+HU_2147593,1,HU,Hungarian,roman,Finno-Ugric,Europe,english,TRUE,l_first,1,1,1,1,0,1
+HU_2147763,0,HU,Hungarian,roman,Finno-Ugric,Europe,NA,FALSE,l_first,1,1,1,NA,NA,NA
+HU_2149459,1,HU,Hungarian,roman,Finno-Ugric,Europe,"english, finnish, spanish, german",TRUE,r_first,1,1,1,1,1,1
+IT_2061913,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+IT_2062631,1,IT,Italian,roman,IE,Europe,"english, french, german, spanish",TRUE,r_first,1,1,1,1,1,1
+IT_2063416,1,IT,Italian,roman,IE,Europe,"english, german",TRUE,l_first,1,1,1,1,0,1
+IT_2068721,0,IT,Italian,roman,IE,Europe,"english, french, german",TRUE,l_first,1,1,1,1,0,1
+IT_2068921,0,IT,Italian,roman,IE,Europe,"english, french, german",TRUE,r_first,1,1,1,1,0,1
+IT_2069027,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+IT_2069241,1,FR,French,roman,IE,Europe,"dutch, english, italian, german, swedish, norwegian, limburgish",TRUE,l_first,1,0,1,1,1,1
+IT_2069245,1,IT,Italian,roman,IE,Europe,"english, german, rumanian",TRUE,r_first,1,1,1,1,1,1
+IT_2069422,1,IT,Italian,roman,IE,Europe,"spanish, english",TRUE,l_first,1,1,1,1,1,1
+IT_2069712,0,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+IT_2070120,1,IT,Italian,roman,IE,Europe,"french, english, spanish",TRUE,l_first,1,1,1,1,1,1
+IT_2070332,1,IT,Italian,roman,IE,Europe,"german, english, french",TRUE,r_first,1,1,1,1,0,1
+IT_2070438,0,IT,Italian,roman,IE,Europe,"french, english",TRUE,l_first,1,1,1,1,0,1
+IT_2070544,1,IT,Italian,roman,IE,Europe,"english, spanish, portuguese",TRUE,r_first,1,1,1,1,1,1
+IT_2070565,1,IT,Italian,roman,IE,Europe,"english, spanish",TRUE,l_first,1,1,1,1,1,1
+IT_2070814,1,IT,Italian,roman,IE,Europe,"french, english, spanish",TRUE,r_first,1,1,1,1,1,1
+IT_2070920,1,DE,German,roman,IE,Europe,"italian, french, english",TRUE,l_first,1,0,1,1,1,1
+IT_2073200,1,IT,Italian,roman,IE,Europe,"english, german, french",TRUE,l_first,1,1,1,1,0,1
+IT_2073723,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+IT_2074054,1,IT,Italian,roman,IE,Europe,"english, spanish",TRUE,l_first,1,1,1,1,1,1
+IT_2074276,1,IT,Italian,roman,IE,Europe,"french, english, spanish, german ",TRUE,l_first,1,1,1,1,1,1
+IT_2074909,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+IT_2074968,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+IT_2075281,1,IT,Italian,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+IT_2075578,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+IT_2076282,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+IT_2076388,1,IT,Italian,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+IT_2076544,1,IT,Italian,roman,IE,Europe,NA,FALSE,r_first,1,1,1,NA,NA,NA
+IT_2076650,1,IT,Italian,roman,IE,Europe,"english, a little bit french, a little bit german",TRUE,r_first,1,1,1,1,0,1
+IT_2076930,1,IT,Italian,roman,IE,Europe,"english, french, german, spanish",TRUE,r_first,1,1,1,1,1,1
+IT_2077044,1,IT,Italian,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+IT_2077174,0,IT,Italian,roman,IE,Europe,"english, french, spanish",TRUE,l_first,1,1,1,1,1,1
+IT_2078568,1,IT,Italian,roman,IE,Europe,"english, german",TRUE,l_first,1,1,1,1,0,1
+IT_2078829,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+IT_2078935,0,IT,Italian,roman,IE,Europe,"english, french, spanish",TRUE,l_first,1,1,1,1,1,1
+IT_2080530,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+IT_2081895,0,IT,Italian,roman,IE,Europe,NA,FALSE,l_first,1,1,1,NA,NA,NA
+IT_2088910,1,IT,Italian,roman,IE,Europe,"english, a little bit spanish, latin ",TRUE,l_first,1,1,1,1,1,1
+IT_2095688,1,IT,Italian,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+IT_2097463,0,IT,Italian,roman,IE,Europe,"german, english",TRUE,l_first,1,1,1,1,0,1
+IT_2100361,1,IT,Italian,roman,IE,Europe,"french, english",TRUE,l_first,1,1,1,1,0,1
+IT_2100872,1,DE,German,roman,IE,Europe,"italian, english, spanish, french",TRUE,l_first,1,0,1,1,1,1
+IT_2103211,1,IT,Italian,roman,IE,Europe,"german, english",TRUE,l_first,1,1,1,1,0,1
+IT_2103759,1,IT,Italian,roman,IE,Europe,"english, french, spanish ",TRUE,l_first,1,1,1,1,1,1
+IT_2105527,1,IT,Italian,roman,IE,Europe,"english, german, spanish, french",TRUE,r_first,1,1,1,1,1,1
+IT_2135830,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,l_first,1,1,1,1,0,1
+IT_2146971,1,IT,Italian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+IT_2151897,1,IT,Italian,roman,IE,Europe,"french, english",TRUE,l_first,1,1,1,1,0,1
+IT_2189531,1,IT,Italian,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+IT_2207878,1,IT,Italian,roman,IE,Europe,"english, spanish, portuguese",TRUE,l_first,1,1,1,1,1,1
+JP_2026184,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2026396,1,KR,Korean,different,Korean,N Coast Asia,"japanese, english",TRUE,l_first,0,0,1,1,0,1
+JP_2027609,0,CN,Chinese,different,Sino-Tibetan,Southeast Asia,"english, japanese",TRUE,l_first,0,0,1,1,0,1
+JP_2027715,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2027830,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2027996,1,JP,Japanese,different,Japanese,N Coast Asia,"english, italian",TRUE,l_first,0,0,1,1,1,1
+JP_2028251,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2028494,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2029063,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+JP_2034093,0,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2037664,1,JP,Japanese,different,Japanese,N Coast Asia,"english, spanish",TRUE,l_first,0,0,1,1,1,1
+JP_2039858,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+JP_2039918,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+JP_2040343,1,JP,Japanese,different,Japanese,N Coast Asia,chinese,FALSE,l_first,0,0,1,0,0,1
+JP_2040449,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2040555,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2040621,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2040767,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2040873,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2040995,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+JP_2041101,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2041207,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+JP_2042158,1,JP,Japanese,different,Japanese,N Coast Asia,"english,german,russian",TRUE,r_first,0,0,1,1,1,1
+JP_2042264,1,JP,Japanese,different,Japanese,N Coast Asia,"english,french",TRUE,r_first,0,0,1,1,0,1
+JP_2042370,1,JP,Japanese,different,Japanese,N Coast Asia,"english,french",TRUE,r_first,0,0,1,1,0,1
+JP_2042623,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2042737,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2042915,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2043233,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2043339,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+JP_2043601,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2044708,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2044816,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2044955,1,JP,Japanese,different,Japanese,N Coast Asia,"english,german",TRUE,l_first,0,0,1,1,0,1
+JP_2045099,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2045327,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2045448,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2046001,0,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2046107,1,JP,Japanese,different,Japanese,N Coast Asia,"english,chinese",TRUE,r_first,0,0,1,1,0,1
+JP_2046213,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2046493,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2046608,0,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2046946,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2047059,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2047178,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+JP_2047291,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2047368,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+JP_2047549,1,JP,Japanese,different,Japanese,N Coast Asia,"english,german,korean",TRUE,r_first,0,0,1,1,0,1
+JP_2047655,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2047879,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2048091,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2048197,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2048303,1,JP,Japanese,different,Japanese,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+JP_2048409,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
+JP_2048515,0,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2048621,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+JP_2050804,1,JP,Japanese,different,Japanese,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+KR_2120978,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+KR_2121353,1,KR,Korean,different,Korean,N Coast Asia,"english, chinese",TRUE,l_first,0,0,1,1,0,1
+KR_2122536,1,KR,Korean,different,Korean,N Coast Asia,"english, french",TRUE,r_first,0,0,1,1,0,1
+KR_2122698,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+KR_2145708,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+KR_2145933,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+KR_2192134,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+KR_2192288,1,KR,Korean,different,Korean,N Coast Asia,"japanese, english",TRUE,l_first,0,0,1,1,0,1
+KR_2192394,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+KR_2192500,1,KR,Korean,different,Korean,N Coast Asia,"english, chinese",TRUE,l_first,0,0,1,1,0,1
+KR_2192620,0,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+KR_2192726,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+KR_2192867,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+KR_2193036,0,KR,Korean,different,Korean,N Coast Asia,NA,FALSE,l_first,0,0,1,NA,NA,NA
+KR_2193409,1,KR,Korean,different,Korean,N Coast Asia,"english, japanese",TRUE,r_first,0,0,1,1,0,1
+KR_2194038,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+KR_2194144,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,l_first,0,0,1,1,0,1
+KR_2194250,1,KR,Korean,different,Korean,N Coast Asia,"english, a little bit japanese",TRUE,l_first,0,0,1,1,0,1
+KR_2194312,1,KR,Korean,different,Korean,N Coast Asia,"english, japanese",TRUE,r_first,0,0,1,1,0,1
+KR_2198888,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+KR_2199504,1,KR,Korean,different,Korean,N Coast Asia,english,TRUE,r_first,0,0,1,1,0,1
+PL_1997874,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,1,1,1,1,0,1
+PL_2009277,1,PL,Polish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+PL_2011225,0,PL,Polish,roman,IE,Europe,german,FALSE,l_first,1,1,1,1,0,1
+PL_2011259,1,PL,Polish,roman,IE,Europe,"english, german, hindi, sanskrit, japanese",TRUE,l_first,1,1,1,1,1,1
+PL_2011661,1,PL,Polish,roman,IE,Europe,"english, russian",TRUE,l_first,1,1,1,1,1,1
+PL_2013051,0,PL,Polish,roman,IE,Europe,"english, russian",TRUE,r_first,1,1,1,1,1,1
+PL_2013478,0,PL,Polish,roman,IE,Europe,"german, english",TRUE,r_first,1,1,1,1,0,1
+PL_2014004,1,PL,Polish,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+PL_2014368,1,PL,Polish,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+PL_2014763,1,PL,Polish,roman,IE,Europe,"english, german, french",TRUE,l_first,1,1,1,1,0,1
+PL_2014900,1,PL,Polish,roman,IE,Europe,"german, english",TRUE,r_first,1,1,1,1,0,1
+PL_2014968,1,PL,Polish,roman,IE,Europe,"hungarian, english, german, french, russian, latin",TRUE,r_first,1,1,1,1,1,1
+PL_2015079,1,PL,Polish,roman,IE,Europe,"english, portuguese, spanish, german",TRUE,l_first,1,1,1,1,1,1
+PL_2015927,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+PL_2016033,1,PL,Polish,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+PL_2017093,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+PL_2017373,1,PL,Polish,roman,IE,Europe,"english, german, spanish, russian",TRUE,r_first,1,1,1,1,1,1
+PL_2018013,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+PL_2018041,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,1,1,1,1,0,1
+PL_2018230,1,PL,Polish,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+PL_2018421,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,1,1,1,1,0,1
+PL_2018879,1,PL,Polish,roman,IE,Europe,"spanish, english, german, russian",TRUE,r_first,1,1,1,1,1,1
+PL_2019534,1,PL,Polish,roman,IE,Europe,"english, french",TRUE,l_first,1,1,1,1,0,1
+PL_2020484,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+PL_2021622,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,1,1,1,1,0,1
+PL_2021728,1,PL,Polish,roman,IE,Europe,"english, spanish, german",TRUE,l_first,1,1,1,1,1,1
+PL_2022234,1,PL,Polish,roman,IE,Europe,"german, english, norwegian, hungarian",TRUE,l_first,1,1,1,1,1,1
+PL_2022849,1,PL,Polish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+PL_2023368,1,PL,Polish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+PL_2023456,1,PL,Polish,roman,IE,Europe,"english, german, italian",TRUE,l_first,1,1,1,1,1,1
+PL_2023605,1,PL,Polish,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+PL_2023711,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+PL_2023817,0,PL,Polish,roman,IE,Europe,NA,FALSE,r_first,1,1,1,NA,NA,NA
+PL_2024564,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,1,1,1,1,0,1
+PL_2028145,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+PL_2034654,1,PL,Polish,roman,IE,Europe,"english, german",TRUE,l_first,1,1,1,1,0,1
+PL_2044384,1,PL,Polish,roman,IE,Europe,"english, russian",TRUE,l_first,1,1,1,1,1,1
+PL_2048837,1,PL,Polish,roman,IE,Europe,english ,TRUE,l_first,1,1,1,1,0,1
+PL_2048976,1,PL,Polish,roman,IE,Europe,"english, russian, german, spanish",TRUE,r_first,1,1,1,1,1,1
+PL_2051650,1,PL,Polish,roman,IE,Europe,"spanish, english, french, italian, czech",TRUE,l_first,1,1,1,1,1,1
+PL_2056018,1,PL,Polish,roman,IE,Europe,"german, english",TRUE,l_first,1,1,1,1,0,1
+PL_2060067,0,PL,Polish,roman,IE,Europe,"german,english, russian",TRUE,r_first,1,1,1,1,1,1
+PL_2060282,1,PL,Polish,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+PL_2060528,1,PL,Polish,roman,IE,Europe,"english, german, spanish",TRUE,r_first,1,1,1,1,1,1
+PL_2060855,1,PL,Polish,roman,IE,Europe,german ,FALSE,r_first,1,1,1,1,0,1
+PL_2060961,0,PL,Polish,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+PL_2061440,1,PL,Polish,roman,IE,Europe,"german, english",TRUE,r_first,1,1,1,1,0,1
+PL_2081616,1,PL,Polish,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+PT_2121096,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french ",TRUE,l_first,1,0,1,1,1,1
+PT_2121235,1,PT,Portuguese,roman,IE,Europe,"spanish, english",TRUE,l_first,1,0,1,1,1,1
+PT_2121381,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+PT_2121573,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2121716,0,ES,Spanish,roman,IE,Europe,"english, esperanto, french",TRUE,l_first,1,1,1,1,1,1
+PT_2121964,1,PT,Portuguese,roman,IE,Europe,"french, english, spanish, italian",TRUE,r_first,1,0,1,1,1,1
+PT_2122070,0,PT,Portuguese,roman,IE,Europe,"english, spanish, french, german ",TRUE,l_first,1,0,1,1,1,1
+PT_2122286,1,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+PT_2122428,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+PT_2122973,1,PT,Portuguese,roman,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+PT_2123079,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+PT_2123185,1,PT,Portuguese,roman,IE,Europe,"english, german, czech, french",TRUE,r_first,1,0,1,1,1,1
+PT_2123458,0,PT,Portuguese,roman,IE,Europe,"english, french, spanish",TRUE,l_first,1,0,1,1,1,1
+PT_2123670,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french, calatan",TRUE,r_first,1,0,1,1,1,1
+PT_2123780,1,PT,Portuguese,roman,IE,Europe,"english, french, spanish ",TRUE,r_first,1,0,1,1,1,1
+PT_2123907,1,DE,German,roman,IE,Europe,"english, portuguese, spanish, french ",TRUE,l_first,1,0,1,1,1,1
+PT_2124013,0,PT,Portuguese,roman,IE,Europe,"english, spanish, french ",TRUE,l_first,1,0,1,1,1,1
+PT_2124119,1,PT,Portuguese,roman,IE,Europe,"english, italian, arabic, romanian",TRUE,r_first,1,0,1,1,1,1
+PT_2124225,1,PT,Portuguese,roman,IE,Europe,"english, french ",TRUE,r_first,1,0,1,1,0,1
+PT_2124331,0,PT,Portuguese,roman,IE,Europe,"german, spanish, english, italian",TRUE,l_first,1,0,1,1,1,1
+PT_2124444,1,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,r_first,1,0,1,1,1,1
+PT_2124550,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french",TRUE,r_first,1,0,1,1,1,1
+PT_2124762,1,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+PT_2124772,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french, italian",TRUE,r_first,1,0,1,1,1,1
+PT_2125094,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+PT_2125371,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+PT_2125477,0,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+PT_2125583,0,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+PT_2125757,1,PT,Portuguese,roman,IE,Europe,spanish,FALSE,r_first,1,0,1,1,1,1
+PT_2127150,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+PT_2127347,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+PT_2127456,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2127615,1,PT,Portuguese,roman,IE,Europe,"english, german, russian",TRUE,r_first,1,0,1,1,1,1
+PT_2127988,1,PT,Portuguese,roman,IE,Europe,"spanish, english",TRUE,r_first,1,0,1,1,1,1
+PT_2128094,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+PT_2128268,1,PT,Portuguese,roman,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+PT_2128377,1,PT,Portuguese,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+PT_2128893,1,PT,Portuguese,roman,IE,Europe,"english, spanish, french, italian, german",TRUE,r_first,1,0,1,1,1,1
+PT_2129023,1,PT,Portuguese,roman,IE,Europe,english ,TRUE,r_first,1,0,1,1,0,1
+PT_2129128,0,PT,Portuguese,roman,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+PT_2129331,1,PT,Portuguese,roman,IE,Europe,"english, french",TRUE,r_first,1,0,1,1,0,1
+PT_2129609,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+PT_2130648,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+PT_2130955,1,PT,Portuguese,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+PT_2132703,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2132705,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2132707,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2132709,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+PT_2132711,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+PT_2132713,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+PT_2132715,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+PT_2132718,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+PT_2132737,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2132809,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2132862,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+PT_2133628,0,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+PT_2133765,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2133859,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2133956,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+PT_2134012,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+PT_2134018,1,PT,Portuguese,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+RO_2049567,1,RO,Romanian,roman,IE,Europe,"german, english",TRUE,l_first,1,1,1,1,0,1
+RO_2049681,1,RO,Romanian,roman,IE,Europe,"english, french, german",TRUE,l_first,1,1,1,1,0,1
+RO_2049802,0,RO,Romanian,roman,IE,Europe,NA,FALSE,l_first,1,1,1,NA,NA,NA
+RO_2049923,1,RO,Romanian,roman,IE,Europe,english ,TRUE,r_first,1,1,1,1,0,1
+RO_2050066,1,RO,Romanian,roman,IE,Europe,"english, french",TRUE,l_first,1,1,1,1,0,1
+RO_2050176,1,RO,Romanian,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+RO_2050221,0,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+RO_2050433,1,RO,Romanian,roman,IE,Europe,"english, spanish, german, italian",TRUE,l_first,1,1,1,1,1,1
+RO_2050571,1,RO,Romanian,roman,IE,Europe,"french, english",TRUE,l_first,1,1,1,1,0,1
+RO_2050718,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+RO_2050993,1,RO,Romanian,roman,IE,Europe,"english, italian",TRUE,l_first,1,1,1,1,1,1
+RO_2051116,1,RO,Romanian,roman,IE,Europe,"english, spanish",TRUE,r_first,1,1,1,1,1,1
+RO_2051390,0,RO,Romanian,roman,IE,Europe,"english, french",TRUE,l_first,1,1,1,1,0,1
+RO_2051756,1,RO,Romanian,roman,IE,Europe,"english, german, spanish, french",TRUE,l_first,1,1,1,1,1,1
+RO_2052027,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+RO_2055912,1,RO,Romanian,roman,IE,Europe,"english, french, german",TRUE,r_first,1,1,1,1,0,1
+RO_2056381,0,RO,Romanian,roman,IE,Europe,"english, french",TRUE,l_first,1,1,1,1,0,1
+RO_2058262,0,RO,Romanian,roman,IE,Europe,"english, french",TRUE,l_first,1,1,1,1,0,1
+RO_2060569,0,RO,Romanian,roman,IE,Europe,"english, french, german",TRUE,l_first,1,1,1,1,0,1
+RO_2068210,1,RO,Romanian,roman,IE,Europe,"english, french, italian",TRUE,r_first,1,1,1,1,1,1
+RO_2068312,1,RO,Romanian,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+RO_2068357,1,RO,Romanian,roman,IE,Europe,"english, italian, spanish",TRUE,l_first,1,1,1,1,1,1
+RO_2069546,1,RO,Romanian,roman,IE,Europe,"english, hungarian",TRUE,r_first,1,1,1,1,1,1
+RO_2071423,1,RO,Romanian,roman,IE,Europe,"english, french",TRUE,r_first,1,1,1,1,0,1
+RO_2071740,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+RO_2071846,0,RO,Romanian,roman,IE,Europe,"english, hungarian",TRUE,l_first,1,1,1,1,1,1
+RO_2072222,1,RO,Romanian,roman,IE,Europe,"english, spanish",TRUE,l_first,1,1,1,1,1,1
+RO_2072586,1,RO,Romanian,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
+RO_2089172,0,RO,Romanian,roman,IE,Europe,"english, german",TRUE,r_first,1,1,1,1,0,1
+RO_2104556,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+RO_2114036,1,RO,Romanian,roman,IE,Europe,english,TRUE,r_first,1,1,1,1,0,1
+RU_2038822,1,RU,Russian,different,IE,Inner Asia,"english, german",TRUE,r_first,1,1,1,1,0,1
+RU_2061678,1,RU,Russian,different,IE,Inner Asia,"german, english, french, hebrew, spanich, turkish",TRUE,r_first,1,1,1,1,1,1
+RU_2061788,1,RU,Russian,different,IE,Inner Asia,"english, hebrew",TRUE,l_first,1,1,1,1,0,1
+RU_2061975,1,RU,Russian,different,IE,Inner Asia,english,TRUE,r_first,1,1,1,1,0,1
+RU_2062520,1,RU,Russian,different,IE,Inner Asia,"english, german, french",TRUE,r_first,1,1,1,1,0,1
+RU_2062614,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2063000,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2063117,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2063228,1,RU,Russian,different,IE,Inner Asia,"japanese, english",TRUE,r_first,1,1,1,1,0,1
+RU_2063364,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2064048,1,RU,Russian,different,IE,Inner Asia,"english, german, french, hebrew",TRUE,l_first,1,1,1,1,0,1
+RU_2064265,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2064657,1,RU,Russian,different,IE,Inner Asia,"english, czech",TRUE,r_first,1,1,1,1,1,1
+RU_2064842,1,RU,Russian,different,IE,Inner Asia,"german, polish",FALSE,l_first,1,1,1,1,1,1
+RU_2065108,1,RU,Russian,different,IE,Inner Asia,"german, english",TRUE,l_first,1,1,1,1,0,1
+RU_2065214,1,RU,Russian,different,IE,Inner Asia,"english, german, french",TRUE,l_first,1,1,1,1,0,1
+RU_2065320,1,RU,Russian,different,IE,Inner Asia,"english, french, serbian",TRUE,l_first,1,1,1,1,0,1
+RU_2065532,1,RU,Russian,different,IE,Inner Asia,NA,FALSE,l_first,1,1,1,NA,NA,NA
+RU_2065638,0,RU,Russian,different,IE,Inner Asia,"german, english",TRUE,l_first,1,1,1,1,0,1
+RU_2065792,1,RU,Russian,different,IE,Inner Asia,"english, german, spanish",TRUE,l_first,1,1,1,1,1,1
+RU_2065958,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2066278,0,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2066433,1,RU,Russian,different,IE,Inner Asia,"english, spanish",TRUE,l_first,1,1,1,1,1,1
+RU_2066663,1,RU,Russian,different,IE,Inner Asia,"english, korean",TRUE,r_first,1,1,1,1,0,1
+RU_2066788,1,RU,Russian,different,IE,Inner Asia,"french, english",TRUE,r_first,1,1,1,1,0,1
+RU_2067357,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2067463,0,RU,Russian,different,IE,Inner Asia,english,TRUE,r_first,1,1,1,1,0,1
+RU_2067569,1,RU,Russian,different,IE,Inner Asia,english,TRUE,r_first,1,1,1,1,0,1
+RU_2067617,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2067835,1,RU,Russian,different,IE,Inner Asia,NA,FALSE,l_first,1,1,1,NA,NA,NA
+RU_2068102,1,RU,Russian,different,IE,Inner Asia,"english, czech",TRUE,l_first,1,1,1,1,1,1
+RU_2069133,0,RU,Russian,different,IE,Inner Asia,NA,FALSE,l_first,1,1,1,NA,NA,NA
+RU_2069776,1,RU,Russian,different,IE,Inner Asia,macedonian,FALSE,l_first,1,1,1,1,1,1
+RU_2070226,1,RU,Russian,different,IE,Inner Asia,NA,FALSE,l_first,1,1,1,NA,NA,NA
+RU_2071317,1,RU,Russian,different,IE,Inner Asia,"english, hebrew",TRUE,r_first,1,1,1,1,0,1
+RU_2072920,1,RU,Russian,different,IE,Inner Asia,"czech, german",FALSE,l_first,1,1,1,1,1,1
+RU_2082071,0,RU,Russian,different,IE,Inner Asia,english,TRUE,r_first,1,1,1,1,0,1
+RU_2095225,1,RU,Russian,different,IE,Inner Asia,english,TRUE,l_first,1,1,1,1,0,1
+RU_2095582,1,RU,Russian,different,IE,Inner Asia,"german, english",TRUE,r_first,1,1,1,1,0,1
+RU_2205067,1,RU,Russian,different,IE,Inner Asia,"english, german",TRUE,r_first,1,1,1,1,0,1
+SE_2066393,1,SE,Swedish,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+SE_2069926,1,SE,Swedish,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+SE_2079324,0,SE,Swedish,roman,IE,Europe,"english, french, german",TRUE,r_first,1,0,1,1,0,1
+SE_2079521,1,SE,Swedish,roman,IE,Europe,"english, german, russian, chinese",TRUE,l_first,1,0,1,1,1,1
+SE_2080068,1,SE,Swedish,roman,IE,Europe,"english, french, german, danish, portuguese, spanish, italian",TRUE,r_first,1,0,1,1,1,1
+SE_2080848,1,SE,Swedish,roman,IE,Europe,"english, german, dutch, a little bit estniska, a little bit spanish, a little bit swahili",TRUE,l_first,1,0,1,1,1,1
+SE_2080954,1,SE,Swedish,roman,IE,Europe,"english, spanish, italian",TRUE,r_first,1,0,1,1,1,1
+SE_2081264,1,SE,Swedish,roman,IE,Europe,"english, dutch, french, german, spanish, icelandic",TRUE,r_first,1,0,1,1,1,1
+SE_2082177,1,SE,Swedish,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
+SE_2084957,1,SE,Swedish,roman,IE,Europe,"english, french, danish, portuguese",TRUE,r_first,1,0,1,1,0,1
+SE_2085984,1,SE,Swedish,roman,IE,Europe,"english, german ",TRUE,l_first,1,0,1,1,0,1
+SE_2104005,1,SE,Swedish,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
+SE_2125928,1,SE,Swedish,roman,IE,Europe,"english, spanish, french",TRUE,r_first,1,0,1,1,1,1
+SE_2125930,1,SE,Swedish,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+SE_2126166,1,SE,Swedish,roman,IE,Europe,"english, german, french",TRUE,l_first,1,0,1,1,0,1
+SE_2126421,1,SE,Swedish,roman,IE,Europe,"english, french",TRUE,l_first,1,0,1,1,0,1
+SE_2126527,1,SE,Swedish,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+SE_2126645,1,SE,Swedish,roman,IE,Europe,"english, french, german",TRUE,r_first,1,0,1,1,0,1
+SE_2126751,1,SE,Swedish,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
+SE_2126867,1,SE,Swedish,roman,IE,Europe,"english, spanish",TRUE,l_first,1,0,1,1,1,1
+SE_2127135,1,FI,Finnish,roman,Finno-Ugric,Inner Asia,"english, german",TRUE,l_first,1,1,1,1,0,1
+TH_2109740,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2109940,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2109951,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2110260,0,TH,Thai,different,Tai-Kadai,Southeast Asia,NA,FALSE,l_first,1,0,1,NA,NA,NA
+TH_2110708,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2111627,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,l_first,1,0,1,1,0,1
+TH_2111742,0,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2111848,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2111850,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2112079,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2112187,0,TH,Thai,different,Tai-Kadai,Southeast Asia,NA,FALSE,l_first,1,0,1,NA,NA,NA
+TH_2112538,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2113134,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2113338,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
+TH_2113447,1,TH,Thai,different,Tai-Kadai,Southeast Asia,"english, chinese",TRUE,r_first,1,0,1,1,0,1
+TH_2114194,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,l_first,1,0,1,1,0,1
+TH_2116679,0,TH,Thai,different,Tai-Kadai,Southeast Asia,"english, norwegian",TRUE,l_first,1,0,1,1,0,1
+TH_2119707,1,TH,Thai,different,Tai-Kadai,Southeast Asia,"english, japanese",TRUE,r_first,1,0,1,1,0,1
+TH_2122861,1,TH,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2062299,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,1,0,1,1,0,1
+TR_2074403,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2074723,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,a little bit english,TRUE,r_first,1,0,1,1,0,1
+TR_2075197,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, german",TRUE,l_first,1,0,1,1,0,1
+TR_2075284,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2075874,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, french",TRUE,l_first,1,0,1,1,0,1
+TR_2075980,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, german",TRUE,r_first,1,0,1,1,0,1
+TR_2076142,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2076166,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,1,0,1,1,0,1
+TR_2076716,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,1,0,1,1,0,1
+TR_2077434,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,1,0,1,1,0,1
+TR_2077540,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2077544,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2077752,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,r_first,1,0,1,1,0,1
+TR_2077860,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english ,TRUE,r_first,1,0,1,1,0,1
+TR_2078008,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,1,0,1,NA,NA,NA
+TR_2078114,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,1,0,1,NA,NA,NA
+TR_2078356,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english ,TRUE,l_first,1,0,1,1,0,1
+TR_2078674,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2079785,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, italian",TRUE,r_first,1,0,1,1,1,1
+TR_2079958,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,1,0,1,NA,NA,NA
+TR_2080114,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,1,0,1,NA,NA,NA
+TR_2080424,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, french",TRUE,l_first,1,0,1,1,0,1
+TR_2084037,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, a little bit french",TRUE,r_first,1,0,1,1,0,1
+TR_2084198,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"chinese, english, french",TRUE,l_first,1,0,1,1,0,1
+TR_2084317,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english ,TRUE,r_first,1,0,1,1,0,1
+TR_2084320,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, german",TRUE,r_first,1,0,1,1,0,1
+TR_2084517,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2084575,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2084829,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2087035,1,TR,Turkish,roman,Turkic,Greater Mesopotamia, ,FALSE,l_first,1,0,1,NA,NA,NA
+TR_2088320,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+TR_2112699,0,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,l_first,1,0,1,NA,NA,NA
+TR_2112805,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,l_first,1,0,1,NA,NA,NA
+TR_2113015,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,"english, french",TRUE,l_first,1,0,1,1,0,1
+TR_2119813,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,NA,FALSE,r_first,1,0,1,NA,NA,NA
+TR_2119957,1,TR,Turkish,roman,Turkic,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
+ZU_2057083,1,ZU,Zulu,roman,Benue-Congo,S Africa,NA,FALSE,r_first,0,0,1,NA,NA,NA
+ZU_2105421,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,0,0,1,1,0,1
+ZU_2106921,1,ZU,Zulu,roman,Benue-Congo,S Africa,german,FALSE,r_first,0,0,1,1,0,1
+ZU_2109362,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,0,0,1,1,0,1
+ZU_2129446,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,l_first,0,0,1,1,0,1
+ZU_2136573,1,ZU,Zulu,roman,Benue-Congo,S Africa,english ,TRUE,l_first,0,0,1,1,0,1
+ZU_2136679,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,0,0,1,1,0,1
+ZU_2138105,1,ZU,Zulu,roman,Benue-Congo,S Africa,"xhosa, english, afrikaans",TRUE,r_first,0,0,1,1,1,1
+ZU_2138774,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,0,0,1,1,0,1
+ZU_2139026,1,ZU,Zulu,roman,Benue-Congo,S Africa,"english, afrikaans",TRUE,r_first,0,0,1,1,1,1
+ZU_2139132,0,ZU,Zulu,roman,Benue-Congo,S Africa,"sotho, english",TRUE,l_first,0,0,1,1,0,1
+ZU_2139238,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,r_first,0,0,1,1,0,1
+ZU_2139344,1,ZU,Zulu,roman,Benue-Congo,S Africa,NA,FALSE,r_first,0,0,1,NA,NA,NA
+ZU_2139788,1,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,l_first,0,0,1,1,0,1
+ZU_2139894,1,ZU,Zulu,roman,Benue-Congo,S Africa,"xhosa, english",TRUE,r_first,0,0,1,1,0,1
+ZU_2140000,1,ZU,Zulu,roman,Benue-Congo,S Africa,english ,TRUE,l_first,0,0,1,1,0,1
+ZU_2140141,0,ZU,Zulu,roman,Benue-Congo,S Africa,english,TRUE,l_first,0,0,1,1,0,1
+ZU_2140360,1,ZU,Zulu,roman,Benue-Congo,S Africa,"swazi, english",TRUE,l_first,0,0,1,1,0,1
+ZU_2140466,1,ZU,Zulu,roman,Benue-Congo,S Africa,"english, xhosa",TRUE,r_first,0,0,1,1,0,1

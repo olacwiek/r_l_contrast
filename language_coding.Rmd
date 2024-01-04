@@ -35,7 +35,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Set the script's path as working directory
 parentfolder = rstudioapi::getActiveDocumentContext()$path 
-#setwd(dirname(parentfolder))
+setwd(dirname(parentfolder))
 parentfolder <- getwd()
 
 data <- paste0(parentfolder, '/data/')
@@ -104,6 +104,7 @@ In total, we have `r length(unique(languages_data$Languages))` languages to chec
 ```{r}
 unique(languages_data$Languages)
 ```
+
 # Coding
 
 ## Langue - Exemple
@@ -4198,5 +4199,392 @@ languages_data <- languages_data %>%
     dplyr::mutate(trill_occ = ifelse(Languages=="zulu",1,trill_occ))
 ```
 
+# Additions by Ola for field data
+
+I will try to do justice to Rémi's excellent work.
+
+We need primarily:
+
+  - Daakie
+  - Palikur
+  - Tashlhiyt Berber
+
+And for L2 of the speakers:
+
+  - Bislama
+  - BSL
+  - Cantonese
+  - Punjabi
+  - Urdu
+  - Welsh
+  - Yoruba
+  
+```{r}
+# Adding new rows to languages_data
+languages_data <- languages_data %>%
+  bind_rows(data.frame(Languages = c("daakie", "palikur", "berber", "bislama", "BSL", 
+                   "cantonese", "punjabi", "urdu", "welsh", "yoruba")))
+```
+
+## Daakie
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="daakie","	port1286",glottocode))
+```
+
+Sometimes known as Port Vato language.
+
+Phoible: NA
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Port_Vato_language
+
+Glottolog:
+https://glottolog.org/resource/languoid/id/port1286
+
+Other sources:
+Krifka, Manfred. 2022. Daakie DoReCo dataset. In Seifart, Frank, Ludger Paschen and Matthew Stave (eds.). Language Documentation Reference Corpus (DoReCo) 1.2. Berlin & Lyon: Leibniz-Zentrum Allgemeine Sprachwissenschaft & laboratoire Dynamique Du Langage (UMR5596, CNRS & Université Lyon 2). https://doreco.huma-num.fr/languages/port1286 (Accessed on 03/01/2024). DOI:10.34847/nkl.efeav5l9 
+
+Listening to doreco_port1286_08-24-11_Andri.wav from the DoReCo corpus at least a tap /r/ can be recognized. The speaker also produces /l/. We can assume having a distinction. The trill, or at least a tap occurs in the language. The question is, whether real trill is used as the main variant.
+
+While /r/ is infrequent, it is used used in the tongue tip tap/trill form as main realization (the recording above, 77 sec "soró", 85 sec "weren" and so on)
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="daakie",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="daakie",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="daakie",1,trill_occ))
+```
+
+
+## Palikúr
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="palikur","pali1279",glottocode))
+```
+
+
+Phoible: 
+https://phoible.org/inventories/view/1826 
+  - Neither /r/ nor /l/ as segments
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Palik%C3%BAr_language
+  - Neither /r/ nor /l/ as segments
+
+Glottolog:
+https://glottolog.org/resource/languoid/id/pali1279
+
+Other sources:
+
+There is no distinction and, thus, alveolar trill cannot be the main phoneme. I am uncertain if this sound ever occurs, but because of the lack of distinction, we will set it to 0 for now.
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="palikur",0,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="palikur",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="palikur",0,trill_occ))
+```
+
+
+## Tashlhiyt Berber
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="berber","tach1250",glottocode))
+```
+
+
+Phoible: 
+https://phoible.org/inventories/view/123
+  - Both /r/ and /l/ as segments
+  - Specifically, /r/ is the alveolar trill
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Shilha_language
+
+Glottolog:
+https://glottolog.org/resource/languoid/id/tach1250
+
+Other sources:
+
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="berber",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="berber",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="berber",1,trill_occ))
+```
+
+## Bislama
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="bislama","bisl1239",glottocode))
+```
+
+
+Phoible: NA
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Bislama
+  - No phonology available
+  - More than 95% of Bislama words are of English origin, whilst the remainder comprises a few dozen words from French as well as some specific vocabulary inherited from various languages of Vanuatu—although these are essentially limited to flora and fauna terminology.[4] 
+
+Glottolog:
+https://glottolog.org/resource/languoid/id/pali1279
+
+Other sources:
+WALS: https://wals.info/languoid/lect/wals_code_bsm
+
+Tryon, D. T. (1987). Bislama: An introduction to the national language of Vanuatu. The Australian National University.
+https://openresearch-repository.anu.edu.au/bitstream/1885/263015/1/PL-D72.pdf, 
+  - On page 4, notes /r/ and /l/ as separate phonemes, and says "The sounds which distinguish meaning in Bislama, called phonemes in technical terms, are not the same as in English"
+  - On page 8, "/r/ is always realised as r (a voiced alveolar trill/a voiceless alveolar trill or a voiced alveolar flap)."
+
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="bislama",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="bislama",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="bislama",1,trill_occ))
+```
+
+## BSL
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="BSL","brit1235",glottocode))
+```
+
+It is a sign language.
+
+Phoible: NA
+
+Wikipedia:
+https://de.wikipedia.org/wiki/British_Sign_Language
+
+Glottolog:
+
+Other sources:
+
+```{r}
+languages_data <- languages_data %>% 
+     dplyr::mutate(r_l_distinction = ifelse(Languages=="BSL",as.integer(NA),r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="BSL",as.integer(NA),trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="BSL",as.integer(NA),trill_occ))
+```
+
+## Cantonese
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="cantonese","cant1236",glottocode))
+```
+
+
+Phoible: 
+https://phoible.org/inventories/view/19
+  - /l/ as a phoneme, but no /r/ (also not as allophone)
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Cantonese_phonology
+  - /l/ as a phoneme, but no /r/
+
+Glottolog:
+https://glottolog.org/resource/languoid/id/cant1236
+
+Other sources:
+
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="cantonese",0,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="cantonese",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="cantonese",0,trill_occ))
+```
+
+## Punjabi
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="punjabi","panj1256",glottocode))
+```
+
+
+Phoible: 
+RA 1780 https://phoible.org/inventories/view/1780
+  - Both /r/ and /l/ as segments
+SPA 175 https://phoible.org/inventories/view/175
+  - Both /r/ and /l/ as segments
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Punjabi_language
+  - Both /r/ and /l/ as segments
+
+Glottolog:
+https://glottolog.org/resource/languoid/id/east2727
+There is Eastern and western, but based on the geolocation on Phoible, eastern suited better.
+
+Other sources:
+
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="punjabi",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="punjabi",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="punjabi",1,trill_occ))
+```
+
+## Urdu
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="urdu","urdu1245",glottocode))
+```
+
+
+Phoible: 
+EA 2466 https://phoible.org/inventories/view/2466
+  - /r/ but no /l/
+RA 1797 https://phoible.org/inventories/view/1797
+  - /r/ but no /l/
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Urdu
+  - Both /r/ and /l/ as segments
+
+Glottolog:
+https://glottolog.org/resource/languoid/id/urdu1245
+
+Other sources:
+https://www.cle.org.pk/Downloads/ling_resources/phoneticinventory/UrduPhoneticInventory.pdf
+  - notes both /l/ and /r/ (alveolar trill)
+
+Saleem, A. M., Kabir, H. A. S. A. N., Riaz, M. K., Rafique, M. M., Khalid, N. A. U. M. A. N., & Shahid, S. R. (2002). Urdu consonantal and vocalic sounds. CRULP Annual Student Report. https://www.cle.org.pk/Publication/Crulp_report/CR02_01E.pdf
+  - reports [r] as a palatal voiced trill
+  
+Just to be safe, I will adopt the view that there is a contrast and alveolar trill occurs, and it is the real form.
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="urdu",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="urdu",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="urdu",1,trill_occ))
+```
+
+## Welsh
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="welsh","wels1247",glottocode))
+```
+
+
+Phoible: 
+https://phoible.org/inventories/view/2406
+  - Both in the inventory
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Welsh_language
+  - Both in the inventory
+
+Glottolog:
+https://glottolog.org/resource/languoid/id/wels1247
+
+Other sources:
+
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="welsh",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="welsh",1,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="welsh",1,trill_occ))
+```
+
+## Yoruba
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(glottocode = ifelse(Languages=="yoruba","yoru1245",glottocode))
+```
+
+
+Phoible: 
+UPSID 636 https://phoible.org/inventories/view/636
+  - /l/ and only tap /r/
+AA 847 https://phoible.org/inventories/view/847
+  - /l/ and /r/ (alveolar trill)
+AA 848 https://phoible.org/inventories/view/848
+  - /l/ and /r/ (alveolar trill)
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Yoruba_language
+  - /l/ and only tap /r/
+
+Glottolog:
+https://glottolog.org/resource/languoid/id/yoru1245
+
+Other sources:
+
+I will assume a form of trill but not as main occurence due to mixed reports about the tap
+
+```{r}
+languages_data <- languages_data %>%
+    dplyr::mutate(r_l_distinction = ifelse(Languages=="yoruba",1,r_l_distinction))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_real = ifelse(Languages=="yoruba",0,trill_real))
+
+languages_data <- languages_data %>%
+    dplyr::mutate(trill_occ = ifelse(Languages=="yoruba",1,trill_occ))
+```
+
+# Save output
+
+```{r}
+readr::write_csv(languages, paste0(data,
+                            "languages.csv"))
+readr::write_csv(languages_data, paste0(data,
+                            "languages_data.csv"))
+```
 
 

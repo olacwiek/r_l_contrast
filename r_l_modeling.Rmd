@@ -58,6 +58,7 @@ For reproducible reporting:
 
 ```{r, message = FALSE, warning = FALSE}
 packageVersion('tidyverse')
+packageVersion('ggplot2')
 packageVersion('brms')
 packageVersion('cmdstanr')
 packageVersion('ggdist')
@@ -65,7 +66,7 @@ packageVersion('ggdist')
 
 Load ggplot2 theme:
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 source('theme_timo.R')
 ```
 
@@ -74,6 +75,9 @@ Load data:
 ```{r, message = FALSE, warning = FALSE}
 web <- read_csv(paste0(data, 'web_experiment_cleaned.csv'))
 web_raw <- read_csv(paste0(data, '/web_raw_trials.csv'))
+
+field <- read_csv(paste0(data, 'field_experiment_cleaned.csv'))
+field_raw <- read_csv(paste0(data, '/field_raw_trials.csv'))
 ```
 
 # Online experiment
@@ -92,19 +96,55 @@ First, how many languages?
 web %>% count(Language) %>% nrow()
 ```
 
+Does this number correspond with the L1s?
+
+```{r}
+web %>% count(Name) %>% nrow()
+```
+
 How many families?
 
 ```{r}
 web %>% count(Family) %>% nrow()
 ```
 
-
-How many non-R/L-distinct L1 among the languages?
+How many have the R/L distinction in the L1 among the languages?
 
 ```{r}
-web %>% count(Language, L1_distinction) %>% count(L1_distinction)
+web %>% count(Name, r_l_distinction_L1) %>% count(r_l_distinction_L1)
 ```
 
+How many really use the alveolar trill in L1 among the languages?
+
+```{r}
+web %>% count(Name, trill_real_L1) %>% count(trill_real_L1)
+```
+
+How many really have the alveolar trill in L1 as an allophone among the languages?
+
+```{r}
+web %>% count(Name, trill_occ_L1) %>% count(trill_occ_L1)
+```
+
+What about the same questions for L2. But this will not neatly sum up to 25, due to various possible scenarios for L2 within a specific L1.
+
+How many have the R/L distinction in the L2 among the languages?
+
+```{r}
+web %>% count(Name, r_l_distinction_L2) %>% count(r_l_distinction_L2)
+```
+
+How many really use the alveolar trill in L2 among the languages?
+
+```{r}
+web %>% count(Name, trill_real_L2) %>% count(trill_real_L2)
+```
+
+How many really have the alveolar trill in L2 as an allophone among the languages?
+
+```{r}
+web %>% count(Name, trill_occ_L2) %>% count(trill_occ_L2)
+```
 
 What is the grand average congruent behavior?
 
@@ -118,29 +158,29 @@ What about only among those who have L1 without the distinction?
 
 ```{r}
 web %>%
-  filter(L1_distinction == "no") %>%
+  filter(r_l_distinction_L1 == "0") %>%
   summarize(mean_match = mean(Match, na.rm = TRUE))
 ```
 
-84%
+83.9%
 
 What about only among those who have L1 without the distinction and no L2 that distinguishes?
 
 ```{r}
 web %>%
-  filter(L1_distinction == 'no') %>%
+  filter(r_l_distinction_L1 == "0") %>%
   filter(!EnglishL2YesNo) %>% 
-  filter(no_dist_L2 == 'FALSE') %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
   summarize(mean_match = mean(Match, na.rm = TRUE))
 ```
 
-Also 84%
+85.1%
 
 Compute average matching behavior per language and sort:
 
 ```{r}
 web_avg <- web %>%
-  group_by(Language) %>% 
+  group_by(Name) %>% 
   summarize(M = mean(Match)) %>% 
   arrange(desc(M)) %>% 
   mutate(percent = round(M, 2) * 100,
@@ -159,22 +199,21 @@ web %>%
 ```
 
 
-Then, the number of L1 speakers who have R/L distinction vs. who don't (we can think if we put the approximant and trill together):
+Then, the number of L1 speakers who have R/L distinction vs. who don't:
 
 ```{r}
-web %>% count(L1_distinction) %>%
+web %>% count(r_l_distinction_L1) %>%
   mutate(prop = n / sum(n),
          percent = round(prop, 2) * 100,
          percent = str_c(percent, '%'))
 ```
 
-How many people are not bilinguals?
+How many people do not have any L2?
 
 ```{r}
 sum(is.na(web$L2)) / nrow(web)
 
 # bilinguals:
-
 1 - sum(is.na(web$L2)) / nrow(web)
 ```
 
@@ -191,8 +230,8 @@ Of those that don't use a R/L distinction in their L1, how many use R/L distinct
 
 ```{r}
 web %>%
-  filter(L1_distinction == 'no') %>% 
-  count(no_dist_L2 == FALSE) %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
+  count(r_l_distinction_L2 == '1') %>% 
   mutate(prop = n / sum(n),
          percent = round(prop, 2) * 100,
          percent = str_c(percent, '%'))
@@ -202,19 +241,19 @@ How many "pure" speakers were there?, i.e., those people that 1) don't know Engl
 
 ```{r}
 web %>% 
-  filter(L1_distinction == 'no') %>%  # excludes English as well
+  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
   filter(!EnglishL2YesNo) %>% 
-  filter(no_dist_L2 == 'FALSE') %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
   nrow()
 ```
 
-43 people.
+47 people.
 
 Let's check if this is correct. This gives the list of all participants for whom this applies.
 
 ```{r}
 web %>% 
-    filter(L1_distinction == 'no' & !EnglishL2YesNo & no_dist_L2 == FALSE) %>% 
+    filter(r_l_distinction_L1 == '0' & !EnglishL2YesNo & r_l_distinction_L1 == '0') %>% 
     print(n = 50)
 ```
 
@@ -222,29 +261,28 @@ Are these really "pure"? What languages do they speak?
 
 ```{r}
 web %>% 
-  filter(L1_distinction == 'no') %>%  # excludes English as well
+  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
   filter(!EnglishL2YesNo) %>% 
-  filter(no_dist_L2 == 'FALSE') %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
   count(Language)
 ```
 
-Mostly Chinese and Japanese.
+Mostly Chinese and Japanese native speakers.
 
-
-Nevertheless, let's explore whether these also show kiki/bouba matches?
+Nevertheless, let's explore whether these also show matches?
 
 ```{r}
 web %>% 
-  filter(L1_distinction == 'no') %>%  # excludes English as well
+  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
   filter(!EnglishL2YesNo) %>% 
-  filter(no_dist_L2 == 'FALSE') %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
   count(Match) %>% 
   mutate(prop = n / sum(n),
          percent = round(prop, 2) * 100,
          percent = str_c(percent, '%'))
 ```
 
-Yes, as shown above 84%.
+Yes, similar to above 85%.
 
 ## Main model:
 
@@ -259,16 +297,14 @@ myiter <- 6000
 Check the distribution of scripts across families to make decisions about random effects structure:
 
 ```{r}
-table(web$Family, web$L1_distinction)
+table(web$Family, web$r_l_distinction_L1)
 ```
-
 
 Let's factor code the Order and L1_distinction effects:
 
 ```{r}
 web <- mutate(web,
-               Order = factor(Order, levels = c('r_first', 'l_first')),
-               L1_distinction = factor(L1_distinction, levels = c('no', 'approximant', 'trill')))
+               Order = factor(Order, levels = c('r_first', 'l_first')))
 ```
 
 Check that the order effect is approximately balanced:
@@ -278,17 +314,42 @@ web %>% count(Order) %>%
   mutate(prop = n / sum(n))
 ```
 
-I omit some things for now... Because for now, L1_distinction is three-way.
+@Dan & @Bodo, can you please check if we need some manipulation, like contrast-coding but weighted? Bodo, I know for bouba/kiki you did some kind of weighted modification and I'm sure that the proportions of our predictors are not balanced, see below:
+
+```{r}
+web %>% count(r_l_distinction_L1) %>%
+  mutate(prop = n / sum(n))
+# highly imbalanced
+
+web %>% count(trill_real_L1) %>%
+  mutate(prop = n / sum(n))
+
+web %>% count(trill_occ_L1) %>%
+  mutate(prop = n / sum(n))
+# ALL L1 have some kind of occuring trill, so this is not even worth including in the model as predictor
+
+## And for L2, just in case
+web %>% count(r_l_distinction_L2) %>%
+  mutate(prop = n / sum(n))
+
+web %>% count(trill_real_L2) %>%
+  mutate(prop = n / sum(n))
+
+web %>% count(trill_occ_L2) %>%
+  mutate(prop = n / sum(n))
+```
+
+For now, I will just use them as they are coded.
 
 ```{r}
 web <- mutate(web,
                order_num = ifelse(Order == 'r_first', -0.5, +0.5))
 ```
 
-The main model with Order and L1_distinction fixed effects, as well as Language and Family random effects.
+The main model with Order and R/L distinction and alveolar trill as the preferred variant in L1 as fixed effects, as well as by Language and Family slopes and intercepts.
 
 ```{r, message = FALSE, warning = FALSE}
-web_mdl <- brm(Match ~ 1 + order_num + L1_distinction +
+web_mdl <- brm(Match ~ 1 + order_num + r_l_distinction_L1 + trill_real_L1 +
                  (1 + order_num|Language) + 
                  (1 + order_num|Family),
                 data = web,
@@ -300,7 +361,7 @@ web_mdl <- brm(Match ~ 1 + order_num + L1_distinction +
                 warmup = 1000,
                 control = list(adapt_delta = 0.995,
                                max_treedepth = 13),
-                file = paste0(models, "web_mdl.rds"))
+                file = paste0(models, "web_mdl2.rds"))
 ```
 
 Show the model:
@@ -321,22 +382,32 @@ plogis(fixef(web_mdl)[1, ][4]) # upr bound
 Perform hypothesis tests:
 
 ```{r}
-hypothesis(web_mdl, 'Intercept > 0')
-hypothesis(web_mdl, 'L1_distinctionapproximant > 0')
-hypothesis(web_mdl, 'L1_distinctiontrill > 0')
-hypothesis(web_mdl, 'order_num > 0')
+hypothesis(web_mdl, c('Intercept > 0', 'r_l_distinction_L1 > 0', 'trill_real_L1 < 0', 'order_num < 0'))
 ```
+
+Meaning:
+
+  - The r/l phoneme distinction within a language does not have an impact of matching r to rough picture/surface and l to smooth picture/surface. Speakers of languages that do and that do not differentiate between r and l are equally good/bad at matching.
+  - Having a real alveolar trill as the main r-phoneme in a language has a negative (!) impact on matching, that is the languages that use the alveolar trill as their primary /r/ are likely to be worse at matching in our data.
+  - There is an order effect with r_first trials resulting in better matching than l_first trials.
 
 Check the descriptive averages for script and order:
 
 ```{r}
 web %>% 
-  group_by(L1_distinction) %>% 
+  group_by(r_l_distinction_L1) %>% 
   summarize(prop = mean(Match)) %>% 
   mutate(percent = round(prop, 2) * 100,
          percent = str_c(percent, '%'))
 ```
 
+```{r}
+web %>% 
+  group_by(trill_real_L1) %>% 
+  summarize(prop = mean(Match)) %>% 
+  mutate(percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
 
 ```{r}
 web %>% 
@@ -346,13 +417,12 @@ web %>%
          percent = str_c(percent, '%'))
 ```
 
-
 Extract the posteriors:
 
 ```{r}
 posts <- posterior_samples(web_mdl)
 posts <- select(posts,
-                b_Intercept:b_L1_distinctiontrill)
+                b_Intercept:b_trill_real_L1)
 ```
 
 
@@ -360,7 +430,7 @@ Make the posteriors into long format for plotting (Figure 3):
 
 ```{r}
 posts <- pivot_longer(posts,
-                      cols = b_Intercept:b_L1_distinctiontrill,
+                      cols = b_Intercept:b_trill_real_L1,
                       names_to = 'coefficient',
                       values_to = 'posterior')
 ```
@@ -371,10 +441,10 @@ Change names for plotting and order:
 posts <- posts %>%
   mutate(coefficient = ifelse(coefficient == 'b_Intercept', 'Intercept', coefficient),
          coefficient = ifelse(coefficient == 'b_order_num', 'Order', coefficient),
-         coefficient = ifelse(coefficient == 'b_L1_distinctionapproximant', 'L1 approximant', coefficient),
-         coefficient = ifelse(coefficient == 'b_L1_distinctiontrill', 'L1 trill', coefficient),
+         coefficient = ifelse(coefficient == 'b_r_l_distinction_L1', 'R/L distinction', coefficient),
+         coefficient = ifelse(coefficient == 'b_trill_real_L1', 'Primary [r]', coefficient),
          coefficient = factor(coefficient,
-                              levels = rev(c('Intercept', 'Order', 'L1 approximant', 'L1 trill'))))
+                              levels = rev(c('Intercept', 'Order', 'R/L distinction', 'Primary [r]'))))
 ```
 
 Make a plot of this:
@@ -418,7 +488,8 @@ For Figure 4, we want to combine the predictions for each language with the aver
 # Setup data frame with predictors to get predictions for:
 newdata <- data.frame(Language = unique(web$Language))
 newdata$order_num <- 0
-newdata$L1_distinction <- web[match(newdata$Language, web$Language), ]$L1_distinction
+newdata$trill_real_L1 <- 0
+newdata$r_l_distinction_L1 <- web[match(newdata$Language, web$Language), ]$r_l_distinction_L1
 newdata$Family <- web[match(newdata$Language, web$Language), ]$Family
 
 # Get predictions and append to dataframe:
@@ -463,9 +534,9 @@ Setup the plot:
 # Aesthetics and geom:
 
 p <- newdata %>% 
-  ggplot(aes(x = Language, col = L1_distinction, y = fit,
+  ggplot(aes(x = Language, col = r_l_distinction_L1, y = fit,
       ymin = lwr, ymax = upr)) +
-  geom_errorbar(aes(col = L1_distinction),
+  geom_errorbar(aes(col = r_l_distinction_L1),
                 size = 1.6, width = 0.6) +
   geom_point(size = 9, shape = 15) +
   geom_hline(yintercept = 0.5, linetype = 2, size = 1.5, col = 'grey') + 

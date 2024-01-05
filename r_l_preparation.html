@@ -2759,18 +2759,9 @@ border-radius: 0px;
 
 <div id="data-preparation" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Data preparation</h1>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.3     ✔ readr     2.1.4
-## ✔ forcats   1.0.0     ✔ stringr   1.5.0
-## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<pre class="r"><code># Set the script&#39;s path as working directory
+<pre class="r"><code>library(tidyverse)
+
+# Set the script&#39;s path as working directory
 parentfolder = rstudioapi::getActiveDocumentContext()$path 
 setwd(dirname(parentfolder))
 parentfolder &lt;- getwd()
@@ -2781,7 +2772,9 @@ data          &lt;- paste0(parentfolder, &#39;/data/&#39;)</code></pre>
 <p>Load the data</p>
 <pre class="r"><code>field &lt;- read.csv(paste0(data, &quot;fieldwork-responses-rest.csv&quot;), sep = &quot;;&quot;)
 
-web &lt;- read.csv(paste0(data, &quot;r_l_web.csv&quot;), sep = &quot;,&quot;)</code></pre>
+web &lt;- read.csv(paste0(data, &quot;r_l_web.csv&quot;), sep = &quot;,&quot;)
+
+languages_data &lt;- read.csv(paste0(data, &quot;languages_data.csv&quot;), sep = &quot;,&quot;)</code></pre>
 </div>
 <div id="online-experiment" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Online experiment</h1>
@@ -2892,135 +2885,67 @@ will be done this way, e.g., “ukrainian, russian” -&gt; “russian”</p>
 <h2><span class="header-section-number">2.3</span> Process L2
 information:</h2>
 <p>Transform NAs into “this person knows no L2”:</p>
-<pre class="r"><code>L2_info &lt;- mutate(L2_info,
-                  l2 = ifelse(is.na(l2), &#39;no_L2&#39;, l2))</code></pre>
+<pre class="r"><code>L2_info &lt;- L2_info %&gt;%
+  mutate(l2 = ifelse(l2 == &quot; &quot; | is.na(l2), &quot;no_L2&quot;, l2),)</code></pre>
 <p>Extract whether the person reports any English:</p>
 <pre class="r"><code>L2_info &lt;- mutate(L2_info,
                   EnglishL2YesNo = str_detect(l2, &#39;english&#39;))</code></pre>
 <p>Conversions:</p>
-<pre class="r"><code>L2_info &lt;- mutate(L2_info,
-                  l2 = str_replace(l2, &#39;potuguese&#39;, &#39;portuguese&#39;),
-                  l2 = str_replace(l2, &#39;spanich&#39;, &#39;spanish&#39;),
-                  l2 = str_replace(l2, &#39;calatan&#39;, &#39;catalan&#39;),
-                  l2 = str_replace(l2, &#39;ancient greek&#39;, &#39;greek&#39;),
-                  l2 = str_replace(l2, &#39;rumanian&#39;, &#39;romanian&#39;),
-                  l2 = str_replace(l2, &#39;estniska&#39;, &#39;estonian&#39;),
-                  l2 = str_replace(l2, &#39;calabrese&#39;, &#39;italian&#39;),
-                  l2 = str_replace(l2, &#39;dari&#39;, &#39;farsi&#39;),
-                  l2 = str_replace(l2, &#39;\\(german\\)&#39;, &#39;german&#39;),
-                  l2 = str_replace(l2, &#39;sami&#39;, &#39;saami&#39;))</code></pre>
-<p>Get all languages spoken:</p>
-<pre class="r"><code>all_L2s &lt;- str_replace_all(L2_info$l2, &quot;(a little bit )|(a little )&quot;, &quot;&quot;)
-all_L2s &lt;- unlist(str_split(all_L2s, &quot;(, )|(,)|(，)|(\\.)|( )&quot;))
-all_L2s &lt;- str_trim(all_L2s)
-all_L2s &lt;- sort(unique(all_L2s))
-all_L2s &lt;- all_L2s[!all_L2s %in% c(&quot;&quot;, &quot;no_L2&quot;)]
+<pre class="r"><code>L2_info &lt;- L2_info %&gt;%
+  mutate(l2 = str_replace_all(l2, c(&#39;potuguese&#39; = &#39;portuguese&#39;,
+                                    &#39;spanich&#39; = &#39;spanish&#39;,
+                                    &#39;calatan&#39; = &#39;catalan&#39;,
+                                    &#39;ancient greek&#39; = &#39;greek&#39;,
+                                    &#39;rumanian&#39; = &#39;romanian&#39;,
+                                    &#39;estniska&#39; = &#39;estonian&#39;,
+                                    &#39;calabrese&#39; = &#39;italian&#39;,
+                                    &#39;dari&#39; = &#39;farsi&#39;,
+                                    &#39;\\(german\\)&#39; = &#39;german&#39;,
+                                    &#39;sami&#39; = &#39;saami&#39;,
+                                    &#39;inari saami&#39; = &#39;saami&#39;,
+                                    &quot;(a little bit )|(a little )&quot; = &quot;&quot;,
+                                    &quot;\\s+&quot; = &quot; &quot;,
+                                    &quot;\\s+$&quot; = &quot;&quot;,
+                                    &quot;,(?![ ])&quot; = &quot;, &quot;)))</code></pre>
+</div>
+<div id="add-rhotics-information" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Add rhotics
+information:</h2>
+<p>Add new columns</p>
+<pre class="r"><code>L2_info &lt;- L2_info %&gt;% 
+           mutate(r_l_distinction_L1 = NA,
+                  trill_real_L1 = NA,
+                  trill_occ_L1 = NA,
+                  r_l_distinction_L2 = NA,
+                  trill_real_L2 = NA,
+                  trill_occ_L2 = NA)</code></pre>
+<p>Join data for L1</p>
+<pre class="r"><code>L2_info &lt;- L2_info %&gt;% 
+           left_join(languages_data, by = c(&quot;l1&quot; = &quot;Languages&quot;)) %&gt;%
+           mutate(r_l_distinction_L1 = coalesce(r_l_distinction, r_l_distinction_L1),
+                  trill_real_L1 = coalesce(trill_real, trill_real_L1),
+                  trill_occ_L1 = coalesce(trill_occ, trill_occ_L1)) %&gt;%
+           select(-c(glottocode, r_l_distinction, trill_real, trill_occ))</code></pre>
+<p>Split and join data for L2</p>
+<pre class="r"><code># Save the original &#39;l2&#39; column
+original_l2 &lt;- L2_info$l2
 
-# Print:
+# Run the main code
+L2_info &lt;- L2_info %&gt;% 
+  separate_rows(l2, sep = &quot;,\\s*&quot;) %&gt;% 
+  left_join(languages_data, by = c(&quot;l2&quot; = &quot;Languages&quot;)) %&gt;%
+  group_by(ID) %&gt;%
+  mutate(r_l_distinction_L2 = if(all(is.na(r_l_distinction))) NA else max(coalesce(r_l_distinction, r_l_distinction_L2), na.rm = TRUE),
+         trill_real_L2 = if(all(is.na(trill_real))) NA else max(coalesce(trill_real, trill_real_L2), na.rm = TRUE),
+         trill_occ_L2 = if(all(is.na(trill_occ))) NA else max(coalesce(trill_occ, trill_occ_L2), na.rm = TRUE)) %&gt;%
+  select(-c(glottocode, r_l_distinction, trill_real, trill_occ)) %&gt;%
+  distinct(ID, .keep_all = TRUE) %&gt;%
+  ungroup()
 
-all_L2s</code></pre>
-<pre><code>##  [1] &quot;afrikaans&quot;  &quot;arabic&quot;     &quot;armenian&quot;   &quot;asl&quot;        &quot;basque&quot;    
-##  [6] &quot;bulgarian&quot;  &quot;catalan&quot;    &quot;chinese&quot;    &quot;creole&quot;     &quot;croatian&quot;  
-## [11] &quot;czech&quot;      &quot;danish&quot;     &quot;dutch&quot;      &quot;english&quot;    &quot;esperanto&quot; 
-## [16] &quot;estonian&quot;   &quot;farsi&quot;      &quot;finnish&quot;    &quot;french&quot;     &quot;georgian&quot;  
-## [21] &quot;german&quot;     &quot;greek&quot;      &quot;hebrew&quot;     &quot;hindi&quot;      &quot;hungarian&quot; 
-## [26] &quot;icelandic&quot;  &quot;inari&quot;      &quot;indonesian&quot; &quot;irish&quot;      &quot;italian&quot;   
-## [31] &quot;japanese&quot;   &quot;korean&quot;     &quot;latin&quot;      &quot;latvian&quot;    &quot;limburgish&quot;
-## [36] &quot;macedonian&quot; &quot;nepali&quot;     &quot;NGT&quot;        &quot;norwegian&quot;  &quot;polish&quot;    
-## [41] &quot;portuguese&quot; &quot;romanian&quot;   &quot;russian&quot;    &quot;saami&quot;      &quot;sanskrit&quot;  
-## [46] &quot;serbian&quot;    &quot;slovak&quot;     &quot;sotho&quot;      &quot;spanish&quot;    &quot;swahili&quot;   
-## [51] &quot;swazi&quot;      &quot;swedish&quot;    &quot;tamil&quot;      &quot;turkish&quot;    &quot;vietnamese&quot;
-## [56] &quot;xhosa&quot;</code></pre>
-<p>Put into table and match script as well as whether they are IE:</p>
-<pre class="r"><code>L2_lang_info &lt;- tibble(L2 = all_L2s)</code></pre>
-<p>Fill in R/L distinction info:</p>
-<pre class="r"><code># Create R/L distinction column:
+# Replace the original &#39;l2&#39; column
+L2_info$l2 &lt;- original_l2
 
-L2_lang_info$R_L_distinction &lt;- as.character(rep(NA, nrow(L2_lang_info)))
-
-# For reference:
-
-L2_lang_info[L2_lang_info$L2 == &#39;afrikaans&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;arabic&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;armenian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;asl&#39;, ]$R_L_distinction &lt;- &#39;sign_language&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;basque&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;bulgarian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;catalan&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;chinese&#39;, ]$R_L_distinction &lt;- &#39;no&#39; ## CONTINUE
-L2_lang_info[L2_lang_info$L2 == &#39;creole&#39;, ]$R_L_distinction &lt;- &#39;approximant&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;croatian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;czech&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;danish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;dutch&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;english&#39;, ]$R_L_distinction &lt;- &#39;approximant&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;esperanto&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;estonian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;farsi&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;finnish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;french&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;georgian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;german&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;greek&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;hebrew&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;hindi&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;hungarian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;inari&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;icelandic&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;indonesian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;irish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;italian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;japanese&#39;, ]$R_L_distinction &lt;- &#39;no&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;korean&#39;, ]$R_L_distinction &lt;- &#39;no&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;latin&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;latvian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;limburgish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;macedonian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;nepali&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;NGT&#39;, ]$R_L_distinction &lt;- &#39;sign_language&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;norwegian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;polish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;portuguese&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;romanian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;russian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;saami&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;sanskrit&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;serbian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;slovak&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;sotho&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;spanish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;swahili&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;swazi&#39;, ]$R_L_distinction &lt;- &#39;no&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;swedish&#39;, ]$R_L_distinction &lt;- &#39;approximant&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;tamil&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;turkish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;vietnamese&#39;, ]$R_L_distinction &lt;- &#39;no&#39;
-L2_lang_info[L2_lang_info$L2 == &#39;xhosa&#39;, ]$R_L_distinction &lt;- &#39;no&#39;
-
-# All the information according to Phoible database, 2023-10-26</code></pre>
-<p>Get big regular expressions out of those that have different R/L
-distinctions:</p>
-<pre class="r"><code># No distinction:
-no_regex &lt;- str_c(filter(L2_lang_info, R_L_distinction == &#39;no&#39;)$L2,
-                     collapse = &#39;|&#39;)
-# Approximant rhotic:
-approximant_regex &lt;- str_c(filter(L2_lang_info, R_L_distinction == &#39;approximant&#39;)$L2,
-                     collapse = &#39;|&#39;)
-# Trill:
-trill_regex &lt;- str_c(filter(L2_lang_info, R_L_distinction == &#39;trill&#39;)$L2,
-                     collapse = &#39;|&#39;)
-# Collapsed approximant and trill:
-rhotic_regex &lt;- str_c(filter(L2_lang_info, R_L_distinction == &#39;trill&#39; | 
-                              R_L_distinction == &#39;approximant&#39;)$L2,
-                     collapse = &#39;|&#39;)</code></pre>
-<p>Create variables based on that for all speakers. First, whether they
-know at least one language that has no distinction, then at least one
-that has a trill, then at least one that has approximant. This will
-allow us for fine-grained distinction:</p>
-<pre class="r"><code>L2_info &lt;- L2_info %&gt;%  
-  mutate(no_dist_L2 = str_detect(l2, no_regex),
-         trill_L2 = str_detect(l2, trill_regex),
-         approximant_L2 = str_detect(l2, approximant_regex))</code></pre>
+rm(original_l2)</code></pre>
 <p>Match this with the “web” data frame:</p>
 <pre class="r"><code>web &lt;- left_join(web, select(L2_info, -Language), by = c(&#39;ID&#39; = &#39;ID&#39;))</code></pre>
 <p>Rename:</p>
@@ -3029,20 +2954,9 @@ allow us for fine-grained distinction:</p>
               L2_raw = l2.x,
               L1_cleaned = l1.y,
               L2_cleaned = l2.y)</code></pre>
-<p>Add also a variable that tells whether L1 is no distinction:</p>
-<pre class="r"><code>web &lt;- web %&gt;%
-  mutate(L1_distinction = NA_character_) %&gt;%
-  mutate(L1_distinction = case_when(
-    L1_cleaned %in% c(&#39;albanian&#39;, &#39;armenian&#39;, &#39;russian&#39;, &#39;german&#39;, &#39;czech&#39;, &#39;dutch&#39;, &#39;danish&#39;, &#39;estonian&#39;, &#39;italian&#39;, &#39;latvian&#39;, &#39;polish&#39;, &#39;spanish&#39;, &#39;arabic&#39;, &#39;portuguese&#39;,&#39;zulu&#39;, &#39;finnish&#39;, &#39;thai&#39;, &#39;farsi&#39;, &#39;pashto&#39;, &#39;french&#39;, &#39;wolof&#39;, &#39;georgian&#39;, &#39;greek&#39;, &#39;hungarian&#39;, &#39;malay&#39;, &#39;romanian&#39;, &#39;macedonian&#39;, &#39;tamil&#39;, &#39;turkish&#39;, &#39;kurdish&#39;) ~ &#39;trill&#39;,
-    L1_cleaned %in% c(&#39;english&#39;, &#39;swedish&#39;) ~ &#39;approximant&#39;,
-    L1_cleaned %in% c(&#39;japanese&#39;, &#39;korean&#39;, &#39;chinese&#39;) ~ &#39;no&#39;,
-    TRUE ~ L1_distinction
-  ))
-
-# All according to Phoible, 2023-10-26; Zulu marginal</code></pre>
 </div>
-<div id="exclusions-based-on-insufficient-data" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Exclusions based on
+<div id="exclusions-based-on-insufficient-data" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Exclusions based on
 insufficient data:</h2>
 <p>How many data per participant?</p>
 <pre class="r"><code>ppt_N &lt;- web %&gt;% count(ID)</code></pre>
@@ -3063,7 +2977,9 @@ excludes &lt;- filter(ppt_N, n != 2) %&gt;% pull(ID)
 
 # Exclude:
 
-web &lt;- filter(web, !(ID %in% excludes))</code></pre>
+web &lt;- filter(web, !(ID %in% excludes))
+
+rm(excludes)</code></pre>
 <p>Count data per language:</p>
 <pre class="r"><code>web %&gt;% count(Language) %&gt;% 
   mutate(n = n / 2) %&gt;% 
@@ -3185,17 +3101,16 @@ web[web$L1_cleaned == &#39;swedish&#39;, ]$Language &lt;- &#39;SE&#39;
 web[web$L1_cleaned == &#39;portuguese&#39;, ]$Language &lt;- &#39;PT&#39;
 web[web$L1_cleaned == &#39;thai&#39;, ]$Language &lt;- &#39;TH&#39;</code></pre>
 </div>
-<div id="add-language-info" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Add language
+<div id="add-language-info" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Add language
 info:</h2>
 <p>Load language file:</p>
 <pre class="r"><code>langs &lt;- read_csv(paste0(data, &#39;language_info.csv&#39;))</code></pre>
 <p>Merge:</p>
 <pre class="r"><code>web &lt;- left_join(web, langs)</code></pre>
-<pre><code>## Joining with `by = join_by(Language)`</code></pre>
 </div>
-<div id="create-response-variable" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Create response
+<div id="create-response-variable" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Create response
 variable</h2>
 <p>Change main response to “Resp”:</p>
 <pre class="r"><code>web &lt;- rename(web,
@@ -3225,14 +3140,16 @@ table(web$trial)</code></pre>
 ## 903 903</code></pre>
 <pre class="r"><code>out &lt;- web[, c(&#39;ID&#39;, &#39;Language&#39;, &#39;Name&#39;, &#39;Script&#39;, &#39;Family&#39;, &#39;Autotyp_Area&#39;, &#39;trial&#39;, &#39;sound&#39;, &#39;match&#39;)]
 
+rm(idx, subject)
+
 # Rename column names for consistency with the main analysis:
 
 out &lt;- rename(out, Condition = sound)
 
 write_csv(out, paste0(data,&#39;web_raw_trials.csv&#39;))</code></pre>
 </div>
-<div id="by-participant-preprocessing" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> By-participant
+<div id="by-participant-preprocessing" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> By-participant
 preprocessing</h2>
 <p>Arguably, the responses to “r” and “l”, since they immediately
 followed each other, are not independent.</p>
@@ -3248,7 +3165,9 @@ for (i in seq_along(matches)) {
 }</code></pre>
 <p>Put this together with ID info into a table:</p>
 <pre class="r"><code>ids &lt;- unique(web$ID)
-r_ppt &lt;- tibble(ID = ids, Match = matches)</code></pre>
+r_ppt &lt;- tibble(ID = ids, Match = matches)
+
+rm(ids, i, ID_tabs, matches)</code></pre>
 <pre class="r"><code>web &lt;- web %&gt;%
   group_by(ID) %&gt;%
   mutate(Order = ifelse(trial == 1 &amp; n() == 2, 
@@ -3265,23 +3184,18 @@ r_ppt$Autotyp_Area &lt;- web[match(r_ppt$ID, web$ID), ]$Autotyp_Area
 r_ppt$L2 &lt;- web[match(r_ppt$ID, web$ID), ]$L2_raw
 r_ppt$EnglishL2YesNo &lt;- web[match(r_ppt$ID, web$ID), ]$EnglishL2YesNo
 r_ppt$Order &lt;- web[match(r_ppt$ID, web$ID), ]$Order
-r_ppt$L1_distinction &lt;- web[match(r_ppt$ID, web$ID), ]$L1_distinction
-r_ppt$no_dist_L2 &lt;- web[match(r_ppt$ID, web$ID), ]$no_dist_L2
-r_ppt$trill_L2 &lt;- web[match(r_ppt$ID, web$ID), ]$trill_L2
-r_ppt$approximant_L2 &lt;- web[match(r_ppt$ID, web$ID), ]$approximant_L2</code></pre>
+r_ppt$r_l_distinction_L1 &lt;- web[match(r_ppt$ID, web$ID), ]$r_l_distinction_L1
+r_ppt$trill_real_L1 &lt;- web[match(r_ppt$ID, web$ID), ]$trill_real_L1
+r_ppt$trill_occ_L1 &lt;- web[match(r_ppt$ID, web$ID), ]$trill_occ_L1
+r_ppt$r_l_distinction_L2 &lt;- web[match(r_ppt$ID, web$ID), ]$r_l_distinction_L2
+r_ppt$trill_real_L2 &lt;- web[match(r_ppt$ID, web$ID), ]$trill_real_L2
+r_ppt$trill_occ_L2 &lt;- web[match(r_ppt$ID, web$ID), ]$trill_occ_L2</code></pre>
 <p>Write to file:</p>
 <pre class="r"><code>write_csv(r_ppt, paste0(data, &#39;web_experiment_cleaned.csv&#39;))
 
 web &lt;- read_csv(paste0(data, &#39;web_experiment_cleaned.csv&#39;))</code></pre>
-<pre><code>## Rows: 903 Columns: 14
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (9): ID, Language, Name, Script, Family, Autotyp_Area, L2, Order, L1_dis...
-## dbl (1): Match
-## lgl (4): EnglishL2YesNo, no_dist_L2, trill_L2, approximant_L2
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>Remove unnecessary objects</p>
+<pre class="r"><code>rm(L2_info, langs, out, ppt_N, r_ppt)</code></pre>
 </div>
 </div>
 <div id="field-experiment" class="section level1" number="3">
@@ -3331,33 +3245,36 @@ demographics &lt;- select(demographics,
 # Join:
 
 field &lt;- left_join(field, demographics)</code></pre>
-<pre><code>## Joining with `by = join_by(ID)`</code></pre>
 <p>Exclude participants under 18:</p>
 <pre class="r"><code>field &lt;- filter(field, Age &gt; 18)</code></pre>
 <p>Discard Polish (only one data point) and US (no data collected for
 this part of the experiment):</p>
 <pre class="r"><code>field &lt;- filter(field, Language != &#39;US&#39;)
 field &lt;- filter(field, Language != &#39;PL&#39;)</code></pre>
+<p>Check if there is anyone who doesn’t have two any responses.</p>
+<pre class="r"><code>field %&gt;%
+  group_by(ID) %&gt;%
+  summarise(AllResponsesEmptyOrNA = all(is.na(response) | response == &quot;&quot;)) %&gt;%
+  filter(AllResponsesEmptyOrNA)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["AllResponsesEmptyOrNA"],"name":[2],"type":["lgl"],"align":["right"]}],"data":[{"1":"BE40","2":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
-<div id="add-info-on-l1-and-rl-contrast" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Add info on L1 and
-R/L contrast</h2>
+<p>Remove this participant.</p>
+<pre class="r"><code>field &lt;- field %&gt;%
+  filter(ID != &quot;BE40&quot;)</code></pre>
+</div>
+<div id="process-l1-info" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Process L1 info:</h2>
 <p>Add language name information to the data frame:</p>
 <pre class="r"><code>field$Name &lt;- NA
-field[field$Language == &#39;BE&#39;, ]$Name &lt;- &#39;English&#39;
-field[field$Language == &#39;DE&#39;, ]$Name &lt;- &#39;German&#39;
-field[field$Language == &#39;SR&#39;, ]$Name &lt;- &#39;Portuguese&#39;
-field[field$Language == &#39;VA&#39;, ]$Name &lt;- &#39;Daakie&#39;
-field[field$Language == &#39;BR&#39;, ]$Name &lt;- &#39;Tashlhiyt Berber&#39;
-field[field$Language == &#39;PA&#39;, ]$Name &lt;- &#39;Palikur&#39;</code></pre>
-<p>Add info on R/L contrast:</p>
-<pre class="r"><code>field &lt;- field %&gt;%
-  mutate(L1_distinction = NA_character_) %&gt;%
-  mutate(L1_distinction = case_when(
-    Name %in% c(&#39;German&#39;, &#39;Portuguese&#39;, &#39;Tashlhiyt Berber&#39;, &#39;Palikur&#39;, &#39;Daakie&#39;) ~ &#39;trill&#39;,
-    Name %in% c(&#39;English&#39;) ~ &#39;approximant&#39;,
-    TRUE ~ L1_distinction
-  ))</code></pre>
+field[field$Language == &#39;BE&#39;, ]$Name &lt;- &#39;english&#39;
+field[field$Language == &#39;DE&#39;, ]$Name &lt;- &#39;german&#39;
+field[field$Language == &#39;SR&#39;, ]$Name &lt;- &#39;portuguese&#39;
+field[field$Language == &#39;VA&#39;, ]$Name &lt;- &#39;daakie&#39;
+field[field$Language == &#39;BR&#39;, ]$Name &lt;- &#39;berber&#39;
+field[field$Language == &#39;PA&#39;, ]$Name &lt;- &#39;palikur&#39;</code></pre>
 </div>
 <div id="process-l2-info" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Process L2 info:</h2>
@@ -3372,82 +3289,58 @@ information:</p>
 <pre class="r"><code>L2_info_field &lt;- mutate(L2_info_field,
                   EnglishL2YesNo = ifelse(grepl(&#39;english&#39;, L2, ignore.case = TRUE), TRUE, FALSE))</code></pre>
 <p>Conversions:</p>
-<pre class="r"><code>L2_info_field &lt;- mutate(L2_info_field,
-                  L2 = str_replace(L2, &#39;British Sign Language&#39;, &#39;BSL&#39;))</code></pre>
-<p>Get all languages spoken:</p>
-<pre class="r"><code>all_L2s_field &lt;- sub(&quot;\\s*\\(restricted reading skills\\)&quot;, &quot;&quot;, L2_info_field$L2)
-all_L2s_field &lt;- unlist(str_split(all_L2s_field, &quot;(, )|(,)|(，)|(\\.)&quot;))
-all_L2s_field &lt;- str_trim(all_L2s_field)
-all_L2s_field &lt;- sort(unique(all_L2s_field))
-all_L2s_field &lt;- all_L2s_field[!all_L2s_field %in% c(&quot;&quot;, &quot;no_L2&quot;)]
+<pre class="r"><code>L2_info_field &lt;- L2_info_field %&gt;%
+  mutate(L2 = str_replace_all(L2, regex(&#39;British Sign Language&#39;, ignore_case = TRUE), &#39;BSL&#39;),
+         L2 = str_replace_all(L2, regex(&#39;Mandarin&#39;, ignore_case = TRUE), &#39;chinese&#39;),
+         L2 = str_replace_all(L2, regex(&#39;Moroccan Arabic&#39;, ignore_case = TRUE), &#39;arabic&#39;),
+         L2 = str_replace_all(L2, regex(&#39;Standard Arabic&#39;, ignore_case = TRUE), &#39;arabic&#39;))
 
-# Print:
 
-all_L2s_field</code></pre>
-<pre><code>##  [1] &quot;Bislama&quot;         &quot;BSL&quot;             &quot;Cantonese&quot;       &quot;Dutch&quot;          
-##  [5] &quot;English&quot;         &quot;Finnish&quot;         &quot;French&quot;          &quot;German&quot;         
-##  [9] &quot;Hebrew&quot;          &quot;Italian&quot;         &quot;Kurdish&quot;         &quot;Mandarin&quot;       
-## [13] &quot;Moroccan Arabic&quot; &quot;Polish&quot;          &quot;Portuguese&quot;      &quot;Punjabi&quot;        
-## [17] &quot;Russian&quot;         &quot;Spanish&quot;         &quot;Standard Arabic&quot; &quot;Swedish&quot;        
-## [21] &quot;Urdu&quot;            &quot;Welsh&quot;           &quot;Yoruba&quot;</code></pre>
-<p>Put into table and match script as well as whether they are IE:</p>
-<pre class="r"><code>L2_lang_field_info &lt;- tibble(L2 = all_L2s_field)</code></pre>
-<p>Fill in R/L distinction info:</p>
-<pre class="r"><code># Create R/L distinction column:
+L2_info_field &lt;- L2_info_field %&gt;%
+  mutate(L2 = ifelse(L2 %in% c(&quot;no_L2&quot;, &quot;BSL&quot;), L2, str_to_lower(L2))) %&gt;%
+  rowwise() %&gt;%
+  mutate(L2 = paste(unique(unlist(str_split(L2, &quot;,\\s*&quot;))), collapse = &quot;, &quot;))
 
-L2_lang_field_info$R_L_distinction &lt;- as.character(rep(NA, nrow(L2_lang_field_info)))
+L2_info_field$L2 &lt;- sub(&quot;\\s*\\(restricted reading skills\\)&quot;, &quot;&quot;, L2_info_field$L2)</code></pre>
+</div>
+<div id="add-rhotics-information-1" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Add rhotics
+information:</h2>
+<pre class="r"><code>L2_info_field &lt;- L2_info_field %&gt;% 
+           mutate(r_l_distinction_L1 = NA,
+                  trill_real_L1 = NA,
+                  trill_occ_L1 = NA,
+                  r_l_distinction_L2 = NA,
+                  trill_real_L2 = NA,
+                  trill_occ_L2 = NA)</code></pre>
+<p>Join data for L1</p>
+<pre class="r"><code>L2_info_field &lt;- L2_info_field %&gt;% 
+           left_join(languages_data, by = c(&quot;Name&quot; = &quot;Languages&quot;)) %&gt;%
+           mutate(r_l_distinction_L1 = coalesce(r_l_distinction, r_l_distinction_L1),
+                  trill_real_L1 = coalesce(trill_real, trill_real_L1),
+                  trill_occ_L1 = coalesce(trill_occ, trill_occ_L1)) %&gt;%
+           select(-c(glottocode, r_l_distinction, trill_real, trill_occ))</code></pre>
+<p>Split and join data for L2</p>
+<pre class="r"><code># Save the original &#39;l2&#39; column
+original_L2 &lt;- L2_info_field$L2
 
-# For reference:
+# Run the main code
+L2_info_field &lt;- L2_info_field %&gt;% 
+  separate_rows(L2, sep = &quot;,\\s*&quot;) %&gt;% 
+  left_join(languages_data, by = c(&quot;L2&quot; = &quot;Languages&quot;)) %&gt;%
+  group_by(ID) %&gt;%
+  mutate(r_l_distinction_L2 = if(all(is.na(r_l_distinction))) NA else max(coalesce(r_l_distinction, r_l_distinction_L2), na.rm = TRUE),
+         trill_real_L2 = if(all(is.na(trill_real))) NA else max(coalesce(trill_real, trill_real_L2), na.rm = TRUE),
+         trill_occ_L2 = if(all(is.na(trill_occ))) NA else max(coalesce(trill_occ, trill_occ_L2), na.rm = TRUE)) %&gt;%
+  select(-c(glottocode, r_l_distinction, trill_real, trill_occ)) %&gt;%
+  distinct(ID, .keep_all = TRUE) %&gt;%
+  ungroup()
 
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Bislama&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;BSL&#39;, ]$R_L_distinction &lt;- &#39;sign_language&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Cantonese&#39;, ]$R_L_distinction &lt;- &#39;no&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Dutch&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;English&#39;, ]$R_L_distinction &lt;- &#39;approximant&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Finnish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;French&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;German&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Hebrew&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Italian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Kurdish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Mandarin&#39;, ]$R_L_distinction &lt;- &#39;no&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Moroccan Arabic&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Polish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Portuguese&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Punjabi&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Russian&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Spanish&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Standard Arabic&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Swedish&#39;, ]$R_L_distinction &lt;- &#39;approximant&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Urdu&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Welsh&#39;, ]$R_L_distinction &lt;- &#39;trill&#39;
-L2_lang_field_info[L2_lang_field_info$L2 == &#39;Yoruba&#39;, ]$R_L_distinction &lt;- &#39;Trill&#39;
+# Replace the original &#39;L2&#39; column
+L2_info_field$L2 &lt;- original_L2
 
-# All the information according to Phoible database, 2023-10-30</code></pre>
-<p>Get big regular expressions out of those that have different R/L
-distinctions:</p>
-<pre class="r"><code># No distinction:
-no_regex &lt;- str_c(filter(L2_lang_field_info, R_L_distinction == &#39;no&#39;)$L2,
-                     collapse = &#39;|&#39;)
-# Approximant rhotic:
-approximant_regex &lt;- str_c(filter(L2_lang_field_info, R_L_distinction == &#39;approximant&#39;)$L2,
-                     collapse = &#39;|&#39;)
-# Trill:
-trill_regex &lt;- str_c(filter(L2_lang_field_info, R_L_distinction == &#39;trill&#39;)$L2,
-                     collapse = &#39;|&#39;)
-# Collapsed approximant and trill:
-rhotic_regex &lt;- str_c(filter(L2_lang_field_info, R_L_distinction == &#39;trill&#39; | 
-                              R_L_distinction == &#39;approximant&#39;)$L2,
-                     collapse = &#39;|&#39;)</code></pre>
-<p>Create variables based on that for all speakers. First, whether they
-know at least one language that has no distinction, then at least one
-that has a trill, then at least one that has approximant. This will
-allow us for fine-grained distinction:</p>
-<pre class="r"><code>L2_info_field &lt;- L2_info_field %&gt;%  
-  mutate(no_dist_L2 = str_detect(L2, no_regex),
-         trill_L2 = str_detect(L2, trill_regex),
-         approximant_L2 = str_detect(L2, approximant_regex))</code></pre>
-<p>Match this with the “web” data frame:</p>
+rm(original_L2)</code></pre>
+<p>Match this with the “field” data frame:</p>
 <pre class="r"><code>field &lt;- left_join(field, select(L2_info_field, -Language), by = c(&#39;ID&#39; = &#39;ID&#39;))</code></pre>
 <p>Rename:</p>
 <pre class="r"><code>field &lt;- field %&gt;% 
@@ -3456,12 +3349,92 @@ allow us for fine-grained distinction:</p>
          L2_cleaned = L2.y) %&gt;% 
   select(-Name.y)</code></pre>
 </div>
-<div id="exclusions" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Exclusions</h2>
-<p>We decided to exclude DE08 and DE09 for not following
-instructions</p>
+<div id="exclusions-and-descriptive-info" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Exclusions and
+descriptive info</h2>
+<p>How many data per participant?</p>
+<pre class="r"><code>ppt_N &lt;- field %&gt;% count(ID)</code></pre>
+<p>Check whether there’s anybody who doesn’t have 2 responses?</p>
+<pre class="r"><code>all(ppt_N$n == 2)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>All have two responses.</p>
+<pre class="r"><code>rm(ppt_N)</code></pre>
+<p>Count data per language:</p>
+<pre class="r"><code>field %&gt;% count(Name) %&gt;% 
+  mutate(n = n / 2) %&gt;% 
+  print()</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##   Name           n
+##   &lt;chr&gt;      &lt;dbl&gt;
+## 1 berber        20
+## 2 daakie        12
+## 3 english       55
+## 4 german        19
+## 5 palikur        7
+## 6 portuguese    13</code></pre>
+<p>Palikur has the fewest, but still ok.</p>
+</div>
+<div id="add-language-info-1" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Add language
+info:</h2>
+<p>Load language file:</p>
+<pre class="r"><code>langs &lt;- read_csv(paste0(data, &#39;language_info_field.csv&#39;))</code></pre>
+<p>Merge:</p>
+<pre class="r"><code>field &lt;- left_join(field, langs, by = &quot;Language&quot;)
+
+field &lt;- field %&gt;% 
+  rename(Name = Name.y) %&gt;% 
+  select(-Name.x)</code></pre>
+</div>
+<div id="create-response-variable-1" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Create response
+variable</h2>
+<p>Create congruent/incongruent responses:</p>
+<pre class="r"><code>field$match = field$audio == field$response</code></pre>
+<p>If this results in NA, put FALSE there (working against our
+hypothesis).</p>
 <pre class="r"><code>field &lt;- field %&gt;%
-  filter(!(ID %in% c(&quot;DE08&quot;, &quot;DE09&quot;)))</code></pre>
+  mutate(match = ifelse(is.na(match), FALSE, match))</code></pre>
+<p>The task here was a little different, the matching was done
+simultaneously, therefore, there is no information on the order.</p>
+<pre class="r"><code>out &lt;- field[, c(&#39;ID&#39;, &#39;Language&#39;, &#39;Name&#39;, &#39;Script&#39;, &#39;Family&#39;, &#39;Autotyp_Area&#39;, &#39;audio&#39;, &#39;match&#39;)]
+
+# Rename column names for consistency with the main analysis:
+
+out &lt;- rename(out, Condition = audio)
+
+write_csv(out, paste0(data,&#39;field_raw_trials.csv&#39;))</code></pre>
+</div>
+<div id="by-participant-preprocessing-1" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> By-participant
+preprocessing</h2>
+<p>Arguably, the responses to “r” and “l”, since they were presented
+together, are not independent of each other.</p>
+<p>Let’s create a dataframe for each participant whether they were 100%
+matching.</p>
+<pre class="r"><code>r_ppt &lt;- field %&gt;%
+  group_by(ID) %&gt;%
+  summarise(Match = as.integer(all(match == TRUE)))</code></pre>
+<p>Merge this with the relevant info:</p>
+<pre class="r"><code>r_ppt$Language &lt;- field[match(r_ppt$ID, field$ID), ]$Language
+r_ppt$Name &lt;- field[match(r_ppt$ID, field$ID), ]$Name
+r_ppt$Script &lt;- field[match(r_ppt$ID, field$ID), ]$Script
+r_ppt$Family &lt;- field[match(r_ppt$ID, field$ID), ]$Family
+r_ppt$Autotyp_Area &lt;- field[match(r_ppt$ID, field$ID), ]$Autotyp_Area
+r_ppt$L2 &lt;- field[match(r_ppt$ID, field$ID), ]$L2_raw
+r_ppt$EnglishL2YesNo &lt;- field[match(r_ppt$ID, field$ID), ]$EnglishL2YesNo
+r_ppt$r_l_distinction_L1 &lt;- field[match(r_ppt$ID, field$ID), ]$r_l_distinction_L1
+r_ppt$trill_real_L1 &lt;- field[match(r_ppt$ID, field$ID), ]$trill_real_L1
+r_ppt$trill_occ_L1 &lt;- field[match(r_ppt$ID, field$ID), ]$trill_occ_L1
+r_ppt$r_l_distinction_L2 &lt;- field[match(r_ppt$ID, field$ID), ]$r_l_distinction_L2
+r_ppt$trill_real_L2 &lt;- field[match(r_ppt$ID, field$ID), ]$trill_real_L2
+r_ppt$trill_occ_L2 &lt;- field[match(r_ppt$ID, field$ID), ]$trill_occ_L2</code></pre>
+<p>Write to file:</p>
+<pre class="r"><code>write_csv(r_ppt, paste0(data, &#39;field_experiment_cleaned.csv&#39;))
+
+field &lt;- read_csv(paste0(data, &#39;field_experiment_cleaned.csv&#39;))</code></pre>
+<p>Remove unnecessary objects</p>
+<pre class="r"><code>rm(L2_info_field, langs, out, ppt_N, r_ppt, demographics)</code></pre>
 </div>
 </div>
 

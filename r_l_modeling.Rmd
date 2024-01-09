@@ -90,6 +90,27 @@ First, how many participants?
 nrow(web)
 ```
 
+Sex division
+
+```{r}
+table(web$Sex)
+```
+
+Ages
+
+```{r}
+summary(web$Age)
+```
+
+Order division
+
+```{r}
+# Counts
+table(web$Order)
+# Percentage
+prop.table(table(web$Order)) * 100
+```
+
 First, how many languages?
 
 ```{r}
@@ -577,6 +598,220 @@ ggsave(plot = p, filename = paste0(plots, 'by_language_results.pdf'),
 ```
 
 
+# Field experiment
+
+## Descriptive statistics
+
+First, how many participants?
+
+```{r}
+nrow(field)
+```
+
+Sex division
+
+```{r}
+table(field$Sex)
+```
+
+Ages
+
+```{r}
+summary(field$Age)
+```
+
+First, how many languages?
+
+```{r}
+field %>% count(Language) %>% nrow()
+```
+
+Does this number correspond with the L1s?
+
+```{r}
+field %>% count(Name) %>% nrow()
+```
+
+How many families?
+
+```{r}
+field %>% count(Family) %>% nrow()
+```
+
+How many have the R/L distinction in the L1 among the languages?
+
+```{r}
+field %>% count(Name, r_l_distinction_L1) %>% count(r_l_distinction_L1)
+```
+
+How many really use the alveolar trill in L1 among the languages?
+
+```{r}
+field %>% count(Name, trill_real_L1) %>% count(trill_real_L1)
+```
+
+How many really have the alveolar trill in L1 as an allophone among the languages?
+
+```{r}
+field %>% count(Name, trill_occ_L1) %>% count(trill_occ_L1)
+```
+
+What about the same questions for L2. But this will not neatly sum up to 25, due to various possible scenarios for L2 within a specific L1.
+
+How many have the R/L distinction in the L2 among the languages?
+
+```{r}
+field %>% count(Name, r_l_distinction_L2) %>% count(r_l_distinction_L2)
+```
+
+How many really use the alveolar trill in L2 among the languages?
+
+```{r}
+field %>% count(Name, trill_real_L2) %>% count(trill_real_L2)
+```
+
+How many really have the alveolar trill in L2 as an allophone among the languages?
+
+```{r}
+field %>% count(Name, trill_occ_L2) %>% count(trill_occ_L2)
+```
+
+What is the grand average congruent behavior?
+
+```{r}
+mean(field$Match)
+```
+
+97%!!!
+
+What about only among those who have L1 without the distinction?
+
+```{r}
+field %>%
+  filter(r_l_distinction_L1 == "0") %>%
+  summarize(mean_match = mean(Match, na.rm = TRUE))
+```
+
+100%! WOW.
+
+What about only among those who have L1 without the distinction and no L2 that distinguishes?
+
+```{r}
+field %>%
+  filter(r_l_distinction_L1 == "0") %>%
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
+  summarize(mean_match = mean(Match, na.rm = TRUE))
+```
+
+Also a 100%.
+
+Compute average matching behavior per language and sort:
+
+```{r}
+field_avg <- field %>%
+  group_by(Name) %>% 
+  summarize(M = mean(Match)) %>% 
+  arrange(desc(M)) %>% 
+  mutate(percent = round(M, 2) * 100,
+         percent = str_c(percent, '%'))
+
+# Show:
+
+field_avg %>% print(n = Inf)
+```
+
+Check some demographics, also to report in the paper. First, the number of participants per language:
+
+```{r}
+field %>% 
+  count(Name, sort = TRUE) %>% print(n = Inf)
+```
+
+Then, the number of L1 speakers who have R/L distinction vs. who don't:
+
+```{r}
+field %>% count(r_l_distinction_L1) %>%
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+How many people do not have any L2?
+
+```{r}
+sum(is.na(field$L2)) / nrow(field)
+
+# bilinguals:
+1 - sum(is.na(field$L2)) / nrow(field)
+```
+
+Check how many people knew English as their L2:
+
+```{r}
+field %>% count(EnglishL2YesNo) %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+Of those that don't use a R/L distinction in their L1, how many use R/L distinction in their L2? (double-check if logic alright!)
+
+```{r}
+field %>%
+  filter(r_l_distinction_L1 == '0') %>% 
+  count(r_l_distinction_L2 == '1') %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+How many "pure" speakers were there?, i.e., those people that 1) don't know English, 2) don't use an L1 with a R/L distinction, and 3) don't know an L2 that distinguishes R/L.
+
+```{r}
+field %>% 
+  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
+  nrow()
+```
+
+7 people. All Palikúr speakers.
+
+Let's check if this is correct. This gives the list of all participants for whom this applies.
+
+```{r}
+field %>% 
+    filter(r_l_distinction_L1 == '0' & !EnglishL2YesNo & r_l_distinction_L1 == '0') %>% 
+    print(n = 50)
+```
+
+Are these really "pure"? What languages do they speak?
+
+```{r}
+field %>% 
+  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
+  count(Language)
+```
+
+Yes, only Palikúr speakers.
+
+Nevertheless, let's explore whether these also show matches?
+
+```{r}
+field %>% 
+  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
+  count(Match) %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+Yes, a total 100%.
 
 
 

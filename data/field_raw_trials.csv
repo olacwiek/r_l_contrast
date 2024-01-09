@@ -1,253 +1,253 @@
-ID,Language,Name,Script,Family,Autotyp_Area,Condition,match
-BE01,BE,English UK,roman,IE,Europe,r,TRUE
-BE01,BE,English UK,roman,IE,Europe,l,TRUE
-BE02,BE,English UK,roman,IE,Europe,r,TRUE
-BE02,BE,English UK,roman,IE,Europe,l,TRUE
-BE03,BE,English UK,roman,IE,Europe,r,TRUE
-BE03,BE,English UK,roman,IE,Europe,l,TRUE
-BE04,BE,English UK,roman,IE,Europe,r,TRUE
-BE04,BE,English UK,roman,IE,Europe,l,TRUE
-BE05,BE,English UK,roman,IE,Europe,r,TRUE
-BE05,BE,English UK,roman,IE,Europe,l,TRUE
-BE06,BE,English UK,roman,IE,Europe,r,TRUE
-BE06,BE,English UK,roman,IE,Europe,l,TRUE
-BE07,BE,English UK,roman,IE,Europe,r,TRUE
-BE07,BE,English UK,roman,IE,Europe,l,TRUE
-BE08,BE,English UK,roman,IE,Europe,r,TRUE
-BE08,BE,English UK,roman,IE,Europe,l,TRUE
-BE09,BE,English UK,roman,IE,Europe,r,TRUE
-BE09,BE,English UK,roman,IE,Europe,l,TRUE
-BE10,BE,English UK,roman,IE,Europe,r,TRUE
-BE10,BE,English UK,roman,IE,Europe,l,TRUE
-BE11,BE,English UK,roman,IE,Europe,r,TRUE
-BE11,BE,English UK,roman,IE,Europe,l,TRUE
-BE12,BE,English UK,roman,IE,Europe,r,TRUE
-BE12,BE,English UK,roman,IE,Europe,l,TRUE
-BE13,BE,English UK,roman,IE,Europe,r,TRUE
-BE13,BE,English UK,roman,IE,Europe,l,TRUE
-BE14,BE,English UK,roman,IE,Europe,r,TRUE
-BE14,BE,English UK,roman,IE,Europe,l,TRUE
-BE15,BE,English UK,roman,IE,Europe,r,TRUE
-BE15,BE,English UK,roman,IE,Europe,l,TRUE
-BE16,BE,English UK,roman,IE,Europe,r,TRUE
-BE16,BE,English UK,roman,IE,Europe,l,TRUE
-BE17,BE,English UK,roman,IE,Europe,r,TRUE
-BE17,BE,English UK,roman,IE,Europe,l,TRUE
-BE18,BE,English UK,roman,IE,Europe,r,TRUE
-BE18,BE,English UK,roman,IE,Europe,l,TRUE
-BE19,BE,English UK,roman,IE,Europe,r,TRUE
-BE19,BE,English UK,roman,IE,Europe,l,TRUE
-BE20,BE,English UK,roman,IE,Europe,r,TRUE
-BE20,BE,English UK,roman,IE,Europe,l,TRUE
-BE21,BE,English UK,roman,IE,Europe,r,TRUE
-BE21,BE,English UK,roman,IE,Europe,l,TRUE
-BE22,BE,English UK,roman,IE,Europe,r,TRUE
-BE22,BE,English UK,roman,IE,Europe,l,TRUE
-BE23,BE,English UK,roman,IE,Europe,r,TRUE
-BE23,BE,English UK,roman,IE,Europe,l,TRUE
-BE24,BE,English UK,roman,IE,Europe,r,TRUE
-BE24,BE,English UK,roman,IE,Europe,l,TRUE
-BE25,BE,English UK,roman,IE,Europe,r,TRUE
-BE25,BE,English UK,roman,IE,Europe,l,TRUE
-BE26,BE,English UK,roman,IE,Europe,r,TRUE
-BE26,BE,English UK,roman,IE,Europe,l,TRUE
-BE27,BE,English UK,roman,IE,Europe,r,TRUE
-BE27,BE,English UK,roman,IE,Europe,l,TRUE
-BE28,BE,English UK,roman,IE,Europe,r,TRUE
-BE28,BE,English UK,roman,IE,Europe,l,TRUE
-BE29,BE,English UK,roman,IE,Europe,r,TRUE
-BE29,BE,English UK,roman,IE,Europe,l,TRUE
-BE30,BE,English UK,roman,IE,Europe,r,TRUE
-BE30,BE,English UK,roman,IE,Europe,l,TRUE
-BE31,BE,English UK,roman,IE,Europe,r,TRUE
-BE31,BE,English UK,roman,IE,Europe,l,TRUE
-BE32,BE,English UK,roman,IE,Europe,r,TRUE
-BE32,BE,English UK,roman,IE,Europe,l,TRUE
-BE33,BE,English UK,roman,IE,Europe,r,TRUE
-BE33,BE,English UK,roman,IE,Europe,l,TRUE
-BE34,BE,English UK,roman,IE,Europe,r,TRUE
-BE34,BE,English UK,roman,IE,Europe,l,TRUE
-BE35,BE,English UK,roman,IE,Europe,r,TRUE
-BE35,BE,English UK,roman,IE,Europe,l,TRUE
-BE36,BE,English UK,roman,IE,Europe,r,TRUE
-BE36,BE,English UK,roman,IE,Europe,l,TRUE
-BE37,BE,English UK,roman,IE,Europe,r,TRUE
-BE37,BE,English UK,roman,IE,Europe,l,TRUE
-BE38,BE,English UK,roman,IE,Europe,r,TRUE
-BE38,BE,English UK,roman,IE,Europe,l,TRUE
-BE39,BE,English UK,roman,IE,Europe,r,TRUE
-BE39,BE,English UK,roman,IE,Europe,l,TRUE
-BE41,BE,English UK,roman,IE,Europe,r,TRUE
-BE41,BE,English UK,roman,IE,Europe,l,TRUE
-BE42,BE,English UK,roman,IE,Europe,r,TRUE
-BE42,BE,English UK,roman,IE,Europe,l,TRUE
-BE43,BE,English UK,roman,IE,Europe,r,TRUE
-BE43,BE,English UK,roman,IE,Europe,l,TRUE
-BE44,BE,English UK,roman,IE,Europe,r,FALSE
-BE44,BE,English UK,roman,IE,Europe,l,FALSE
-BE45,BE,English UK,roman,IE,Europe,r,TRUE
-BE45,BE,English UK,roman,IE,Europe,l,TRUE
-BE46,BE,English UK,roman,IE,Europe,r,TRUE
-BE46,BE,English UK,roman,IE,Europe,l,TRUE
-BE47,BE,English UK,roman,IE,Europe,r,TRUE
-BE47,BE,English UK,roman,IE,Europe,l,TRUE
-BE48,BE,English UK,roman,IE,Europe,r,TRUE
-BE48,BE,English UK,roman,IE,Europe,l,TRUE
-BE49,BE,English UK,roman,IE,Europe,r,TRUE
-BE49,BE,English UK,roman,IE,Europe,l,TRUE
-BE50,BE,English UK,roman,IE,Europe,r,TRUE
-BE50,BE,English UK,roman,IE,Europe,l,TRUE
-BE51,BE,English UK,roman,IE,Europe,r,TRUE
-BE51,BE,English UK,roman,IE,Europe,l,TRUE
-BE52,BE,English UK,roman,IE,Europe,r,TRUE
-BE52,BE,English UK,roman,IE,Europe,l,TRUE
-BE53,BE,English UK,roman,IE,Europe,r,TRUE
-BE53,BE,English UK,roman,IE,Europe,l,TRUE
-BE54,BE,English UK,roman,IE,Europe,r,TRUE
-BE54,BE,English UK,roman,IE,Europe,l,TRUE
-BE55,BE,English UK,roman,IE,Europe,r,TRUE
-BE55,BE,English UK,roman,IE,Europe,l,TRUE
-BE56,BE,English UK,roman,IE,Europe,r,TRUE
-BE56,BE,English UK,roman,IE,Europe,l,TRUE
-BR01,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR01,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR02,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR02,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR03,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR03,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR04,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR04,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR05,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR05,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR06,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR06,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR07,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR07,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR08,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR08,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR09,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR09,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR10,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR10,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR11,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR11,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR12,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR12,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR13,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR13,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR14,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR14,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR15,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR15,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR16,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR16,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR17,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR17,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR18,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR18,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR19,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR19,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-BR20,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
-BR20,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
-DE01,DE,German,roman,IE,Europe,r,TRUE
-DE01,DE,German,roman,IE,Europe,l,TRUE
-DE03,DE,German,roman,IE,Europe,r,TRUE
-DE03,DE,German,roman,IE,Europe,l,TRUE
-DE04,DE,German,roman,IE,Europe,r,TRUE
-DE04,DE,German,roman,IE,Europe,l,TRUE
-DE05,DE,German,roman,IE,Europe,r,TRUE
-DE05,DE,German,roman,IE,Europe,l,TRUE
-DE06,DE,German,roman,IE,Europe,r,TRUE
-DE06,DE,German,roman,IE,Europe,l,TRUE
-DE07,DE,German,roman,IE,Europe,r,TRUE
-DE07,DE,German,roman,IE,Europe,l,TRUE
-DE08,DE,German,roman,IE,Europe,r,FALSE
-DE08,DE,German,roman,IE,Europe,l,FALSE
-DE09,DE,German,roman,IE,Europe,r,FALSE
-DE09,DE,German,roman,IE,Europe,l,TRUE
-DE10,DE,German,roman,IE,Europe,r,TRUE
-DE10,DE,German,roman,IE,Europe,l,TRUE
-DE11,DE,German,roman,IE,Europe,r,TRUE
-DE11,DE,German,roman,IE,Europe,l,TRUE
-DE12,DE,German,roman,IE,Europe,r,TRUE
-DE12,DE,German,roman,IE,Europe,l,TRUE
-DE13,DE,German,roman,IE,Europe,r,TRUE
-DE13,DE,German,roman,IE,Europe,l,TRUE
-DE14,DE,German,roman,IE,Europe,r,TRUE
-DE14,DE,German,roman,IE,Europe,l,TRUE
-DE15,DE,German,roman,IE,Europe,r,TRUE
-DE15,DE,German,roman,IE,Europe,l,TRUE
-DE16,DE,German,roman,IE,Europe,r,TRUE
-DE16,DE,German,roman,IE,Europe,l,TRUE
-DE17,DE,German,roman,IE,Europe,r,TRUE
-DE17,DE,German,roman,IE,Europe,l,TRUE
-DE18,DE,German,roman,IE,Europe,r,TRUE
-DE18,DE,German,roman,IE,Europe,l,TRUE
-DE19,DE,German,roman,IE,Europe,r,TRUE
-DE19,DE,German,roman,IE,Europe,l,TRUE
-DE20,DE,German,roman,IE,Europe,r,TRUE
-DE20,DE,German,roman,IE,Europe,l,TRUE
-PA01,PA,Palikur,?,Arawakan,NE South America,r,TRUE
-PA01,PA,Palikur,?,Arawakan,NE South America,l,TRUE
-PA02,PA,Palikur,?,Arawakan,NE South America,r,TRUE
-PA02,PA,Palikur,?,Arawakan,NE South America,l,TRUE
-PA03,PA,Palikur,?,Arawakan,NE South America,r,TRUE
-PA03,PA,Palikur,?,Arawakan,NE South America,l,TRUE
-PA04,PA,Palikur,?,Arawakan,NE South America,r,TRUE
-PA04,PA,Palikur,?,Arawakan,NE South America,l,TRUE
-PA05,PA,Palikur,?,Arawakan,NE South America,r,TRUE
-PA05,PA,Palikur,?,Arawakan,NE South America,l,TRUE
-PA07,PA,Palikur,?,Arawakan,NE South America,r,TRUE
-PA07,PA,Palikur,?,Arawakan,NE South America,l,TRUE
-PA08,PA,Palikur,?,Arawakan,NE South America,r,TRUE
-PA08,PA,Palikur,?,Arawakan,NE South America,l,TRUE
-SR01,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR01,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR02,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR02,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR04,SR,Brazilian Portuguese,roman,IE,Europe,r,FALSE
-SR04,SR,Brazilian Portuguese,roman,IE,Europe,l,FALSE
-SR05,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR05,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR06,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR06,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR07,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR07,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR08,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR08,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR09,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR09,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR10,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR10,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR11,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR11,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR12,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR12,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR13,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR13,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-SR15,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
-SR15,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
-VA01,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA01,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA02,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA02,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA03,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA03,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA04,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA04,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA05,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA05,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA06,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA06,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA07,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA07,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA08,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA08,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA09,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA09,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA10,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA10,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA11,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA11,VA,Daakie,?,Austronesian,Oceania,l,TRUE
-VA12,VA,Daakie,?,Austronesian,Oceania,r,TRUE
-VA12,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+ID,Sex,Language,Name,Script,Family,Autotyp_Area,Condition,match
+BE01,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE01,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE02,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE02,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE03,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE03,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE04,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE04,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE05,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE05,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE06,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE06,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE07,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE07,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE08,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE08,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE09,m,BE,English UK,roman,IE,Europe,r,TRUE
+BE09,m,BE,English UK,roman,IE,Europe,l,TRUE
+BE10,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE10,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE11,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE11,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE12,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE12,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE13,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE13,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE14,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE14,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE15,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE15,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE16,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE16,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE17,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE17,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE18,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE18,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE19,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE19,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE20,m,BE,English UK,roman,IE,Europe,r,TRUE
+BE20,m,BE,English UK,roman,IE,Europe,l,TRUE
+BE21,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE21,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE22,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE22,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE23,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE23,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE24,m,BE,English UK,roman,IE,Europe,r,TRUE
+BE24,m,BE,English UK,roman,IE,Europe,l,TRUE
+BE25,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE25,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE26,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE26,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE27,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE27,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE28,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE28,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE29,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE29,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE30,m,BE,English UK,roman,IE,Europe,r,TRUE
+BE30,m,BE,English UK,roman,IE,Europe,l,TRUE
+BE31,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE31,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE32,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE32,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE33,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE33,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE34,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE34,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE35,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE35,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE36,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE36,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE37,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE37,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE38,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE38,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE39,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE39,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE41,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE41,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE42,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE42,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE43,m,BE,English UK,roman,IE,Europe,r,TRUE
+BE43,m,BE,English UK,roman,IE,Europe,l,TRUE
+BE44,f,BE,English UK,roman,IE,Europe,r,FALSE
+BE44,f,BE,English UK,roman,IE,Europe,l,FALSE
+BE45,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE45,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE46,m,BE,English UK,roman,IE,Europe,r,TRUE
+BE46,m,BE,English UK,roman,IE,Europe,l,TRUE
+BE47,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE47,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE48,m,BE,English UK,roman,IE,Europe,r,TRUE
+BE48,m,BE,English UK,roman,IE,Europe,l,TRUE
+BE49,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE49,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE50,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE50,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE51,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE51,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE52,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE52,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE53,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE53,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE54,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE54,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE55,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE55,f,BE,English UK,roman,IE,Europe,l,TRUE
+BE56,f,BE,English UK,roman,IE,Europe,r,TRUE
+BE56,f,BE,English UK,roman,IE,Europe,l,TRUE
+BR01,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR01,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR02,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR02,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR03,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR03,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR04,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR04,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR05,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR05,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR06,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR06,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR07,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR07,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR08,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR08,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR09,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR09,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR10,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR10,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR11,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR11,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR12,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR12,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR13,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR13,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR14,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR14,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR15,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR15,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR16,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR16,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR17,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR17,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR18,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR18,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR19,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR19,f,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+BR20,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,r,TRUE
+BR20,m,BR,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,l,TRUE
+DE01,f,DE,German,roman,IE,Europe,r,TRUE
+DE01,f,DE,German,roman,IE,Europe,l,TRUE
+DE03,f,DE,German,roman,IE,Europe,r,TRUE
+DE03,f,DE,German,roman,IE,Europe,l,TRUE
+DE04,f,DE,German,roman,IE,Europe,r,TRUE
+DE04,f,DE,German,roman,IE,Europe,l,TRUE
+DE05,m,DE,German,roman,IE,Europe,r,TRUE
+DE05,m,DE,German,roman,IE,Europe,l,TRUE
+DE06,f,DE,German,roman,IE,Europe,r,TRUE
+DE06,f,DE,German,roman,IE,Europe,l,TRUE
+DE07,m,DE,German,roman,IE,Europe,r,TRUE
+DE07,m,DE,German,roman,IE,Europe,l,TRUE
+DE08,f,DE,German,roman,IE,Europe,r,FALSE
+DE08,f,DE,German,roman,IE,Europe,l,FALSE
+DE09,f,DE,German,roman,IE,Europe,r,FALSE
+DE09,f,DE,German,roman,IE,Europe,l,TRUE
+DE10,m,DE,German,roman,IE,Europe,r,TRUE
+DE10,m,DE,German,roman,IE,Europe,l,TRUE
+DE11,f,DE,German,roman,IE,Europe,r,TRUE
+DE11,f,DE,German,roman,IE,Europe,l,TRUE
+DE12,f,DE,German,roman,IE,Europe,r,TRUE
+DE12,f,DE,German,roman,IE,Europe,l,TRUE
+DE13,f,DE,German,roman,IE,Europe,r,TRUE
+DE13,f,DE,German,roman,IE,Europe,l,TRUE
+DE14,f,DE,German,roman,IE,Europe,r,TRUE
+DE14,f,DE,German,roman,IE,Europe,l,TRUE
+DE15,f,DE,German,roman,IE,Europe,r,TRUE
+DE15,f,DE,German,roman,IE,Europe,l,TRUE
+DE16,f,DE,German,roman,IE,Europe,r,TRUE
+DE16,f,DE,German,roman,IE,Europe,l,TRUE
+DE17,f,DE,German,roman,IE,Europe,r,TRUE
+DE17,f,DE,German,roman,IE,Europe,l,TRUE
+DE18,f,DE,German,roman,IE,Europe,r,TRUE
+DE18,f,DE,German,roman,IE,Europe,l,TRUE
+DE19,f,DE,German,roman,IE,Europe,r,TRUE
+DE19,f,DE,German,roman,IE,Europe,l,TRUE
+DE20,f,DE,German,roman,IE,Europe,r,TRUE
+DE20,f,DE,German,roman,IE,Europe,l,TRUE
+PA01,f,PA,Palikur,?,Arawakan,NE South America,r,TRUE
+PA01,f,PA,Palikur,?,Arawakan,NE South America,l,TRUE
+PA02,m,PA,Palikur,?,Arawakan,NE South America,r,TRUE
+PA02,m,PA,Palikur,?,Arawakan,NE South America,l,TRUE
+PA03,m,PA,Palikur,?,Arawakan,NE South America,r,TRUE
+PA03,m,PA,Palikur,?,Arawakan,NE South America,l,TRUE
+PA04,m,PA,Palikur,?,Arawakan,NE South America,r,TRUE
+PA04,m,PA,Palikur,?,Arawakan,NE South America,l,TRUE
+PA05,f,PA,Palikur,?,Arawakan,NE South America,r,TRUE
+PA05,f,PA,Palikur,?,Arawakan,NE South America,l,TRUE
+PA07,m,PA,Palikur,?,Arawakan,NE South America,r,TRUE
+PA07,m,PA,Palikur,?,Arawakan,NE South America,l,TRUE
+PA08,m,PA,Palikur,?,Arawakan,NE South America,r,TRUE
+PA08,m,PA,Palikur,?,Arawakan,NE South America,l,TRUE
+SR01,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR01,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR02,m,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR02,m,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR04,m,SR,Brazilian Portuguese,roman,IE,Europe,r,FALSE
+SR04,m,SR,Brazilian Portuguese,roman,IE,Europe,l,FALSE
+SR05,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR05,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR06,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR06,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR07,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR07,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR08,m,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR08,m,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR09,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR09,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR10,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR10,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR11,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR11,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR12,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR12,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR13,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR13,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+SR15,f,SR,Brazilian Portuguese,roman,IE,Europe,r,TRUE
+SR15,f,SR,Brazilian Portuguese,roman,IE,Europe,l,TRUE
+VA01,m,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA01,m,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA02,m,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA02,m,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA03,m,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA03,m,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA04,f,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA04,f,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA05,m,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA05,m,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA06,f,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA06,f,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA07,m,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA07,m,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA08,m,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA08,m,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA09,m,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA09,m,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA10,f,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA10,f,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA11,f,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA11,f,VA,Daakie,?,Austronesian,Oceania,l,TRUE
+VA12,m,VA,Daakie,?,Austronesian,Oceania,r,TRUE
+VA12,m,VA,Daakie,?,Austronesian,Oceania,l,TRUE

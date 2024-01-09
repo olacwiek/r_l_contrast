@@ -3138,7 +3138,7 @@ table(web$trial)</code></pre>
 <pre><code>## 
 ##   1   2 
 ## 903 903</code></pre>
-<pre class="r"><code>out &lt;- web[, c(&#39;ID&#39;, &#39;Language&#39;, &#39;Name&#39;, &#39;Script&#39;, &#39;Family&#39;, &#39;Autotyp_Area&#39;, &#39;trial&#39;, &#39;sound&#39;, &#39;match&#39;)]
+<pre class="r"><code>out &lt;- web[, c(&#39;ID&#39;, &#39;sex&#39;, &#39;Language&#39;, &#39;Name&#39;, &#39;Script&#39;, &#39;Family&#39;, &#39;Autotyp_Area&#39;, &#39;trial&#39;, &#39;sound&#39;, &#39;match&#39;)]
 
 rm(idx, subject)
 
@@ -3177,6 +3177,7 @@ rm(ids, i, ID_tabs, matches)</code></pre>
   ungroup()</code></pre>
 <p>Merge this with the relevant info:</p>
 <pre class="r"><code>r_ppt$Language &lt;- web[match(r_ppt$ID, web$ID), ]$Language
+r_ppt$sex &lt;- web[match(r_ppt$ID, web$ID), ]$sex
 r_ppt$Name &lt;- web[match(r_ppt$ID, web$ID), ]$Name
 r_ppt$Script &lt;- web[match(r_ppt$ID, web$ID), ]$Script
 r_ppt$Family &lt;- web[match(r_ppt$ID, web$ID), ]$Family
@@ -3280,7 +3281,7 @@ field[field$Language == &#39;PA&#39;, ]$Name &lt;- &#39;palikur&#39;</code></pre
 <h2><span class="header-section-number">3.3</span> Process L2 info:</h2>
 <p>Create a table with one data point per participant with L2
 information:</p>
-<pre class="r"><code>L2_info_field &lt;- filter(field, !duplicated(ID)) %&gt;% select(ID, Language, Name, L2)</code></pre>
+<pre class="r"><code>L2_info_field &lt;- filter(field, !duplicated(ID)) %&gt;% select(ID, Language, Sex, Name, L2)</code></pre>
 <p>Transform NAs into “this person knows no L2”:</p>
 <pre class="r"><code>L2_info_field &lt;- L2_info_field %&gt;% 
   mutate(L2 = ifelse(L2 %in% c(&#39;0&#39;, &#39;NA&#39;, &#39; &#39;), NA, L2)) %&gt;% 
@@ -3384,7 +3385,9 @@ info:</h2>
 
 field &lt;- field %&gt;% 
   rename(Name = Name.y) %&gt;% 
-  select(-Name.x)</code></pre>
+  select(-Name.x) %&gt;% 
+  rename(Sex = Sex.y) %&gt;% 
+  select(-Sex.x)</code></pre>
 </div>
 <div id="create-response-variable-1" class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Create response
@@ -3397,7 +3400,7 @@ hypothesis).</p>
   mutate(match = ifelse(is.na(match), FALSE, match))</code></pre>
 <p>The task here was a little different, the matching was done
 simultaneously, therefore, there is no information on the order.</p>
-<pre class="r"><code>out &lt;- field[, c(&#39;ID&#39;, &#39;Language&#39;, &#39;Name&#39;, &#39;Script&#39;, &#39;Family&#39;, &#39;Autotyp_Area&#39;, &#39;audio&#39;, &#39;match&#39;)]
+<pre class="r"><code>out &lt;- field[, c(&#39;ID&#39;, &#39;Sex&#39;, &#39;Language&#39;, &#39;Name&#39;, &#39;Script&#39;, &#39;Family&#39;, &#39;Autotyp_Area&#39;, &#39;audio&#39;, &#39;match&#39;)]
 
 # Rename column names for consistency with the main analysis:
 
@@ -3417,6 +3420,7 @@ matching.</p>
   summarise(Match = as.integer(all(match == TRUE)))</code></pre>
 <p>Merge this with the relevant info:</p>
 <pre class="r"><code>r_ppt$Language &lt;- field[match(r_ppt$ID, field$ID), ]$Language
+r_ppt$Sex &lt;- field[match(r_ppt$ID, field$ID), ]$Sex
 r_ppt$Name &lt;- field[match(r_ppt$ID, field$ID), ]$Name
 r_ppt$Script &lt;- field[match(r_ppt$ID, field$ID), ]$Script
 r_ppt$Family &lt;- field[match(r_ppt$ID, field$ID), ]$Family

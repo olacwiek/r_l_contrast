@@ -161,9 +161,7 @@ DE06,f,DE,German,roman,IE,Europe,r,TRUE
 DE06,f,DE,German,roman,IE,Europe,l,TRUE
 DE07,m,DE,German,roman,IE,Europe,r,TRUE
 DE07,m,DE,German,roman,IE,Europe,l,TRUE
-DE08,f,DE,German,roman,IE,Europe,r,FALSE
 DE08,f,DE,German,roman,IE,Europe,l,FALSE
-DE09,f,DE,German,roman,IE,Europe,r,FALSE
 DE09,f,DE,German,roman,IE,Europe,l,TRUE
 DE10,m,DE,German,roman,IE,Europe,r,TRUE
 DE10,m,DE,German,roman,IE,Europe,l,TRUE
@@ -197,6 +195,8 @@ PA04,m,PA,Palikur,?,Arawakan,NE South America,r,TRUE
 PA04,m,PA,Palikur,?,Arawakan,NE South America,l,TRUE
 PA05,f,PA,Palikur,?,Arawakan,NE South America,r,TRUE
 PA05,f,PA,Palikur,?,Arawakan,NE South America,l,TRUE
+PA06,f,PA,Palikur,?,Arawakan,NE South America,r,TRUE
+PA06,f,PA,Palikur,?,Arawakan,NE South America,l,TRUE
 PA07,m,PA,Palikur,?,Arawakan,NE South America,r,TRUE
 PA07,m,PA,Palikur,?,Arawakan,NE South America,l,TRUE
 PA08,m,PA,Palikur,?,Arawakan,NE South America,r,TRUE

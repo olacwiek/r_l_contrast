@@ -1,0 +1,17 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# cached_results
+figures
+#*.html
+#cached_results
+
+# mac files
+.DS_Store
+
+# RStudio project files
+.Rproj.user
+r_l_contrast.Rproj
+

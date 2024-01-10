@@ -553,8 +553,8 @@ EN_2049534,M,EN,English,roman,IE,Europe,1,l,TRUE
 EN_2049534,M,EN,English,roman,IE,Europe,2,r,TRUE
 EN_2056487,F,EN,English,roman,IE,Europe,1,l,TRUE
 EN_2056487,F,EN,English,roman,IE,Europe,2,r,TRUE
-EN_2067029,F,FI,Finnish,roman,Finno-Ugric,Inner Asia,1,l,TRUE
-EN_2067029,F,FI,Finnish,roman,Finno-Ugric,Inner Asia,2,r,TRUE
+EN_2067029,F,EN,English,roman,IE,Europe,1,l,TRUE
+EN_2067029,F,EN,English,roman,IE,Europe,2,r,TRUE
 EN_2072464,M,ES,Spanish,roman,IE,Europe,1,r,TRUE
 EN_2072464,M,ES,Spanish,roman,IE,Europe,2,l,TRUE
 EN_2075768,F,EN,English,roman,IE,Europe,1,l,TRUE

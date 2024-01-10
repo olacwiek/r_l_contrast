@@ -52,7 +52,7 @@ CN_2092884,1,CN,M,44,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_fi
 CN_2093102,1,CN,F,44,Chinese,different,Sino-Tibetan,Southeast Asia,NA,FALSE,r_first,0,0,1,NA,NA,NA
 CN_2093540,1,CN,F,47,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
 CN_2093752,1,CN,F,20,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
-CN_2093858,1,CN,F,21,Chinese,different,Sino-Tibetan,Southeast Asia,english，spanish,TRUE,r_first,0,0,1,NA,NA,NA
+CN_2093858,1,CN,F,21,Chinese,different,Sino-Tibetan,Southeast Asia,english，spanish,TRUE,r_first,0,0,1,1,1,1
 CN_2093964,1,CN,F,22,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
 CN_2094119,0,CN,F,23,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,l_first,0,0,1,1,0,1
 CN_2094331,1,CN,F,20,Chinese,different,Sino-Tibetan,Southeast Asia,english,TRUE,r_first,0,0,1,1,0,1
@@ -276,7 +276,7 @@ EN_2043774,1,EE,F,46,Estonian,roman,Finno-Ugric,Inner Asia,"english, swedish, du
 EN_2044492,1,DE,M,52,German,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
 EN_2049534,1,EN,M,50,English,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
 EN_2056487,1,EN,F,21,English,roman,IE,Europe,french,FALSE,l_first,1,0,1,1,0,1
-EN_2067029,1,FI,F,26,Finnish,roman,Finno-Ugric,Inner Asia,"english, german, saami",TRUE,l_first,1,1,1,1,1,1
+EN_2067029,1,EN,F,26,English,roman,IE,Europe,"english, german, saami",TRUE,l_first,1,1,1,1,1,1
 EN_2072464,1,ES,M,21,Spanish,roman,IE,Europe,"english, german, dutch",TRUE,r_first,1,1,1,1,1,1
 EN_2075768,1,EN,F,22,English,roman,IE,Europe,vietnamese,FALSE,l_first,1,0,1,0,0,1
 EN_2086628,1,TH,F,25,Thai,different,Tai-Kadai,Southeast Asia,english,TRUE,r_first,1,0,1,1,0,1
@@ -382,12 +382,12 @@ FR_2102527,1,FR,F,24,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
 FR_2102654,1,FR,M,35,French,roman,IE,Europe,"english, a little bit japanese",TRUE,r_first,1,0,1,1,0,1
 FR_2103186,1,FR,F,31,French,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
 FR_2103402,1,FR,M,28,French,roman,IE,Europe,"english, german",TRUE,l_first,1,0,1,1,0,1
-FR_2103653,1,FR,F,22,French,roman,IE,Europe,english spanish,TRUE,l_first,1,0,1,NA,NA,NA
+FR_2103653,1,FR,F,22,French,roman,IE,Europe,english spanish,TRUE,l_first,1,0,1,1,1,1
 FR_2104234,1,FR,F,21,French,roman,IE,Europe,"italian, english",TRUE,l_first,1,0,1,1,1,1
 FR_2104340,1,FR,M,22,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
 FR_2105020,1,RU,F,22,Russian,different,IE,Inner Asia,"english, french ",TRUE,r_first,1,1,1,1,0,1
 FR_2105186,0,RU,M,26,Russian,different,IE,Inner Asia,"english, french",TRUE,l_first,1,1,1,1,0,1
-FR_2105871,1,FR,F,38,French,roman,IE,Europe,english. spanish,TRUE,l_first,1,0,1,NA,NA,NA
+FR_2105871,1,FR,F,38,French,roman,IE,Europe,english. spanish,TRUE,l_first,1,0,1,1,1,1
 FR_2105874,1,FR,F,23,French,roman,IE,Europe,"arabic, german, english ",TRUE,r_first,1,0,1,1,1,1
 FR_2106197,1,FR,F,60,French,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
 FR_2106314,1,FR,M,25,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
@@ -404,13 +404,13 @@ FR_2112372,1,FR,F,35,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
 FR_2113664,1,FR,F,25,French,roman,IE,Europe,polish,FALSE,r_first,1,0,1,1,1,1
 FR_2113913,1,FR,F,51,French,roman,IE,Europe,"english, german",TRUE,l_first,1,0,1,1,0,1
 FR_2119495,1,FR,M,40,French,roman,IE,Europe,"english, a little bit italian, a little bit spanish",TRUE,l_first,1,0,1,1,1,1
-FR_2120324,1,FR,F,20,French,roman,IE,Europe,english,TRUE,l_first,1,0,1,1,0,1
+FR_2120324,1,FR,F,20,French,roman,IE,Europe,english,TRUE,l_first,1,1,1,1,0,1
 FR_2123564,1,FR,F,19,French,roman,IE,Europe,english,TRUE,r_first,1,0,1,1,0,1
 GE_2078462,1,GE,F,24,Georgian,different,Kartvelian,Greater Mesopotamia,english,TRUE,l_first,1,0,1,1,0,1
 GE_2110923,1,GE,M,46,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,1,0,1,1,1,1
 GE_2111129,1,GE,F,25,Georgian,different,Kartvelian,Greater Mesopotamia,"english, turkish, french",TRUE,r_first,1,0,1,1,0,1
 GE_2111235,1,GE,F,37,Georgian,different,Kartvelian,Greater Mesopotamia,"german, english, russian",TRUE,r_first,1,0,1,1,1,1
-GE_2111237,0,GE,F,32,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian",TRUE,r_first,1,0,1,1,1,1
+GE_2111237,0,GE,F,32,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian",TRUE,r_first,1,1,1,1,1,1
 GE_2111476,1,GE,F,64,Georgian,different,Kartvelian,Greater Mesopotamia,"german, russian",FALSE,l_first,1,0,1,1,1,1
 GE_2113770,1,GE,F,42,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian, greek",TRUE,r_first,1,0,1,1,1,1
 GE_2130542,1,GE,F,39,Georgian,different,Kartvelian,Greater Mesopotamia,"english, russian, greek, german",TRUE,r_first,1,0,1,1,1,1
@@ -815,7 +815,7 @@ SE_2080848,1,SE,F,32,Swedish,roman,IE,Europe,"english, german, dutch, a little b
 SE_2080954,1,SE,F,31,Swedish,roman,IE,Europe,"english, spanish, italian",TRUE,r_first,1,0,1,1,1,1
 SE_2081264,1,SE,F,45,Swedish,roman,IE,Europe,"english, dutch, french, german, spanish, icelandic",TRUE,r_first,1,0,1,1,1,1
 SE_2082177,1,SE,F,42,Swedish,roman,IE,Europe,NA,FALSE,l_first,1,0,1,NA,NA,NA
-SE_2084957,1,SE,F,29,Swedish,roman,IE,Europe,"english, french, danish, portuguese",TRUE,r_first,1,0,1,1,0,1
+SE_2084957,1,SE,F,29,Swedish,roman,IE,Europe,"english, french, danish, portuguese",TRUE,r_first,1,1,1,1,0,1
 SE_2085984,1,SE,F,29,Swedish,roman,IE,Europe,"english, german ",TRUE,l_first,1,0,1,1,0,1
 SE_2104005,1,SE,F,25,Swedish,roman,IE,Europe,NA,FALSE,r_first,1,0,1,NA,NA,NA
 SE_2125928,1,SE,F,24,Swedish,roman,IE,Europe,"english, spanish, french",TRUE,r_first,1,0,1,1,1,1

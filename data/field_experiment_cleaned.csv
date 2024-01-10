@@ -81,7 +81,7 @@ DE05,1,DE,m,51,German,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 DE06,1,DE,f,70,German,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 DE07,1,DE,m,53,German,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 DE08,0,DE,f,50,German,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
-DE09,0,DE,f,47,German,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
+DE09,1,DE,f,47,German,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
 DE10,1,DE,m,57,German,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
 DE11,1,DE,f,40,German,roman,IE,Europe,"French, English",TRUE,1,0,1,1,0,1
 DE12,1,DE,f,28,German,roman,IE,Europe,"French, Italian, English",TRUE,1,0,1,1,1,1
@@ -98,6 +98,7 @@ PA02,1,PA,m,21,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
 PA03,1,PA,m,35,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
 PA04,1,PA,m,22,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
 PA05,1,PA,f,19,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
+PA06,1,PA,f,18,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
 PA07,1,PA,m,20,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
 PA08,1,PA,m,32,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
 SR01,1,SR,f,49,Brazilian Portuguese,roman,IE,Europe,English (restricted reading skills),TRUE,1,0,1,1,0,1

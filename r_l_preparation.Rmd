@@ -144,9 +144,9 @@ L2_info[L2_info$l1 == 'hi', ]$l1 <- 'chinese'
 L2_info[which(L2_info$l2 == 'hi'), ]$l2 <- 'english'
 ```
 
-Perform replacements — for this, we take whatever is the person's first-listed language as their primary L1 (this only applies to a few cases anyway). In a few cases where there is overlap with another language of which we have multile speakers in the sample, the assignment will be done this way, e.g., "ukrainian, russian" -> "russian"
+<!-- Perform replacements — for this, we take whatever is the person's first-listed language as their primary L1 (this only applies to a few cases anyway). In a few cases where there is overlap with another language of which we have multiple speakers in the sample, the assignment will be done this way, e.g., "ukrainian, russian" -> "russian"
 
-```{r replacements l2 info, message=FALSE, warning=FALSE}
+```{r replacements l2 info_old, message=FALSE, warning=FALSE, eval=FALSE}
 L2_info <- mutate(L2_info,
                   l1 = str_replace(l1, 'isizulu', 'zulu'),
                   l1 = str_replace(l1, 'turkce', 'turkish'),
@@ -175,6 +175,24 @@ L2_info <- mutate(L2_info,
                   l1 = str_replace(l1, 'greek, german', 'greek'),
                   l1 = str_replace(l1, 'russian, belarusian', 'russian'),
                   l1 = str_replace(l1, 'georgian, mingrelian', 'georgian'),
+                  l1 = str_replace(l1, 'hi', 'chinese'),
+                  l1 = str_replace(l1, 'cchinesenese', 'chinese'),
+                  l1 = str_replace(l1, 'zhuang', 'chinese')) # chinese experiment
+```
+-->
+
+```{r replacements l2 info, message=FALSE, warning=FALSE}
+L2_info <- mutate(L2_info,
+                  l1 = str_replace(l1, 'isizulu', 'zulu'),
+                  l1 = str_replace(l1, 'turkce', 'turkish'),
+                  l1 = str_replace(l1, 'albanianja', 'albanian'),
+                  l1 = str_replace(l1, 'swissgerman', 'german'),
+                  l1 = str_replace(l1, 'austriangerman', 'german'),
+                  l1 = str_replace(l1, 'español', 'spanish'),
+                  l1 = str_replace(l1, 'italia', 'italian'),                  
+                  l1 = str_replace(l1, 'italiann', 'italian'),
+                  l1 = str_replace(l1, 'catalan', 'spanish'), # spanish experiment
+                  l1 = str_replace(l1, 'esperanto', 'spanish'), # spanish experiment
                   l1 = str_replace(l1, 'hi', 'chinese'),
                   l1 = str_replace(l1, 'cchinesenese', 'chinese'),
                   l1 = str_replace(l1, 'zhuang', 'chinese')) # chinese experiment
@@ -231,9 +249,9 @@ L2_info <- L2_info %>%
                   trill_occ_L2 = NA)
 ```
 
-Join data for L1
+<!-- Join data for L1
 
-```{r add rhotic info l1, message=FALSE, warning=FALSE}
+```{r add rhotic info l1_old, message=FALSE, warning=FALSE, eval=FALSE}
 L2_info <- L2_info %>% 
            left_join(languages_data, by = c("l1" = "Languages")) %>%
            mutate(r_l_distinction_L1 = coalesce(r_l_distinction, r_l_distinction_L1),
@@ -242,6 +260,31 @@ L2_info <- L2_info %>%
            select(-c(glottocode, r_l_distinction, trill_real, trill_occ))
 
 ```
+-->
+
+Split and join data for L1
+
+```{r add rhotic info l1, message=FALSE, warning=FALSE}
+# Save the original 'l1' column
+original_l1 <- L2_info$l1
+
+# Run the main code
+L2_info <- L2_info %>% 
+  separate_rows(l1, sep = "[^[:alnum:].]+") %>% 
+  left_join(languages_data, by = c("l1" = "Languages")) %>%
+  group_by(ID) %>%
+  mutate(r_l_distinction_L1 = if(all(is.na(r_l_distinction))) NA else max(coalesce(r_l_distinction, r_l_distinction_L1), na.rm = TRUE),
+         trill_real_L1 = if(all(is.na(trill_real))) NA else max(coalesce(trill_real, trill_real_L1), na.rm = TRUE),
+         trill_occ_L1 = if(all(is.na(trill_occ))) NA else max(coalesce(trill_occ, trill_occ_L1), na.rm = TRUE)) %>%
+  select(-c(glottocode, r_l_distinction, trill_real, trill_occ)) %>%
+  distinct(ID, .keep_all = TRUE) %>%
+  ungroup()
+
+# Replace the original 'l1' column
+L2_info$l1 <- original_l1
+
+rm(original_l1)
+```
 
 Split and join data for L2
 
@@ -249,9 +292,13 @@ Split and join data for L2
 # Save the original 'l2' column
 original_l2 <- L2_info$l2
 
+# Some replacements:
+L2_info$l2 <- gsub(".", ",", L2_info$l2, fixed=TRUE)
+L2_info$l2[ L2_info$l2 == "No_L2" ] <- NA
+
 # Run the main code
 L2_info <- L2_info %>% 
-  separate_rows(l2, sep = ",\\s*") %>% 
+  separate_rows(l2, sep = "[^[:alnum:].]+") %>% 
   left_join(languages_data, by = c("l2" = "Languages")) %>%
   group_by(ID) %>%
   mutate(r_l_distinction_L2 = if(all(is.na(r_l_distinction))) NA else max(coalesce(r_l_distinction, r_l_distinction_L2), na.rm = TRUE),
@@ -530,7 +577,7 @@ The field response file is wide format. Let's transform this to long format:
 field <- field %>%
   filter(!file %in% c("bouba-ort", "bouba-aud", "kiki-ort", "kiki-aud"))
 
-field[1, -1] <- gsub("rock", "r", field[1, -1])
+#field[1, -1] <- gsub("rock", "r", field[1, -1])
 
 field <- field %>%
   select(-file) %>%
@@ -589,7 +636,7 @@ length(unique(field$ID))
 Exclude participants under 18:
 
 ```{r exclude field, message=FALSE, warning=FALSE}
-field <- filter(field, Age > 18)
+field <- filter(field, Age >= 18)
 ```
 
 Check if there is anyone who doesn't have two any responses.
@@ -790,11 +837,18 @@ Create congruent/incongruent responses:
 field$match = field$audio == field$response
 ```
 
-If this results in NA, put FALSE there (working against our hypothesis).
+<!--If this results in NA, put FALSE there (working against our hypothesis).
 
-```{r matches field, message=FALSE, warning=FALSE}
+```{r matches field_old, message=FALSE, warning=FALSE, eval=FALSE}
 field <- field %>%
   mutate(match = ifelse(is.na(match), FALSE, match))
+```
+-->
+
+There are `r sum(is.na(field$match))` with `NA` for the match: participant DE08 matched both lines with the sound /l/ and participant DE09 did not provide an answer for the sound /r/ -- we chose to remove these participants from the data because arguably they failed to follow the task instructions correctly.
+
+```{r matches field, message=FALSE, warning=FALSE}
+field <- field[ !is.na(field$match), ]
 ```
 
 The task here was a little different, the matching was done simultaneously, therefore, there is no information on the order.
@@ -813,7 +867,7 @@ write_csv(out, paste0(data,'field_raw_trials.csv'))
 
 Arguably, the responses to "r" and "l", since they were presented together, are not independent of each other.
 
-Let's create a dataframe for each participant whether they were 100% matching.
+Let's create a data.frame for each participant whether they were 100% matching.
 
 ```{r ids field, message=FALSE, warning=FALSE}
 r_ppt <- field %>%
@@ -852,6 +906,6 @@ field <- read_csv(paste0(data, 'field_experiment_cleaned.csv'))
 Remove unnecessary objects
 
 ```{r remove objects field, message=FALSE, warning=FALSE}
-rm(L2_info_field, langs, out, ppt_N, r_ppt, demographics)
+rm(L2_info_field, langs, out, r_ppt, demographics)
 ```
 

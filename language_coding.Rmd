@@ -32,6 +32,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r pckgs}
 #library(tidyverse)
+library(dplyr);
 
 # Set the script's path as working directory
 parentfolder = rstudioapi::getActiveDocumentContext()$path 

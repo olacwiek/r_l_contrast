@@ -1,59 +1,59 @@
 ID,Match,Language,Sex,Age,Name,Script,Family,Autotyp_Area,L2,EnglishL2YesNo,r_l_distinction_L1,trill_real_L1,trill_occ_L1,r_l_distinction_L2,trill_real_L2,trill_occ_L2
-BE01,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE02,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE01,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE02,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE03,1,BE,f,19,English UK,roman,IE,Europe,Yoruba,FALSE,1,0,1,1,0,1
-BE04,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE05,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE04,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE05,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE06,1,BE,f,20,English UK,roman,IE,Europe,"Cantonese, Mandarin, Spanish",FALSE,1,0,1,1,1,1
 BE07,1,BE,f,20,English UK,roman,IE,Europe,Punjabi,FALSE,1,0,1,1,1,1
 BE08,1,BE,f,19,English UK,roman,IE,Europe,British Sign Language,FALSE,1,0,1,NA,NA,NA
-BE09,1,BE,m,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE10,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE09,1,BE,m,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE10,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE11,1,BE,f,19,English UK,roman,IE,Europe,Spanish,FALSE,1,0,1,1,1,1
 BE12,1,BE,f,19,English UK,roman,IE,Europe,Finnish,FALSE,1,0,1,1,1,1
-BE13,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE13,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE14,1,BE,f,20,English UK,roman,IE,Europe,"English, Spanish",TRUE,1,0,1,1,1,1
 BE15,1,BE,f,22,English UK,roman,IE,Europe,"Urdu, Punjabi",FALSE,1,0,1,1,1,1
 BE16,1,BE,f,20,English UK,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
-BE17,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE17,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE18,1,BE,f,20,English UK,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
 BE19,1,BE,f,20,English UK,roman,IE,Europe,Punjabi,FALSE,1,0,1,1,1,1
 BE20,1,BE,m,20,English UK,roman,IE,Europe,French,FALSE,1,0,1,1,0,1
-BE21,1,BE,f,20,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE22,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE23,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE21,1,BE,f,20,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE22,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE23,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE24,1,BE,m,19,English UK,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
-BE25,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE25,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE26,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE27,1,BE,f,20,English UK,roman,IE,Europe,Mandarin,FALSE,1,0,1,0,0,1
-BE28,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE29,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE28,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE29,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE30,1,BE,m,19,English UK,roman,IE,Europe,"English, Mandarin",TRUE,1,0,1,1,0,1
-BE31,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE31,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE32,1,BE,f,20,English UK,roman,IE,Europe,French,FALSE,1,0,1,1,0,1
-BE33,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE34,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE35,1,BE,f,20,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE33,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE34,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE35,1,BE,f,20,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE36,1,BE,f,21,English UK,roman,IE,Europe,"Swedish, English, Hebrew, German, Russian, Italian",TRUE,1,0,1,1,1,1
-BE37,1,BE,f,20,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE38,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE39,1,BE,f,20,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE41,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE42,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE43,1,BE,m,20,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE44,0,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE45,1,BE,f,24,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE46,1,BE,m,22,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE47,1,BE,f,20,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE48,1,BE,m,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE37,1,BE,f,20,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE38,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE39,1,BE,f,20,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE41,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE42,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE43,1,BE,m,20,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE44,0,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE45,1,BE,f,24,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE46,1,BE,m,22,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE47,1,BE,f,20,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE48,1,BE,m,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE49,1,BE,f,20,English UK,roman,IE,Europe,"Polish, French",FALSE,1,0,1,1,1,1
-BE50,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE51,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE50,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE51,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE52,1,BE,f,23,English UK,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
-BE53,1,BE,f,19,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE53,1,BE,f,19,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BE54,1,BE,f,20,English UK,roman,IE,Europe,"English, Russian",TRUE,1,0,1,1,1,1
-BE55,1,BE,f,21,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-BE56,1,BE,f,20,English UK,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+BE55,1,BE,f,21,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+BE56,1,BE,f,20,English UK,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 BR01,1,BR,m,20,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,"Moroccan Arabic, Standard Arabic, French, English",TRUE,1,1,1,1,1,1
 BR02,1,BR,m,20,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,"Moroccan Arabic, Standard Arabic, French, English",TRUE,1,1,1,1,1,1
 BR03,1,BR,m,21,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,"Moroccan Arabic, Standard Arabic, French, English",TRUE,1,1,1,1,1,1
@@ -75,12 +75,12 @@ BR18,1,BR,m,23,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,"Moroccan Arabic, St
 BR19,1,BR,f,23,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,"Moroccan Arabic, Standard Arabic, French",FALSE,1,1,1,1,1,1
 BR20,1,BR,m,51,Tashlhiyt Berber,other,Afro-Asiatic,N Africa,"Moroccan Arabic, Standard Arabic, French, English",TRUE,1,1,1,1,1,1
 DE01,1,DE,f,48,German,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
-DE03,1,DE,f,74,German,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+DE03,1,DE,f,74,German,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 DE04,1,DE,f,47,German,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
-DE05,1,DE,m,51,German,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-DE06,1,DE,f,70,German,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-DE07,1,DE,m,53,German,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-DE08,0,DE,f,50,German,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+DE05,1,DE,m,51,German,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+DE06,1,DE,f,70,German,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+DE07,1,DE,m,53,German,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+DE08,0,DE,f,50,German,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 DE09,0,DE,f,47,German,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
 DE10,1,DE,m,57,German,roman,IE,Europe,English,TRUE,1,0,1,1,0,1
 DE11,1,DE,f,40,German,roman,IE,Europe,"French, English",TRUE,1,0,1,1,0,1
@@ -101,18 +101,18 @@ PA05,1,PA,f,19,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
 PA07,1,PA,m,20,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
 PA08,1,PA,m,32,Palikur,?,Arawakan,NE South America,Portuguese,FALSE,0,0,0,1,0,1
 SR01,1,SR,f,49,Brazilian Portuguese,roman,IE,Europe,English (restricted reading skills),TRUE,1,0,1,1,0,1
-SR02,1,SR,m,71,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR04,0,SR,m,75,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR05,1,SR,f,63,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR06,1,SR,f,20,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR07,1,SR,f,47,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR08,1,SR,m,60,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR09,1,SR,f,55,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR10,1,SR,f,33,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR11,1,SR,f,22,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR12,1,SR,f,50,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR13,1,SR,f,39,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
-SR15,1,SR,f,34,Brazilian Portuguese,roman,IE,Europe,0,FALSE,1,0,1,NA,NA,NA
+SR02,1,SR,m,71,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR04,0,SR,m,75,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR05,1,SR,f,63,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR06,1,SR,f,20,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR07,1,SR,f,47,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR08,1,SR,m,60,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR09,1,SR,f,55,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR10,1,SR,f,33,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR11,1,SR,f,22,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR12,1,SR,f,50,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR13,1,SR,f,39,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
+SR15,1,SR,f,34,Brazilian Portuguese,roman,IE,Europe,NA,FALSE,1,0,1,NA,NA,NA
 VA01,1,VA,m,35,Daakie,?,Austronesian,Oceania,Bislama,FALSE,1,1,1,1,1,1
 VA02,1,VA,m,35,Daakie,?,Austronesian,Oceania,Bislama,FALSE,1,1,1,1,1,1
 VA03,1,VA,m,25,Daakie,?,Austronesian,Oceania,Bislama,FALSE,1,1,1,1,1,1

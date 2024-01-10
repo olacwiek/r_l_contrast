@@ -637,6 +637,10 @@ Transform NAs into "this person knows no L2":
 L2_info_field <- L2_info_field %>% 
   mutate(L2 = ifelse(L2 %in% c('0', 'NA', ' '), NA, L2)) %>% 
   mutate(L2 = ifelse(is.na(L2), 'no_L2', L2))
+
+# also do it in the field df for the future
+field <- field %>% 
+  mutate(L2 = ifelse(L2 %in% c('0', 'NA', ' '), NA, L2))
 ```
 
 Extract whether the person reports any English:

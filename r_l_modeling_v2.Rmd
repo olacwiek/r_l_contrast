@@ -1596,7 +1596,195 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
                    ncol=1); # seems fine (the observed, y, does fall in the predicted distributions, y_{rep} for the max, mean and min)
   as_ggplot(g); ggsave(paste0(plot_prefix,"_ppchecks_min_mean_max.jpg"), plot=g, device="jpeg", width=6, height=4*3, units="in", quality=85);
   plot_model(b, type="pred", terms=c("trill_real_L1_f")); ggsave(paste0(plot_prefix,"_pred.jpg"), device="jpeg", width=4, height=4, units="in", quality=85);
-
+  
+  
+  ## Let' try to understand wht this "game" between Order and trill really means:
+  if( FALSE ) # not really needed to run: what matters is the final table...
+  {
+    # - just the random intercepts for all random effects:
+    b_otexperiments_1 <- brm(Match ~ 1 + 
+                               Order + 
+                               trill_real_L1_f +
+                               (1 + Order | Language) +
+                               (1 + Order | Family),
+                             data = web,
+                             family=bernoulli(link='logit'),
+                             prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                             save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                             sample_prior=TRUE,             # needed for hypotheses tests
+                             seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+    summary(b_otexperiments_1); mcmc_plot(b_otexperiments_1, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_otexperiments_1, variable="^b_", regex=TRUE); # very decent
+    brms::hypothesis(b_otexperiments_1, c("Orderl_first = 0",                                     # 0.44    *
+                                          "trill_real_L1_fyes = 0"                                # 0.19    *
+    ));  
+    hdi(b_otexperiments_1);
+    plot_model(b_otexperiments_1, type="pred", terms=c("trill_real_L1_f", "Order")); ggsave("./plots/order_trill_relationship_model_predictions.jpg", width=6, height=6);
+    plot_model(b_otexperiments_1, type="re");
+    ggplot(web, aes(y=Match, x=trill_real_L1_f, color=Order)) + geom_jitter();
+    b_otexperiments_1 <- brms_fit_indices(b_otexperiments_1);
+    # -> area does not really make a difference so let's ignore it for now
+    # -> adding random slopes for Order removes the interaction
+    # let's look at the random effects in more detail:
+    b_3_ranef <- ranef(b_otexperiments_1);
+    b_3_ranef_Lg_intercept <- merge(cbind("Language"=rownames(b_3_ranef$Language[,,"Intercept"]), as.data.frame(b_3_ranef$Language[,,"Intercept"])),
+                                    unique(web[,c("Language", "trill_real_L1_f")]),
+                                    by="Language",
+                                    all.x=TRUE, all.y=TRUE);
+    b_3_ranef_Lg_order <- merge(cbind("Language"=rownames(b_3_ranef$Language[,,"Orderl_first"]), as.data.frame(b_3_ranef$Language[,,"Orderl_first"])),
+                                unique(web[,c("Language", "trill_real_L1_f")]),
+                                by="Language",
+                                all.x=TRUE, all.y=TRUE);
+    jpeg("./plots/order_trill_relationship_ranefs.jpg", width = 10, height = 5, units = "in", res=150);
+    grid.arrange(ggplot(b_3_ranef_Lg_intercept, aes(x=trill_real_L1_f, y=Estimate, fill=trill_real_L1_f)) + 
+                   geom_violin(alpha=0.25) + geom_boxplot(alpha=0.5) + geom_point(alpha=0.5) + 
+                   geom_hline(yintercept=0.0, color="blue", linetype="dashed") +
+                   ylab("Estimate") + xlab("[r] present in L1") + scale_fill_viridis_d(name="[r] present in L1") + ggtitle("Random intercepts by language") + theme(legend.position = "bottom") + 
+                   NULL,
+                 ggplot(b_3_ranef_Lg_order, aes(x=trill_real_L1_f, y=Estimate, fill=trill_real_L1_f)) + 
+                   geom_violin(alpha=0.25) + geom_boxplot(alpha=0.5) + geom_point(alpha=0.5) + 
+                   geom_hline(yintercept=0.0, color="blue", linetype="dashed") +
+                   ylab("Estimate") + xlab("[r] present in L1") + scale_fill_viridis_d(name="[r] present in L1") + ggtitle("Random slopes of Order by language") + theme(legend.position = "bottom") + 
+                   NULL,
+                 ncol=2);
+    dev.off();
+    
+    # check the interaction:
+    b_otexperiments_1_int <- brm(Match ~ 1 + 
+                                   Order + 
+                                   trill_real_L1_f +
+                                   Order:trill_real_L1_f +
+                                   (1 + Order | Language) +
+                                   (1 + Order | Family),
+                                 data = web,
+                                 family=bernoulli(link='logit'),
+                                 prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                                 save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                                 sample_prior=TRUE,             # needed for hypotheses tests
+                                 seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+    summary(b_otexperiments_1_int); mcmc_plot(b_otexperiments_1_int, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_otexperiments_1_int, variable="^b_", regex=TRUE); # very decent
+    brms::hypothesis(b_otexperiments_1_int, c("Orderl_first = 0",                                     # 0.36    *
+                                              "trill_real_L1_fyes = 0",                               # 0.18    *
+                                              "Orderl_first:trill_real_L1_fyes = 0"                   # 0.75 
+    ));  
+    hdi(b_otexperiments_1_int);
+    plot_model(b_otexperiments_1_int, type="pred", terms=c("trill_real_L1_f", "Order"));
+    plot_model(b_otexperiments_1_int, type="re");
+    
+    
+    # no random slopes for Order:
+    b_otexperiments_2 <- brm(Match ~ 1 + 
+                               Order + 
+                               trill_real_L1_f +
+                               (1 | Language) +
+                               (1 | Family),
+                             data = web,
+                             family=bernoulli(link='logit'),
+                             prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                             save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                             sample_prior=TRUE,             # needed for hypotheses tests
+                             seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+    summary(b_otexperiments_2); mcmc_plot(b_otexperiments_2, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_otexperiments_2, variable="^b_", regex=TRUE); # very decent
+    brms::hypothesis(b_otexperiments_2, c("Orderl_first = 0",                                     # 0.00    *
+                                          "trill_real_L1_fyes = 0"                                # 0.57
+    ));         
+    hdi(b_otexperiments_2);
+    plot_model(b_otexperiments_2, type="pred", terms=c("trill_real_L1_f", "Order"));
+    plot_model(b_otexperiments_2, type="re");
+    b_otexperiments_2 <- brms_fit_indices(b_otexperiments_2);
+    # -> not having random Slopes for Order removes the effect of trill!
+    
+    # no random effects at all:
+    b_otexperiments_3 <- brm(Match ~ 1 + 
+                               Order + 
+                               trill_real_L1_f,
+                             data = web,
+                             family=bernoulli(link='logit'),
+                             prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                             save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                             sample_prior=TRUE,             # needed for hypotheses tests
+                             seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+    summary(b_otexperiments_3); mcmc_plot(b_otexperiments_3, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_otexperiments_3, variable="^b_", regex=TRUE); # very decent
+    brms::hypothesis(b_otexperiments_3, c("Orderl_first = 0",                                     # 0.00    *
+                                          "trill_real_L1_fyes = 0"                                # 0.88
+    ));         
+    hdi(b_otexperiments_3);
+    plot_model(b_otexperiments_3, type="pred", terms=c("trill_real_L1_f", "Order"));
+    b_otexperiments_3 <- brms_fit_indices(b_otexperiments_3);
+    # -> not having random effects at all removes the effect of trill!
+    
+    # check the interaction:
+    b_otexperiments_3_int <- brm(Match ~ 1 + 
+                                   Order + 
+                                   trill_real_L1_f + 
+                                   Order:trill_real_L1_f,
+                                 data = web,
+                                 family=bernoulli(link='logit'),
+                                 prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                                 save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                                 sample_prior=TRUE,             # needed for hypotheses tests
+                                 seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+    summary(b_otexperiments_3_int); mcmc_plot(b_otexperiments_3_int, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_otexperiments_3_int, variable="^b_", regex=TRUE); # very decent
+    brms::hypothesis(b_otexperiments_3_int, c("Orderl_first = 0",                                     # 0.00    *
+                                              "trill_real_L1_fyes = 0",                               # 0.28    *
+                                              "Orderl_first:trill_real_L1_fyes = 0"                   # 0.36    *
+    ));         
+    hdi(b_otexperiments_3_int);
+    plot_model(b_otexperiments_3_int, type="pred", terms=c("trill_real_L1_f", "Order"));
+    
+    # random slope for Order for Language only:
+    b_otexperiments_4 <- brm(Match ~ 1 + 
+                               Order + 
+                               trill_real_L1_f +
+                               (1 + Order | Language) +
+                               (1 | Family),
+                             data = web,
+                             family=bernoulli(link='logit'),
+                             prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                             save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                             sample_prior=TRUE,             # needed for hypotheses tests
+                             seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+    summary(b_otexperiments_4); mcmc_plot(b_otexperiments_4, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_otexperiments_4, variable="^b_", regex=TRUE); # very decent
+    brms::hypothesis(b_otexperiments_4, c("Orderl_first = 0",                                     # 0.54
+                                          "trill_real_L1_fyes = 0"                                # 0.25    *
+    ));         
+    hdi(b_otexperiments_4);
+    plot_model(b_otexperiments_4, type="pred", terms=c("trill_real_L1_f", "Order"));
+    plot_model(b_otexperiments_4, type="re");
+    b_otexperiments_4 <- brms_fit_indices(b_otexperiments_4);
+    # -> random slopes for order only for Language makes trill significant, but not order!
+    
+    # random slope for Order for Family only:
+    b_otexperiments_5 <- brm(Match ~ 1 + 
+                               Order + 
+                               trill_real_L1_f +
+                               (1 | Language) +
+                               (1 + Order | Family),
+                             data = web,
+                             family=bernoulli(link='logit'),
+                             prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                             save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                             sample_prior=TRUE,             # needed for hypotheses tests
+                             seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+    summary(b_otexperiments_5); mcmc_plot(b_otexperiments_5, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_otexperiments_5, variable="^b_", regex=TRUE); # very decent
+    brms::hypothesis(b_otexperiments_5, c("Orderl_first = 0",                                     # 0.54
+                                          "trill_real_L1_fyes = 0"                                # 0.25    *
+    ));         
+    hdi(b_otexperiments_5);
+    plot_model(b_otexperiments_5, type="pred", terms=c("trill_real_L1_f", "Order"));
+    plot_model(b_otexperiments_5, type="re");
+    b_otexperiments_5 <- brms_fit_indices(b_otexperiments_5);
+    # -> random slopes for order only for Family makes trill significant, but not order!
+    
+    # so, the results are:
+    ## | random effects                                | Order (l_first - r_first)     | trill (yes - no)              | intercept           | 
+    ## |----------------------------------------------:|:------------------------------|:------------------------------|:--------------------|
+    ## | (1 + Order | Language) + (1 + Order | Family) | -0.96 [-2.07, -0.01] p=0.44 * | -0.94 [-1.66, -0.20] p=0.19 * | 2.76 [ 2.05,  3.49] |
+    ## | (1 + Order | Language) + (1 | Family)         | -0.64 [-1.28,  0.03] p=0.54   | -0.91 [-1.66, -0.18] p=0.25 * | 2.67 [ 1.96,  3.41] |
+    ## | (1 | Language) + (1 + Order | Family)         | -1.24 [-2.11, -0.40] p=0.08 * | -0.78 [-1.54, -0.03] p=0.44 * | 2.76 [ 2.04,  3.56] |
+    ## | (1 | Language) + (1 | Family)                 | -0.92 [-1.35, -0.50] p=0.00 * | -0.72 [-1.51,  0.08] p=0.57   | 2.58 [ 1.80,  3.41] |
+    ## | --                                            | -0.87 [-1.29, -0.46] p=0.00 * | -0.22 [-0.62,  0.18] p=0.88   | 2.52 [ 2.16,  2.90] |
+  }
+  
   
   if( FALSE ) # various things tested...
   {
@@ -2297,6 +2485,47 @@ Please note that this could be to the use of all three random effects (Language,
 Nevertheless, even if we were to accept that the *presence of [r]* in L1 would affect the probability of a *match*, the presence of this sound in L1 would reduce this probability from ~95% to ~65%.
 
 
+### Further exploration of the relationship between Order and [r] in L1
+
+Fitting multiple models featuring Order and the presence of [r] in L1, leads to the following findings:
+
+| random effects structure                        | Order (l_first - r_first)          | trill (yes - no)                   | intercept           | 
+|------------------------------------------------:|:-----------------------------------|:-----------------------------------|:--------------------|
+| (1 + Order \| Language) + (1 + Order \| Family) | **-0.96 [-2.07, -0.01] p=0.44 * ** | **-0.94 [-1.66, -0.20] p=0.19 * ** | 2.76 [ 2.05,  3.49] |
+| (1 + Order \| Language) + (1 \| Family)         | -0.64 [-1.28,  0.03] p=0.54        | **-0.91 [-1.66, -0.18] p=0.25 * ** | 2.67 [ 1.96,  3.41] |
+| (1 \| Language) + (1 + Order \| Family)         | **-1.24 [-2.11, -0.40] p=0.08 * ** | **-0.78 [-1.54, -0.03] p=0.44 * ** | 2.76 [ 2.04,  3.56] |
+| (1 \| Language) + (1 \| Family)                 | **-0.92 [-1.35, -0.50] p=0.00 * ** | -0.72 [-1.51,  0.08] p=0.57        | 2.58 [ 1.80,  3.41] |
+| --                                              | **-0.87 [-1.29, -0.46] p=0.00 * ** | -0.22 [-0.62,  0.18] p=0.88        | 2.52 [ 2.16,  2.90] |
+
+which shows that:
+
+- *Order* seems to have *a negative effect in all situations* (even in case (2) the 95%HDI is mostly at the left of 0)
+- *[r]*, on the other hand, seems to have *a negative effect* if one allows Order to have a random slope, but even if not, its 95%HDI is mostly to the left of 0; the only clear case where there is no effect is when there's no random structure
+
+Plotting the distribution of the actual data:
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the web data (i.e., not modelled but the actual raw data) by *Order* (columns) and the *presence of [r] in the L1* (rows).", echo=FALSE, warning=FALSE}
+ggplot(web %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=Match, fill=Match)) + 
+  geom_bar()  +
+  stat_count(geom = "text", 
+             aes(label = stat(count)),
+             position="stack", colour="black") + 
+  facet_grid(trill_real_L1_f ~ Order);
+```
+
+This suggests that for the languages *with [r]*, there is no real effect of Order, but in the languages without [r], presenting [t] first has a massive positive effect on the match.
+
+The model `(1 + Order | Language) + (1 + Order | Family)` seems to support this:
+
+<center>![Model predictions for the model with `(1 + Order | Language) + (1 + Order | Family)`.](./plots/order_trill_relationship_model_predictions.jpg){width="4in"}</center>
+
+<center>![The distribution of the random effects (intercept and slope of *Order*) by *Language* for the model with `(1 + Order | Language) + (1 + Order | Family)`.](./plots/order_trill_relationship_ranefs.jpg){width="8in"}</center>
+
+Interestingly, the interaction between order and the presence of [r] is *not* supported when we include the random structure (e.g., for `(1 + Order | Language) + (1 + Order | Family)`, 0.49 [-0.86,  1.83] p=0.75), but in the model without any random effects, the interaction is significantly different from 0 (0.93 [ 0.10,  1.72] p=0.36 \*) and it also makes [r] be significantly from 0 (-0.81 [-1.91, -0.74] p=0.28 \*), as suggested by the raw data.
+
+Thus, in order for the negative effect of [r] to become visible, we need to control for Order appropriately (i.e., allowing it to have random slopes by Language).
+
+
 ### Summary
 
 In all cases the intercept *α* is highly significant and positive, comparable with the null model at ≥ 80%, so much higher than 50%.
@@ -2959,6 +3188,6 @@ On the other hand, none of the potential predictors seem to make any difference.
 # Conclusions
 
 It is clear that there is a very strong association between [r] and the rugged line and between [l] and the continuous line across the board.
-On the other hand, no predictor seems to really affect this, except for the order of presentation ("l" first decreases the association) and, maybe, the presence of [r] in the L1, both for the web experiment.
+On the other hand, no predictor seems to really affect this, except for the order of presentation ("l" first decreases the association) and, when order is also included and its random structure properly modeled, the presence of [r] in the L1, both for the web experiment.
 
 

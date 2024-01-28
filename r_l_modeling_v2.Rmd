@@ -1786,6 +1786,285 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
   }
   
   
+  ## Let's investigate what happens if we analyze the languages with and without [r] in L1 separately:
+  # with [r]:
+  web_wr <- web[ web$trill_real_L1_f == "yes", ];
+  
+  b_null_wr <- brm(Match ~ 1 + 
+                     (1 | Language) +
+                     (1 | Family) +
+                     (1 | Autotyp_Area),
+                   data = web_wr,
+                   family=bernoulli(link='logit'),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_null_wr); mcmc_plot(b_null_wr, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_null_wr, variable="^b_", regex=TRUE); # very decent
+  b_null_wr <- brms_fit_indices(b_null_wr);
+  
+  b_full_wr <- brm(Match ~ 1 + 
+                     Order + Sex + Age + 
+                     #r_l_distinction_L1_f + # <- constantly "distinct"
+                     (1 + Order + Sex + Age | Language) +
+                     (1 + Order + Sex + Age | Family) +
+                     (1 + Order + Sex + Age | Autotyp_Area),
+                   data = web_wr,
+                   family=bernoulli(link='logit'),
+                   prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                           brms::set_prior("lkj(2)", class="cor")),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_wr); mcmc_plot(b_full_wr, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_wr, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_wr, c("Orderl_first = 0",                                      # p=0.74
+                                "SexM = 0",                                              # p=0.73
+                                "Age = 0",                                               # p=0.94
+                                NULL));
+  
+  # we can remove Age without any issues:
+  b_full_wr_na <- brm(Match ~ 1 + 
+                        Order + Sex + 
+                        #r_l_distinction_L1_f + # <- constantly "distinct"
+                        (1 + Order + Sex | Language) +
+                        (1 + Order + Sex | Family) +
+                        (1 + Order + Sex | Autotyp_Area),
+                      data = web_wr,
+                      family=bernoulli(link='logit'),
+                      prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                              brms::set_prior("lkj(2)", class="cor")),
+                      save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                      sample_prior=TRUE,             # needed for hypotheses tests
+                      seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_wr_na); mcmc_plot(b_full_wr_na, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_wr_na, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_wr_na, c("Orderl_first = 0",                                      # p=0.75
+                                   "SexM = 0",                                              # p=0.73
+                                   NULL));
+  
+  # we can remove Sex without any issues:
+  b_full_wr_nas <- brm(Match ~ 1 + 
+                         Order + 
+                         #r_l_distinction_L1_f + # <- constantly "distinct"
+                         (1 + Order | Language) +
+                         (1 + Order | Family) +
+                         (1 + Order | Autotyp_Area),
+                       data = web_wr,
+                       family=bernoulli(link='logit'),
+                       prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                               brms::set_prior("lkj(2)", class="cor")),
+                       save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                       sample_prior=TRUE,             # needed for hypotheses tests
+                       seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_wr_nas); mcmc_plot(b_full_wr_nas, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_wr_nas, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_wr_nas, c("Orderl_first = 0",                                      # p=0.74
+                                    NULL));
+  b_full_wr_nas <- brms_fit_indices(b_full_wr_nas);
+  brms_compare_models(b_null_wr, b_full_wr_nas, "[null model]", "[+ order]"); # null is better
+  
+  # -> so, for the languages with [r], nothing matters
+  # however, the intercept of the null model is really shitty:
+  summary(b_null_wr);
+  hdi(b_null_wr); # 1.12 [-1.82, 3.40]
+  rope(b_null_wr); # pROPE = 5.4%
+  
+
+  ## without [r]:
+  web_nr <- web[ web$trill_real_L1_f == "no", ];
+  
+  b_null_nr <- brm(Match ~ 1 + 
+                     (1 | Language) +
+                     (1 | Family) +
+                     (1 | Autotyp_Area),
+                   data = web_nr,
+                   family=bernoulli(link='logit'),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_null_nr); mcmc_plot(b_null_nr, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_null_nr, variable="^b_", regex=TRUE); # very decent
+  b_null_nr <- brms_fit_indices(b_null_nr);
+  
+  # the full model:
+  b_full_nr <- brm(Match ~ 1 + 
+                     Order + Sex + Age + 
+                     r_l_distinction_L1_f + 
+                     (1 + Order + Sex + Age | Language) +
+                     (1 + Order + Sex + Age | Family) +
+                     (1 + Order + Sex + Age | Autotyp_Area),
+                   data = web_nr,
+                   family=bernoulli(link='logit'),
+                   prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                           brms::set_prior("lkj(2)", class="cor")),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_nr); mcmc_plot(b_full_nr, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_nr, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_nr, c("Orderl_first = 0",                                      # p=0.53
+                                "SexM = 0",                                              # p=0.77
+                                "Age = 0",                                               # p=0.97
+                                "r_l_distinction_L1_fdistinct = 0",                      # p=0.71
+                                NULL));
+  
+  # we can remove Age without any issues:
+  b_full_nr_na <- brm(Match ~ 1 + 
+                        Order + Sex + 
+                        r_l_distinction_L1_f + 
+                        (1 + Order + Sex | Language) +
+                        (1 + Order + Sex | Family) +
+                        (1 + Order + Sex | Autotyp_Area),
+                      data = web_nr,
+                      family=bernoulli(link='logit'),
+                      prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                              brms::set_prior("lkj(2)", class="cor")),
+                      save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                      sample_prior=TRUE,             # needed for hypotheses tests
+                      seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_nr_na); mcmc_plot(b_full_nr_na, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_nr_na, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_nr_na, c("Orderl_first = 0",                                      # p=0.54
+                                   "SexM = 0",                                              # p=0.78
+                                   "r_l_distinction_L1_fdistinct = 0",                      # p=0.77
+                                   NULL));
+  
+  # we can remove Sex without any issues:
+  b_full_nr_nas <- brm(Match ~ 1 + 
+                         Order + 
+                         r_l_distinction_L1_f + 
+                         (1 + Order | Language) +
+                         (1 + Order | Family) +
+                         (1 + Order | Autotyp_Area),
+                       data = web_nr,
+                       family=bernoulli(link='logit'),
+                       prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                               brms::set_prior("lkj(2)", class="cor")),
+                       save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                       sample_prior=TRUE,             # needed for hypotheses tests
+                       seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_nr_nas); mcmc_plot(b_full_nr_nas, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_nr_nas, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_nr_nas, c("Orderl_first = 0",                                      # p=0.51
+                                    "r_l_distinction_L1_fdistinct = 0",                      # p=0.78
+                                    NULL));
+  
+  # we can remove l/r distinction without any issues:
+  b_full_nr_nasl <- brm(Match ~ 1 + 
+                          Order + 
+                          (1 + Order | Language) +
+                          (1 + Order | Family) +
+                          (1 + Order | Autotyp_Area),
+                        data = web_nr,
+                        family=bernoulli(link='logit'),
+                        prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                                brms::set_prior("lkj(2)", class="cor")),
+                        save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                        sample_prior=TRUE,             # needed for hypotheses tests
+                        seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_nr_nasl); mcmc_plot(b_full_nr_nasl, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_nr_nasl, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_nr_nasl, c("Orderl_first = 0",                                      # p=0.52
+                                     NULL));
+  b_full_nr_nasl <- brms_fit_indices(b_full_nr_nasl);
+  brms_compare_models(b_null_nr, b_full_nr_nasl, "[null model]", "[+ order]"); # + order is much better than null!
+  
+  # seems like Area and Fmaily really shouldn't be modelled:
+  b_full_nr_nasl_noaf <- brm(Match ~ 1 + 
+                               Order + 
+                               (1 + Order | Language),
+                             data = web_nr,
+                             family=bernoulli(link='logit'),
+                             prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                                     brms::set_prior("lkj(2)", class="cor")),
+                             save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                             sample_prior=TRUE,             # needed for hypotheses tests
+                             seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_nr_nasl_noaf); mcmc_plot(b_full_nr_nasl_noaf, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_nr_nasl_noaf, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_nr_nasl_noaf, c("Orderl_first = 0",                                      # p=0.59
+                                          NULL));
+  b_full_nr_nasl_noaf <- brms_fit_indices(b_full_nr_nasl_noaf);
+  b_null_nr_noaf <- brm(Match ~ 1 + 
+                          (1 | Language),
+                        data = web_nr,
+                        family=bernoulli(link='logit'),
+                        save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                        sample_prior=TRUE,             # needed for hypotheses tests
+                        seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_null_nr_noaf); mcmc_plot(b_null_nr_noaf, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_null_nr_noaf, variable="^b_", regex=TRUE); # very decent
+  b_null_nr_noaf <- brms_fit_indices(b_null_nr_noaf);
+  brms_compare_models(b_null_nr_noaf, b_full_nr_nasl_noaf, "[null model]", "[+ order]"); # + order is much better than null!
+  brms_compare_models(b_full_nr_nasl, b_full_nr_nasl_noaf, "[re + family + area]", "[re just language]"); # just language seems enough (they are similar)
+  
+  # let's check if the random slope for Order matters:
+  b_full_nr_nasl_noaf_ri <- brm(Match ~ 1 + 
+                                  Order + 
+                                  (1 | Language),
+                                data = web_nr,
+                                family=bernoulli(link='logit'),
+                                prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                                save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                                sample_prior=TRUE,             # needed for hypotheses tests
+                                seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_nr_nasl_noaf_ri); mcmc_plot(b_full_nr_nasl_noaf_ri, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_nr_nasl_noaf_ri, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_nr_nasl_noaf_ri, c("Orderl_first = 0",                                      # p=0.59
+                                             NULL));
+  b_full_nr_nasl_noaf_ri <- brms_fit_indices(b_full_nr_nasl_noaf_ri);
+  brms_compare_models(b_null_nr_noaf, b_full_nr_nasl_noaf_ri, "[null model]", "[+ order]"); # + order is much better than null!
+  brms_compare_models(b_full_nr_nasl_noaf, b_full_nr_nasl_noaf_ri, "[random slope order]", "[random intercept only]"); # random slopes are needed!
+
+  # -> so, for the languages without [r]:
+  # - area and family are not needed as random effects
+  # - random slopes for order are needed
+  # - order has an effect (l_first - r_first): -0.84 [-1.95, 0.38], p(=0)=0.59, pROPE=8.1%, model comparison vs null clearly favor it
+  # - moreover, the intercept is clearly positive: 2.87 [ 2.33, 3.45], pROPE=0.0%
+  summary(b_full_nr_nasl_noaf);
+  brms::hypothesis(b_full_nr_nasl_noaf, c("Orderl_first = 0"));
+  hdi(b_full_nr_nasl_noaf);
+  rope(b_full_nr_nasl_noaf);
+  plot_model(b_full_nr_nasl_noaf, type="pred", terms=c("Order")); #ggsave("./plots/order_trill_relationship_model_predictions.jpg", width=6, height=6);
+  plot_model(b_full_nr_nasl_noaf, type="re");
+  
+  ## what happen with L2 in the languages without [r]?
+  table(web_nr$trill_real_L2_f); # -> both situations are present no (290): yes (141) so it can be modeled:
+  b_full_nr_nasl_noaf_l2 <- brm(Match ~ 1 + 
+                                  Order + trill_real_L2_f +
+                                  (1 + Order + trill_real_L2_f | Language),
+                                data = web_nr,
+                                family=bernoulli(link='logit'),
+                                prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                                        brms::set_prior("lkj(2)", class="cor")),
+                                save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                                sample_prior=TRUE,             # needed for hypotheses tests
+                                seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_nr_nasl_noaf_l2); mcmc_plot(b_full_nr_nasl_noaf_l2, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_nr_nasl_noaf_l2, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_nr_nasl_noaf_l2, c("Orderl_first = 0",                                      # p=0.73
+                                             "trill_real_L2_fyes = 0",                                # p=0.82
+                                             NULL));
+  b_full_nr_nasl_noaf_l2 <- brms_fit_indices(b_full_nr_nasl_noaf_l2);
+  # the appropriate null model:
+  b_null_nr_noaf_l2 <- brm(Match ~ 1 + 
+                             (1 | Language),
+                           data = b_full_nr_nasl_noaf_l2$data,
+                           family=bernoulli(link='logit'),
+                           save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                           sample_prior=TRUE,             # needed for hypotheses tests
+                           seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_null_nr_noaf_l2); mcmc_plot(b_null_nr_noaf_l2, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_null_nr_noaf_l2, variable="^b_", regex=TRUE); # very decent
+  b_null_nr_noaf_l2 <- brms_fit_indices(b_null_nr_noaf_l2);
+  brms_compare_models(b_null_nr_noaf_l2, b_full_nr_nasl_noaf_l2, "[null model]", "[+ order + r/l]"); # much better than the null
+  # let's remove [r] in L2:
+  b_full_nr_nasl_noaf_l2_nor <- brm(Match ~ 1 + 
+                                      Order + 
+                                      (1 + Order | Language),
+                                    data = b_full_nr_nasl_noaf_l2$data,
+                                    family=bernoulli(link='logit'),
+                                    prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                                            brms::set_prior("lkj(2)", class="cor")),
+                                    save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                                    sample_prior=TRUE,             # needed for hypotheses tests
+                                    seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_nr_nasl_noaf_l2_nor); mcmc_plot(b_full_nr_nasl_noaf_l2_nor, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_nr_nasl_noaf_l2_nor, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_nr_nasl_noaf_l2_nor, c("Orderl_first = 0",                                      # p=0.72
+                                                 NULL));
+  b_full_nr_nasl_noaf_l2_nor <- brms_fit_indices(b_full_nr_nasl_noaf_l2_nor);
+  brms_compare_models(b_full_nr_nasl_noaf_l2_nor, b_full_nr_nasl_noaf_l2, "[+ order]", "[+ order + r/l]"); # r/l distinction is worse!
+  
+  
+
+  
   if( FALSE ) # various things tested...
   {
     # Let's remove the random slope for [r]:
@@ -2045,8 +2324,12 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
                                                   "rl2"   =b_lr2,    "rl2_simple"   =b_lr2_L,
                                                   "trill2"=b_trill2, "trill2_simple"=b_trill2_L, "trill2_simple_nrs"=b_trill2_L_nrs,
                                                   "b_L1_full_noasl"=b_L1_full_noasl, 
-                                                  "b_L1_full_noaslo"=b_L1_full_noaslo));
-    save(web_regressions_L1_models, file="./models/web_regressions_L1_models.rds", compress="xz", compression_level=9);
+                                                  "b_L1_full_noaslo"=b_L1_full_noaslo,
+                                                  "b_full_wr_nas"=b_full_wr_nas,
+                                                  "b_full_wr_nas"=b_full_wr_nas,
+                                                  "b_full_nr_nasl_noaf_l2"=b_full_nr_nasl_noaf_l2));
+    #save(web_regressions_L1_models, file="./models/web_regressions_L1_models.rds", compress="xz", compression_level=9);
+    saveRDS(web_regressions_L1_models, file="./models/web_regressions_L1_models.rds", compress="xz");
   }
   # save the summaries (much less disk space but enough info to understand the results):
   web_regressions_L1_summaries <- list("glmer"=list("vif"   =performance::check_collinearity(m_vif), 
@@ -2220,12 +2503,27 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
                                                                             "summary"=capture.output(summary(b_L1_full_noaslo)),
                                                                             "cmp_0"=brms_compare_models(b0, b_L1_full_noaslo, "[0]", "[[r]]"),
                                                                             "cmp_full"=brms_compare_models(b_L1_full, b_L1_full_noaslo, "[full]", "[[r]]"),
-                                                                            "cmp_trill"=brms_compare_models(b_L1_full_noaslo, b_L1_full_noasl, "[[r]]", "[order + [r]]"))));
-  save(web_regressions_L1_summaries, file="./models/web_regressions_L1_summaries.rds", compress="xz", compression_level=9);
+                                                                            "cmp_trill"=brms_compare_models(b_L1_full_noaslo, b_L1_full_noasl, "[[r]]", "[order + [r]]")),
+                                                   "with_trill"       =list("hdi"=bayestestR::hdi(b_null_wr, ci=0.95), 
+                                                                            "rope"=bayestestR::rope(b_null_wr, ci=0.95, ci_method="HDI", verbose=FALSE), 
+                                                                            "fixef"=fixef(b_null_wr), "ranef"=ranef(b_null_wr), 
+                                                                            "summary"=capture.output(summary(b_null_wr))),
+                                                   "without_trill"    =list("hdi"=bayestestR::hdi(b_full_nr_nasl_noaf, ci=0.95), 
+                                                                            "hypotheses"=brms::hypothesis(b_full_nr_nasl_noaf, c("Orderl_first = 0")), 
+                                                                            "rope"=bayestestR::rope(b_full_nr_nasl_noaf, ci=0.95, ci_method="HDI", verbose=FALSE), 
+                                                                            "fixef"=fixef(b_full_nr_nasl_noaf), "ranef"=ranef(b_full_nr_nasl_noaf), 
+                                                                            "summary"=capture.output(summary(b_full_nr_nasl_noaf)), 
+                                                                            "cmp_0"=brms_compare_models(b_null_nr_noaf, b_full_nr_nasl_noaf, "[0]", "[order]"),
+                                                                            "cmp_trillL2"=brms_compare_models(b_full_nr_nasl_noaf_l2_nor, b_full_nr_nasl_noaf_l2, "[order]", "[order + r/l]"))
+                                                   ));
+  #save(web_regressions_L1_summaries, file="./models/web_regressions_L1_summaries.rds", compress="xz", compression_level=9);
+  saveRDS(web_regressions_L1_summaries, file="./models/web_regressions_L1_summaries.rds", compress="xz");
 } else
 {
-  #if( .save_models && file.exists("./models/web_regressions_L1_models.rds") ) load("./models/web_regressions_L1_models.rds") else web_regressions_L1_models <- NULL;
-  if( file.exists("./models/web_regressions_L1_summaries.rds") ) load("./models/web_regressions_L1_summaries.rds") else web_regressions_L1_summaries <- NULL; 
+  ##if( .save_models && file.exists("./models/web_regressions_L1_models.rds") ) load("./models/web_regressions_L1_models.rds") else web_regressions_L1_models <- NULL;
+  #if( .save_models && file.exists("./models/web_regressions_L1_models.rds") ) web_regressions_L1_models <- readRDS("./models/web_regressions_L1_models.rds") else web_regressions_L1_models <- NULL;
+  #if( file.exists("./models/web_regressions_L1_summaries.rds") ) load("./models/web_regressions_L1_summaries.rds") else web_regressions_L1_summaries <- NULL; 
+  if( file.exists("./models/web_regressions_L1_summaries.rds") ) web_regressions_L1_summaries <- readRDS("./models/web_regressions_L1_summaries.rds") else web_regressions_L1_summaries <- NULL; 
 }
 ```
 
@@ -2526,6 +2824,39 @@ Interestingly, the interaction between order and the presence of [r] is *not* su
 Thus, in order for the negative effect of [r] to become visible, we need to control for Order appropriately (i.e., allowing it to have random slopes by Language).
 
 
+### Separate analyses for languages with and without [r] in L1
+
+The considerations above suggest that a separate analysis for the languages *with* and those *without* [r] in L1 might help better understand what's going on.
+
+#### Languages with [r]
+
+There are `r sum(web$trill_real_L1_f == "yes", na.rm=TRUE)` observations with [r] in L1 in the data.
+All these languages make a distinction between r and l, rendering this variable irrelevant.
+With these, the full model Match ~ 1 + Order + Sex + Age + (1 + Order + Sex + Age | Language) + (1 + Order + Sex + Age | Family) + (1 + Order + Sex + Age | Autotyp_Area) is not much better than the null model containing only the intercept, as expected.
+Moreover, in this case, the intercept is positive (>50%) but its 95%HDI does include 0 (50%): `r tmp <- web_regressions_L1_summaries$brms$with_trill; sprintf("%.2f 95%%HDI [%.2f, %.2f]", tmp$fixef["Intercept", "Estimate"], tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ], tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ])` (as probability: `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(tmp$fixef["Intercept", "Estimate"]), 100*lo2p(tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ]), 100*lo2p(tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ]))`), `r sprintf("pROPE=%.1f%%", tmp$rope$ROPE_Percentage[ tmp$rope$Parameter == "b_Intercept" ])`, suggesting that the association between [r] and the ragged line is not overwhelming.
+
+#### Languages with*out* [r]
+
+There are `r sum(web$trill_real_L1_f == "no", na.rm=TRUE)` observations without [r] in L1 in the data.
+There is variation gere in what concerns the distinction between r and l, making this variable potentially relevant.
+With these, the full model Match ~ 1 + Order + Sex + Age + r_l_distinction_L1_f + (1 + Order + Sex + Age | Language) + (1 + Order + Sex + Age | Family) + (1 + Order + Sex + Age | Autotyp_Area) simplifies to the model only with *Order* as fixed effect and *Languages* as random effect, but the random slope of *Order* is necessary.
+`r tmp <- web_regressions_L1_summaries$brms$without_trill`
+
+| variable | log odds ratio (LOR) | probability (%) | *p*       | model comparison |
+|---------:|---------------------:|----------------:|----------:|-----------------:|
+| intercept (*α*) | `r sprintf("%.2f [%.2f, %.2f]", tmp$fixef["Intercept", "Estimate"], tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ], tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ])` | `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(tmp$fixef["Intercept", "Estimate"]), 100*lo2p(tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ]), 100*lo2p(tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ]))` | `r sprintf("%.1f%%", tmp$rope$ROPE_Percentage[ tmp$rope$Parameter == "b_Intercept" ])` |  |
+| *order* (*β*~l_first-r_first~)   | `r sprintf("%.2f [%.2f, %.2f]", tmp$fixef["Orderl_first", "Estimate"], tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Orderl_first" ], tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Orderl_first" ])` | `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(tmp$fixef["Orderl_first", "Estimate"]), 100*lo2p(tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Orderl_first" ]), 100*lo2p(tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Orderl_first" ]))` | `r sprintf("pROPE=%.1f%%, *p*(*β*=0)=%.2f", tmp$rope$ROPE_Percentage[ tmp$rope$Parameter == "b_Orderl_first" ], tmp$hypotheses$hypothesis[1, "Post.Prob"])` | `r paste0("**VS null: **", .print.model.comparison(b=tmp$cmp_0))` |
+
+Here, it is clear that not only there is a strong baseline association between [r] and the ragged line (the intercept *α* is ~95% ≫ 50%), but there is an effect of *Order* in that presenting "l" first decreases the probability of a match by ~30%, clearly better than the null model (even if the 95%HDI does contain 50% and *p*(*β*=0) > 0.5).
+
+Interestingly, including the *presence of [r] in the L2* does not add anything (in fact, it is much worse): `r .print.model.comparison(b=tmp$cmp_trillL2)` to the model with just *Order*.
+
+#### Conclusions
+
+Thus, indeed, it seems that in the languages with [r] this pretty much overrides its sound symbolic association with the ragged line, while in the languages without [r], this association is clearly there and, moreover, the order of presentation does have an effect, in the sense that presenting "l" first decreases the probability of a match by ~30%, from ~95% to ~65%.
+Interstingly, the presence or not of [r] in the L2(s) does not seem to matter.
+
+
 ### Summary
 
 In all cases the intercept *α* is highly significant and positive, comparable with the null model at ≥ 80%, so much higher than 50%.
@@ -2540,6 +2871,8 @@ For the *full model* (i.e., with all potential fixed effects and random effects,
 
 <center>![Full model: the distribution of the proportion of *matches* per language.](./plots/full_model_web_languages.jpg){width="10in"}</center>
 
+Looking separately at the cases where [r] is present in the L1(s) and where it is not shows that, in the first case the association between [r] and the ragged line is much weaker (at ~75% and not formally significant) and there is no effect of the order of presentation, but that in the second case the association is much stronger and order does have an effect in the sense that presenting "l" first reduces the probability of a match from ~95% to about 65%.
+In this latter case, the presence or not of [r] in the L2(s) does not seem to matter.
 
 
 # Field experiment
@@ -3189,5 +3522,6 @@ On the other hand, none of the potential predictors seem to make any difference.
 
 It is clear that there is a very strong association between [r] and the rugged line and between [l] and the continuous line across the board.
 On the other hand, no predictor seems to really affect this, except for the order of presentation ("l" first decreases the association) and, when order is also included and its random structure properly modeled, the presence of [r] in the L1, both for the web experiment.
+This turns out to be almost entirely driven by the cases where there is no [r] in the participants' L1(s) , with no discernible contribution from their L2(s).
 
 

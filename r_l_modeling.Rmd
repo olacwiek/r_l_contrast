@@ -40,16 +40,17 @@ Load packages:
 ```{r, message = FALSE, warning = FALSE}
 library(tidyverse) # data processing
 library(brms) # bayesian models
-library(cmdstanr)
+#library(cmdstanr) # install it with: install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))) followed by install_cmdstan()
 library(ggdist) # for plotting
 # option for Bayesian regression models:
 # use all available cores for parallel computing
 options(mc.cores = parallel::detectCores())
 
-# Set the script's path as working directory
-parentfolder = rstudioapi::getActiveDocumentContext()$path 
-setwd(dirname(parentfolder))
-parentfolder <- getwd()
+## Set the script's path as working directory
+#parentfolder = rstudioapi::getActiveDocumentContext()$path 
+#setwd(dirname(parentfolder))
+#parentfolder <- getwd()
+parentfolder <- "."; # assume current folder is the document folder
 
 models        <- paste0(parentfolder, '/models/')
 plots         <- paste0(parentfolder, '/plots/')
@@ -62,7 +63,7 @@ For reproducible reporting:
 packageVersion('tidyverse')
 packageVersion('ggplot2')
 packageVersion('brms')
-packageVersion('cmdstanr')
+#packageVersion('cmdstanr')
 packageVersion('ggdist')
 ```
 
@@ -78,10 +79,10 @@ colorBlindBlack8  <- c("#000000", "#E69F00", "#56B4E9", "#009E73",
 Load data:
 
 ```{r, message = FALSE, warning = FALSE}
-web <- read_csv(paste0(data, 'web_experiment_cleaned.csv'))
+web     <- read_csv(paste0(data, 'web_experiment_cleaned.csv'))
 web_raw <- read_csv(paste0(data, '/web_raw_trials.csv'))
 
-field <- read_csv(paste0(data, 'field_experiment_cleaned.csv'))
+field     <- read_csv(paste0(data, 'field_experiment_cleaned.csv'))
 field_raw <- read_csv(paste0(data, '/field_raw_trials.csv'))
 ```
 
@@ -181,7 +182,7 @@ What is the grand average congruent behavior?
 mean(web$Match)
 ```
 
-87%
+87.3%
 
 What about only among those who have L1 without the distinction?
 
@@ -261,8 +262,8 @@ distinction in their L2? (double-check if logic alright!)
 
 ```{r}
 web %>%
-  filter(r_l_distinction_L1 == '0') %>% 
-  count(r_l_distinction_L2 == '1') %>% 
+  filter(r_l_distinction_L1 == 0) %>% 
+  count(r_l_distinction_L2 == 1) %>% 
   mutate(prop = n / sum(n),
          percent = round(prop, 2) * 100,
          percent = str_c(percent, '%'))
@@ -274,9 +275,9 @@ know an L2 that distinguishes R/L.
 
 ```{r}
 web %>% 
-  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
+  filter(r_l_distinction_L1 == 0) %>%  # excludes English as well
   filter(!EnglishL2YesNo) %>% 
-  filter(r_l_distinction_L2 == '0') %>% 
+  filter(r_l_distinction_L2 == 0) %>% 
   nrow()
 ```
 
@@ -287,7 +288,7 @@ for whom this applies.
 
 ```{r}
 web %>% 
-    filter(r_l_distinction_L1 == '0' & !EnglishL2YesNo & r_l_distinction_L2 == '0') %>% 
+    filter(r_l_distinction_L1 == 0 & !EnglishL2YesNo & r_l_distinction_L2 == 0) %>% 
     print(n = 50)
 ```
 
@@ -295,9 +296,9 @@ Are these really "pure"? What languages do they speak?
 
 ```{r}
 web %>% 
-  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
+  filter(r_l_distinction_L1 == 0) %>%  # excludes English as well
   filter(!EnglishL2YesNo) %>% 
-  filter(r_l_distinction_L2 == '0') %>% 
+  filter(r_l_distinction_L2 == 0) %>% 
   count(Language)
 ```
 
@@ -307,9 +308,9 @@ Nevertheless, let's explore whether these also show matches?
 
 ```{r}
 web %>% 
-  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
+  filter(r_l_distinction_L1 == 0) %>%  # excludes English as well
   filter(!EnglishL2YesNo) %>% 
-  filter(r_l_distinction_L2 == '0') %>% 
+  filter(r_l_distinction_L2 == 0) %>% 
   count(Match) %>% 
   mutate(prop = n / sum(n),
          percent = round(prop, 2) * 100,
@@ -318,70 +319,6 @@ web %>%
 
 Yes, similar to above 85%.
 
-## Main model:
-
-Set parameters that will be used for all MCMC sampling:
-
-```{r}
-mywarmup <- 4000
-myiter <- 8000
-```
-
-Check the distribution of scripts across families to make decisions
-about random effects structure:
-
-```{r}
-table(web$Family, web$r_l_distinction_L1)
-```
-
-Let's factor code the Order and L1_distinction effects:
-
-```{r}
-web <- mutate(web,
-               Order = factor(Order, levels = c('r_first', 'l_first')))
-```
-
-Check that the order effect is approximately balanced:
-
-```{r}
-web %>% count(Order) %>%
-  mutate(prop = n / sum(n))
-```
-
-@Dan & @Bodo, can you please check if we need some manipulation, like
-contrast-coding but weighted? Bodo, I know for bouba/kiki you did some
-kind of weighted modification and I'm sure that the proportions of our
-predictors are not balanced, see below:
-
-```{r}
-web %>% count(r_l_distinction_L1) %>%
-  mutate(prop = n / sum(n))
-# highly imbalanced
-
-web %>% count(trill_real_L1) %>%
-  mutate(prop = n / sum(n))
-
-web %>% count(trill_occ_L1) %>%
-  mutate(prop = n / sum(n))
-# ALL L1 have some kind of occuring trill, so this is not even worth including in the model as predictor
-
-## And for L2, just in case
-web %>% count(r_l_distinction_L2) %>%
-  mutate(prop = n / sum(n))
-
-web %>% count(trill_real_L2) %>%
-  mutate(prop = n / sum(n))
-
-web %>% count(trill_occ_L2) %>%
-  mutate(prop = n / sum(n))
-```
-
-For now, I will just use them as they are coded.
-
-```{r}
-web <- mutate(web,
-               order_num = ifelse(Order == 'r_first', -0.5, +0.5))
-```
 
 ### L1 Only
 
@@ -391,18 +328,37 @@ Family slopes and intercepts.
 
 ```{r, message = FALSE, warning = FALSE}
 web_mdl_L1Only <- brm(Match ~ 1 + order_num + r_l_distinction_L1 + trill_real_L1 +
-                 (1 + order_num|Language) + 
-                 (1 + order_num|Family),
-                data = web,
-                family = bernoulli(link = 'logit'),
-                #backend = "cmdstanr",
-                seed = 998,
-                cores = 4,
-                iter = myiter,
-                warmup = mywarmup,
-                control = list(adapt_delta = 0.995,
-                               max_treedepth = 13),
-                file = paste0(models, "web_mdl_L1Only.rds"))
+                        (1 + order_num|Language) + 
+                        (1 + order_num|Family),
+                      data = web,
+                      family = bernoulli(link = 'logit'),
+                      #backend = "cmdstanr",
+                      seed = 998,
+                      cores = 4,
+                      iter = myiter,
+                      warmup = mywarmup,
+                      control = list(adapt_delta = 0.995,
+                                     max_treedepth = 13),
+                      file = paste0(models, "web_mdl_L1Only.rds"))
+
+
+
+
+# test whether coding as factors matters:
+web_mdl_L1Only_test <- brm(Match ~ 1 + order_num + r_l_distinction_L1 + trill_real_L1 + Sex + Age + 
+                             (1 + order_num  | Language) + 
+                             (1 + order_num + r_l_distinction_L1 + trill_real_L1 | Family),
+                           (1 + order_num + r_l_distinction_L1 + trill_real_L1 | Autotyp_Area),
+                           data = web,
+                           family = bernoulli(link = 'logit'),
+                           #backend = "cmdstanr",
+                           seed = 998,
+                           cores = 4,
+                           iter = myiter,
+                           warmup = mywarmup,
+                           control = list(adapt_delta = 0.999,
+                                          max_treedepth = 13))
+summary(web_mdl_L1Only_test); mcmc_plot(web_mdl_L1Only_test, type="trace"); mcmc_plot(web_mdl_L1Only_test);
 ```
 
 Show the model:
@@ -684,6 +640,7 @@ Examine the pairs() plot to diagnose sampling problems
 And yes, there are a lot of NAs in the L2 data, because not everyone has
 an L2. Maybe that is the issue, but I will leave it at that for now.
 Perhaps the L1 model is enough.
+
 
 # Field experiment
 

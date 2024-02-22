@@ -29,8 +29,6 @@ AM_2090125,F,AM,Armenian,different,IE,Greater Mesopotamia,1,r,TRUE
 AM_2090125,F,AM,Armenian,different,IE,Greater Mesopotamia,2,l,TRUE
 AM_2110154,F,AM,Armenian,different,IE,Greater Mesopotamia,1,l,TRUE
 AM_2110154,F,AM,Armenian,different,IE,Greater Mesopotamia,2,r,TRUE
-AM_2113553,F,AM,Armenian,different,IE,Greater Mesopotamia,1,r,TRUE
-AM_2113553,F,AM,Armenian,different,IE,Greater Mesopotamia,2,l,TRUE
 AM_2124652,F,RU,Russian,different,IE,Inner Asia,1,r,TRUE
 AM_2124652,F,RU,Russian,different,IE,Inner Asia,2,l,TRUE
 AM_2126284,M,AM,Armenian,different,IE,Greater Mesopotamia,1,l,FALSE
@@ -139,12 +137,8 @@ CN_2096896,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
 CN_2096896,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
 CN_2096947,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
 CN_2096947,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
-CN_2096959,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,r,TRUE
-CN_2096959,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,l,TRUE
 CN_2097226,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
 CN_2097226,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
-CN_2097291,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
-CN_2097291,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
 CN_2099532,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,1,l,FALSE
 CN_2099532,F,CN,Chinese,different,Sino-Tibetan,Southeast Asia,2,r,TRUE
 DE_2002066,F,DE,German,roman,IE,Europe,1,l,TRUE
@@ -937,8 +931,6 @@ HU_2115022,F,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
 HU_2115022,F,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
 HU_2115135,F,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
 HU_2115135,F,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
-HU_2115358,F,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
-HU_2115358,F,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
 HU_2115509,F,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
 HU_2115509,F,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
 HU_2115615,F,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
@@ -965,8 +957,6 @@ HU_2117904,F,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
 HU_2117904,F,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
 HU_2117961,M,HU,Hungarian,roman,Finno-Ugric,Europe,1,l,TRUE
 HU_2117961,M,HU,Hungarian,roman,Finno-Ugric,Europe,2,r,TRUE
-HU_2118072,F,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
-HU_2118072,F,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
 HU_2118240,F,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
 HU_2118240,F,HU,Hungarian,roman,Finno-Ugric,Europe,2,l,TRUE
 HU_2118346,F,HU,Hungarian,roman,Finno-Ugric,Europe,1,r,TRUE
@@ -1161,16 +1151,12 @@ JP_2043601,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
 JP_2043601,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
 JP_2044708,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
 JP_2044708,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
-JP_2044816,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
-JP_2044816,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
 JP_2044955,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
 JP_2044955,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
 JP_2045099,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
 JP_2045099,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
 JP_2045327,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
 JP_2045327,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
-JP_2045448,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
-JP_2045448,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
 JP_2046001,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,FALSE
 JP_2046001,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
 JP_2046107,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
@@ -1179,38 +1165,22 @@ JP_2046213,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
 JP_2046213,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
 JP_2046493,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
 JP_2046493,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
-JP_2046608,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,FALSE
-JP_2046608,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
 JP_2046946,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
 JP_2046946,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
 JP_2047059,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
 JP_2047059,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
 JP_2047178,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
 JP_2047178,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
-JP_2047291,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
-JP_2047291,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
 JP_2047368,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
 JP_2047368,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
 JP_2047549,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
 JP_2047549,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
-JP_2047655,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
-JP_2047655,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
-JP_2047879,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
-JP_2047879,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
 JP_2048091,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
 JP_2048091,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
 JP_2048197,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
 JP_2048197,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
-JP_2048303,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
-JP_2048303,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
 JP_2048409,F,JP,Japanese,different,Japanese,N Coast Asia,1,r,TRUE
 JP_2048409,F,JP,Japanese,different,Japanese,N Coast Asia,2,l,TRUE
-JP_2048515,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,FALSE
-JP_2048515,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
-JP_2048621,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
-JP_2048621,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
-JP_2050804,F,JP,Japanese,different,Japanese,N Coast Asia,1,l,TRUE
-JP_2050804,F,JP,Japanese,different,Japanese,N Coast Asia,2,r,TRUE
 KR_2120978,M,KR,Korean,different,Korean,N Coast Asia,1,r,TRUE
 KR_2120978,M,KR,Korean,different,Korean,N Coast Asia,2,l,TRUE
 KR_2121353,F,KR,Korean,different,Korean,N Coast Asia,1,l,TRUE
@@ -1289,22 +1259,10 @@ PL_2017373,F,PL,Polish,roman,IE,Europe,1,r,TRUE
 PL_2017373,F,PL,Polish,roman,IE,Europe,2,l,TRUE
 PL_2018013,F,PL,Polish,roman,IE,Europe,1,r,TRUE
 PL_2018013,F,PL,Polish,roman,IE,Europe,2,l,TRUE
-PL_2018041,F,PL,Polish,roman,IE,Europe,1,l,TRUE
-PL_2018041,F,PL,Polish,roman,IE,Europe,2,r,TRUE
-PL_2018230,M,PL,Polish,roman,IE,Europe,1,l,TRUE
-PL_2018230,M,PL,Polish,roman,IE,Europe,2,r,TRUE
-PL_2018421,F,PL,Polish,roman,IE,Europe,1,l,TRUE
-PL_2018421,F,PL,Polish,roman,IE,Europe,2,r,TRUE
-PL_2018879,M,PL,Polish,roman,IE,Europe,1,r,TRUE
-PL_2018879,M,PL,Polish,roman,IE,Europe,2,l,TRUE
 PL_2019534,F,PL,Polish,roman,IE,Europe,1,l,TRUE
 PL_2019534,F,PL,Polish,roman,IE,Europe,2,r,TRUE
-PL_2020484,F,PL,Polish,roman,IE,Europe,1,r,TRUE
-PL_2020484,F,PL,Polish,roman,IE,Europe,2,l,TRUE
 PL_2021622,F,PL,Polish,roman,IE,Europe,1,l,TRUE
 PL_2021622,F,PL,Polish,roman,IE,Europe,2,r,TRUE
-PL_2021728,F,PL,Polish,roman,IE,Europe,1,l,TRUE
-PL_2021728,F,PL,Polish,roman,IE,Europe,2,r,TRUE
 PL_2022234,F,PL,Polish,roman,IE,Europe,1,l,TRUE
 PL_2022234,F,PL,Polish,roman,IE,Europe,2,r,TRUE
 PL_2022849,F,PL,Polish,roman,IE,Europe,1,r,TRUE
@@ -1321,8 +1279,6 @@ PL_2023817,F,PL,Polish,roman,IE,Europe,1,r,TRUE
 PL_2023817,F,PL,Polish,roman,IE,Europe,2,l,FALSE
 PL_2024564,F,PL,Polish,roman,IE,Europe,1,l,TRUE
 PL_2024564,F,PL,Polish,roman,IE,Europe,2,r,TRUE
-PL_2028145,M,PL,Polish,roman,IE,Europe,1,r,TRUE
-PL_2028145,M,PL,Polish,roman,IE,Europe,2,l,TRUE
 PL_2034654,M,PL,Polish,roman,IE,Europe,1,l,TRUE
 PL_2034654,M,PL,Polish,roman,IE,Europe,2,r,TRUE
 PL_2044384,M,PL,Polish,roman,IE,Europe,1,l,TRUE
@@ -1525,12 +1481,8 @@ RO_2071846,F,RO,Romanian,roman,IE,Europe,1,l,FALSE
 RO_2071846,F,RO,Romanian,roman,IE,Europe,2,r,TRUE
 RO_2072222,F,RO,Romanian,roman,IE,Europe,1,l,TRUE
 RO_2072222,F,RO,Romanian,roman,IE,Europe,2,r,TRUE
-RO_2072586,F,RO,Romanian,roman,IE,Europe,1,l,TRUE
-RO_2072586,F,RO,Romanian,roman,IE,Europe,2,r,TRUE
 RO_2089172,F,RO,Romanian,roman,IE,Europe,1,r,FALSE
 RO_2089172,F,RO,Romanian,roman,IE,Europe,2,l,TRUE
-RO_2104556,F,RO,Romanian,roman,IE,Europe,1,r,TRUE
-RO_2104556,F,RO,Romanian,roman,IE,Europe,2,l,TRUE
 RO_2114036,F,RO,Romanian,roman,IE,Europe,1,r,TRUE
 RO_2114036,F,RO,Romanian,roman,IE,Europe,2,l,TRUE
 RU_2038822,F,RU,Russian,different,IE,Inner Asia,1,r,TRUE
@@ -1575,8 +1527,6 @@ RU_2065792,F,RU,Russian,different,IE,Inner Asia,1,l,TRUE
 RU_2065792,F,RU,Russian,different,IE,Inner Asia,2,r,TRUE
 RU_2065958,F,RU,Russian,different,IE,Inner Asia,1,l,TRUE
 RU_2065958,F,RU,Russian,different,IE,Inner Asia,2,r,TRUE
-RU_2066278,F,RU,Russian,different,IE,Inner Asia,1,l,FALSE
-RU_2066278,F,RU,Russian,different,IE,Inner Asia,2,r,TRUE
 RU_2066433,F,RU,Russian,different,IE,Inner Asia,1,l,TRUE
 RU_2066433,F,RU,Russian,different,IE,Inner Asia,2,r,TRUE
 RU_2066663,F,RU,Russian,different,IE,Inner Asia,1,r,TRUE
@@ -1769,8 +1719,6 @@ TR_2119957,F,TR,Turkish,roman,Turkic,Greater Mesopotamia,1,l,TRUE
 TR_2119957,F,TR,Turkish,roman,Turkic,Greater Mesopotamia,2,r,TRUE
 ZU_2057083,M,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
 ZU_2057083,M,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
-ZU_2105421,M,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
-ZU_2105421,M,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
 ZU_2106921,F,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
 ZU_2106921,F,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
 ZU_2109362,F,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
@@ -1793,10 +1741,6 @@ ZU_2139238,M,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
 ZU_2139238,M,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
 ZU_2139344,F,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
 ZU_2139344,F,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
-ZU_2139788,F,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,TRUE
-ZU_2139788,F,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
-ZU_2139894,F,ZU,Zulu,roman,Benue-Congo,S Africa,1,r,TRUE
-ZU_2139894,F,ZU,Zulu,roman,Benue-Congo,S Africa,2,l,TRUE
 ZU_2140000,M,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,TRUE
 ZU_2140000,M,ZU,Zulu,roman,Benue-Congo,S Africa,2,r,TRUE
 ZU_2140141,F,ZU,Zulu,roman,Benue-Congo,S Africa,1,l,FALSE

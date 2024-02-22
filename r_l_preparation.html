@@ -2821,12 +2821,12 @@ etc.)?</p>
 ##  72  73  74  75  78  79  84 
 ##   4   2   4   2   1   2   2</code></pre>
 <p>Get rid of everybody below 18:</p>
-<pre class="r"><code>web &lt;- filter(web, participantage &gt;= 18)</code></pre>
+<pre class="r"><code>web &lt;- filter(web, participantage &gt; 18)</code></pre>
 <p>Check input values:</p>
 <pre class="r"><code>table(web$inputvalue)</code></pre>
 <pre><code>## 
-## klein     l ogień     r 
-##     1   881     1   987</code></pre>
+## klein     l     r 
+##     1   857   953</code></pre>
 <p>Get rid of the responses that are neither “r” nor “l”:</p>
 <pre class="r"><code>web &lt;- filter(web, !inputvalue %in% c(&#39;klein&#39;, &#39;ogień&#39;))</code></pre>
 </div>
@@ -3011,7 +3011,7 @@ insufficient data:</h2>
 <pre class="r"><code>filter(ppt_N, n != 2)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["ID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"AL_2110262","2":"1"},{"1":"AL_2145029","2":"1"},{"1":"AM_2090231","2":"1"},{"1":"AM_2130356","2":"1"},{"1":"CN_2092990","2":"1"},{"1":"CN_2093224","2":"1"},{"1":"CN_2093602","2":"1"},{"1":"CN_2094225","2":"1"},{"1":"CN_2097511","2":"1"},{"1":"DE_2001960","2":"1"},{"1":"DE_2018699","2":"1"},{"1":"DE_2022093","2":"1"},{"1":"DE_2039061","2":"1"},{"1":"EE_2055693","2":"1"},{"1":"EE_2056156","2":"1"},{"1":"EE_2057689","2":"1"},{"1":"EN_2017965","2":"1"},{"1":"EN_2034831","2":"1"},{"1":"FA_2152540","2":"1"},{"1":"FI_2154250","2":"1"},{"1":"FR_2107244","2":"1"},{"1":"HU_2117472","2":"1"},{"1":"IT_2071105","2":"1"},{"1":"IT_2080742","2":"1"},{"1":"IT_2137997","2":"1"},{"1":"PL_2008030","2":"1"},{"1":"PL_2020067","2":"1"},{"1":"PT_2134049","2":"1"},{"1":"RO_2052428","2":"1"},{"1":"RO_2060426","2":"1"},{"1":"RO_2068571","2":"1"},{"1":"RO_2071533","2":"1"},{"1":"RU_2065744","2":"1"},{"1":"RU_2066769","2":"1"},{"1":"RU_2073094","2":"1"},{"1":"TH_2116445","2":"1"},{"1":"TR_2085576","2":"1"},{"1":"ZU_2059726","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["ID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"AL_2110262","2":"1"},{"1":"AL_2145029","2":"1"},{"1":"AM_2130356","2":"1"},{"1":"CN_2092990","2":"1"},{"1":"CN_2093224","2":"1"},{"1":"CN_2093602","2":"1"},{"1":"CN_2094225","2":"1"},{"1":"CN_2097511","2":"1"},{"1":"DE_2001960","2":"1"},{"1":"DE_2018699","2":"1"},{"1":"DE_2022093","2":"1"},{"1":"DE_2039061","2":"1"},{"1":"EE_2055693","2":"1"},{"1":"EE_2056156","2":"1"},{"1":"EE_2057689","2":"1"},{"1":"EN_2017965","2":"1"},{"1":"EN_2034831","2":"1"},{"1":"FA_2152540","2":"1"},{"1":"FI_2154250","2":"1"},{"1":"FR_2107244","2":"1"},{"1":"HU_2117472","2":"1"},{"1":"IT_2071105","2":"1"},{"1":"IT_2080742","2":"1"},{"1":"IT_2137997","2":"1"},{"1":"PL_2008030","2":"1"},{"1":"PT_2134049","2":"1"},{"1":"RO_2052428","2":"1"},{"1":"RO_2060426","2":"1"},{"1":"RO_2068571","2":"1"},{"1":"RO_2071533","2":"1"},{"1":"RU_2065744","2":"1"},{"1":"RU_2066769","2":"1"},{"1":"RU_2073094","2":"1"},{"1":"TH_2116445","2":"1"},{"1":"TR_2085576","2":"1"},{"1":"ZU_2059726","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Get rid of these participants:</p>
@@ -3030,8 +3030,8 @@ rm(excludes)</code></pre>
   print()</code></pre>
 <pre><code>##    Language  n
 ## 1        AL 10
-## 2        AM 21
-## 3        CN 43
+## 2        AM 20
+## 3        CN 41
 ## 4        DE 81
 ## 5        DK 18
 ## 6        EE 45
@@ -3042,20 +3042,20 @@ rm(excludes)</code></pre>
 ## 11       FR 63
 ## 12       GE 16
 ## 13       GR 42
-## 14       HU 34
+## 14       HU 32
 ## 15       IT 50
-## 16       JP 57
+## 16       JP 47
 ## 17       KR 21
 ## 18       MS  1
-## 19       PL 48
+## 19       PL 41
 ## 20       PT 61
-## 21       RO 31
-## 22       RU 40
+## 21       RO 29
+## 22       RU 39
 ## 23       SE 21
 ## 24       TA  2
 ## 25       TH 19
 ## 26       TR 39
-## 27       ZU 19</code></pre>
+## 27       ZU 16</code></pre>
 <p>Not enough data for MS (only data from one speaker), as well as Tamil
 (only two speakers).</p>
 <pre class="r"><code>web &lt;- filter(web, Language != &quot;MS&quot;)
@@ -3077,9 +3077,9 @@ web[web$L1_cleaned == &#39;latvian&#39;, ]$L1_cleaned &lt;- &#39;polish&#39;</co
 <pre><code>##                             
 ##                               AL  AM  CN  DE  DK  EE  EN  ES  FA  FI  FR  GE
 ##   albanian                    20   0   0   0   0   0   0   0   0   0   0   0
-##   armenian                     0  36   0   2   0   0   0   0   0   0   0   0
+##   armenian                     0  34   0   2   0   0   0   0   0   0   0   0
 ##   armenian, russian            0   2   0   0   0   0   0   0   0   0   0   0
-##   chinese                      0   0  86   2   0   0   2   0   0   0   0   0
+##   chinese                      0   0  82   2   0   0   2   0   0   0   0   0
 ##   danish                       0   0   0   0  36   0   0   0   0   0   0   0
 ##   english                      0   0   0   0   0   0  72   0   0   0   2   0
 ##   estonian                     0   0   0   0   0  82   4   0   0   0   0   0
@@ -3138,18 +3138,18 @@ web[web$L1_cleaned == &#39;latvian&#39;, ]$L1_cleaned &lt;- &#39;polish&#39;</co
 ##   german, turkish              0   0   0   0   0   0   0   0   0   0   0   0
 ##   greek                       80   0   0   0   0   0   0   0   0   0   0   0
 ##   greek, german                4   0   0   0   0   0   0   0   0   0   0   0
-##   hungarian                    0  68   0   0   0   0   0   0   0   0   0   0
+##   hungarian                    0  64   0   0   0   0   0   0   0   0   0   0
 ##   italian                      0   0  92   0   0   0   0   0   0   0   0   0
 ##   italian, german              0   0   2   0   0   0   0   0   0   0   0   0
-##   japanese                     0   0   0 110   0   0   0   0   0   0   0   0
+##   japanese                     0   0   0  90   0   0   0   0   0   0   0   0
 ##   konkani, english             0   0   0   0   0   0   0   0   0   0   0   0
 ##   korean                       0   0   0   2  42   0   0   0   0   0   0   0
-##   polish                       0   0   0   0   0  94   0   0   0   0   0   0
+##   polish                       0   0   0   0   0  80   0   0   0   0   0   0
 ##   polish, silesian             0   0   0   0   0   2   0   0   0   0   0   0
 ##   portuguese                   0   0   0   0   0   0 116   0   0   0   0   0
 ##   portuguese, french, danish   0   0   0   0   0   0   2   0   0   0   0   0
-##   romanian                     0   0   0   0   0   0   0  62   0   0   0   0
-##   russian                      0   0   0   0   0   0   0   0  76   0   0   0
+##   romanian                     0   0   0   0   0   0   0  58   0   0   0   0
+##   russian                      0   0   0   0   0   0   0   0  74   0   0   0
 ##   russian, belarusian          0   0   0   0   0   0   0   0   2   0   0   0
 ##   spanish                      0   0   0   0   0   0   2   0   0   0   0   0
 ##   spanish, german              0   0   0   0   0   0   0   0   0   0   0   0
@@ -3202,7 +3202,7 @@ web[web$L1_cleaned == &#39;latvian&#39;, ]$L1_cleaned &lt;- &#39;polish&#39;</co
 ##   thai                         0
 ##   turkish                      0
 ##   ukrainian, russian           0
-##   zulu                        38</code></pre>
+##   zulu                        32</code></pre>
 <pre class="r"><code>web[web$L1_cleaned == &#39;russian&#39;, ]$Language &lt;- &#39;RU&#39;
 web[web$L1_cleaned == &#39;armenian&#39;, ]$Language &lt;- &#39;AM&#39;
 web[web$L1_cleaned == &#39;chinese&#39;, ]$Language &lt;- &#39;CN&#39;
@@ -3246,7 +3246,7 @@ web$match &lt;- web$sound == web$Resp
 table(web$match)</code></pre>
 <pre><code>## 
 ## FALSE  TRUE 
-##   125  1681</code></pre>
+##   121  1629</code></pre>
 <pre class="r"><code># add trial
 web$trial &lt;- NA
 for (subject in unique(web$ID)) {
@@ -3256,7 +3256,7 @@ for (subject in unique(web$ID)) {
 table(web$trial)</code></pre>
 <pre><code>## 
 ##   1   2 
-## 903 903</code></pre>
+## 875 875</code></pre>
 <pre class="r"><code>out &lt;- web[, c(&#39;ID&#39;, &#39;sex&#39;, &#39;Language&#39;, &#39;Name&#39;, &#39;Script&#39;, &#39;Family&#39;, &#39;Autotyp_Area&#39;, &#39;trial&#39;, &#39;sound&#39;, &#39;match&#39;)]
 
 rm(idx, subject)

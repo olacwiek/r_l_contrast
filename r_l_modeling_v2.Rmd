@@ -30,8 +30,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction:
 
-This script uses the output of "r_l_preparation.Rmd" and returns all
-values reported in the paper.
+This script uses the output of "r_l_preparation.Rmd" and returns all values reported in the paper.
 
 # Setup:
 
@@ -1666,7 +1665,8 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
                                               "trill_real_L1_fyes = 0",                               # 0.18    *
                                               "Orderl_first:trill_real_L1_fyes = 0"                   # 0.75 
     ));  
-    hdi(b_otexperiments_1_int);
+    hdi(b_otexperiments_1_int); # [-0.94,  1.81]
+    rope(b_otexperiments_1_int, , ci=0.95, ci_method="HDI"); # 17.48 %
     plot_model(b_otexperiments_1_int, type="pred", terms=c("trill_real_L1_f", "Order"));
     plot_model(b_otexperiments_1_int, type="re");
     
@@ -2281,7 +2281,7 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
     geom_hline(yintercept = 0.5, linetype = 2, size = 1.5, col = 'grey') + 
     geom_point(aes(y = avg), col = 'black', shape = 23, size = 5, stroke = 1.0, alpha = 0.75)  +
     labs(x = '', y = 'Proportion of congruent responses') + # Axis labels:
-    ggtitle('Posterior medians and descriptive averages of congruent responses\nby language and R/L contrast (color) and [r] as primary rhotic in L1 (shape)') +
+    #ggtitle('Posterior medians and descriptive averages of congruent responses\nby language and R/L contrast (color) and [r] as primary rhotic in L1 (shape)') +
     scale_color_manual(values = c(colorBlindBlack8[2], colorBlindBlack8[3])) + # Tweak cosmetics:
     theme_timo + 
     theme(axis.text.x = element_text(angle = 45, hjust = 1, face = 'bold', size = 10),
@@ -3346,6 +3346,104 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
   plot_model(b, type="pred", terms="trill_real_L2_f"); ggsave(paste0(plot_prefix,"_pred.jpg"), device="jpeg", width=4, height=4, units="in", quality=85);
 
   
+  
+  ## Let's investigate what happens if we analyze the languages with and without [r] in L1 separately:
+  # with [r]:
+  field_wr <- field[ field$trill_real_L1_f == "yes", ]; # two languages from two families and areas -> Language should be enough as random effect
+  # constant: r_l_distinction_L1_f trill_occ_L1 r_l_distinction_L2 trill_real_L2 trill_occ_L2
+  
+  b_null_wr <- brm(Match ~ 1 + 
+                     (1 | Language),
+                   data = field_wr,
+                   family=bernoulli(link='logit'),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_null_wr); mcmc_plot(b_null_wr, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_null_wr, variable="^b_", regex=TRUE); # very decent
+  b_null_wr <- brms_fit_indices(b_null_wr);
+  
+  b_full_wr <- brm(Match ~ 1 + 
+                     Sex + Age + 
+                     (1 + Sex + Age | Language),
+                   data = field_wr,
+                   family=bernoulli(link='logit'),
+                   prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                           brms::set_prior("lkj(2)", class="cor")),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_wr); mcmc_plot(b_full_wr, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_wr, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_wr, c("Sexm = 0",                                              # p=0.51
+                                "Age = 0",                                               # p=0.64
+                                NULL));
+  bayestestR::hdi(b_full_wr, ci=0.95); # (Intercept) | [-130.23, 121.72]; Sexm        | [  -6.16,   6.35]; Age         | [  -4.01,   4.60]
+  bayestestR::rope(b_full_wr, ci=0.95, ci_method="HDI"); # Intercept |      0.30 %; Sexm      |      5.90 %; Age       |      9.72 %
+  b_full_wr <- brms_fit_indices(b_full_wr);
+  brms_compare_models(b_null_wr, b_full_wr, "[null]", "[full]"); # equivalent
+  # -> none matters
+
+  # without [r]:
+  field_nr <- field[ field$trill_real_L1_f == "no", ]; # 4 languages from two families and areas -> Language and Family should be enough as random effect
+
+  b_null_nr <- brm(Match ~ 1 + 
+                     (1 | Language) + 
+                     (1 | Family),
+                   data = field_nr,
+                   family=bernoulli(link='logit'),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_null_nr); mcmc_plot(b_null_nr, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_null_nr, variable="^b_", regex=TRUE); # very decent
+  b_null_nr <- brms_fit_indices(b_null_nr);
+  
+  b_full_nr <- brm(Match ~ 1 + 
+                     Sex + Age + r_l_distinction_L1_f + trill_occ_L1_f +
+                     (1 + Sex + Age | Language) + # r_l_distinction_L1_f & trill_occ_L1_f do not conceptually vary by language
+                     (1 + Sex + Age | Family),
+                   data = field_nr,
+                   family=bernoulli(link='logit'),
+                   prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                           brms::set_prior("lkj(2)", class="cor")),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_full_nr); mcmc_plot(b_full_nr, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_full_nr, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_full_nr, c("r_l_distinction_L1_fdistinct = 0",                      # p=0.50
+                                "trill_occ_L1_fyes = 0",                                 # p=0.50
+                                "Sexm = 0",                                              # p=0.60
+                                "Age = 0",                                               # p=0.88
+                                NULL));
+  bayestestR::hdi(b_full_nr, ci=0.95); # (Intercept) | [-5.21, 19.32]; Sexm | [-3.73,  4.48]; Age | [-0.63,  0.15]; r_l_distinction_L1_fdistinct | [-6.91,  5.98]; trill_occ_L1_fyes | [-6.85,  5.62]
+  bayestestR::rope(b_full_nr, ci=0.95, ci_method="HDI"); # Intercept |      0.82 %; Sexm |      8.50 %; Age |     45.56 %; r_l_distinction_L1_fdistinct |      5.64 %; trill_occ_L1_fyes |      5.81 %
+  b_full_nr <- brms_fit_indices(b_full_nr);
+  brms_compare_models(b_null_nr, b_full_nr, "[null]", "[full]"); # null is better than full!
+  # -> we can remove age and sex:
+  
+  b_red_nr <- brm(Match ~ 1 + 
+                    r_l_distinction_L1_f + trill_occ_L1_f +
+                    (1 | Language) + # r_l_distinction_L1_f & trill_occ_L1_f do not conceptually vary by language
+                    (1 | Family),
+                  data = field_nr,
+                  family=bernoulli(link='logit'),
+                  prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                  save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                  sample_prior=TRUE,             # needed for hypotheses tests
+                  seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_red_nr); mcmc_plot(b_red_nr, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_red_nr, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_red_nr, c("r_l_distinction_L1_fdistinct = 0",                      # p=0.50
+                               "trill_occ_L1_fyes = 0",                                 # p=0.50
+                               NULL));
+  bayestestR::hdi(b_red_nr, ci=0.95); # (Intercept) | [-2.10, 12.54]; r_l_distinction_L1_fdistinct | [-6.79,  4.31]; trill_occ_L1_fyes | [-6.80,  4.17]
+  bayestestR::rope(b_red_nr, ci=0.95, ci_method="HDI"); # Intercept |      1.16 %; r_l_distinction_L1_fdistinct |      5.79 %; trill_occ_L1_fyes |      5.81 %
+  b_red_nr <- brms_fit_indices(b_red_nr);
+  brms_compare_models(b_null_nr, b_red_nr, "[null]", "[reduced]"); # equivalent
+  brms_compare_models(b_full_nr, b_red_nr, "[full]", "[reduced]"); # reduced is better
+  
+  ## -> so, both for those with and without [r], no factor seems to play any role
+  ##    and the intercept (of the null model) are not impressive
+
+  
+    
   ## save all these results for later:
   # save the models( if requested):
   if( .save_models )
@@ -3358,6 +3456,9 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
                                                  "rl2"   =b_lr2,
                                                  "trill2"=b_trill2));
     save(field_regressions_models, file="./models/field_regressions_models.rds", compress="xz", compression_level=9);
+    field_regressions_models_separate <- list("brms"=list("with_r"=b_null_wr,
+                                                          "without_r"=b_null_nr));
+    save(field_regressions_models_separate, file="./models/field_regressions_models_separate.rds", compress="xz", compression_level=9);
   }
   # save the summaries (much less disk space but enough info to undertsand the results):
   field_regressions_summaries <- list("brms"=list("prior_pred_check"=list("plot_path"="./plots/field_prior_predictive_checks.jpg"),
@@ -3409,10 +3510,21 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
                                                                  "summary"=capture.output(summary(b_trill2)),
                                                                  "cmp_0"=brms_compare_models(b_lr2_null, b_trill2, "[0]", "[+]"))));
   save(field_regressions_summaries, file="./models/field_regressions_summaries.rds", compress="xz", compression_level=9);
+  field_regressions_summaries_separate <- list("brms"=list("with_r" =list("hdi"=bayestestR::hdi(b_null_wr, ci=0.95),
+                                                                          "rope"=bayestestR::rope(b_null_wr, ci=0.95, ci_method="HDI", verbose=FALSE),
+                                                                          "fixef"=fixef(b_null_wr), "ranef"=ranef(b_null_wr),
+                                                                          "summary"=capture.output(summary(b_null_wr))),
+                                                           "without_r" =list("hdi"=bayestestR::hdi(b_null_nr, ci=0.95),
+                                                                             "rope"=bayestestR::rope(b_null_nr, ci=0.95, ci_method="HDI", verbose=FALSE),
+                                                                             "fixef"=fixef(b_null_nr), "ranef"=ranef(b_null_nr),
+                                                                             "summary"=capture.output(summary(b_null_nr)))));
+  save(field_regressions_summaries_separate, file="./models/field_regressions_summaries_separate.rds", compress="xz", compression_level=9);
 } else
 {
   #if( .save_models && file.exists("./models/field_regressions_models.rds") ) load("./models/field_regressions_models.rds") else field_regressions_models <- NULL;
+  #if( .save_models && file.exists("./models/field_regressions_models_separate.rds") ) load("./models/field_regressions_models_separate.rds") else field_regressions_models_separate <- NULL;
   if( file.exists("./models/field_regressions_summaries.rds") ) load("./models/field_regressions_summaries.rds") else field_regressions_summaries <- NULL; 
+  if( file.exists("./models/field_regressions_summaries_separate.rds") ) load("./models/field_regressions_summaries_separate.rds") else field_regressions_summaries_separate <- NULL; 
 }
 ```
 
@@ -3510,6 +3622,24 @@ Please note that L2 is degenerate and the models do not make any sense.
 |---------:|-------:|---------------------:|----------------:|----------:|-----------------:|
 | intercept (*α*) | B  | `r sprintf("%.2f [%.2f, %.2f]", tmpb$fixef["Intercept", "Estimate"], tmpb$hdi$CI_low[ tmpb$hdi$Parameter == "b_Intercept" ], tmpb$hdi$CI_high[ tmpb$hdi$Parameter == "b_Intercept" ])` | `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(tmpb$fixef["Intercept", "Estimate"]), 100*lo2p(tmpb$hdi$CI_low[ tmpb$hdi$Parameter == "b_Intercept" ]), 100*lo2p(tmpb$hdi$CI_high[ tmpb$hdi$Parameter == "b_Intercept" ]))` | `r sprintf("%.1f%%", tmpb$rope$ROPE_Percentage[ tmpb$rope$Parameter == "b_Intercept" ])` |  |
 | *[r]* (*β*~yes-no~) | B  | `r sprintf("%.2f [%.2f, %.2f]", tmpb$fixef["trill_real_L2_fyes", "Estimate"], tmpb$hdi$CI_low[ tmpb$hdi$Parameter == "b_trill_real_L2_fyes" ], tmpb$hdi$CI_high[ tmpb$hdi$Parameter == "b_trill_real_L2_fyes" ])` | `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(tmpb$fixef["trill_real_L2_fyes", "Estimate"]), 100*lo2p(tmpb$hdi$CI_low[ tmpb$hdi$Parameter == "b_trill_real_L2_fyes" ]), 100*lo2p(tmpb$hdi$CI_high[ tmpb$hdi$Parameter == "b_trill_real_L2_fyes" ]))` | `r sprintf("pROPE=%.1f%%, *p*(*β*=0)=%.2f", tmpb$rope$ROPE_Percentage[ tmpb$rope$Parameter == "b_trill_real_L2_fyes" ], tmpb$hypotheses$hypothesis[1, "Post.Prob"])` | `r paste0("**VS null: **", .print.model.comparison(b=tmpb$cmp_0))` |
+
+
+### Separate analyses for languages with and without [r] in L1
+
+As for the online experiment, we also analyzed the languages with and without [r] separately.
+
+#### Languages with [r]
+
+There are `r sum(field$trill_real_L1_f == "yes", na.rm=TRUE)` observations with [r] in L1 in the data.
+The full model is equivalent with the null model containing only the intercept.
+In this case, the intercept is positive (>50%) but its 95%HDI does include 0 (50%): `r tmp <- field_regressions_summaries_separate$brms$with_r; sprintf("%.2f 95%%HDI [%.2f, %.2f]", tmp$fixef["Intercept", "Estimate"], tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ], tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ])` (as probability: `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(tmp$fixef["Intercept", "Estimate"]), 100*lo2p(tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ]), 100*lo2p(tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ]))`), `r sprintf("pROPE=%.1f%%", tmp$rope$ROPE_Percentage[ tmp$rope$Parameter == "b_Intercept" ])`, but the sample is very small.
+
+#### Languages with*out* [r]
+
+There are `r sum(field$trill_real_L1_f == "no", na.rm=TRUE)` observations with [r] in L1 in the data.
+The full model is equivalent with the null model containing only the intercept.
+In this case, the intercept is positive (>50%) but its 95%HDI does include 0 (50%): `r tmp <- field_regressions_summaries_separate$brms$without_r; sprintf("%.2f 95%%HDI [%.2f, %.2f]", tmp$fixef["Intercept", "Estimate"], tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ], tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ])` (as probability: `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(tmp$fixef["Intercept", "Estimate"]), 100*lo2p(tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ]), 100*lo2p(tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ]))`), `r sprintf("pROPE=%.1f%%", tmp$rope$ROPE_Percentage[ tmp$rope$Parameter == "b_Intercept" ])`, again the sample size is small.
+
 
 
 ### Summary

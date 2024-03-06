@@ -436,6 +436,36 @@ field     <- read_csv(paste0(data, 'field_experiment_cleaned.csv'))
 field_raw <- read_csv(paste0(data, '/field_raw_trials.csv'))
 ```
 
+# Create summary table for article
+
+```{r}
+# Creating the desired table
+summary_table_web <- web %>%
+  group_by(Family, Name) %>%
+  summarise(
+    Num_IDs = n(), # Count of IDs
+    r_l_distinction = unique(r_l_distinction_L1),
+    trill_real_L1 = unique(trill_real_L1),
+    trill_occ_L1 = unique(trill_occ_L1)
+  )
+
+# Output the table to a CSV file for use in Word
+write.csv(summary_table_web, 'summary_table_web.csv', row.names = FALSE)
+
+# Creating the desired table
+summary_table_field <- field %>%
+  group_by(Family, Name) %>%
+  summarise(
+    Num_IDs = n(), # Count of IDs
+    r_l_distinction = unique(r_l_distinction_L1),
+    trill_real_L1 = unique(trill_real_L1),
+    trill_occ_L1 = unique(trill_occ_L1)
+  )
+
+# Output the table to a CSV file for use in Word
+write.csv(summary_table_field, 'summary_table_field.csv', row.names = FALSE)
+```
+
 # Online experiment
 
 ## Descriptive statistics

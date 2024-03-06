@@ -1447,11 +1447,11 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
                    sample_prior=TRUE,             # needed for hypotheses tests
                    seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
   summary(b_L1_full); mcmc_plot(b_L1_full, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_L1_full, variable="^b_", regex=TRUE); # very decent
-  brms::hypothesis(b_L1_full, c("Orderl_first = 0",                                      # p=0.49
-                                "SexM = 0",                                              # p=0.84
+  brms::hypothesis(b_L1_full, c("Orderl_first = 0",                                      # p=0.58
+                                "SexM = 0",                                              # p=0.82
                                 "Age = 0",                                               # p=0.99
-                                "r_l_distinction_L1_fdistinct = 0",                      # p=0.71
-                                "trill_real_L1_fyes = 0"));                              # p=0.22    *
+                                "r_l_distinction_L1_fdistinct = 0",                      # p=0.70
+                                "trill_real_L1_fyes = 0"));                              # p=0.17    *
   b_L1_full <- brms_fit_indices(b_L1_full);
   brms_compare_models(b0, b_L1_full, "[null model]", "[L1 full]"); # much better than null
   # posterior predictive checks
@@ -2234,10 +2234,34 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
           axis.text.x = element_text(face = 'bold', size = 12),
           axis.text.y = element_text(face = 'bold', size = 12));
   
+  p <- mcmc_plot(b_L1_full, variable="^b_", regex=TRUE, type="intervals", prob=0.50, prob_outer=0.89, point_est="median") + 
+    xlim(c(-4,6)) + 
+    scale_y_discrete(labels=c("b_Intercept" = "Intercept", 
+                              "b_Orderl_first" = "Order ([l] first)",
+                              "b_SexM" = "Sex (male)",
+                              "b_Age" = "Age",
+                              "b_r_l_distinction_L1_fdistinct" = "r/l contrast",
+                              "b_trill_real_L1_fyes" = "[r] is r-sound"),
+                     limits=rev(c("b_Intercept", 
+                                  "b_SexM",
+                                  "b_Age",
+                                  "b_Orderl_first",
+                                  "b_trill_real_L1_fyes",
+                                  "b_r_l_distinction_L1_fdistinct"))) +
+    xlab('Coefficient') +
+    ylab(NULL) +
+    theme_timo + # Tweak cosmetics:
+    theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                      r = 0, l = 0),
+                                      face = 'bold', size = 14),
+          axis.text.x = element_text(face = 'bold', size = 12),
+          axis.text.y = element_text(face = 'bold', size = 12))+
+    NULL;
   # Show and save:
   p;
   ggsave(plot = p, filename = "./plots/full_model_web_coefficients.pdf", width = 8, height = 6);
   ggsave(plot = p, filename = "./plots/full_model_web_coefficients.jpg", width = 8, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_web_coefficients.tif", width = 8, height = 6, compression="lzw", dpi=600);
 
   
   ## Combine the predictions for each language with the averages of each language:
@@ -2282,7 +2306,8 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
     geom_point(aes(y = avg), col = 'black', shape = 23, size = 5, stroke = 1.0, alpha = 0.75)  +
     labs(x = '', y = 'Proportion of congruent responses') + # Axis labels:
     #ggtitle('Posterior medians and descriptive averages of congruent responses\nby language and R/L contrast (color) and [r] as primary rhotic in L1 (shape)') +
-    scale_color_manual(values = c(colorBlindBlack8[2], colorBlindBlack8[3])) + # Tweak cosmetics:
+    scale_color_manual(values = c("same"=colorBlindBlack8[2], "distinct"=colorBlindBlack8[3]), labels=c("same"="no r/l contrast", "distinct"="r/l contrast")) + # Tweak cosmetics:
+    scale_shape(labels=c("yes"="[r] is r-sound", "no"="[r] is not r-sound")) + 
     theme_timo + 
     theme(axis.text.x = element_text(angle = 45, hjust = 1, face = 'bold', size = 10),
           axis.text.y = element_text(face = 'bold', size = 10),
@@ -2298,6 +2323,7 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
   p
   ggsave(plot = p, filename = "./plots/full_model_web_languages.pdf", width = 12, height = 6);
   ggsave(plot = p, filename = "./plots/full_model_web_languages.jpg", width = 12, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_web_languages.tif", width = 12, height = 6, compression="lzw", dpi=600);
   
   
   
@@ -2329,6 +2355,7 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
                                                   "b_full_wr_nas"=b_full_wr_nas,
                                                   "b_full_nr_nasl_noaf_l2"=b_full_nr_nasl_noaf_l2));
     #save(web_regressions_L1_models, file="./models/web_regressions_L1_models.rds", compress="xz", compression_level=9);
+    saveRDS(b_L1_full, file="./models/web_regressions_L1_full_model.rds", compress="xz");
     saveRDS(web_regressions_L1_models, file="./models/web_regressions_L1_models.rds", compress="xz");
   }
   # save the summaries (much less disk space but enough info to understand the results):
@@ -2867,7 +2894,7 @@ There is a hint that the presence of [r] in L1 might have a negative effect, but
 
 For the *full model* (i.e., with all potential fixed effects and random effects, Match ~ 1 + Order + Sex + Age + r_l_distinction_L1_f + trill_real_L1_f + (1 + Order + Sex + Age | Language) + (1 + Order + Sex + Age | Family) + (1 + Order + Sex + Age | Autotyp_Area)):
 
-<center>![Full model: the fixed effects showing the median, 66% and 95% quantiles of the posterior distribution.](./plots/full_model_web_coefficients.jpg){width="6in"}</center>
+<center>![Full model: the fixed effects showing the median, 50% and 89% quantiles of the posterior distribution.](./plots/full_model_web_coefficients.jpg){width="6in"}</center>
 
 <center>![Full model: the distribution of the proportion of *matches* per language.](./plots/full_model_web_languages.jpg){width="10in"}</center>
 
@@ -3441,7 +3468,171 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
   
   ## -> so, both for those with and without [r], no factor seems to play any role
   ##    and the intercept (of the null model) are not impressive
+  
+  
+  
+  ## Plots:
+  
+  ## The full model:
+  ## Complex models with the appropriate random effects structure
+  ## L1 only:
+  b_L1_full <- brm(Match ~ 1 + 
+                     Sex + Age + 
+                     r_l_distinction_L1_f + trill_real_L1_f + trill_occ_L1_f +
+                     (1 + Sex + Age | Language) +
+                     (1 + Sex + Age | Family) +
+                     (1 + Sex + Age | Autotyp_Area),
+                   data = field,
+                   family=bernoulli(link='logit'),
+                   prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                           brms::set_prior("lkj(2)", class="cor")),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=15));
+  summary(b_L1_full); mcmc_plot(b_L1_full, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_L1_full, variable="^b_", regex=TRUE); # very decent
+  brms::hypothesis(b_L1_full, c("Sexm = 0",                                    # p=0.57
+                                "Age = 0",                                     # p=0.87
+                                "r_l_distinction_L1_fdistinct = 0",            # p=0.50
+                                "trill_real_L1_fyes = 0",                      # p=0.50
+                                "trill_occ_L1_fyes = 0"));                     # p=0.50
+  # posterior predictive checks
+  plot_prefix <- "./plots/field_L1_full"; b <- b_L1_full;
+  mcmc_plot(b, type="trace", variable="^b_", regex=TRUE); ggsave(paste0(plot_prefix,"_mcmctrace.jpg"), device="jpeg", width=7, height=6, units="in", quality=85);
+  mcmc_plot(b, variable="^b_", regex=TRUE); ggsave(paste0(plot_prefix,"_mcmcestim.jpg"), device="jpeg", width=7, height=4, units="in", quality=85);
+  pp_check(b, ndraws=100) + xlab('p(match)') + ggtitle('Posterior predictive density overlay'); ggsave(paste0(plot_prefix,"_ppchecks_densoverlay.jpg"), device="jpeg", width=6, height=4, units="in", quality=85);
+  g <- arrangeGrob(pp_check(b, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values'),
+                   pp_check(b, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means'),
+                   pp_check(b, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values'),
+                   ncol=1); # seems fine (the observed, y, does fall in the predicted distributions, y_{rep} for the max, mean and min)
+  as_ggplot(g); ggsave(paste0(plot_prefix,"_ppchecks_min_mean_max.jpg"), plot=g, device="jpeg", width=6, height=4*3, units="in", quality=85);
+  plot_model(b, type="pred", terms=c("trill_real_L1_f", "r_l_distinction_L1_f", "trill_occ_L1_f")); ggsave(paste0(plot_prefix,"_pred.jpg"), device="jpeg", width=4, height=4, units="in", quality=85);
+  
+  # Extract the posteriors:
+  posts <- posterior_samples(b_L1_full);
+  posts <- select(posts, b_Intercept:b_trill_occ_L1_fyes);
+  
+  # Make the posteriors into long format for plotting:
+  posts <- pivot_longer(posts,
+                        cols = b_Intercept:b_trill_occ_L1_fyes,
+                        names_to = 'coefficient',
+                        values_to = 'posterior');
+  
+  # Change names for plotting and order:
+  posts <- posts %>%
+    mutate(coefficient = ifelse(coefficient == 'b_Intercept',                     'Intercept', coefficient),
+           coefficient = ifelse(coefficient == 'b_Sexm',                          'Sex', coefficient),
+           coefficient = ifelse(coefficient == 'b_Age',                           'Age', coefficient),
+           coefficient = ifelse(coefficient == 'b_r_l_distinction_L1_fdistinct',  'r/l distinction', coefficient),
+           coefficient = ifelse(coefficient == 'b_trill_real_L1_fyes',            '[r] present', coefficient),
+           coefficient = ifelse(coefficient == 'b_trill_occ_L1_fyes',             '[r] as allophone', coefficient),
+           coefficient = factor(coefficient, levels = rev(c('Intercept', 'Order', 'Sex', 'Age', 'r/l distinction', '[r] present', '[r] as allophone'))));
+  
+  # Aesthetics and geom:
+  p <- posts %>% 
+    ggplot(aes(y = coefficient, x = posterior)) +
+    geom_vline(aes(xintercept = 0), linetype = 2) +
+    stat_halfeye(alpha = 0.5, fill = 'steelblue') +
+    coord_cartesian(xlim = c(-4, +6)) + # Axis labels and coordinates:
+    scale_x_continuous(breaks = seq(-4, 6, 1)) +
+    xlab('Coefficient') +
+    ylab(NULL) +
+    theme_timo + # Tweak cosmetics:
+    theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                      r = 0, l = 0),
+                                      face = 'bold', size = 14),
+          axis.text.x = element_text(face = 'bold', size = 12),
+          axis.text.y = element_text(face = 'bold', size = 12));
+  
+  p <- mcmc_plot(b_L1_full, variable="^b_", regex=TRUE, type="intervals", prob=0.50, prob_outer=0.89, point_est="median") + 
+    #xlim(c(-4,6)) + 
+    scale_y_discrete(labels=c("b_Intercept" = "Intercept", 
+                              "b_Sexm" = "Sex (male)",
+                              "b_Age" = "Age",
+                              "b_r_l_distinction_L1_fdistinct" = "r/l contrast",
+                              "b_trill_real_L1_fyes" = "[r] is r-sound",
+                              "b_trill_occ_L1_fyes" = "[r] as allophone"),
+                     limits=rev(c("b_Intercept", 
+                                  "b_Sexm",
+                                  "b_Age",
+                                  "b_trill_real_L1_fyes",
+                                  "b_r_l_distinction_L1_fdistinct",
+                                  "b_trill_occ_L1_fyes"))) +
+    xlab('Coefficient') +
+    ylab(NULL) +
+    theme_timo + # Tweak cosmetics:
+    theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                      r = 0, l = 0),
+                                      face = 'bold', size = 14),
+          axis.text.x = element_text(face = 'bold', size = 12),
+          axis.text.y = element_text(face = 'bold', size = 12))+
+    NULL;
+  # Show and save:
+  p;
+  ggsave(plot = p, filename = "./plots/full_model_field_coefficients.pdf", width = 8, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_field_coefficients.jpg", width = 8, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_field_coefficients.tif", width = 8, height = 6, compression="lzw", dpi=600);
 
+  
+  ## Combine the predictions for each language with the averages of each language:
+  # Setup data frame with predictors to get predictions for:
+  newdata <- data.frame(Language = unique(field$Language));
+  newdata$Sex <- "f";
+  newdata$Age <- mean(field$Age);
+  newdata$trill_real_L1_f <- field[match(newdata$Language, field$Language), ]$trill_real_L1_f
+  newdata$r_l_distinction_L1_f <- field[match(newdata$Language, field$Language), ]$r_l_distinction_L1_f
+  newdata$trill_occ_L1_f <- field[match(newdata$Language, field$Language), ]$trill_occ_L1_f
+  newdata$Family <- field[match(newdata$Language, field$Language), ]$Family
+  newdata$Autotyp_Area <- field[match(newdata$Language, field$Language), ]$Autotyp_Area
+  
+  # Get predictions and append to dataframe:
+  fit <- fitted(b_L1_full, newdata = newdata, re_formula = NULL, robust = TRUE);
+  colnames(fit) = c('fit', 'se', 'lwr', 'upr')
+  newdata <- cbind(newdata, fit)
+  
+  # Order predictions by descriptive average:
+  newdata <- arrange(newdata, fit)
+  newdata <- mutate(newdata, Language = factor(Language, levels = newdata$Language))
+  
+  # How many languages are over 0.5? (will be reported in paper)
+  sum(newdata$lwr > 0.5);
+  
+  # Finally, add the averages to the plot:
+  newdata$avg <- field_avg[match(newdata$Language, field_avg$Language), ]$M
+  
+  # Match language names into there and order:
+  newdata$Language <- field[match(newdata$Language, field$Language), ]$Name
+  newdata <- mutate(newdata, Language = factor(Language, levels = newdata$Language))
+
+  # Setup the plot:
+  # Aesthetics and geom:
+  p <- newdata %>% 
+    ggplot(aes(x = Language, col = r_l_distinction_L1_f, y = fit, ymin = lwr, ymax = upr, shape = trill_real_L1_f)) +
+    #scale_shape_manual(values = c("no" = 1, "yes" = 3)) +
+    geom_errorbar(aes(col = r_l_distinction_L1_f), linewidth = 1.0, width = 0.3) +
+    geom_point(size = 5) +
+    geom_hline(yintercept = 0.5, linetype = 2, size = 1.5, col = 'grey') + 
+    geom_point(aes(y = avg), col = 'black', shape = 23, size = 7, stroke = 1.0, alpha = 0.75)  +
+    labs(x = '', y = 'Proportion of congruent responses') + # Axis labels:
+    #ggtitle('Posterior medians and descriptive averages of congruent responses\nby language and R/L contrast (color) and [r] as primary rhotic in L1 (shape)') +
+    scale_color_manual(values = c("same"=colorBlindBlack8[2], "distinct"=colorBlindBlack8[3]), labels=c("same"="no r/l contrast", "distinct"="r/l contrast")) + # Tweak cosmetics:
+    scale_shape(labels=c("yes"="[r] is r-sound", "no"="[r] is not r-sound")) + 
+    theme_timo + 
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, face = 'bold', size = 10),
+          axis.text.y = element_text(face = 'bold', size = 10),
+          axis.title = element_text(face = 'bold', size = 12),
+          axis.title.y = element_text(face = 'bold', size = 12, margin = margin(t = 0, r = 35, b = 0, l = 0)),
+          plot.title = element_text(face = 'bold', size = 14, margin = margin(t = 0, r = 0, b = 30, l = 0)),
+          legend.text = element_text(size = 10),
+          legend.title = element_blank(),
+          legend.position = c(0.95, 0.15),
+          legend.justification = c('right', 'bottom'))
+  
+  # Show and save:
+  p
+  ggsave(plot = p, filename = "./plots/full_model_field_languages.pdf", width = 12, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_field_languages.jpg", width = 12, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_field_languages.tif", width = 12, height = 6, compression="lzw", dpi=600);
+  
   
     
   ## save all these results for later:
@@ -3459,6 +3650,7 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
     field_regressions_models_separate <- list("brms"=list("with_r"=b_null_wr,
                                                           "without_r"=b_null_nr));
     save(field_regressions_models_separate, file="./models/field_regressions_models_separate.rds", compress="xz", compression_level=9);
+    saveRDS(b_L1_full, file="./models/web_regressions_L1_full_model.rds", compress="xz");
   }
   # save the summaries (much less disk space but enough info to undertsand the results):
   field_regressions_summaries <- list("brms"=list("prior_pred_check"=list("plot_path"="./plots/field_prior_predictive_checks.jpg"),
@@ -3647,11 +3839,17 @@ In this case, the intercept is positive (>50%) but its 95%HDI does include 0 (50
 In all cases the intercept *α* is highly significant and positive, comparable with the null model at ≥ 98%, so ≫ 50%.
 On the other hand, none of the potential predictors seem to make any difference.
 
+For the *full model* (i.e., with all potential fixed effects and random effects, Match ~ 1 + Sex + Age + r_l_distinction_L1_f + trill_real_L1_f + trill_occ_L1_f + (1 + Sex + Age | Language) + (1 + Sex + Age | Family) + (1 + Sex + Age | Autotyp_Area)):
+
+<center>![Full model: the fixed effects showing the median, 50% and 89% quantiles of the posterior distribution.](./plots/full_model_field_coefficients.jpg){width="6in"}</center>
+
+<center>![Full model: the distribution of the proportion of *matches* per language.](./plots/full_model_field_languages.jpg){width="10in"}</center>
+
 
 # Conclusions
 
 It is clear that there is a very strong association between [r] and the rugged line and between [l] and the continuous line across the board.
 On the other hand, no predictor seems to really affect this, except for the order of presentation ("l" first decreases the association) and, when order is also included and its random structure properly modeled, the presence of [r] in the L1, both for the web experiment.
-This turns out to be almost entirely driven by the cases where there is no [r] in the participants' L1(s) , with no discernible contribution from their L2(s).
+This turns out to be almost entirely driven by the cases where there is no [r] in the participants' L1(s), with no discernible contribution from their L2(s).
 
 

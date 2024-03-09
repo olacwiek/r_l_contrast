@@ -2226,7 +2226,7 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
   
   ## Plots:
   
-  ## The full model:
+  # Using the full model with the full random effects structure:  
   # Extract the posteriors:
   posts <- posterior_samples(b_L1_full);
   posts <- select(posts, b_Intercept:b_trill_real_L1_fyes);
@@ -2355,6 +2355,148 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
   ggsave(plot = p, filename = "./plots/full_model_web_languages.tif", width = 12, height = 6, compression="lzw", dpi=600);
   
   
+  ## And using the full model with the simplified random effects structure:
+  b_web_for_plots <- brm(Match ~ 1 + 
+                           Order + Sex + Age + 
+                           r_l_distinction_L1_f + trill_real_L1_f +
+                           (1 + Order + Sex + Age | Language),
+                         data = web,
+                         family=bernoulli(link='logit'),
+                         prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                                 brms::set_prior("lkj(2)", class="cor")),
+                         save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                         sample_prior=TRUE,             # needed for hypotheses tests
+                         seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_web_for_plots); mcmc_plot(b_web_for_plots, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_web_for_plots, variable="^b_", regex=TRUE); # very decent
+  
+  # Extract the posteriors:
+  posts <- posterior_samples(b_web_for_plots);
+  posts <- select(posts, b_Intercept:b_trill_real_L1_fyes);
+  
+  # Make the posteriors into long format for plotting:
+  posts <- pivot_longer(posts,
+                        cols = b_Intercept:b_trill_real_L1_fyes,
+                        names_to = 'coefficient',
+                        values_to = 'posterior');
+  
+  # Change names for plotting and order:
+  posts <- posts %>%
+    mutate(coefficient = ifelse(coefficient == 'b_Intercept',                     'Intercept', coefficient),
+           coefficient = ifelse(coefficient == 'b_Orderl_first',                  'Order', coefficient),
+           coefficient = ifelse(coefficient == 'b_SexM',                          'Sex', coefficient),
+           coefficient = ifelse(coefficient == 'b_Age',                           'Age', coefficient),
+           coefficient = ifelse(coefficient == 'b_r_l_distinction_L1_fdistinct',  'r/l distinction', coefficient),
+           coefficient = ifelse(coefficient == 'b_trill_real_L1_fyes',            '[r] present', coefficient),
+           coefficient = factor(coefficient, levels = rev(c('Intercept', 'Order', 'Sex', 'Age', 'r/l distinction', '[r] present'))));
+  
+  # Aesthetics and geom:
+  p <- posts %>% 
+    ggplot(aes(y = coefficient, x = posterior)) +
+    geom_vline(aes(xintercept = 0), linetype = 2) +
+    stat_halfeye(alpha = 0.5, fill = 'steelblue') +
+    coord_cartesian(xlim = c(-4, +6)) + # Axis labels and coordinates:
+    scale_x_continuous(breaks = seq(-4, 6, 1)) +
+    xlab('Coefficient') +
+    ylab(NULL) +
+    theme_timo + # Tweak cosmetics:
+    theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                      r = 0, l = 0),
+                                      face = 'bold', size = 14),
+          axis.text.x = element_text(face = 'bold', size = 12),
+          axis.text.y = element_text(face = 'bold', size = 12));
+  
+  p <- mcmc_plot(b_web_for_plots, variable="^b_", regex=TRUE, type="intervals", prob=0.50, prob_outer=0.89, point_est="median") + 
+    #xlim(c(-4,6)) + 
+    scale_y_discrete(labels=c("b_Intercept" = "Intercept", 
+                              "b_Orderl_first" = "Order ([l] first)",
+                              "b_SexM" = "Sex (male)",
+                              "b_Age" = "Age",
+                              "b_r_l_distinction_L1_fdistinct" = "r/l contrast",
+                              "b_trill_real_L1_fyes" = "[r] is r-sound"),
+                     limits=rev(c("b_Intercept", 
+                                  "b_SexM",
+                                  "b_Age",
+                                  "b_Orderl_first",
+                                  "b_trill_real_L1_fyes",
+                                  "b_r_l_distinction_L1_fdistinct"))) +
+    xlab('Coefficient') +
+    ylab(NULL) +
+    theme_timo + # Tweak cosmetics:
+    theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                      r = 0, l = 0),
+                                      face = 'bold', size = 14),
+          axis.text.x = element_text(face = 'bold', size = 12),
+          axis.text.y = element_text(face = 'bold', size = 12))+
+    NULL;
+  # Show and save:
+  p;
+  ggsave(plot = p, filename = "./plots/full_model_web_reducedraneeff_coefficients.pdf", width = 8, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_web_reducedraneeff_coefficients.jpg", width = 8, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_web_reducedraneeff_coefficients.tif", width = 8, height = 6, compression="lzw", dpi=600);
+
+  
+  ## Combine the predictions for each language with the averages of each language:
+  # Setup data frame with predictors to get predictions for:
+  newdata <- data.frame(Language = unique(web$Language));
+  newdata$Order <- "r_first";
+  newdata$Sex <- "F";
+  newdata$Age <- mean(web$Age);
+  newdata$trill_real_L1_f <- web[match(newdata$Language, web$Language), ]$trill_real_L1_f
+  newdata$r_l_distinction_L1_f <- web[match(newdata$Language, web$Language), ]$r_l_distinction_L1_f
+  newdata$Family <- web[match(newdata$Language, web$Language), ]$Family
+  newdata$Autotyp_Area <- web[match(newdata$Language, web$Language), ]$Autotyp_Area
+  
+  # Get predictions and append to dataframe:
+  fit <- fitted(b_web_for_plots, newdata = newdata, re_formula = NULL, robust = TRUE);
+  colnames(fit) = c('fit', 'se', 'lwr', 'upr')
+  newdata <- cbind(newdata, fit)
+  
+  # Order predictions by descriptive average:
+  newdata <- arrange(newdata, fit)
+  newdata <- mutate(newdata, Language = factor(Language, levels = newdata$Language))
+  
+  # How many languages are over 0.5? (will be reported in paper)
+  sum(newdata$lwr > 0.5);
+  
+  # Finally, add the averages to the plot:
+  newdata$avg <- web_avg[match(newdata$Language, web_avg$Language), ]$M
+  
+  # Match language names into there and order:
+  newdata$Language <- web[match(newdata$Language, web$Language), ]$Name
+  newdata[newdata$Language == 'Chinese', ]$Language <- 'Mandarin Chinese'
+  newdata <- mutate(newdata, Language = factor(Language, levels = newdata$Language))
+
+  # Setup the plot:
+  # Aesthetics and geom:
+  p <- newdata %>% 
+    ggplot(aes(x = Language, col = r_l_distinction_L1_f, y = fit, ymin = lwr, ymax = upr, shape = trill_real_L1_f)) +
+    #scale_shape_manual(values = c("no" = 1, "yes" = 3)) +
+    geom_errorbar(aes(col = r_l_distinction_L1_f), linewidth = 1.0, width = 0.3) +
+    geom_point(size = 5) +
+    geom_hline(yintercept = 0.5, linetype = 2, size = 1.5, col = 'grey') + 
+    geom_point(aes(y = avg), col = 'black', shape = 23, size = 5, stroke = 1.0, alpha = 0.75)  +
+    labs(x = '', y = 'Proportion of congruent responses') + # Axis labels:
+    #ggtitle('Posterior medians and descriptive averages of congruent responses\nby language and R/L contrast (color) and [r] as primary rhotic in L1 (shape)') +
+    scale_color_manual(values = c("same"=colorBlindBlack8[2], "distinct"=colorBlindBlack8[3]), labels=c("same"="no r/l contrast", "distinct"="r/l contrast")) + # Tweak cosmetics:
+    scale_shape(labels=c("yes"="[r] is r-sound", "no"="[r] is not r-sound")) + 
+    theme_timo + 
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, face = 'bold', size = 10),
+          axis.text.y = element_text(face = 'bold', size = 10),
+          axis.title = element_text(face = 'bold', size = 12),
+          axis.title.y = element_text(face = 'bold', size = 12, margin = margin(t = 0, r = 35, b = 0, l = 0)),
+          plot.title = element_text(face = 'bold', size = 14, margin = margin(t = 0, r = 0, b = 30, l = 0)),
+          legend.text = element_text(size = 10),
+          legend.title = element_blank(),
+          legend.position = c(0.95, 0.15),
+          legend.justification = c('right', 'bottom'))
+  
+  # Show and save:
+  p
+  ggsave(plot = p, filename = "./plots/full_model_web_reducedraneeff_languages.pdf", width = 12, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_web_reducedraneeff_languages.jpg", width = 12, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_web_reducedraneeff_languages.tif", width = 12, height = 6, compression="lzw", dpi=600);
+
+  
   
   
   ## save all these results for later:
@@ -2385,6 +2527,7 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
                                                   "b_full_nr_nasl_noaf_l2"=b_full_nr_nasl_noaf_l2));
     #save(web_regressions_L1_models, file="./models/web_regressions_L1_models.rds", compress="xz", compression_level=9);
     saveRDS(b_L1_full, file="./models/web_regressions_L1_full_model.rds", compress="xz");
+    saveRDS(b_web_for_plots, file="./models/web_regressions_L1_full_model_reducedraneeff.rds", compress="xz");
     saveRDS(web_regressions_L1_models, file="./models/web_regressions_L1_models.rds", compress="xz");
   }
   # save the summaries (much less disk space but enough info to understand the results):
@@ -2574,8 +2717,12 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
                                                    "full_for_plotting"=list("hdi"=bayestestR::hdi(b_L1_full, ci=0.95), 
                                                                             "rope"=bayestestR::rope(b_L1_full, ci=0.95, ci_method="HDI", verbose=FALSE), 
                                                                             "fixef"=fixef(b_L1_full), "ranef"=ranef(b_L1_full), 
-                                                                            "summary"=capture.output(summary(b_L1_full)))
-                                                   ));
+                                                                            "summary"=capture.output(summary(b_L1_full))),
+                                                   "full_for_plotting__reducedraneeff"=list("hdi"=bayestestR::hdi(b_web_for_plots, ci=0.95), 
+                                                                                            "rope"=bayestestR::rope(b_web_for_plots, ci=0.95, ci_method="HDI", verbose=FALSE), 
+                                                                                            "fixef"=fixef(b_web_for_plots), "ranef"=ranef(b_web_for_plots), 
+                                                                                            "summary"=capture.output(summary(b_web_for_plots)))
+                                       ));
   #save(web_regressions_L1_summaries, file="./models/web_regressions_L1_summaries.rds", compress="xz", compression_level=9);
   saveRDS(web_regressions_L1_summaries, file="./models/web_regressions_L1_summaries.rds", compress="xz");
 } else
@@ -2931,7 +3078,13 @@ For the *full model* (i.e., with all potential fixed effects and random effects,
 
 <center>![Full model: the distribution of the proportion of *matches* per language.](./plots/full_model_web_languages.jpg){width="10in"}</center>
 
-Looking separately at the cases where [r] is present in the L1(s) and where it is not shows that, in the first case the association between [r] and the ragged line is much weaker (at ~75% and not formally significant) and there is no effect of the order of presentation, but that in the second case the association is much stronger and order does have an effect in the sense that presenting "l" first reduces the probability of a match from ~95% to about 89%.
+And using the *full model* but with a reduced random structure (i.e., Match ~ 1 + Order + Sex + Age + r_l_distinction_L1_f + trill_real_L1_f + (1 + Order + Sex + Age | Language)):
+
+<center>![Full model: the fixed effects showing the median, 50% and 89% quantiles of the posterior distribution.](./plots/full_model_web_reducedraneeff_coefficients.jpg){width="6in"}</center>
+
+<center>![Full model: the distribution of the proportion of *matches* per language.](./plots/full_model_web_reducedraneeff_languages.jpg){width="10in"}</center>
+
+Looking separately at the cases where [r] is present in the L1(s) and where it is not shows that, in the first case the association between [r] and the ragged line is weaker and there is no effect of the order of presentation, but that in the second case the association is much stronger and order does have an effect in the sense that presenting "l" first reduces the probability of a match from ~95% to about 89%.
 In this latter case, the presence or not of [r] in the L2(s) does not seem to matter.
 
 
@@ -3680,6 +3833,147 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
   ggsave(plot = p, filename = "./plots/full_model_field_languages.tif", width = 12, height = 6, compression="lzw", dpi=600);
   
   
+  ## Using the full model wth a reduced random effects structure:
+  b_field_for_plots <- brm(Match ~ 1 + 
+                             Sex + Age + 
+                             r_l_distinction_L1_f + trill_real_L1_f + trill_occ_L1_f +
+                             (1 + Sex + Age | Language),
+                           data = field,
+                           family=bernoulli(link='logit'),
+                           prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                                   brms::set_prior("lkj(2)", class="cor")),
+                           save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                           sample_prior=TRUE,             # needed for hypotheses tests
+                           seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=15));
+  summary(b_field_for_plots); mcmc_plot(b_field_for_plots, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_field_for_plots, variable="^b_", regex=TRUE); # very decent
+
+  # Extract the posteriors:
+  posts <- posterior_samples(b_field_for_plots);
+  posts <- select(posts, b_Intercept:b_trill_occ_L1_fyes);
+  
+  # Make the posteriors into long format for plotting:
+  posts <- pivot_longer(posts,
+                        cols = b_Intercept:b_trill_occ_L1_fyes,
+                        names_to = 'coefficient',
+                        values_to = 'posterior');
+  
+  # Change names for plotting and order:
+  posts <- posts %>%
+    mutate(coefficient = ifelse(coefficient == 'b_Intercept',                     'Intercept', coefficient),
+           coefficient = ifelse(coefficient == 'b_Sexm',                          'Sex', coefficient),
+           coefficient = ifelse(coefficient == 'b_Age',                           'Age', coefficient),
+           coefficient = ifelse(coefficient == 'b_r_l_distinction_L1_fdistinct',  'r/l distinction', coefficient),
+           coefficient = ifelse(coefficient == 'b_trill_real_L1_fyes',            '[r] present', coefficient),
+           coefficient = ifelse(coefficient == 'b_trill_occ_L1_fyes',             '[r] as allophone', coefficient),
+           coefficient = factor(coefficient, levels = rev(c('Intercept', 'Order', 'Sex', 'Age', 'r/l distinction', '[r] present', '[r] as allophone'))));
+  
+  # Aesthetics and geom:
+  p <- posts %>% 
+    ggplot(aes(y = coefficient, x = posterior)) +
+    geom_vline(aes(xintercept = 0), linetype = 2) +
+    stat_halfeye(alpha = 0.5, fill = 'steelblue') +
+    coord_cartesian(xlim = c(-4, +6)) + # Axis labels and coordinates:
+    scale_x_continuous(breaks = seq(-4, 6, 1)) +
+    xlab('Coefficient') +
+    ylab(NULL) +
+    theme_timo + # Tweak cosmetics:
+    theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                      r = 0, l = 0),
+                                      face = 'bold', size = 14),
+          axis.text.x = element_text(face = 'bold', size = 12),
+          axis.text.y = element_text(face = 'bold', size = 12));
+  
+  p <- mcmc_plot(b_field_for_plots, variable="^b_", regex=TRUE, type="intervals", prob=0.50, prob_outer=0.89, point_est="median") + 
+    #xlim(c(-4,6)) + 
+    scale_y_discrete(labels=c("b_Intercept" = "Intercept", 
+                              "b_Sexm" = "Sex (male)",
+                              "b_Age" = "Age",
+                              "b_r_l_distinction_L1_fdistinct" = "r/l contrast",
+                              "b_trill_real_L1_fyes" = "[r] is r-sound",
+                              "b_trill_occ_L1_fyes" = "[r] as allophone"),
+                     limits=rev(c("b_Intercept", 
+                                  "b_Sexm",
+                                  "b_Age",
+                                  "b_trill_real_L1_fyes",
+                                  "b_r_l_distinction_L1_fdistinct",
+                                  "b_trill_occ_L1_fyes"))) +
+    xlab('Coefficient') +
+    ylab(NULL) +
+    theme_timo + # Tweak cosmetics:
+    theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                      r = 0, l = 0),
+                                      face = 'bold', size = 14),
+          axis.text.x = element_text(face = 'bold', size = 12),
+          axis.text.y = element_text(face = 'bold', size = 12))+
+    NULL;
+  # Show and save:
+  p;
+  ggsave(plot = p, filename = "./plots/full_model_field_reducedraneeff_coefficients.pdf", width = 8, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_field_reducedraneeff_coefficients.jpg", width = 8, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_field_reducedraneeff_coefficients.tif", width = 8, height = 6, compression="lzw", dpi=600);
+
+  
+  ## Combine the predictions for each language with the averages of each language:
+  # Setup data frame with predictors to get predictions for:
+  newdata <- data.frame(Language = unique(field$Language));
+  newdata$Sex <- "f";
+  newdata$Age <- mean(field$Age);
+  newdata$trill_real_L1_f <- field[match(newdata$Language, field$Language), ]$trill_real_L1_f
+  newdata$r_l_distinction_L1_f <- field[match(newdata$Language, field$Language), ]$r_l_distinction_L1_f
+  newdata$trill_occ_L1_f <- field[match(newdata$Language, field$Language), ]$trill_occ_L1_f
+  newdata$Family <- field[match(newdata$Language, field$Language), ]$Family
+  newdata$Autotyp_Area <- field[match(newdata$Language, field$Language), ]$Autotyp_Area
+  
+  # Get predictions and append to dataframe:
+  fit <- fitted(b_field_for_plots, newdata = newdata, re_formula = NULL, robust = TRUE);
+  colnames(fit) = c('fit', 'se', 'lwr', 'upr')
+  newdata <- cbind(newdata, fit)
+  
+  # Order predictions by descriptive average:
+  newdata <- arrange(newdata, fit)
+  newdata <- mutate(newdata, Language = factor(Language, levels = newdata$Language))
+  
+  # How many languages are over 0.5? (will be reported in paper)
+  sum(newdata$lwr > 0.5);
+  
+  # Finally, add the averages to the plot:
+  newdata$avg <- field_avg[match(newdata$Language, field_avg$Language), ]$M
+  
+  # Match language names into there and order:
+  newdata$Language <- field[match(newdata$Language, field$Language), ]$Name
+  newdata <- mutate(newdata, Language = factor(Language, levels = newdata$Language))
+
+  # Setup the plot:
+  # Aesthetics and geom:
+  p <- newdata %>% 
+    ggplot(aes(x = Language, col = r_l_distinction_L1_f, y = fit, ymin = lwr, ymax = upr, shape = trill_real_L1_f)) +
+    #scale_shape_manual(values = c("no" = 1, "yes" = 3)) +
+    geom_errorbar(aes(col = r_l_distinction_L1_f), linewidth = 1.0, width = 0.3) +
+    geom_point(size = 5) +
+    geom_hline(yintercept = 0.5, linetype = 2, size = 1.5, col = 'grey') + 
+    geom_point(aes(y = avg), col = 'black', shape = 23, size = 7, stroke = 1.0, alpha = 0.75)  +
+    labs(x = '', y = 'Proportion of congruent responses') + # Axis labels:
+    #ggtitle('Posterior medians and descriptive averages of congruent responses\nby language and R/L contrast (color) and [r] as primary rhotic in L1 (shape)') +
+    scale_color_manual(values = c("same"=colorBlindBlack8[2], "distinct"=colorBlindBlack8[3]), labels=c("same"="no r/l contrast", "distinct"="r/l contrast")) + # Tweak cosmetics:
+    scale_shape(labels=c("yes"="[r] is r-sound", "no"="[r] is not r-sound")) + 
+    theme_timo + 
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, face = 'bold', size = 10),
+          axis.text.y = element_text(face = 'bold', size = 10),
+          axis.title = element_text(face = 'bold', size = 12),
+          axis.title.y = element_text(face = 'bold', size = 12, margin = margin(t = 0, r = 35, b = 0, l = 0)),
+          plot.title = element_text(face = 'bold', size = 14, margin = margin(t = 0, r = 0, b = 30, l = 0)),
+          legend.text = element_text(size = 10),
+          legend.title = element_blank(),
+          legend.position = c(0.95, 0.15),
+          legend.justification = c('right', 'bottom'))
+  
+  # Show and save:
+  p
+  ggsave(plot = p, filename = "./plots/full_model_field_reducedraneeff_languages.pdf", width = 12, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_field_reducedraneeff_languages.jpg", width = 12, height = 6);
+  ggsave(plot = p, filename = "./plots/full_model_field_reducedraneeff_languages.tif", width = 12, height = 6, compression="lzw", dpi=600);
+  
+  
     
   ## save all these results for later:
   # save the models( if requested):
@@ -3697,6 +3991,7 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
                                                           "without_r"=b_null_nr_noaf));
     save(field_regressions_models_separate, file="./models/field_regressions_models_separate.rds", compress="xz", compression_level=9);
     saveRDS(b_L1_full, file="./models/field_regressions_L1_full_model.rds", compress="xz");
+    saveRDS(b_field_for_plots, file="./models/field_regressions_L1_full_model_reducedraneeff.rds", compress="xz");
   }
   # save the summaries (much less disk space but enough info to understand the results):
   field_regressions_summaries <- list("brms"=list("prior_pred_check"=list("plot_path"="./plots/field_prior_predictive_checks.jpg"),
@@ -3750,7 +4045,11 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
                                                   "full_for_plotting"=list("hdi"=bayestestR::hdi(b_L1_full, ci=0.95), 
                                                                             "rope"=bayestestR::rope(b_L1_full, ci=0.95, ci_method="HDI", verbose=FALSE), 
                                                                             "fixef"=fixef(b_L1_full), "ranef"=ranef(b_L1_full), 
-                                                                            "summary"=capture.output(summary(b_L1_full)))));
+                                                                            "summary"=capture.output(summary(b_L1_full))),
+                                                  "full_for_plotting_reducedraneeff"=list("hdi"=bayestestR::hdi(b_field_for_plots, ci=0.95), 
+                                                                                          "rope"=bayestestR::rope(b_field_for_plots, ci=0.95, ci_method="HDI", verbose=FALSE), 
+                                                                                          "fixef"=fixef(b_field_for_plots), "ranef"=ranef(b_field_for_plots), 
+                                                                                          "summary"=capture.output(summary(b_field_for_plots)))));
   save(field_regressions_summaries, file="./models/field_regressions_summaries.rds", compress="xz", compression_level=9);
   field_regressions_summaries_separate <- list("brms"=list("with_r" =list("hdi"=bayestestR::hdi(b_null_wr, ci=0.95),
                                                                           "rope"=bayestestR::rope(b_null_wr, ci=0.95, ci_method="HDI", verbose=FALSE),
@@ -3895,6 +4194,12 @@ For the *full model* (i.e., with all potential fixed effects and random effects,
 
 <center>![Full model: the distribution of the proportion of *matches* per language.](./plots/full_model_field_languages.jpg){width="10in"}</center>
 
+And using the *full model* with the refuced random effects strucutre (Match ~ 1 + Sex + Age + r_l_distinction_L1_f + trill_real_L1_f + trill_occ_L1_f + (1 + Sex + Age | Language)):
+
+<center>![Full model: the fixed effects showing the median, 50% and 89% quantiles of the posterior distribution.](./plots/full_model_field_reducedraneeff_coefficients.jpg){width="6in"}</center>
+
+<center>![Full model: the distribution of the proportion of *matches* per language.](./plots/full_model_field_reducedraneeff_languages.jpg){width="10in"}</center>
+
 
 # Conclusions
 
@@ -3975,10 +4280,16 @@ cat(paste0(web_regressions_L1_summaries$brms$with_trill$summary, collapse="\n"))
 cat(paste0(web_regressions_L1_summaries$brms$without_trill$summary, collapse="\n"));
 ```
 
-### A.I.12: Full model used for plotting
+### A.I.12: Full model used for plotting (full random effects structure)
 
 ```{r echo=FALSE}
 cat(paste0(web_regressions_L1_summaries$brms$full_for_plotting$summary, collapse="\n"));
+```
+
+### A.I.13: Full model used for plotting (reduced random effects structure)
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$full_for_plotting__reducedraneeff$summary, collapse="\n"));
 ```
 
 
@@ -4038,10 +4349,16 @@ cat(paste0(field_regressions_summaries_separate$brms$with_r$summary, collapse="\
 cat(paste0(field_regressions_summaries_separate$brms$without_r$summary, collapse="\n"));
 ```
 
-### A.I.10: Full model used for plotting
+### A.I.10: Full model used for plotting (full random effects structure)
 
 ```{r echo=FALSE}
 cat(paste0(field_regressions_summaries$brms$full_for_plotting$summary, collapse="\n"));
+```
+
+### A.I.11: Full model used for plotting (reduced random effects structure)
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries$brms$full_for_plotting_reducedraneeff$summary, collapse="\n"));
 ```
 
 

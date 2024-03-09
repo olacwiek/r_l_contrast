@@ -1877,10 +1877,23 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
   brms_compare_models(b_null_wr, b_full_wr_nas, "[null model]", "[+ order]"); # null is better
   
   # -> so, for the languages with [r], nothing matters
+  
+  # check if Area and Family are needed:
+  b_null_wr_nofa <- brm(Match ~ 1 + 
+                     (1 | Language),
+                   data = web_wr,
+                   family=bernoulli(link='logit'),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_null_wr_nofa); mcmc_plot(b_null_wr_nofa, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_null_wr_nofa, variable="^b_", regex=TRUE); # very decent
+  b_null_wr_nofa <- brms_fit_indices(b_null_wr_nofa);
+  brms_compare_models(b_null_wr, b_null_wr_nofa, "[null with full raneffs]", "[null with language]"); # they are equivalent but the fixed effects estimates seem better for the reduced model
+  
   # however, the intercept of the null model is really shitty:
-  summary(b_null_wr);
-  hdi(b_null_wr); # 1.12 [-1.82, 3.40]
-  rope(b_null_wr); # pROPE = 5.4%
+  summary(b_null_wr_nofa);
+  hdi(b_null_wr_nofa); # 1.78 [1.42, 2.17]
+  rope(b_null_wr_nofa); # pROPE = 0.0%
   
 
   ## without [r]:
@@ -2547,17 +2560,21 @@ if( !file.exists("./models/web_regressions_L1_summaries.rds") ||
                                                                             "cmp_0"=brms_compare_models(b0, b_L1_full_noaslo, "[0]", "[[r]]"),
                                                                             "cmp_full"=brms_compare_models(b_L1_full, b_L1_full_noaslo, "[full]", "[[r]]"),
                                                                             "cmp_trill"=brms_compare_models(b_L1_full_noaslo, b_L1_full_noasl, "[[r]]", "[order + [r]]")),
-                                                   "with_trill"       =list("hdi"=bayestestR::hdi(b_null_wr, ci=0.95), 
-                                                                            "rope"=bayestestR::rope(b_null_wr, ci=0.95, ci_method="HDI", verbose=FALSE), 
-                                                                            "fixef"=fixef(b_null_wr), "ranef"=ranef(b_null_wr), 
-                                                                            "summary"=capture.output(summary(b_null_wr))),
+                                                   "with_trill"       =list("hdi"=bayestestR::hdi(b_null_wr_nofa, ci=0.95), 
+                                                                            "rope"=bayestestR::rope(b_null_wr_nofa, ci=0.95, ci_method="HDI", verbose=FALSE), 
+                                                                            "fixef"=fixef(b_null_wr_nofa), "ranef"=ranef(b_null_wr_nofa), 
+                                                                            "summary"=capture.output(summary(b_null_wr_nofa))),
                                                    "without_trill"    =list("hdi"=bayestestR::hdi(b_full_nr_nasl_noaf, ci=0.95), 
                                                                             "hypotheses"=brms::hypothesis(b_full_nr_nasl_noaf, c("Orderl_first = 0")), 
                                                                             "rope"=bayestestR::rope(b_full_nr_nasl_noaf, ci=0.95, ci_method="HDI", verbose=FALSE), 
                                                                             "fixef"=fixef(b_full_nr_nasl_noaf), "ranef"=ranef(b_full_nr_nasl_noaf), 
                                                                             "summary"=capture.output(summary(b_full_nr_nasl_noaf)), 
                                                                             "cmp_0"=brms_compare_models(b_null_nr_noaf, b_full_nr_nasl_noaf, "[0]", "[order]"),
-                                                                            "cmp_trillL2"=brms_compare_models(b_full_nr_nasl_noaf_l2_nor, b_full_nr_nasl_noaf_l2, "[order]", "[order + r/l]"))
+                                                                            "cmp_trillL2"=brms_compare_models(b_full_nr_nasl_noaf_l2_nor, b_full_nr_nasl_noaf_l2, "[order]", "[order + r/l]")),
+                                                   "full_for_plotting"=list("hdi"=bayestestR::hdi(b_L1_full, ci=0.95), 
+                                                                            "rope"=bayestestR::rope(b_L1_full, ci=0.95, ci_method="HDI", verbose=FALSE), 
+                                                                            "fixef"=fixef(b_L1_full), "ranef"=ranef(b_L1_full), 
+                                                                            "summary"=capture.output(summary(b_L1_full)))
                                                    ));
   #save(web_regressions_L1_summaries, file="./models/web_regressions_L1_summaries.rds", compress="xz", compression_level=9);
   saveRDS(web_regressions_L1_summaries, file="./models/web_regressions_L1_summaries.rds", compress="xz");
@@ -2864,7 +2881,7 @@ The model `(1 + Order | Language) + (1 + Order | Family)` seems to support this:
 
 Interestingly, the interaction between order and the presence of [r] is *not* supported when we include the random structure (e.g., for `(1 + Order | Language) + (1 + Order | Family)`, 0.49 [-0.86,  1.83] p=0.75), but in the model without any random effects, the interaction is significantly different from 0 (0.93 [ 0.10,  1.72] p=0.36 \*) and it also makes [r] be significantly from 0 (-0.81 [-1.91, -0.74] p=0.28 \*), as suggested by the raw data.
 
-Thus, in order for the negative effect of [r] to become visible, we need to control for Order appropriately (i.e., allowing it to have random slopes by Language).
+Thus, in order for the negative effect of [r] to become visible, we need to control for *Order* appropriately (i.e., allowing it to have random slopes by Language).
 
 
 ### Separate analyses for languages with and without [r] in L1
@@ -2875,14 +2892,14 @@ The considerations above suggest that a separate analysis for the languages *wit
 
 There are `r sum(web$trill_real_L1_f == "yes", na.rm=TRUE)` observations with [r] in L1 in the data.
 All these languages make a distinction between r and l, rendering this variable irrelevant.
-With these, the full model Match ~ 1 + Order + Sex + Age + (1 + Order + Sex + Age | Language) + (1 + Order + Sex + Age | Family) + (1 + Order + Sex + Age | Autotyp_Area) is not much better than the null model containing only the intercept, as expected.
-Moreover, in this case, the intercept is positive (>50%) but its 95%HDI does include 0 (50%): `r tmp <- web_regressions_L1_summaries$brms$with_trill; sprintf("%.2f 95%%HDI [%.2f, %.2f]", tmp$fixef["Intercept", "Estimate"], tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ], tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ])` (as probability: `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(tmp$fixef["Intercept", "Estimate"]), 100*lo2p(tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ]), 100*lo2p(tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ]))`), `r sprintf("pROPE=%.1f%%", tmp$rope$ROPE_Percentage[ tmp$rope$Parameter == "b_Intercept" ])`, suggesting that the association between [r] and the ragged line is not overwhelming.
+With these, the full model Match ~ 1 + Order + Sex + Age + (1 + Order + Sex + Age | Language) + (1 + Order + Sex + Age | Family) + (1 + Order + Sex + Age | Autotyp_Area) is not much better than the null model containing only the intercept, as expected; however, the full random effects structure is not necessary and reduces to (1 | Language).
+With these, the intercept is positive (>50%) and its 95%HDI excludes 0 (50%): `r tmp <- web_regressions_L1_summaries$brms$with_trill; sprintf("%.2f 95%%HDI [%.2f, %.2f]", tmp$fixef["Intercept", "Estimate"], tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ], tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ])` (as probability: `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(tmp$fixef["Intercept", "Estimate"]), 100*lo2p(tmp$hdi$CI_low[ tmp$hdi$Parameter == "b_Intercept" ]), 100*lo2p(tmp$hdi$CI_high[ tmp$hdi$Parameter == "b_Intercept" ]))`), `r sprintf("pROPE=%.1f%%", tmp$rope$ROPE_Percentage[ tmp$rope$Parameter == "b_Intercept" ])`.
 
 #### Languages with*out* [r]
 
 There are `r sum(web$trill_real_L1_f == "no", na.rm=TRUE)` observations without [r] in L1 in the data.
 There is variation gere in what concerns the distinction between r and l, making this variable potentially relevant.
-With these, the full model Match ~ 1 + Order + Sex + Age + r_l_distinction_L1_f + (1 + Order + Sex + Age | Language) + (1 + Order + Sex + Age | Family) + (1 + Order + Sex + Age | Autotyp_Area) simplifies to the model only with *Order* as fixed effect and *Languages* as random effect, but the random slope of *Order* is necessary.
+With these, the full model Match ~ 1 + Order + Sex + Age + r_l_distinction_L1_f + (1 + Order + Sex + Age | Language) + (1 + Order + Sex + Age | Family) + (1 + Order + Sex + Age | Autotyp_Area) simplifies to the model only with *Order* as fixed effect and *Languages* as random effect, but the random slope of *Order* is necessary: Match ~ 1 + Order + (1 + Order | Language).
 `r tmp <- web_regressions_L1_summaries$brms$without_trill`
 
 | variable | log odds ratio (LOR) | probability (%) | *p*       | model comparison |
@@ -3483,6 +3500,19 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
   brms_compare_models(b_full_nr, b_red_nr, "[full]", "[reduced]"); # reduced is better
   
   ## -> so, both for those with and without [r], no factor seems to play any role
+  
+  # does family matter?
+  b_null_nr_noaf <- brm(Match ~ 1 + 
+                     (1 | Language),
+                   data = field_nr,
+                   family=bernoulli(link='logit'),
+                   save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                   sample_prior=TRUE,             # needed for hypotheses tests
+                   seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.9999, max_treedepth=13));
+  summary(b_null_nr_noaf); mcmc_plot(b_null_nr_noaf, type="trace", variable="^b_", regex=TRUE); mcmc_plot(b_null_nr_noaf, variable="^b_", regex=TRUE); # very decent
+  b_null_nr_noaf <- brms_fit_indices(b_null_nr_noaf);
+  brms_compare_models(b_null_nr, b_null_nr_noaf, "[null full random]", "[null only language]"); # equivalent
+  
   ##    and the intercept (of the null model) are not impressive
   
   
@@ -3664,7 +3694,7 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
                                                  "trill2"=b_trill2));
     save(field_regressions_models, file="./models/field_regressions_models.rds", compress="xz", compression_level=9);
     field_regressions_models_separate <- list("brms"=list("with_r"=b_null_wr,
-                                                          "without_r"=b_null_nr));
+                                                          "without_r"=b_null_nr_noaf));
     save(field_regressions_models_separate, file="./models/field_regressions_models_separate.rds", compress="xz", compression_level=9);
     saveRDS(b_L1_full, file="./models/field_regressions_L1_full_model.rds", compress="xz");
   }
@@ -3716,16 +3746,20 @@ if( !file.exists("./models/field_regressions_summaries.rds") ||
                                                                  "rope"=bayestestR::rope(b_trill2, ci=0.95, ci_method="HDI", verbose=FALSE),
                                                                  "fixef"=fixef(b_trill2), "ranef"=ranef(b_trill2),
                                                                  "summary"=capture.output(summary(b_trill2)),
-                                                                 "cmp_0"=brms_compare_models(b_lr2_null, b_trill2, "[0]", "[+]"))));
+                                                                 "cmp_0"=brms_compare_models(b_lr2_null, b_trill2, "[0]", "[+]")),
+                                                  "full_for_plotting"=list("hdi"=bayestestR::hdi(b_L1_full, ci=0.95), 
+                                                                            "rope"=bayestestR::rope(b_L1_full, ci=0.95, ci_method="HDI", verbose=FALSE), 
+                                                                            "fixef"=fixef(b_L1_full), "ranef"=ranef(b_L1_full), 
+                                                                            "summary"=capture.output(summary(b_L1_full)))));
   save(field_regressions_summaries, file="./models/field_regressions_summaries.rds", compress="xz", compression_level=9);
   field_regressions_summaries_separate <- list("brms"=list("with_r" =list("hdi"=bayestestR::hdi(b_null_wr, ci=0.95),
                                                                           "rope"=bayestestR::rope(b_null_wr, ci=0.95, ci_method="HDI", verbose=FALSE),
                                                                           "fixef"=fixef(b_null_wr), "ranef"=ranef(b_null_wr),
                                                                           "summary"=capture.output(summary(b_null_wr))),
-                                                           "without_r" =list("hdi"=bayestestR::hdi(b_null_nr, ci=0.95),
-                                                                             "rope"=bayestestR::rope(b_null_nr, ci=0.95, ci_method="HDI", verbose=FALSE),
-                                                                             "fixef"=fixef(b_null_nr), "ranef"=ranef(b_null_nr),
-                                                                             "summary"=capture.output(summary(b_null_nr)))));
+                                                           "without_r" =list("hdi"=bayestestR::hdi(b_null_nr_noaf, ci=0.95),
+                                                                             "rope"=bayestestR::rope(b_null_nr_noaf, ci=0.95, ci_method="HDI", verbose=FALSE),
+                                                                             "fixef"=fixef(b_null_nr_noaf), "ranef"=ranef(b_null_nr_noaf),
+                                                                             "summary"=capture.output(summary(b_null_nr_noaf)))));
   save(field_regressions_summaries_separate, file="./models/field_regressions_summaries_separate.rds", compress="xz", compression_level=9);
 } else
 {
@@ -3867,5 +3901,147 @@ For the *full model* (i.e., with all potential fixed effects and random effects,
 It is clear that there is a very strong association between [r] and the rugged line and between [l] and the continuous line across the board.
 On the other hand, no predictor seems to really affect this, except for the order of presentation ("l" first decreases the association) and, when order is also included and its random structure properly modeled, the presence of [r] in the L1, both for the web experiment.
 This turns out to be almost entirely driven by the cases where there is no [r] in the participants' L1(s), with no discernible contribution from their L2(s).
+
+
+# Appendix
+
+Here we show the full summary of the retained models.
+
+## A.I: Online experiment
+
+### A.I.1: The probability of a perfect match in the absence of any predictors 
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$null$summary, collapse="\n"));
+```
+
+### A.I.2: Order
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$order_simple$summary, collapse="\n"));
+```
+
+### A.I.3: Sex
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$sex_simple$summary, collapse="\n"));
+```
+
+### A.I.4: Age
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$age_simple$summary, collapse="\n"));
+```
+
+### A.I.5: R/L distinction in L1?
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$rl_simple$summary, collapse="\n"));
+```
+
+### A.I.6: [r] in L1?
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$trill_simple_nrs$summary, collapse="\n"));
+```
+
+### A.I.7: R/L distinction in L2?
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$rl2_simple$summary, collapse="\n"));
+```
+
+### A.I.8: [r] in L2?
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$trill2_simple_nrs$summary, collapse="\n"));
+```
+
+### A.I.9: Order + [r] in L1
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$order_trill_LFA$summary, collapse="\n"));
+```
+
+### A.I.10: Languages with [r]
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$with_trill$summary, collapse="\n"));
+```
+
+### A.I.11: Languages without [r]
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$without_trill$summary, collapse="\n"));
+```
+
+### A.I.12: Full model used for plotting
+
+```{r echo=FALSE}
+cat(paste0(web_regressions_L1_summaries$brms$full_for_plotting$summary, collapse="\n"));
+```
+
+
+## A.I: Field experiment
+
+### A.I.1: The probability of a perfect match in the absence of any predictors 
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries$brms$null$summary, collapse="\n"));
+```
+
+### A.I.2: Sex
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries$brms$sex$summary, collapse="\n"));
+```
+
+### A.I.3: Age
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries$brms$age$summary, collapse="\n"));
+```
+
+### A.I.4: R/L distinction in L1?
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries$brms$rl$summary, collapse="\n"));
+```
+
+### A.I.5: [r] in L1?
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries$brms$trill$summary, collapse="\n"));
+```
+
+### A.I.6: R/L distinction in L2?
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries$brms$rl2$summary, collapse="\n"));
+```
+
+### A.I.7: [r] in L2?
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries$brms$trill2$summary, collapse="\n"));
+```
+
+### A.I.8: Languages with [r]
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries_separate$brms$with_r$summary, collapse="\n"));
+```
+
+### A.I.9: Languages without [r]
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries_separate$brms$without_r$summary, collapse="\n"));
+```
+
+### A.I.10: Full model used for plotting
+
+```{r echo=FALSE}
+cat(paste0(field_regressions_summaries$brms$full_for_plotting$summary, collapse="\n"));
+```
 
 

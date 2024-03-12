@@ -107,7 +107,7 @@ table(web$participantage)
 Get rid of everybody below 18:
 
 ```{r agerid, message=FALSE, warning=FALSE}
-web <- filter(web, participantage > 18)
+web <- filter(web, participantage > 17)
 ```
 
 Check input values:

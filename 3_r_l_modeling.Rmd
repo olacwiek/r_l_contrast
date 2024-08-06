@@ -1,0 +1,2660 @@
+---
+title: "R/L across languages: Modeling"
+author: "Dan Dediu & Aleksandra Ćwiek (with feedback from, and based on original code by Bodo Winter)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    df_print: paged
+    code_folding: hide
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: '3'
+  html_notebook:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache=TRUE)
+```
+
+# Introduction
+
+This script uses the output of `r_l_preparation.Rmd` and produes all the values and plots reported in the paper.
+
+```{r}
+if( !all(file.exists("./data/web_raw_trials.csv", "./data/web_experiment_cleaned.csv", "./data/field_raw_trials.csv", "./data/field_experiment_cleaned.csv", "./2_r_l_preparation.html")) )
+{
+  # Seems like the script 2_r_l_preparation.Rmd was not invoked, so let's compile it!
+  require(rmarkdown);
+  #rmarkdown::render("./2_r_l_preparation.Rmd");
+  xfun::Rscript_call(rmarkdown::render, list(input="./2_r_l_preparation.Rmd"));
+  if( !all(file.exists("./data/web_raw_trials.csv", "./data/web_experiment_cleaned.csv", "./data/field_raw_trials.csv", "./data/field_experiment_cleaned.csv", "./2_r_l_preparation.html")) )
+  {
+    # Seems this issue is quite serious?
+    stop("Failed to compile the '2_r_l_preparation.Rmd' Rmarkdonw script: please try to do manually!\n");
+  }
+}
+```
+
+
+# Setup
+
+```{r, message = FALSE, warning = FALSE, results='hide'}
+# Load packages:
+
+library(tidyverse) # data processing
+library(brms) # bayesian models
+#library(cmdstanr) # install it with: install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))) followed by install_cmdstan()
+library(ggdist) # for plotting
+library(tidybayes) 
+
+# option for Bayesian regression models:
+# use all available cores for parallel computing
+options(mc.cores = parallel::detectCores())
+
+## Set the script's path as working directory
+#parentfolder = rstudioapi::getActiveDocumentContext()$path 
+#setwd(dirname(parentfolder))
+#parentfolder <- getwd()
+parentfolder <- "."; # assume current folder is the document folder
+
+#models        <- paste0(parentfolder, '/models/')
+plots         <- paste0(parentfolder, '/plots/')
+data          <- paste0(parentfolder, '/data/')
+
+if( !dir.exists("./cached_results") ) dir.create("./cached_results", showWarnings=FALSE);
+```
+
+```{r libraries and auxiliary functions for model fitting, cache=FALSE, message = FALSE, warning = FALSE, results='hide'}
+# Various auxiliary functions:
+library(parallel);
+library(lme4);
+library(performance);
+library(brms);
+library(bayestestR);
+library(ggplot2);
+library(gridExtra);
+library(ggpubr);
+library(sjPlot);
+library(knitr);
+
+brms_ncores  <- max(detectCores(all.tests=TRUE, logical=FALSE), 4, na.rm=TRUE); # try to use multiple cores, if present
+
+# Log odds to probability (logistic regression intercept):
+lo2p <- function(x){ o <- exp(x); return (o/(1+o));}
+
+# Log odds to odds ratio change as percent (logistic regression slopes):
+lo2or <- function(x){ o <- exp(x); if(x < 0){ return (-(1-o)) } else { return (o-1) };}
+
+# Log odds to odds ratio change between level values (logistic regression slopes):
+#lo2ps <- function(a,b){if(b > 0){ return (plogis(a+b)-plogis(a)) }else{ return (-(plogis(a)-plogis(a+b))) }}
+lo2ps <- function(a,b){ plogis(a+b) - plogis(a) }
+
+# Scientific notation using Markdown conventions (inspired from https://www.r-bloggers.com/2015/03/scientific-notation-for-rlatex/):
+scinot <- function(xs, digits=2, pvalue=TRUE)
+{
+  scinot1 <- function(x)
+  {
+    sign <- "";
+    if(x < 0)
+    {
+      sign <- "-";
+      x <- -x;
+    }
+    exponent <- floor(log10(x));
+    if(exponent && pvalue && exponent < -3) 
+    {
+      xx <- round(x / 10^exponent, digits=digits);
+      e <- paste0("×10^", round(exponent,0), "^");
+    } else 
+    {
+      xx <- round(x, digits=digits+1);
+      e <- "";
+    }
+    paste0(sign, xx, e);
+  }
+  vapply(xs, scinot1, character(1));
+}
+
+# Escape * in a string:
+escstar <- function(s)
+{
+  gsub("*", "\\*", s, fixed=TRUE);
+}
+
+# Figure and Table caption adapted from https://stackoverflow.com/questions/37116632/rmarkdown-html-number-figures: 
+outputFormat = opts_knit$get("rmarkdown.pandoc.to"); # determine the output format of the document
+if( is.null(outputFormat) ) outputFormat = ""; # probably not run within knittr
+capTabNo = 1; capFigNo = 1; # figure and table caption numbering, for HTML do it manually
+#Function to add the Table Number
+capTab = function(x)
+{
+  if(outputFormat == 'html'){
+    x = paste0("**Table ",capTabNo,".** ",x,"")
+    capTabNo <<- capTabNo + 1
+  }; x
+}
+#Function to add the Figure Number
+capFig = function(x, show_R_version=TRUE, show_package_versions=NULL, is_map=FALSE)
+{
+  if(outputFormat == 'html')
+  {
+    x <- paste0("**Figure ",capFigNo,".** ",x,"");
+    if( show_R_version || (!is.null(show_package_versions) && length(show_package_versions) > 0) )
+    {
+      x <- paste0(x, " Figure generated using ");
+      if( show_R_version ) x <- paste0(x, stringr::str_replace(R.version.string, stringr::fixed("R "), "[`R`](https://www.r-project.org/) "));
+      if( !is.null(show_package_versions) && length(show_package_versions) > 0 )
+      {
+        x <- paste0(x, ifelse( show_R_version, " and ", " "));
+        x <- paste0(x, ifelse( length(show_package_versions) > 1, "packages ", "package "));
+        x <- paste0(x, paste0(vapply(show_package_versions, function(x) paste0("`",x,"`", " (version ", packageVersion(x),")"), character(1)), collapse=", "), ".");
+      }
+      if( is_map ) x <- paste0(x, " Maps are using public domain data from the [Natural Earth project](https://www.naturalearthdata.com/) as provided by the `R` package `maps`.");
+    }
+    capFigNo <<- capFigNo + 1;
+  }; 
+  x;
+}
+```
+
+
+```{r, message = FALSE, warning = FALSE, results='hide'}
+# For reproducible reporting (see also the endof this document):
+
+packageVersion('tidyverse')
+packageVersion('ggplot2')
+packageVersion('brms')
+#packageVersion('cmdstanr')
+packageVersion('ggdist')
+```
+
+```{r, message = FALSE, warning = FALSE}
+# Load ggplot2 theme and colors:
+
+source('theme_timo.R')
+
+colorBlindBlack8  <- c("#000000", "#E69F00", "#56B4E9", "#009E73", 
+                       "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+```
+
+```{r, message = FALSE, warning = FALSE}
+# Load data:
+
+web     <- read_csv(paste0(data, 'web_experiment_cleaned.csv'))
+web_raw <- read_csv(paste0(data, '/web_raw_trials.csv'))
+
+field     <- read_csv(paste0(data, 'field_experiment_cleaned.csv'))
+field_raw <- read_csv(paste0(data, '/field_raw_trials.csv'))
+```
+
+
+
+# Online experiment
+
+## Descriptive statistics
+
+First, how many participants?
+
+```{r}
+nrow(web)
+```
+
+Sex division
+
+```{r}
+table(web$Sex)
+```
+
+Ages
+
+```{r}
+summary(web$Age)
+```
+
+Order division
+
+```{r}
+# Counts
+table(web$Order)
+# Percentage
+prop.table(table(web$Order)) * 100
+```
+
+First, how many languages?
+
+```{r}
+web %>% count(Name) %>% nrow()
+```
+
+Does this number correspond with the L1s?
+
+```{r}
+web %>% count(Language) %>% nrow()
+```
+
+How many families?
+
+```{r}
+web %>% count(Family) %>% nrow()
+```
+
+How many have the R/L distinction in the L1 among the languages?
+
+```{r}
+web %>% count(Language, r_l_distinction_L1) %>% count(r_l_distinction_L1)
+```
+
+How many really use the alveolar trill in L1 among the languages?
+
+```{r}
+web %>% count(Language, trill_real_L1) %>% count(trill_real_L1)
+```
+
+How many really have the alveolar trill in L1 as an allophone among the
+languages?
+
+```{r}
+web %>% count(Language, trill_occ_L1) %>% count(trill_occ_L1)
+```
+
+What about the same questions for L2. But this will not neatly sum up to
+25, due to various possible scenarios for L2 within a specific L1.
+
+How many have the R/L distinction in the L2 among the languages?
+
+```{r}
+web %>% count(Language, r_l_distinction_L2) %>% count(r_l_distinction_L2)
+```
+
+How many really use the alveolar trill in L2 among the languages?
+
+```{r}
+web %>% count(Language, trill_real_L2) %>% count(trill_real_L2)
+```
+
+How many really have the alveolar trill in L2 as an allophone among the
+languages?
+
+```{r}
+web %>% count(Language, trill_occ_L2) %>% count(trill_occ_L2)
+```
+
+What is the grand average congruent behavior?
+
+```{r}
+mean(web$Match)
+```
+
+87.3%
+
+What about only among those who have L1 without the distinction?
+
+```{r}
+web %>%
+  filter(r_l_distinction_L1 == "0") %>%
+  summarize(mean_match = mean(Match, na.rm = TRUE))
+```
+
+83.9%
+
+What about only among those who have L1 without the distinction and no
+L2 that distinguishes?
+
+```{r}
+web %>%
+  filter(r_l_distinction_L1 == "0") %>%
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L1 == '0') %>% 
+  summarize(mean_match = mean(Match, na.rm = TRUE))
+```
+
+85.1%
+
+Compute average matching behavior per language and sort:
+
+```{r}
+web_avg <- web %>%
+  group_by(Language) %>% 
+  summarize(M = mean(Match)) %>% 
+  arrange(desc(M)) %>% 
+  mutate(percent = round(M, 2) * 100,
+         percent = str_c(percent, '%'))
+
+# Show:
+
+web_avg %>% print(n = Inf)
+```
+
+Check some demographics, also to report in the paper. First, the number
+of participants per language:
+
+```{r}
+web %>% 
+  count(Name, sort = TRUE) %>% print(n = Inf)
+```
+
+Then, the number of L1 speakers who have R/L distinction vs. who don't:
+
+```{r}
+web %>% count(r_l_distinction_L1) %>%
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+How many people do not have any L2?
+
+```{r}
+sum(is.na(web$L2)) / nrow(web)
+
+# bilinguals:
+1 - sum(is.na(web$L2)) / nrow(web)
+```
+
+Check how many people knew English as their L2:
+
+```{r}
+web %>% count(EnglishL2YesNo) %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+Of those that don't use a R/L distinction in their L1, how many use R/L
+distinction in their L2? (double-check if logic alright!)
+
+```{r}
+web %>%
+  filter(r_l_distinction_L1 == 0) %>% 
+  count(r_l_distinction_L2 == 1) %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+How many "pure" speakers were there?, i.e., those people that 1) don't
+know English, 2) don't use an L1 with a R/L distinction, and 3) don't
+know an L2 that distinguishes R/L.
+
+```{r}
+web %>% 
+  filter(r_l_distinction_L1 == 0) %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L2 == 0) %>% 
+  nrow()
+```
+
+1 person!
+
+Let's check if this is correct. This gives the list of all participants
+for whom this applies.
+
+```{r}
+web %>% 
+    filter(r_l_distinction_L1 == 0 & !EnglishL2YesNo & r_l_distinction_L2 == 0) %>% 
+    print(n = 50)
+```
+
+Are these really "pure"? What languages do they speak?
+
+```{r}
+web %>% 
+  filter(r_l_distinction_L1 == 0) %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L2 == 0) %>% 
+  count(Language)
+```
+
+One Japanese speaker.
+
+Nevertheless, let's explore whether these also show matches?
+
+```{r}
+web %>% 
+  filter(r_l_distinction_L1 == 0) %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L2 == 0) %>% 
+  count(Match) %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+Yes, similar to above 85%.
+
+Now, some relevant plots:
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the web data by *Language*.", echo=FALSE, warning=FALSE}
+ggplot(web %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=Name, fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("Language");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the web data by *Family*.", echo=FALSE, warning=FALSE}
+ggplot(web %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=Family, fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("Family");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the web data by *Area*.", echo=FALSE, warning=FALSE}
+ggplot(web %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=Autotyp_Area, fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("Area");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the web data by *[r]/[l] distinction in L1*.", echo=FALSE, warning=FALSE}
+ggplot(web %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=factor(c("no", "yes")[1+r_l_distinction_L1]), fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("[r]/[l] distinction in L1");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the web data by *[r] is main allophone in L1*.", echo=FALSE, warning=FALSE}
+ggplot(web %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=factor(c("no", "yes")[1+trill_real_L1]), fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("[r] is main allophone in L1");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the web data by *[r]/[l] distinction in L2*.", echo=FALSE, warning=FALSE}
+ggplot(web %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=factor(c("no", "yes")[1+r_l_distinction_L2]), fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("[r]/[l] distinction in L2");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the web data by *[r] is main allophone in L2*.", echo=FALSE, warning=FALSE}
+ggplot(web %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=factor(c("no", "yes")[1+trill_real_L2]), fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("[r] is main allophone in L2");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the web data (i.e., not modelled but the actual raw data) by *Order* (columns) and the *[r] is main allophone in the L1* (rows).", echo=FALSE, warning=FALSE}
+ggplot(web %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=Match, fill=Match)) + 
+  geom_bar(color="black")  +
+  stat_count(geom = "text", 
+             aes(label = after_stat(count), color=Match),
+             position=position_stack(vjust=0.5)) + 
+  facet_grid(trill_real_L1 ~ Order) + 
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black"));
+```
+
+
+
+
+## What is the chance level?
+
+Our experiment has two trials and counterbalancing of order, but we code only strict matches, meaning that there are four combination of responses for two values of *Match*: 1/1 = match, 1/0, 0/1 = partial matches (i.e., no match), and 0/0 = mismatch (i.e., no match).
+If we assume that that the choices for the two sounds are *independent*, then We can simulate this:
+
+```{r simulate chance level, fig.height=4, fig.width=8, fig.cap=capFig("**Simulating the % of 'full' matches** across 1000 'experiments' each with 1000 'participants' that associate randomly (at 50%) [r] and [l] with the wavy or the straight line, assuming independence between the two choices.")}
+sim_chance_level <- replicate(1000, # simulate 1000 "experiments"
+                              mean(replicate(1000, # the proportion of "matches"  for 1000 random "participants"
+                                             ("r" == sample(c("r","l"), size=1, prob=c(0.5, 0.5))) && 
+                                               ("l" == sample(c("r","l"), size=1, prob=c(0.5, 0.5)))))); # only full matches matter (here order does not matter as the repose is random
+hist(100*sim_chance_level, main="Histogram of chance level", xlab="% full matches", col="gray90", xlim=c(0,100));
+abline(v=100*mean(sim_chance_level), col="blue", lwd=2);
+```
+Indeed, as expected, the chance level of such a 'full', conservative match is indeed `r round(100*mean(sim_chance_level),1)`%.
+
+However, it is clear that we cannot assume independence, as the choice made for the first sound clearly affects the choice made for the second, but it is unclear how much.
+
+At the other extreme, if we assume *perfect dependence* between the two choices (i.e., whatever is chosen for the first sound, will not be chosen for the second), we have the following baseline probability:
+
+```{r simulate chance level2, fig.height=4, fig.width=8, fig.cap=capFig("**Simulating the % of 'full' matches** across 1000 'experiments' each with 1000 'participants' that associate randomly (at 50%) [r] and [l] with the wavy or the straight line, assuming perfect dependence between the two choices.")}
+sim_chance_level2 <- replicate(1000, # simulate 1000 "experiments"
+                              mean(replicate(1000, # the proportion of "matches"  for 1000 random "participants"
+                                             ("r" == sample(c("r","l"), size=1, prob=c(0.5, 0.5)))))); # only the first choice really matters (the second is fully dependent on it, so if the first is correct, the second will be as well, resulting in a match, and vice-versa)
+hist(100*sim_chance_level2, main="Histogram of chance level", xlab="% full matches", col="gray90", xlim=c(0,100));
+abline(v=100*mean(sim_chance_level2), col="blue", lwd=2);
+```
+Indeed, as expected, the chance level of such a 'full', conservative match is indeed `r round(100*mean(sim_chance_level2),1)`%.
+
+It is clear that we are in between these extremes, probably closer to 50% than to 25%, so we will use the *50% chance level* throughout being very clear that this is a **conservative** level.
+
+([)Please note that we abstain from attempting to estimating the chance level from the data, as it is very hard to disentangle, in our experimental design, the chance level from the sound symbolism bias we want to estimate.)
+
+
+## Regression models
+
+### Making sense of the fixed effects
+
+In the various logistic regression models that we fit here, we use various techniques for judging the contribution of any given fixed effect:
+
+- point estimates and 95% Credible Intervals (CIs; see `bayestestR::ci` with `method = "ETI"` for details), which should not, in principle, include 0,
+- plots of the posterior distribution of the parameters; these should also not include 0,
+- formal hypothesis tests against 0 (see `brms::hypothesis` for details): these are always directional and in the same direction as the point estimate, and should not be taken, except in the case of the intercept, as being *a priori* justified, but simply as a way of summarizing where the bulk of the posterior distribution is relative to 0; we use the default cut-off of 0.95 to judge the "existence" of the effect in the given direction (marked with a star "*").
+
+
+### What predictors to include?
+
+Here we are interested in predicting the probability of a perfect match, *Match*, from a set of potential predictors and their interactions.
+*A priori*, given our hypothesis, the potential predictors here are the order of presentation, *Order*, and the various properties of the L1(s) and L2(s) spoken by the participant in what concerns [r] and [l], namely:
+
+- if [r] and [l] are phonologically distinct in any of the L1(s), *r_l_distinction_L1*, or L2(s), *r_l_distinction_L2*, respectively, 
+- if [r] is the main allophone in any of the L1(s), *trill_real_L1*, or L2(s), *trill_real_L2*, respectively, and
+- if [r] appears as an allophone at all in some lect or register of the L1(s), *trill_occ_L1*, or L2(s), *trill_occ_L2*, respectively.
+
+Importantly, we have no *a priori* reason to consider the participant's *Sex* or *Age* as potential predictors, but we can nevertheless test their influence on *Match*.
+
+We code here all the [r] and [r]/[l] predictors as factors with a *treatment contrast* as follows:
+
+- *r_l_distinction_L1* and *r_l_distinction_L2* can be "same" (baseline) or "distinct",
+- *trill_real_L1*, *trill_real_L2*, *trill_occ_L1* and *trill_occ_L2* can be "no" (baseline) or "yes".
+
+On the other hand, we code *Order* as a factor with possible values "r_first" and "l_first" but using a *contrast* (or *deviation*) *coding* (-0.5, +0.5), because *Order* is (almost) balanced at `r sprintf('%.1f%% "r_first" vs %.1f%% "l_first"', 100*mean(web$Order == "r_first"), 100*mean(web$Order == "l_first"))`, which ensures that the intercept represents (roughly) the grand mean (see, for example, [Chapter *Sum contrasts* in *An Introduction to Bayesian Data Analysis for Cognitive Science* by Bruno Nicenboim, Daniel Schad, and Shravan Vasishth](https://vasishth.github.io/bayescogsci/book/ch-contr.html#effectcoding)).
+(Please note that the other predictors are not balanced, making the treatment contrast better suited.)
+ 
+
+```{r checks and coding factors}
+# Make sure we code the factors with the intended baseline levels and contrasts:
+web$Order              <- factor(web$Order, levels = c("r_first", "l_first")); contrasts(web$Order) <- c(-0.5, +0.5)
+web$r_l_distinction_L1 <- factor(c("same", "distinct")[web$r_l_distinction_L1 + 1], levels=c("same", "distinct"));
+web$trill_real_L1      <- factor(c("no", "yes")[web$trill_real_L1 + 1], levels=c("no", "yes"));
+web$trill_occ_L1       <- factor(c("no", "yes")[web$trill_occ_L1 + 1], levels=c("no", "yes"));
+web$r_l_distinction_L2 <- factor(c("same", "distinct")[web$r_l_distinction_L2 + 1], levels=c("same", "distinct"));
+web$trill_real_L2      <- factor(c("no", "yes")[web$trill_real_L2 + 1], levels=c("no", "yes"));
+web$trill_occ_L2       <- factor(c("no", "yes")[web$trill_occ_L2 + 1], levels=c("no", "yes"));
+
+web %>% count(Match) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# match is quite unbalanced: 12.7% vs 87.3%
+
+web %>% count(Order) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# the order effect is decently balanced: 51.6% vs 48.3%
+
+web %>% count(r_l_distinction_L1) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# highly imbalanced: 15.8% vs 84.2%
+
+web %>% count(trill_real_L1) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# ok: 58.8% vs 41.2%
+
+web %>% count(trill_occ_L1) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# 100% are 1 --> excluded from the model
+
+## And for L2, just in case
+web %>% count(r_l_distinction_L2) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# 13.5% missing, the rest almost all (86.3%) are 1 and 0.2% are 0 ---> exclude as well
+
+web %>% count(trill_real_L2) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# 13.5% missing, the rest is balanced: 53.8% vs 32.7%
+
+web %>% count(trill_occ_L2) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# 13.5% missing, the rest are all (86.5%) are 1 ---> exclude as well
+```
+
+It can be seen that, in our data, *trill_occ_L1* and *trill_occ_L2* are both 100% "yes" (for the non-missing data cases), which means that we will *not* include them in any further analyses.
+
+
+### Note about logistic regression coefficients
+
+Because we want to predict the probability of a *Match*, which is a binary variable, we will use logistic regression throughout.
+However, logistic regression coefficients are notoriously hard to interpret, as they are reported on the log odds scale.
+Here, we show the intercepts and regression slopes both as log odds ratios and as probabilities, as appropriate.
+(See, for example, [here](https://www.statology.org/interpret-logistic-regression-intercept/), [here](https://quantifyinghealth.com/interpret-logistic-regression-coefficients/) and [here](https://quantifyinghealth.com/interpret-logistic-regression-intercept/) for more explanations.)
+
+Please note that for the **intercept** (*α*) this represents the *probability of a match* when all the predictors are at 0.0 or their baseline levels; for example, an intercept of 2.87 corresponds to a probability of `r round(100*lo2p(2.87),1)`% of a match when holding all the other predictors at 0 or at base level.
+
+For the **slopes** (*β*), this interpretation changes, and we show both the equivalent *percent change in odds* and the *change in the probability* of a match between this predictor's baseline and non-baseline levels (or for a unit increase from 0.0 to 1.0) when all the other predictors are at baseline (or at 0.0). For example, a slope of -0.84 for a binary DV corresponds to an *odds ratio* of `r round(exp(-0.84),2)`, which represents a decrease of `r round(-100*lo2or(-0.84),1)`% in the odds of a match, or, equivalently, a decrease by `r round(-100*lo2ps(2.87, -0.84),1)`% in the probability of a match from the baseline `r round(100*lo2p(2.87),1)`% when the DV is not at its baseline level to `r round(100*lo2p(2.87) + 100*lo2ps(2.87, -0.84),1)`%.
+
+
+### What random structure to use?
+
+An important point to clarify is what should be the random effects structure of our regression models.
+
+*A priori*, there are three potential "grouping factors": *Language*, *Family* and (AUTOTYP) *Area*, that are meaningfully considered as random effects.
+We have `r length(unique(web$Name))` L1 languages, from `r length(unique(web$Family))` families and `r length(unique(web$Autotyp_Area))` areas:
+
+<center>![**AUTOTYP areas.*** Reproduced from [The AUTOTYP database GitHub repo](https://github.com/autotyp/autotyp-data/blob/98cae32c387bfe0c7fb1b7151070d834b120a0f1/figures/areas.jpg) under a CC-BY-4.0 license.](./autotyp_areas_map.jpg){width="8in"}</center>
+
+```{r}
+unique(web[,c("Name", "Family", "Autotyp_Area")]) %>% arrange(Autotyp_Area, Family, Name)
+```
+
+However, when it comes to the r/l distinction and the [r] is main allophone in the language (L1 or L2), it is clear that these variables do *not*, by definition, vary within *Language* (so there should be no random slope here), and, at least in our current data, they very very little within the levels of the other two grouping factors as well (see below), raising the legitimate question whether we should model random slopes for these two variables at all.
+
+**Order**: we know this varies within all levels of *Language*, *Family* and *Area* because of the experimental design, so *Order* should have *varying slopes for all three*.
+
+**r/l distinction in L1** (*r_l_distinction_L1*):
+```{r}
+table(web$r_l_distinction_L1, web$Language)
+table(web$r_l_distinction_L1, web$Family)
+table(web$r_l_distinction_L1, web$Autotyp_Area)
+```
+This is perfectly uniform within the levels of each of the three factors, so random slopes are arguably not justified.
+
+**r/l distinction in L2** (*r_l_distinction_L2*):
+```{r}
+table(web$r_l_distinction_L2, web$Language)
+table(web$r_l_distinction_L2, web$Family)
+table(web$r_l_distinction_L2, web$Autotyp_Area)
+```
+There is almost no "same" at all, so random slopes are arguably not justified.
+
+**[r] is main allophone in L1** (*trill_real_L1*):
+```{r}
+table(web$trill_real_L1, web$Language)
+table(web$trill_real_L1, web$Family)
+table(web$trill_real_L1, web$Autotyp_Area)
+```
+This is almost uniform within *Language*, but there is variation for the IE level of *Family* (almost 50%:50% between "no" and "yes"), and between 2 levels of *Area* (Europe with 60%:40% and Greater Mesopotamia with 55%:45% "no":"yes"), but this is not enough to justify random slopes either.
+
+**[r] is main allophone in L2** (*trill_real_L2*):
+```{r}
+table(web$trill_real_L2, web$Language)
+table(web$trill_real_L2, web$Family)
+table(web$trill_real_L2, web$Autotyp_Area)
+```
+Here there is enough variation within the levels for all three factors, justifying the inclusion of random slopes.
+
+**Given these**, we did the following:
+
+- we always **include** random slopes for *Order* by *Language*, *Family* and *Area*,
+- we do **not include** random slopes for the *r/l distinction* in L1 (*r_l_distinction_L1*) or L2 (*r_l_distinction_L2*), nor for the *presence of [r]* in *L1* (*trill_real_L1*), but
+- we do **include** random slopes for *presence of [r]* in *L2* (*trill_real_L2*) by *Language*, *Family* and *Area*.
+
+
+### Model 1: what is the overall probability of a match?
+
+```{r results='hide'}
+if( !file.exists("./cached_results/b1_res_web.RData") )
+{
+  # prior predictive checks:
+  # what priors we can set (use Order for that):
+  get_prior(Match ~ 1 + Order +
+              (1 + Order | Language) +
+              (1 + Order | Family) +
+              (1 + Order | Autotyp_Area),
+            data=web,
+            family=bernoulli(link='logit'));
+  # -> "sd" priors seem alright (student_t(3, 0, 2.5)), as does the "Intercept" (student_t(3, 0, 2.5)), but lkj(1) for "cor" might too accepting of extreme correlations, and (flat) for "b" is clearly not ok
+  # so, we keep "sd" and "Intercept" but use lkj(2) for "cor" and student_t(5, 0, 2.5) for "b"
+  b_priors <- brms::brm(Match ~ 1 + Order +
+                          (1 + Order | Language) +
+                          (1 + Order | Family) +
+                          (1 + Order | Autotyp_Area),
+                        data=web,
+                        family=bernoulli(link='logit'),
+                        prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                                brms::set_prior("lkj(2)", class="cor")),
+                        sample_prior='only',  # needed for prior predictive checks
+                        seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  grid.arrange(pp_check(b_priors, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Prior predictive distribution of minimum values'),
+               pp_check(b_priors, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Prior predictive distribution of means'),
+               pp_check(b_priors, type='stat', stat='max') + xlab('p(match)') + ggtitle('Prior predictive distribution of maximum values'),
+               ncol=1); # seems fine but our value is a bit extreme
+  
+  # the model:
+  b1 <- brm(Match ~ 1 + Order +
+              (1 + Order | Language) +
+              (1 + Order | Family) +
+              (1 + Order | Autotyp_Area),
+            data=web,
+            family=bernoulli(link='logit'),
+            prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                    brms::set_prior("lkj(2)", class="cor")),
+            save_pars=save_pars(all=TRUE), # needed for Bayes factors
+            sample_prior=TRUE,  # needed for hypotheses tests
+            seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  summary(b1); mcmc_plot(b1, type="trace"); mcmc_plot(b1); # very decent
+  mcmc_plot(b1, type="trace");
+  bayestestR::hdi(b1, ci=0.95);
+  hypothesis(b1, "Order1 = 0"); 
+  # posterior predictive checks
+  pp_check(b1, ndraws=100) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+  grid.arrange(pp_check(b1, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values'),
+               pp_check(b1, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means'),
+               pp_check(b1, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values'),
+               ncol=1); # seems fine (the observed, y, does fall in the predicted distributions, y_{rep} for the max, mean and min)
+  
+  # save the model:
+  b1_res_web <- list("b_priors"=b_priors, "b1"=b1);
+  saveRDS(b1_res_web, "./cached_results/b1_res_web.RData", compress="xz");
+} else
+{
+  b1_res_web <- readRDS("./cached_results/b1_res_web.RData");
+}
+```
+
+**Priors** As per various guidelines (see, for example, https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations) and experiments, we will use `student_t(5, 0, 2.5)` for the slopes *β*, and `lkj(2)` for the random effects correlation structure, keeping the default `brms` priors for everything else, as they seem both sane and to perform well in our prior predictive checks.
+So, the priors we use are:
+```{r }
+get_prior(b1_res_web$b_priors);
+```
+```{r fig.width=1*4, fig.height=3*3, fig.cap=capFig("Prior predictive checks."), results='hide', warning=FALSE}
+grid.arrange(pp_check(b1_res_web$b_priors, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Prior predictive distribution of minimum values'),
+             pp_check(b1_res_web$b_priors, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Prior predictive distribution of means'),
+             pp_check(b1_res_web$b_priors, type='stat', stat='max') + xlab('p(match)') + ggtitle('Prior predictive distribution of maximum values'),
+             ncol=1); # seems fine but our value is a bit extreme
+```
+and it can be seen that they are quite ok, even if the observed *p*(match) is a bit extreme, but still within what the prior distribution covers.
+
+
+**Convergence** The model converges well (high ESS and $\hat{R} = 1.0$):
+```{r }
+summary(b1_res_web$b1);
+```
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Trace of the fitting process."), results='hide', warning=FALSE}
+mcmc_plot(b1_res_web$b1, type="trace");
+```
+
+
+**Posterior predictive checks** seems to be perfectly fine:
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive density overlay for n=500 draws."), results='hide', warning=FALSE}
+pp_check(b1_res_web$b1, ndraws=500) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive distribution."), results='hide', warning=FALSE}
+grid.arrange(pp_check(b1_res_web$b1, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values'),
+             pp_check(b1_res_web$b1, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means'),
+             pp_check(b1_res_web$b1, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values'),
+             ncol=1); 
+```
+
+
+**Fixed effects**:
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Fixed effects' posterior distributions."), results='hide', warning=FALSE}
+mcmc_plot(b1_res_web$b1);
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Fixed effects."), results='hide', warning=FALSE}
+plot_model(b1_res_web$b1, type="emm", terms=c("Order"));
+```
+
+
+**Intercept** The intercept is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b1_res_web$b1)["Intercept", "Estimate"], bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[1,"CI_high"])` on the log odds ratio (LOR) scale, which is clearly > 0; formal hypothesis testing against 0 is `r sprintf("*p*(*α*>0)=%.2f\\%s", brms::hypothesis(b1_res_web$b1, "Intercept > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b1_res_web$b1, "Intercept > 0")[[1]][1, "Star"])`; this translates into a probability of a match `r sprintf("*p*(match)=%.1f%% with 95%%CI [%.1f%%, %.1f%%]", 100*plogis(fixef(b1_res_web$b1)["Intercept", "Estimate"]), 100*plogis(bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[1,"CI_low"]), 100*plogis(bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[1,"CI_high"]))` ≫ 50%.
+
+
+**Order** The slope of *Order* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b1_res_web$b1)["Order1", "Estimate"], bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[2,"CI_low"], bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[2,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b1_res_web$b1, "Order1 < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b1_res_web$b1, "Order1 < 0")[[1]][1, "Star"])`.
+In terms of probabilities, presenting [l] first (_Order_ == "l_first") results in a _decrease_ by `r sprintf("%.1f%% [%.3f%%, %.1f%%]", abs(100*lo2ps(fixef(b1_res_web$b1)["Intercept", "Estimate"], fixef(b1_res_web$b1)["Order1", "Estimate"])), abs(100*lo2ps(bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[1,"CI_high"], bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[2,"CI_high"])), abs(100*lo2ps(bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[2,"CI_low"])))` in the probability of a match from the `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*plogis(fixef(b1_res_web$b1)["Intercept", "Estimate"]), 100*plogis(bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[1,"CI_low"]), 100*plogis(bayestestR::ci(b1_res_web$b1, ci=0.95, method="ETI")[1,"CI_high"]))` when [r] is presented first `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*plogis(fixef(b1_res_web$b1)["Intercept", "Estimate"] + fixef(b1_res_web$b1)["Order1", "Estimate"]), 100*plogis(ci(rowSums(as.data.frame(b1_res_web$b1, variable=c("b_Intercept", "b_Order1"))))[1,"CI_low"]), 100*plogis(ci(rowSums(as.data.frame(b1_res_web$b1, variable=c("b_Intercept", "b_Order1"))))[1,"CI_high"]))` when presenting [r] first.
+
+
+**Random effects**:
+```{r fig.width=3*4, fig.height=2*7, fig.cap=capFig("Posterior estimaes of the random effects showing the median (dot), 50% (thick line) and 95% (thin lines) quantiles. Also showing 0 as the vertical dotted line and negative (blue) vs positive (red) values."), results='hide', warning=FALSE}
+#get_variables(b1_res_web$b1);
+grid.arrange(
+  # 1 | Language:
+  b1_res_web$b1 %>%
+    spread_draws(b_Intercept, r_Language[Language, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Language") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # 1 | Family:
+  b1_res_web$b1 %>%
+    spread_draws(b_Intercept, r_Family[Family, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Family) %>%
+    ggplot(aes(y = Family, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Family") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # 1 | Autotyp_Area:
+  b1_res_web$b1 %>%
+    spread_draws(b_Intercept, r_Autotyp_Area[Autotyp_Area, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Autotyp_Area) %>%
+    ggplot(aes(y = Autotyp_Area, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Area") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # Order | Language:
+  b1_res_web$b1 %>%
+    spread_draws(b_Intercept, r_Language[Language, Order]) %>%
+    filter(Order == "Order1") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("Order | Language") + xlab("Slope") + ylab(NULL) + xlim(-4, 4) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # Order | Family:
+  b1_res_web$b1 %>%
+    spread_draws(b_Intercept, r_Family[Family, Order]) %>%
+    filter(Order == "Order1") %>%
+    mutate(condition_mean = r_Family) %>%
+    ggplot(aes(y = Family, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("Order | Family") + xlab("Slope") + ylab(NULL) + xlim(-3, 3) + 
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # Order | Autotyp_Area:
+  b1_res_web$b1 %>%
+    spread_draws(b_Intercept, r_Autotyp_Area[Autotyp_Area, Order]) %>%
+    filter(Order == "Order1") %>%
+    mutate(condition_mean = r_Autotyp_Area) %>%
+    ggplot(aes(y = Autotyp_Area, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("Order | Area") + xlab("Slope") + ylab(NULL) + xlim(-3, 3) +  
+    theme(legend.position="bottom") +
+    NULL,
+  
+  nrow=2);
+```
+
+
+**Interpretation**: The overall probability of a "perfect" match in the online experiment, while controlling for Language, Family and Area, is clearly much higher than the conservative change level of 50%, being estimated as about 88% with a 95%CI of about [78%, 94%], showing that there is a very strong tendency across our participants to associate [r] with the wavy line and [l] with the straight line.
+The order of presentation does seem to matter, in the sense that presenting [r] first increases the chance of a match by about 15% with a wide 95% [0.7%, 52%].
+
+
+### Model 2: do the characteristics of the languages matter?
+
+```{r results='hide'}
+if( !file.exists("./cached_results/b2_res_web.RData") )
+{
+  # the model:
+  b2 <- brm(Match ~ 1 + Order + # random slope
+              r_l_distinction_L1 + r_l_distinction_L2 + trill_real_L1 + # only random intercepts for these
+              trill_real_L2 + # but random slope for this one
+              (1 + Order + trill_real_L2 | Language) +
+              (1 + Order + trill_real_L2 | Family) +
+              (1 + Order + trill_real_L2 | Autotyp_Area),
+            data=web,
+            family=bernoulli(link='logit'),
+            prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                    brms::set_prior("lkj(2)", class="cor")),
+            save_pars=save_pars(all=TRUE), # needed for Bayes factors
+            sample_prior=TRUE,  # needed for hypotheses tests
+            seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  summary(b2); mcmc_plot(b2, type="trace"); mcmc_plot(b2); # very decent
+  mcmc_plot(b2, type="trace");
+  bayestestR::hdi(b2, ci=0.95);
+  hypothesis(b2, c("Order1 = 0", "r_l_distinction_L1distinct = 0", "r_l_distinction_L2distinct = 0", "trill_real_L1yes = 0", "trill_real_L2yes = 0")); 
+  # posterior predictive checks
+  pp_check(b2, ndraws=100) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+  grid.arrange(pp_check(b2, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values') + xlim(0,1),
+               pp_check(b2, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means') + xlim(0,1),
+               pp_check(b2, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values') + xlim(0,1),
+               ncol=1); # seems perfect
+  
+  # save the model:
+  b2_res_web <- list("b2"=b2);
+  saveRDS(b2_res_web, "./cached_results/b2_res_web.RData", compress="xz");
+} else
+{
+  b2_res_web <- readRDS("./cached_results/b2_res_web.RData");
+}
+```
+
+**Priors** are as before.
+
+
+**Convergence** The model converges well (high ESS and $\hat{R} = 1.0$):
+```{r }
+summary(b2_res_web$b2);
+```
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Trace of the fitting process."), results='hide', warning=FALSE}
+mcmc_plot(b2_res_web$b2, type="trace");
+```
+
+
+**Posterior predictive checks** seems to be perfectly fine:
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive density overlay for n=500 draws."), results='hide', warning=FALSE}
+pp_check(b2_res_web$b2, ndraws=500) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive distribution (the x-axis scale was forced to [0,1])."), results='hide', warning=FALSE}
+grid.arrange(pp_check(b2_res_web$b2, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values') + xlim(0,1),
+             pp_check(b2_res_web$b2, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means') + xlim(0,1),
+             pp_check(b2_res_web$b2, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values') + xlim(0,1),
+             ncol=1); 
+```
+
+
+**Fixed effects**:
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Fixed effects' posterior distributions."), results='hide', warning=FALSE}
+mcmc_plot(b2_res_web$b2);
+```
+```{r fig.width=2*5, fig.height=3*5, fig.cap=capFig("Fixed effects."), results='hide', warning=FALSE}
+grid.arrange(plot_model(b2_res_web$b2, type="emm", terms=c("Order")),
+             plot_model(b2_res_web$b2, type="emm", terms=c("r_l_distinction_L1")),
+             plot_model(b2_res_web$b2, type="emm", terms=c("r_l_distinction_L2")),
+             plot_model(b2_res_web$b2, type="emm", terms=c("trill_real_L1")),
+             plot_model(b2_res_web$b2, type="emm", terms=c("trill_real_L2")),
+             ncol=2);
+```
+
+
+**Intercept** The intercept is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_web$b2)["Intercept", "Estimate"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_high"])` on the log odds ratio (LOR) scale, which is > 0 but has very large uncertainties so that the 95%CI includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*α*>0)=%.2f\\%s", brms::hypothesis(b2_res_web$b2, "Intercept > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_web$b2, "Intercept > 0")[[1]][1, "Star"])`; this translates into a probability of a match `r sprintf("*p*(match)=%.1f%% 95%%CI [%.1f%%, %.1f%%]", 100*plogis(fixef(b2_res_web$b2)["Intercept", "Estimate"]), 100*plogis(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_low"]), 100*plogis(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_high"]))` which includes 50% in the 95%CI.
+
+
+**Order** The slope of *Order* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_web$b2)["Order1", "Estimate"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[2,"CI_low"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[2,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b2_res_web$b2, "Order1 < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_web$b2, "Order1 < 0")[[1]][1, "Star"])`.
+In terms of probabilities, presenting [l] first (_Order1_ == "l_first") results in a _decrease_ by `r sprintf("%.1f%% [%.3f%%, %.1f%%]", abs(100*lo2ps(fixef(b2_res_web$b2)["Intercept", "Estimate"], fixef(b2_res_web$b2)["Order1", "Estimate"])), abs(100*lo2ps(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_high"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[2,"CI_high"])), abs(100*lo2ps(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[2,"CI_low"])))` in the probability of a match from the `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*plogis(fixef(b2_res_web$b2)["Intercept", "Estimate"]), 100*plogis(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_low"]), 100*plogis(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_high"]))` when [r] is presented first `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*plogis(fixef(b2_res_web$b2)["Intercept", "Estimate"] + fixef(b2_res_web$b2)["Order1", "Estimate"]), 100*plogis(ci(rowSums(as.data.frame(b2_res_web$b2, variable=c("b_Intercept", "b_Order1"))))[1,"CI_low"]), 100*plogis(ci(rowSums(as.data.frame(b2_res_web$b2, variable=c("b_Intercept", "b_Order1"))))[1,"CI_high"]))` when [l] is presented first.
+
+
+**Are [r] and [l] distinct in the L1(s) spoken by the participant?** The slope of *r_l_distinction_L1* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_web$b2)["r_l_distinction_L1distinct", "Estimate"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[3,"CI_low"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[3,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*>0)=%.2f\\%s", brms::hypothesis(b2_res_web$b2, "r_l_distinction_L1distinct > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_web$b2, "r_l_distinction_L1distinct > 0")[[1]][1, "Star"])`.
+
+
+**Are [r] and [l] distinct in the L2(s) spoken by the participant?** The slope of *r_l_distinction_L2* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_web$b2)["r_l_distinction_L2distinct", "Estimate"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[4,"CI_low"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[4,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b2_res_web$b2, "r_l_distinction_L2distinct < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_web$b2, "r_l_distinction_L2distinct < 0")[[1]][1, "Star"])`.
+
+
+**Is [r] the main allophone in the L1(s) spoken by the participant?** The slope of *trill_real_L1* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_web$b2)["trill_real_L1yes", "Estimate"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[5,"CI_low"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[5,"CI_high"])` on the log odds ratio (LOR) scale, which is clearly < 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b2_res_web$b2, "trill_real_L1yes < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_web$b2, "trill_real_L1yes < 0")[[1]][1, "Star"])`.
+In terms of probabilities, having [r] as the main allophone (_trill_real_L1_ == "yes") results in a _decrease_ by `r sprintf("%.1f%% [%.3f%%, %.1f%%]", abs(100*lo2ps(fixef(b2_res_web$b2)["Intercept", "Estimate"], fixef(b2_res_web$b2)["trill_real_L1yes", "Estimate"])), abs(100*lo2ps(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_high"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[5,"CI_high"])), abs(100*lo2ps(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[5,"CI_low"])))` in the probability of a match from the `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*plogis(fixef(b2_res_web$b2)["Intercept", "Estimate"]), 100*plogis(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_low"]), 100*plogis(bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[1,"CI_high"]))` when [r] is not the primary allophone to `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*plogis(fixef(b2_res_web$b2)["Intercept", "Estimate"] + fixef(b2_res_web$b2)["trill_real_L1yes", "Estimate"]), 100*plogis(ci(rowSums(as.data.frame(b2_res_web$b2, variable=c("b_Intercept", "b_trill_real_L1yes"))))[1,"CI_low"]), 100*plogis(ci(rowSums(as.data.frame(b2_res_web$b2, variable=c("b_Intercept", "b_trill_real_L1yes"))))[1,"CI_high"]))` when it is.
+
+
+**Is [r] the main allophone in the L2(s) spoken by the participant?** The slope of *trill_real_L2* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_web$b2)["trill_real_L2yes", "Estimate"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[6,"CI_low"], bayestestR::ci(b2_res_web$b2, ci=0.95, method="ETI")[6,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*>0)=%.2f\\%s", brms::hypothesis(b2_res_web$b2, "trill_real_L2yes > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_web$b2, "trill_real_L2yes > 0")[[1]][1, "Star"])`.
+
+
+**Random effects**:
+```{r fig.width=3*4, fig.height=3*7, fig.cap=capFig("Posterior estimaes of the random effects showing the median (dot), 50% (thick line) and 95% (thin lines) quantiles. Also showing 0 as the vertical dotted line and negative (blue) vs positive (red) values."), results='hide', warning=FALSE}
+#get_variables(b2_res_web$b2);
+grid.arrange(
+  # 1 | Language:
+  b2_res_web$b2 %>%
+    spread_draws(b_Intercept, r_Language[Language, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Language") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # 1 | Family:
+  b2_res_web$b2 %>%
+    spread_draws(b_Intercept, r_Family[Family, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Family) %>%
+    ggplot(aes(y = Family, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Family") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # 1 | Autotyp_Area:
+  b2_res_web$b2 %>%
+    spread_draws(b_Intercept, r_Autotyp_Area[Autotyp_Area, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Autotyp_Area) %>%
+    ggplot(aes(y = Autotyp_Area, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Area") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # Order | Language:
+  b2_res_web$b2 %>%
+    spread_draws(b_Intercept, r_Language[Language, Order]) %>%
+    filter(Order == "Order1") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("Order | Language") + xlab("Slope") + ylab(NULL) + xlim(-4, 4) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # Order | Family:
+  b2_res_web$b2 %>%
+    spread_draws(b_Intercept, r_Family[Family, Order]) %>%
+    filter(Order == "Order1") %>%
+    mutate(condition_mean = r_Family) %>%
+    ggplot(aes(y = Family, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("Order | Family") + xlab("Slope") + ylab(NULL) + xlim(-3, 3) + 
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # Order | Autotyp_Area:
+  b2_res_web$b2 %>%
+    spread_draws(b_Intercept, r_Autotyp_Area[Autotyp_Area, Order]) %>%
+    filter(Order == "Order1") %>%
+    mutate(condition_mean = r_Autotyp_Area) %>%
+    ggplot(aes(y = Autotyp_Area, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("Order | Area") + xlab("Slope") + ylab(NULL) + xlim(-3, 3) +  
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # trill_real_L2 | Language:
+  b2_res_web$b2 %>%
+    spread_draws(b_Intercept, r_Language[Language, trill_real_L2]) %>%
+    filter(trill_real_L2 == "trill_real_L2yes") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("trill_real_L2 | Language") + xlab("Slope") + ylab(NULL) + xlim(-4, 4) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # trill_real_L2 | Family:
+  b2_res_web$b2 %>%
+    spread_draws(b_Intercept, r_Family[Family, trill_real_L2]) %>%
+    filter(trill_real_L2 == "trill_real_L2yes") %>%
+    mutate(condition_mean = r_Family) %>%
+    ggplot(aes(y = Family, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("trill_real_L2 | Family") + xlab("Slope") + ylab(NULL) + xlim(-3, 3) + 
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # trill_real_L2 | Autotyp_Area:
+  b2_res_web$b2 %>%
+    spread_draws(b_Intercept, r_Autotyp_Area[Autotyp_Area, trill_real_L2]) %>%
+    filter(trill_real_L2 == "trill_real_L2yes") %>%
+    mutate(condition_mean = r_Autotyp_Area) %>%
+    ggplot(aes(y = Autotyp_Area, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("trill_real_L2 | Area") + xlab("Slope") + ylab(NULL) + xlim(-3, 3) +  
+    theme(legend.position="bottom") +
+    NULL,
+  
+  nrow=3);
+```
+
+
+**Interpretation**: The overall probability of a "perfect" match in the online experiment when adding all the relevant [r]-related predictors for the L1(s) and L2(s) known to the participants, while controlling for Language, Family and Area, seem to still be higher than the conservative change level of 50%, being estimated as about 97% but with a much wider 95%CI of about [34%, 100.0%] which now does include 50%.
+The only predictor that seems to make a difference is if [r] is the main allophone in the L1(s) known by the participant, in that those participants that have an L1 with [r] as the main allophone have a *slightly smaller* probability of a perfect match by about 4.5% [0%, 27%] to about 93% [15%, 100%] than the others.
+Here, order does not seem to make clear a difference, but there is still a suggestion that presenting [r] first increases the probability of a match by about 3.5% [0%, 30%].
+
+
+
+# Field experiment
+
+## Descriptive statistics
+
+First, how many participants?
+
+```{r}
+nrow(field)
+```
+
+Sex division
+
+```{r}
+table(field$Sex)
+```
+
+Ages
+
+```{r}
+summary(field$Age)
+```
+
+First, how many languages?
+
+```{r}
+field %>% count(Language) %>% nrow()
+```
+
+Does this number correspond with the L1s?
+
+```{r}
+field %>% count(Name) %>% nrow()
+```
+
+How many families?
+
+```{r}
+field %>% count(Family) %>% nrow()
+```
+
+How many have the R/L distinction in the L1 among the languages?
+
+```{r}
+field %>% count(Name, r_l_distinction_L1) %>% count(r_l_distinction_L1)
+```
+
+How many really use the alveolar trill in L1 among the languages?
+
+```{r}
+field %>% count(Name, trill_real_L1) %>% count(trill_real_L1)
+```
+
+How many really have the alveolar trill in L1 as an allophone among the
+languages?
+
+```{r}
+field %>% count(Name, trill_occ_L1) %>% count(trill_occ_L1)
+```
+
+What about the same questions for L2. But this will not neatly sum up to
+25, due to various possible scenarios for L2 within a specific L1.
+
+How many have the R/L distinction in the L2 among the languages?
+
+```{r}
+field %>% count(Name, r_l_distinction_L2) %>% count(r_l_distinction_L2)
+```
+
+How many really use the alveolar trill in L2 among the languages?
+
+```{r}
+field %>% count(Name, trill_real_L2) %>% count(trill_real_L2)
+```
+
+How many really have the alveolar trill in L2 as an allophone among the
+languages?
+
+```{r}
+field %>% count(Name, trill_occ_L2) %>% count(trill_occ_L2)
+```
+
+What is the grand average congruent behavior?
+
+```{r}
+mean(field$Match)
+```
+
+97%!!!
+
+What about only among those who have L1 without the distinction?
+
+```{r}
+field %>%
+  filter(r_l_distinction_L1 == "0") %>%
+  summarize(mean_match = mean(Match, na.rm = TRUE))
+```
+
+100%! WOW.
+
+What about only among those who have L1 without the distinction and no
+L2 that distinguishes?
+
+```{r}
+field %>%
+  filter(r_l_distinction_L1 == "0") %>%
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L2 == '0') %>% 
+  summarize(mean_match = mean(Match, na.rm = TRUE))
+```
+
+There are no such people.
+
+Compute average matching behavior per language and sort:
+
+```{r}
+field_avg <- field %>%
+  group_by(Language) %>% 
+  summarize(M = mean(Match)) %>% 
+  arrange(desc(M)) %>% 
+  mutate(percent = round(M, 2) * 100,
+         percent = str_c(percent, '%'))
+
+# Show:
+
+field_avg %>% print(n = Inf)
+```
+
+Check some demographics, also to report in the paper. First, the number
+of participants per language:
+
+```{r}
+field %>% 
+  count(Name, sort = TRUE) %>% print(n = Inf)
+```
+
+Then, the number of L1 speakers who have R/L distinction vs. who don't:
+
+```{r}
+field %>% count(r_l_distinction_L1) %>%
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+How many people do not have any L2?
+
+```{r}
+# raw count of no L2; raw count of all ppl
+sum(is.na(field$L2)); nrow(field)
+
+# percentage no L2
+sum(is.na(field$L2)) / nrow(field)
+
+# percentage with L2
+1 - sum(is.na(field$L2)) / nrow(field)
+```
+
+Check how many people knew English as their L2:
+
+```{r}
+field %>% count(EnglishL2YesNo) %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+Of those that don't use a R/L distinction in their L1, how many use R/L
+distinction in their L2? (double-check if logic alright!)
+
+```{r}
+field %>%
+  filter(r_l_distinction_L1 == '0') %>% 
+  count(r_l_distinction_L2 == '1') %>% 
+  mutate(prop = n / sum(n),
+         percent = round(prop, 2) * 100,
+         percent = str_c(percent, '%'))
+```
+
+How many "pure" speakers were there?, i.e., those people that 1) don't
+know English, 2) don't use an L1 with a R/L distinction, and 3) don't
+know an L2 that distinguishes R/L.
+
+```{r}
+field %>% 
+  filter(r_l_distinction_L1 == '0') %>%  # excludes English as well
+  filter(!EnglishL2YesNo) %>% 
+  filter(r_l_distinction_L2 == '0') %>% 
+  nrow()
+```
+
+None.
+
+Now, some relevant plots:
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the field data by *Language*.", echo=FALSE, warning=FALSE}
+ggplot(field %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=Name, fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("Language");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the field data by *Family*.", echo=FALSE, warning=FALSE}
+ggplot(field %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=Family, fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("Family");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the field data by *Area*.", echo=FALSE, warning=FALSE}
+ggplot(field %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=Autotyp_Area, fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("Area");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the field data by *[r]/[l] distinction in L1*.", echo=FALSE, warning=FALSE}
+ggplot(field %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=factor(c("no", "yes")[1+r_l_distinction_L1]), fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("[r]/[l] distinction in L1");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the field data by *[r] is main allophone in L1*.", echo=FALSE, warning=FALSE}
+ggplot(field %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=factor(c("no", "yes")[1+trill_real_L1]), fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("[r] is main allophone in L1");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the field data by *[r]/[l] distinction in L2*.", echo=FALSE, warning=FALSE}
+ggplot(field %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=factor(c("no", "yes")[1+r_l_distinction_L2]), fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("[r]/[l] distinction in L2");
+```
+
+```{r fig.width=6, fig.height=6, fig.cap="Distribution of *matches* in the field data by *[r] is main allophone in L2*.", echo=FALSE, warning=FALSE}
+ggplot(field %>% mutate("Match"=factor(c("no","yes")[Match+1], levels=c("no", "yes"))), aes(x=factor(c("no", "yes")[1+trill_real_L2]), fill=Match)) + 
+  geom_bar(position="fill", color="black") +
+  scale_fill_viridis_d() + scale_color_manual(values=c("white", "black")) +
+  stat_count(geom = "text", 
+             aes(label = paste0(round(100 * ..count.. / tapply(..count.., ..x.., sum)[as.character(..x..)],0),"%"), color=Match),
+             position=position_fill(vjust=0.5), angle=90) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) + xlab("[r] is main allophone in L2");
+```
+
+
+## Regression models
+
+### What predictors to include?
+
+We use the same ideas as for the web experiment above, except that now *Order* does not exist anymore.
+ 
+```{r}
+# Make sure we code the factors with the intended baseline levels and contrasts:
+field$r_l_distinction_L1 <- factor(c("same", "distinct")[field$r_l_distinction_L1 + 1], levels=c("same", "distinct"));
+field$trill_real_L1      <- factor(c("no", "yes")[field$trill_real_L1 + 1], levels=c("no", "yes"));
+field$trill_occ_L1       <- factor(c("no", "yes")[field$trill_occ_L1 + 1], levels=c("no", "yes"));
+field$r_l_distinction_L2 <- factor(c("same", "distinct")[field$r_l_distinction_L2 + 1], levels=c("same", "distinct"));
+field$trill_real_L2      <- factor(c("no", "yes")[field$trill_real_L2 + 1], levels=c("no", "yes"));
+field$trill_occ_L2       <- factor(c("no", "yes")[field$trill_occ_L2 + 1], levels=c("no", "yes"));
+
+field %>% count(Match) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# match is quite unbalanced: 2.4% vs 97.6%
+
+field %>% count(r_l_distinction_L1) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# highly imbalanced: 6.3% vs 93.7%
+
+field %>% count(trill_real_L1) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# imbalanced: 74.8% vs 25.2%
+
+field %>% count(trill_occ_L1) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# imbalanced: 6.3% vs 93.7%
+
+## And for L2, just in case
+field %>% count(r_l_distinction_L2) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# 41.7% missing, the rest: 0.8% vs 57.5%
+
+field %>% count(trill_real_L2) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# 41.7% missing, the rest: 22% vs 36.2%
+
+field %>% count(trill_occ_L2) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+# 41.7% missing, the rest are all (58.3%) are "yes" ---> exclude
+```
+
+It can be seen that, in our data, *trill_occ_L2* is 100% "yes" (for the non-missing data cases), which means that we will *not* include it in any further analyses.
+
+However, *r_l_distinction_L1* and *trill_occ_L1* are perfectly correlated:
+```{r}
+table(field$r_l_distinction_L1, field$trill_occ_L1);
+```
+so we will only consider *r_l_distinction_L1*.
+
+
+
+### What random structure to use?
+
+As for the web experiment above:
+
+```{r}
+unique(field[,c("Name", "Family", "Autotyp_Area")]) %>% arrange(Autotyp_Area, Family, Name)
+```
+
+It seems that including Family and Area do not make any sense in this case.
+
+**r/l distinction in L1** (*r_l_distinction_L1*):
+```{r}
+table(field$r_l_distinction_L1, field$Language)
+table(field$r_l_distinction_L1, field$Family)
+table(field$r_l_distinction_L1, field$Autotyp_Area)
+```
+This is perfectly uniform within the levels of each of the three factors, so random slopes are arguably not justified.
+
+**r/l distinction in L2** (*r_l_distinction_L2*):
+```{r}
+table(field$r_l_distinction_L2, field$Language)
+table(field$r_l_distinction_L2, field$Family)
+table(field$r_l_distinction_L2, field$Autotyp_Area)
+```
+There is almost no "same" at all, so random slopes are arguably not justified.
+
+**[r] is main allophone in L1** (*trill_real_L1*):
+```{r}
+table(field$trill_real_L1, field$Language)
+table(field$trill_real_L1, field$Family)
+table(field$trill_real_L1, field$Autotyp_Area)
+```
+This is perfectly uniform within the levels of each of the three factors, so random slopes are arguably not justified.
+
+**[r] is main allophone in L2** (*trill_real_L2*):
+```{r}
+table(field$trill_real_L2, field$Language)
+table(field$trill_real_L2, field$Family)
+table(field$trill_real_L2, field$Autotyp_Area)
+```
+There is variation only within Indo-European/Europe, so random slopes are arguably not justified.
+
+**[r] is present in L1** (*trill_occ_L1*):
+```{r}
+table(field$trill_occ_L1, field$Language)
+table(field$trill_occ_L1, field$Family)
+table(field$trill_occ_L1, field$Autotyp_Area)
+```
+This is perfectly uniform within the levels of each of the three factors, so random slopes are arguably not justified.
+
+**Given these**, we only include Language as a random effect, and we do not model any random slopes here.
+
+
+### Model 1: what is the overall probability of a match?
+
+As for the web experiment, but this time without *Order* (so, the intercept-only model):
+
+```{r results='hide'}
+if( !file.exists("./cached_results/b1_res_field.RData") )
+{
+  # prior predictive checks:
+  # what priors we can set:
+  get_prior(Match ~ 1 +
+              (1 | Language),
+            data=field,
+            family=bernoulli(link='logit'));
+  b_priors <- brms::brm(Match ~ 1 +
+                          (1 | Language),
+                        data=field,
+                        family=bernoulli(link='logit'),
+                        sample_prior='only',  # needed for prior predictive checks
+                        seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  grid.arrange(pp_check(b_priors, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Prior predictive distribution of minimum values'),
+               pp_check(b_priors, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Prior predictive distribution of means'),
+               pp_check(b_priors, type='stat', stat='max') + xlab('p(match)') + ggtitle('Prior predictive distribution of maximum values'),
+               ncol=1); # seems fine but our value is quite extreme
+  
+  # the model:
+  b1 <- brm(Match ~ 1 +
+              (1 | Language),
+            data=field,
+            family=bernoulli(link='logit'),
+            save_pars=save_pars(all=TRUE), # needed for Bayes factors
+            sample_prior=TRUE,  # needed for hypotheses tests
+            seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  summary(b1); mcmc_plot(b1, type="trace"); mcmc_plot(b1); # very decent
+  mcmc_plot(b1, type="trace");
+  bayestestR::hdi(b1, ci=0.95);
+  # posterior predictive checks
+  pp_check(b1, ndraws=100) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+  grid.arrange(pp_check(b1, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values'),
+               pp_check(b1, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means'),
+               pp_check(b1, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values'),
+               ncol=1); # far from ideal but seems ok...
+  
+  # save the model:
+  b1_res_field <- list("b_priors"=b_priors, "b1"=b1);
+  saveRDS(b1_res_field, "./cached_results/b1_res_field.RData", compress="xz");
+} else
+{
+  b1_res_field <- readRDS("./cached_results/b1_res_field.RData");
+}
+```
+
+```{r fig.width=1*4, fig.height=3*3, fig.cap=capFig("Prior predictive checks."), results='hide', warning=FALSE}
+grid.arrange(pp_check(b1_res_field$b_priors, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Prior predictive distribution of minimum values'),
+             pp_check(b1_res_field$b_priors, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Prior predictive distribution of means'),
+             pp_check(b1_res_field$b_priors, type='stat', stat='max') + xlab('p(match)') + ggtitle('Prior predictive distribution of maximum values'),
+             ncol=1); # seems fine but our value is a bit extreme
+```
+and it can be seen that they are quite ok, even if the observed *p*(match) is quite extreme, but still within what the prior distribution covers.
+
+
+**Convergence** The model converges well (high ESS and $\hat{R} = 1.0$):
+```{r }
+summary(b1_res_field$b1);
+```
+```{r fig.width=10, fig.height=5, fig.cap=capFig("Trace of the fitting process."), results='hide', warning=FALSE}
+mcmc_plot(b1_res_field$b1, type="trace");
+```
+
+
+**Posterior predictive checks** seems to be acceptable:
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive density overlay for n=500 draws."), results='hide', warning=FALSE}
+pp_check(b1_res_field$b1, ndraws=500) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive distribution."), results='hide', warning=FALSE}
+grid.arrange(pp_check(b1_res_field$b1, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values') + xlim(0,1),
+             pp_check(b1_res_field$b1, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means') + xlim(0,1),
+             pp_check(b1_res_field$b1, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values') + xlim(0,1),
+             ncol=1); 
+```
+
+
+**Fixed effects**:
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Fixed effects' posterior distributions."), results='hide', warning=FALSE}
+mcmc_plot(b1_res_field$b1);
+```
+
+
+**Intercept** The intercept is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b1_res_field$b1)["Intercept", "Estimate"], bayestestR::ci(b1_res_field$b1, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b1_res_field$b1, ci=0.95, method="ETI")[1,"CI_high"])` on the log odds ratio (LOR) scale, which is clearly » 0; formal hypothesis testing against 0 is `r sprintf("*p*(*α*>0)=%.2f\\%s", brms::hypothesis(b1_res_field$b1, "Intercept > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b1_res_field$b1, "Intercept > 0")[[1]][1, "Star"])`; this translates into a probability of a match `r sprintf("*p*(match)=%.1f%% 95%%CI [%.1f%%, %.1f%%]", 100*plogis(fixef(b1_res_field$b1)["Intercept", "Estimate"]), 100*plogis(bayestestR::ci(b1_res_field$b1, ci=0.95, method="ETI")[1,"CI_low"]), 100*plogis(bayestestR::ci(b1_res_field$b1, ci=0.95, method="ETI")[1,"CI_high"]))` » 50%.
+
+
+**Random effects**:
+```{r fig.width=1*4, fig.height=1*7, fig.cap=capFig("Posterior estimaes of the random effects showing the median (dot), 50% (thick line) and 95% (thin lines) quantiles. Also showing 0 as the vertical dotted line and negative (blue) vs positive (red) values."), results='hide', warning=FALSE}
+#get_variables(b1_res_field$b1);
+grid.arrange(
+  # 1 | Language:
+  b1_res_field$b1 %>%
+    spread_draws(b_Intercept, r_Language[Language, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Language") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+
+  nrow=1);
+```
+
+
+**Interpretation**: The overall probability of a "perfect" match in the field experiment, while controlling for Language, is much higher than the conservative change level of 50%, being estimated as about 98%, with a 95% credible interval of about [91%, 100%] that excludes 50%, suggesting that there is a very strong tendency across our participants to associate [r] with the wavy line and [l] with the straight line.
+
+
+### Model 2: do the characteristics of the languages matter?
+
+```{r results='hide'}
+if( !file.exists("./cached_results/b2_res_field.RData") )
+{
+  # the model:
+  b2 <- brm(Match ~ 1 + 
+              r_l_distinction_L1 + r_l_distinction_L2 + 
+              trill_real_L1 + trill_real_L2 + 
+              (1 | Language),
+            data=field,
+            family=bernoulli(link='logit'),
+            prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")), # same slope prior as for web
+            save_pars=save_pars(all=TRUE), # needed for Bayes factors
+            sample_prior=TRUE,  # needed for hypotheses tests
+            seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  summary(b2); mcmc_plot(b2, type="trace"); mcmc_plot(b2); # very decent
+  mcmc_plot(b2, type="trace");
+  bayestestR::hdi(b2, ci=0.95);
+  hypothesis(b2, c("r_l_distinction_L1distinct = 0", "r_l_distinction_L2distinct = 0", "trill_real_L1yes = 0", "trill_real_L2yes = 0")); 
+  # posterior predictive checks
+  pp_check(b2, ndraws=100) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+  pp_check(b2, ndraws=100, prefix="ppd") + xlab('p(match)') + ggtitle('Posterior predictive density overlay without the observed data');
+  grid.arrange(pp_check(b2, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values') + xlim(0,1),
+               pp_check(b2, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means') + xlim(0,1),
+               pp_check(b2, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values') + xlim(0,1),
+               ncol=1); # seems perfect
+  
+  # save the model:
+  b2_res_field <- list("b2"=b2);
+  saveRDS(b2_res_field, "./cached_results/b2_res_field.RData", compress="xz");
+} else
+{
+  b2_res_field <- readRDS("./cached_results/b2_res_field.RData");
+}
+```
+
+**Priors** are as before.
+
+
+**Convergence** The model converges well (high ESS and $\hat{R} = 1.0$):
+```{r }
+summary(b2_res_field$b2);
+```
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Trace of the fitting process."), results='hide', warning=FALSE}
+mcmc_plot(b2_res_field$b2, type="trace");
+```
+
+
+**Posterior predictive checks** are actually pretty good (please note that there are some curves hidden by the observed data, visible in the second plot):
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive density overlay for n=500 draws."), results='hide', warning=FALSE}
+pp_check(b2_res_field$b2, ndraws=500) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive density overlay *without* showinf the observed data for n=500 draws."), results='hide', warning=FALSE}
+pp_check(b2_res_field$b2, ndraws=500, prefix="ppd") + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive distribution (the x-axis scale was forced to [0,1])."), results='hide', warning=FALSE}
+grid.arrange(pp_check(b2_res_field$b2, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values') + xlim(0,1),
+             pp_check(b2_res_field$b2, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means') + xlim(0,1),
+             pp_check(b2_res_field$b2, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values') + xlim(0,1),
+             ncol=1); 
+```
+
+
+**Fixed effects**:
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Fixed effects' posterior distributions."), results='hide', warning=FALSE}
+mcmc_plot(b2_res_field$b2);
+```
+```{r fig.width=2*5, fig.height=3*5, fig.cap=capFig("Fixed effects."), results='hide', warning=FALSE}
+grid.arrange(plot_model(b2_res_field$b2, type="emm", terms=c("r_l_distinction_L1")),
+             plot_model(b2_res_field$b2, type="emm", terms=c("r_l_distinction_L2")),
+             plot_model(b2_res_field$b2, type="emm", terms=c("trill_real_L1")),
+             plot_model(b2_res_field$b2, type="emm", terms=c("trill_real_L2")),
+             ncol=2);
+```
+
+
+**Intercept** The intercept is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_field$b2)["Intercept", "Estimate"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[1,"CI_high"])` on the log odds ratio (LOR) scale, which is > 0 and with a 95%CI that does not includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*α*>0)=%.2f\\%s", brms::hypothesis(b2_res_field$b2, "Intercept > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_field$b2, "Intercept > 0")[[1]][1, "Star"])`; this translates into a probability of a match `r sprintf("*p*(match)=%.1f%% 95%%CI [%.1f%%, %.1f%%]", 100*plogis(fixef(b2_res_field$b2)["Intercept", "Estimate"]), 100*plogis(bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[1,"CI_low"]), 100*plogis(bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[1,"CI_high"]))` which does not include 50%.
+
+
+**Are [r] and [l] distinct in the L1(s) spoken by the participant?** The slope of *r_l_distinction_L1* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_field$b2)["r_l_distinction_L1distinct", "Estimate"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[2,"CI_low"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[2,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b2_res_field$b2, "r_l_distinction_L1distinct < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_field$b2, "r_l_distinction_L1distinct < 0")[[1]][1, "Star"])`.
+
+
+**Are [r] and [l] distinct in the L2(s) spoken by the participant?** The slope of *r_l_distinction_L2* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_field$b2)["r_l_distinction_L2distinct", "Estimate"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[3,"CI_low"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[3,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b2_res_field$b2, "r_l_distinction_L2distinct < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_field$b2, "r_l_distinction_L2distinct < 0")[[1]][1, "Star"])`.
+
+
+**Is [r] the main allophone in the L1(s) spoken by the participant?** The slope of *trill_real_L1* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_field$b2)["trill_real_L1yes", "Estimate"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[4,"CI_low"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[4,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b2_res_field$b2, "trill_real_L1yes < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_field$b2, "trill_real_L1yes < 0")[[1]][1, "Star"])`.
+
+
+**Is [r] the main allophone in the L2(s) spoken by the participant?** The slope of *trill_real_L2* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_field$b2)["trill_real_L2yes", "Estimate"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[5,"CI_low"], bayestestR::ci(b2_res_field$b2, ci=0.95, method="ETI")[5,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b2_res_field$b2, "trill_real_L2yes < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_field$b2, "trill_real_L2yes < 0")[[1]][1, "Star"])`.
+
+
+**Random effects**:
+```{r fig.width=4, fig.height=7, fig.cap=capFig("Posterior estimaes of the random effects showing the median (dot), 50% (thick line) and 95% (thin lines) quantiles. Also showing 0 as the vertical dotted line and negative (blue) vs positive (red) values."), results='hide', warning=FALSE}
+#get_variables(b2_res_field$b2);
+grid.arrange(
+  # 1 | Language:
+  b2_res_field$b2 %>%
+    spread_draws(b_Intercept, r_Language[Language, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Language") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+
+  nrow=1);
+```
+
+
+**Interpretation**: The overall probability of a "perfect" match in the field experiment when adding all the relevant [r]-related predictors for the L1(s) and L2(s) known to the participants, while controlling for Language, is higher than the conservative chance level of 50%, being estimated as about 100% but with a much wider 95%CI of about [54%, 100.0%] which now includes 50%.
+No predictors seem to make any difference.
+
+
+
+# Both experiments together
+
+Given that *Order* does not seem to formally make a difference in the online experiment, we can, in principle, combine the online and the field experiments in a joint analysis by ignoring *Order* as a predictor (but keeping all the observations).
+
+```{r}
+webfield <- rbind(web[,names(field)], field); 
+webfield$dataset <- factor(c(rep("web", nrow(web)), rep("field", nrow(field))), levels=c("web", "field"));
+webfield$Sex <- toupper(webfield$Sex); # make sex uniform
+```
+
+
+## What predictors to include?
+
+We use the same ideas as for the web experiment above, except that now *Order* does not exist anymore.
+ 
+```{r}
+webfield %>% count(Match) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+
+webfield %>% count(r_l_distinction_L1) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+
+webfield %>% count(trill_real_L1) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+
+webfield %>% count(trill_occ_L1) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+
+webfield %>% count(r_l_distinction_L2) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+
+webfield %>% count(trill_real_L2) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+
+webfield %>% count(trill_occ_L2) %>% mutate(prop = paste0(round(100* n / sum(n),1),"%")) 
+```
+
+It can be seen that, in our data, *trill_occ_L1* and *trill_occ_L2* are (almost) at 100% "yes" (for the non-missing data cases), which means that we will *not* include them in any further analyses.
+
+
+## What random structure to use?
+
+```{r}
+unique(webfield[,c("Name", "Family", "Autotyp_Area")]) %>% arrange(Autotyp_Area, Family, Name)
+```
+
+**r/l distinction in L1** (*r_l_distinction_L1*):
+```{r}
+table(webfield$r_l_distinction_L1, webfield$Language)
+table(webfield$r_l_distinction_L1, webfield$Family)
+table(webfield$r_l_distinction_L1, webfield$Autotyp_Area)
+```
+This is perfectly uniform within the levels of each of the three factors, so random slopes are arguably not justified.
+
+**r/l distinction in L2** (*r_l_distinction_L2*):
+```{r}
+table(webfield$r_l_distinction_L2, webfield$Language)
+table(webfield$r_l_distinction_L2, webfield$Family)
+table(webfield$r_l_distinction_L2, webfield$Autotyp_Area)
+```
+There is almost uniform, so random slopes are arguably not justified.
+
+**[r] is main allophone in L1** (*trill_real_L1*):
+```{r}
+table(webfield$trill_real_L1, webfield$Language)
+table(webfield$trill_real_L1, webfield$Family)
+table(webfield$trill_real_L1, webfield$Autotyp_Area)
+```
+This is almost uniform within Language, but there is variation for the IE level of Family, and between 2 levels of Area (Europeand Greater Mesopotamia), but this is not enough to justify random slopes.
+
+**[r] is main allophone in L2** (*trill_real_L2*):
+```{r}
+table(webfield$trill_real_L2, webfield$Language)
+table(webfield$trill_real_L2, webfield$Family)
+table(webfield$trill_real_L2, webfield$Autotyp_Area)
+```
+Here there is enough variation within the levels for all three factors, justifying the inclusion of random slopes.
+
+**Given these**, we did the following:
+
+- we do **not include** random slopes for the *r/l distinction* in L1 (*r_l_distinction_L1*) or L2 (*r_l_distinction_L2*), nor for the *presence of [r]* in *L1* (*trill_real_L1*), but
+- we do **include** random slopes for *presence of [r]* in *L2* (*trill_real_L2*) by *Language*, *Family* and *Area*.
+
+
+## Model 1: what is the overall probability of a match?
+
+```{r results='hide'}
+if( !file.exists("./cached_results/b1_res_webfield.RData") )
+{
+  # prior predictive checks:
+  # what priors we can set:
+  get_prior(Match ~ 1 + dataset + 
+              (1 | Language) +
+              (1 | Family) +
+              (1 | Autotyp_Area),
+            data=webfield,
+            family=bernoulli(link='logit'));
+  b_priors <- brms::brm(Match ~ 1 + dataset + 
+                          (1 | Language) +
+                          (1 | Family) +
+                          (1 | Autotyp_Area),
+                        data=webfield,
+                        family=bernoulli(link='logit'),
+                        prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                        sample_prior='only',  # needed for prior predictive checks
+                        seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  grid.arrange(pp_check(b_priors, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Prior predictive distribution of minimum values'),
+               pp_check(b_priors, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Prior predictive distribution of means'),
+               pp_check(b_priors, type='stat', stat='max') + xlab('p(match)') + ggtitle('Prior predictive distribution of maximum values'),
+               ncol=1); # seems fine but our value is a bit extreme
+  
+  # the model:
+  b1 <- brm(Match ~ 1 + dataset + 
+              (1 | Language) +
+              (1 | Family) +
+              (1 | Autotyp_Area),
+            data=webfield,
+            family=bernoulli(link='logit'),
+            prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+            save_pars=save_pars(all=TRUE), # needed for Bayes factors
+            sample_prior=TRUE,  # needed for hypotheses tests
+            seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999999, max_treedepth=13));
+  summary(b1); mcmc_plot(b1, type="trace"); mcmc_plot(b1); # very decent
+  mcmc_plot(b1, type="trace");
+  bayestestR::hdi(b1, ci=0.95);
+  hypothesis(b1, "datasetfield = 0"); 
+  # posterior predictive checks
+  pp_check(b1, ndraws=100) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+  grid.arrange(pp_check(b1, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values'),
+               pp_check(b1, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means'),
+               pp_check(b1, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values'),
+               ncol=1); # far from ideal but seems ok...
+  
+  # save the model:
+  b1_res_webfield <- list("b_priors"=b_priors, "b1"=b1);
+  saveRDS(b1_res_webfield, "./cached_results/b1_res_webfield.RData", compress="xz");
+} else
+{
+  b1_res_webfield <- readRDS("./cached_results/b1_res_webfield.RData");
+}
+```
+
+```{r fig.width=1*4, fig.height=3*3, fig.cap=capFig("Prior predictive checks."), results='hide', warning=FALSE}
+grid.arrange(pp_check(b1_res_webfield$b_priors, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Prior predictive distribution of minimum values'),
+             pp_check(b1_res_webfield$b_priors, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Prior predictive distribution of means'),
+             pp_check(b1_res_webfield$b_priors, type='stat', stat='max') + xlab('p(match)') + ggtitle('Prior predictive distribution of maximum values'),
+             ncol=1); # seems fine but our value is a bit extreme
+```
+and it can be seen that they are quite ok, even if the observed *p*(match) is a bit extreme, but still within what the prior distribution covers.
+
+
+**Convergence** The model converges well (high ESS and $\hat{R} = 1.0$):
+```{r }
+summary(b1_res_webfield$b1);
+```
+```{r fig.width=10, fig.height=5, fig.cap=capFig("Trace of the fitting process."), results='hide', warning=FALSE}
+mcmc_plot(b1_res_webfield$b1, type="trace");
+```
+
+
+**Posterior predictive checks** seems to be acceptable:
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive density overlay for n=500 draws."), results='hide', warning=FALSE}
+pp_check(b1_res_webfield$b1, ndraws=500) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive distribution."), results='hide', warning=FALSE}
+grid.arrange(pp_check(b1_res_webfield$b1, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values') + xlim(0,1),
+             pp_check(b1_res_webfield$b1, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means') + xlim(0,1),
+             pp_check(b1_res_webfield$b1, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values') + xlim(0,1),
+             ncol=1); 
+```
+
+
+**Fixed effects**:
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Fixed effects' posterior distributions."), results='hide', warning=FALSE}
+mcmc_plot(b1_res_webfield$b1);
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Fixed effects."), results='hide', warning=FALSE}
+plot_model(b1_res_webfield$b1, type="emm", terms=c("dataset"));
+```
+
+
+**Intercept** The intercept is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b1_res_webfield$b1)["Intercept", "Estimate"], bayestestR::ci(b1_res_webfield$b1, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b1_res_webfield$b1, ci=0.95, method="ETI")[1,"CI_high"])` on the log odds ratio (LOR) scale, which is clearly » 0; formal hypothesis testing against 0 is `r sprintf("*p*(*α*>0)=%.2f\\%s", brms::hypothesis(b1_res_webfield$b1, "Intercept > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b1_res_webfield$b1, "Intercept > 0")[[1]][1, "Star"])`; this translates into a probability of a match `r sprintf("*p*(match)=%.1f%% 95%%CI [%.1f%%, %.1f%%]", 100*plogis(fixef(b1_res_webfield$b1)["Intercept", "Estimate"]), 100*plogis(bayestestR::ci(b1_res_webfield$b1, ci=0.95, method="ETI")[1,"CI_low"]), 100*plogis(bayestestR::ci(b1_res_webfield$b1, ci=0.95, method="ETI")[1,"CI_high"]))` » 50%.
+(*N.B.* this is for *dataset* == "web"; please below for details.)
+
+
+**Dataset (experiment)** The slope of *dataset* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b1_res_webfield$b1)["datasetfield", "Estimate"], bayestestR::ci(b1_res_webfield$b1, ci=0.95, method="ETI")[2,"CI_low"], bayestestR::ci(b1_res_webfield$b1, ci=0.95, method="ETI")[2,"CI_high"])` on the log odds ratio (LOR) scale, which is clearly > 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*>0)=%.2f\\%s", brms::hypothesis(b1_res_webfield$b1, "datasetfield > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b1_res_webfield$b1, "datasetfield > 0")[[1]][1, "Star"])`.
+In terms of probabilities, the field experiment (_dataset_ == "field") results in an _increase_ by `r sprintf("%.1f%%", 100*lo2ps(fixef(b1_res_webfield$b1)["Intercept", "Estimate"], fixef(b1_res_webfield$b1)["datasetfield", "Estimate"]))` in the probability of a match from the `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(fixef(b1_res_webfield$b1)["Intercept", "Estimate"]), 100*lo2p(bayestestR::ci(b1_res_webfield$b1, ci=0.95, method="ETI")[1,"CI_low"]), 100*lo2p(bayestestR::ci(b1_res_webfield$b1, ci=0.95, method="ETI")[1,"CI_high"]))` in the web experiment, to `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(fixef(b1_res_webfield$b1)["Intercept", "Estimate"] + fixef(b1_res_webfield$b1)["datasetfield", "Estimate"]), 100*lo2p(ci(rowSums(as.data.frame(b1_res_webfield$b1, variable=c("b_Intercept", "b_datasetfield"))))[1,"CI_low"]), 100*lo2p(ci(rowSums(as.data.frame(b1_res_webfield$b1, variable=c("b_Intercept", "b_datasetfield"))))[1,"CI_high"]))` in the field experiment.
+
+
+**Random effects**:
+```{r fig.width=3*4, fig.height=1*7, fig.cap=capFig("Posterior estimaes of the random effects showing the median (dot), 50% (thick line) and 95% (thin lines) quantiles. Also showing 0 as the vertical dotted line and negative (blue) vs positive (red) values."), results='hide', warning=FALSE}
+#get_variables(b1_res_webfield$b1);
+grid.arrange(
+  # 1 | Language:
+  b1_res_webfield$b1 %>%
+    spread_draws(b_Intercept, r_Language[Language, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Language") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # 1 | Family:
+  b1_res_webfield$b1 %>%
+    spread_draws(b_Intercept, r_Family[Family, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Family) %>%
+    ggplot(aes(y = Family, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Family") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # 1 | Autotyp_Area:
+  b1_res_webfield$b1 %>%
+    spread_draws(b_Intercept, r_Autotyp_Area[Autotyp_Area, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Autotyp_Area) %>%
+    ggplot(aes(y = Autotyp_Area, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Area") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+
+  nrow=1);
+```
+
+
+**Interpretation**: The overall probability of a "perfect" match, while controlling for Language, Family and Area, is much higher than the conservative change level of 50%, being estimated at more than 88% [80%, 94%] in the web experiment, and more than 97% [92%, 99%] in the field experiment, suggesting that there is a very strong tendency across our participants to associate [r] with the wavy line and [l] with the straight line.
+
+
+## Model 2: do the characteristics of the languages matter?
+
+```{r results='hide'}
+if( !file.exists("./cached_results/b2_res_webfield.RData") )
+{
+  # the model:
+  b2 <- brm(Match ~ 1 + dataset + # dataset
+              r_l_distinction_L1 + r_l_distinction_L2 + trill_real_L1 + trill_real_L2 + # main effects
+              dataset:r_l_distinction_L1 + dataset:r_l_distinction_L2 + dataset:trill_real_L1 + dataset:trill_real_L2 + # potential interactions with dataset
+              (1 + trill_real_L2 | Language) +
+              (1 + trill_real_L2 | Family) +
+              (1 + trill_real_L2 | Autotyp_Area),
+            data=webfield,
+            family=bernoulli(link='logit'),
+            prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                    brms::set_prior("lkj(2)", class="cor")),
+            save_pars=save_pars(all=TRUE), # needed for Bayes factors
+            sample_prior=TRUE,  # needed for hypotheses tests
+            seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  summary(b2); mcmc_plot(b2, type="trace"); mcmc_plot(b2); # very decent
+  mcmc_plot(b2, type="trace");
+  bayestestR::hdi(b2, ci=0.95);
+  hypothesis(b2, c("datasetfield = 0", 
+                   "r_l_distinction_L1distinct = 0", "r_l_distinction_L2distinct = 0", "trill_real_L1yes = 0", "trill_real_L2yes = 0",
+                   "datasetfield:r_l_distinction_L1distinct = 0", "datasetfield:r_l_distinction_L2distinct = 0", "datasetfield:trill_real_L1yes = 0", "datasetfield:trill_real_L2yes = 0")); 
+  # posterior predictive checks
+  pp_check(b2, ndraws=100) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+  grid.arrange(pp_check(b2, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values') + xlim(0,1),
+               pp_check(b2, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means') + xlim(0,1),
+               pp_check(b2, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values') + xlim(0,1),
+               ncol=1); # seems perfect
+  
+  # the interactions of dataset do not seem to matter at all, so let's remove them:
+  b3 <- brm(Match ~ 1 + dataset + # dataset
+              r_l_distinction_L1 + r_l_distinction_L2 + trill_real_L1 + trill_real_L2 + # main effects
+              (1 + trill_real_L2 | Language) +
+              (1 + trill_real_L2 | Family) +
+              (1 + trill_real_L2 | Autotyp_Area),
+            data=webfield,
+            family=bernoulli(link='logit'),
+            prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b"), 
+                    brms::set_prior("lkj(2)", class="cor")),
+            save_pars=save_pars(all=TRUE), # needed for Bayes factors
+            sample_prior=TRUE,  # needed for hypotheses tests
+            seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  summary(b3); mcmc_plot(b3, type="trace"); mcmc_plot(b3); # very decent
+  mcmc_plot(b3, type="trace");
+  bayestestR::hdi(b3, ci=0.95);
+  hypothesis(b3, c("datasetfield = 0", "r_l_distinction_L1distinct = 0", "r_l_distinction_L2distinct = 0", "trill_real_L1yes = 0", "trill_real_L2yes = 0")); 
+  # posterior predictive checks
+  pp_check(b3, ndraws=100) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+  grid.arrange(pp_check(b3, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values') + xlim(0,1),
+               pp_check(b3, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means') + xlim(0,1),
+               pp_check(b3, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values') + xlim(0,1),
+               ncol=1); # seems perfect
+  
+  # save the model:
+  b2_res_webfield <- list("b2"=b2, "b3"=b3);
+  saveRDS(b2_res_webfield, "./cached_results/b2_res_webfield.RData", compress="xz");
+} else
+{
+  b2_res_webfield <- readRDS("./cached_results/b2_res_webfield.RData");
+}
+```
+
+We fist included the interactions between *dataset* and the [r]-related predictors, but they are not relevant (it is interesting to note that even in this model, *trill_real_L1* has a significant effect):
+```{r}
+bayestestR::hdi(b2_res_webfield$b2, ci=0.95);
+hypothesis(b2_res_webfield$b2, c("datasetfield = 0", 
+                                 "r_l_distinction_L1distinct = 0", "r_l_distinction_L2distinct = 0", "trill_real_L1yes = 0", "trill_real_L2yes = 0",
+                                 "datasetfield:r_l_distinction_L1distinct = 0", "datasetfield:r_l_distinction_L2distinct = 0", "datasetfield:trill_real_L1yes = 0", "datasetfield:trill_real_L2yes = 0"));
+```
+so we removed them, keeping only the main effects of the predictors (including *dataset*).
+
+
+**Priors** are as before.
+
+
+**Convergence** The model converges well (high ESS and $\hat{R} = 1.0$):
+```{r }
+summary(b2_res_webfield$b3);
+```
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Trace of the fitting process."), results='hide', warning=FALSE}
+mcmc_plot(b2_res_webfield$b3, type="trace");
+```
+
+
+**Posterior predictive checks** seems to be perfectly fine:
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive density overlay for n=500 draws."), results='hide', warning=FALSE}
+pp_check(b2_res_webfield$b3, ndraws=500) + xlab('p(match)') + ggtitle('Posterior predictive density overlay');
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("Posterior predictive distribution (the x-axis scale was forced to [0,1])."), results='hide', warning=FALSE}
+grid.arrange(pp_check(b2_res_webfield$b3, type='stat', sta ='min') + xlab('p(match)') + ggtitle('Posterior predictive distribution of minimum values') + xlim(0,1),
+             pp_check(b2_res_webfield$b3, type='stat', stat='mean') + xlab('p(match)') + ggtitle('Posterior predictive distribution of means') + xlim(0,1),
+             pp_check(b2_res_webfield$b3, type='stat', stat='max') + xlab('p(match)') + ggtitle('Posterior predictive distribution of maximum values') + xlim(0,1),
+             ncol=1); 
+```
+
+
+**Fixed effects**:
+```{r fig.width=10, fig.height=10, fig.cap=capFig("Fixed effects' posterior distributions."), results='hide', warning=FALSE}
+mcmc_plot(b2_res_webfield$b3);
+```
+```{r fig.width=2*5, fig.height=3*5, fig.cap=capFig("Fixed effects."), results='hide', warning=FALSE}
+grid.arrange(plot_model(b2_res_webfield$b3, type="emm", terms=c("dataset")),
+             plot_model(b2_res_webfield$b3, type="emm", terms=c("r_l_distinction_L1")),
+             plot_model(b2_res_webfield$b3, type="emm", terms=c("r_l_distinction_L2")),
+             plot_model(b2_res_webfield$b3, type="emm", terms=c("trill_real_L1")),
+             plot_model(b2_res_webfield$b3, type="emm", terms=c("trill_real_L2")),
+             ncol=2);
+```
+
+
+**Intercept** The intercept is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_webfield$b3)["Intercept", "Estimate"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_high"])` on the log odds ratio (LOR) scale, which is > 0 but has very large uncertainties so that the 95%CI includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*α*>0)=%.2f\\%s", brms::hypothesis(b2_res_webfield$b3, "Intercept > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_webfield$b3, "Intercept > 0")[[1]][1, "Star"])`; this translates into a probability of a match `r sprintf("*p*(match)=%.1f%% 95%%CI [%.1f%%, %.1f%%]", 100*plogis(fixef(b2_res_webfield$b3)["Intercept", "Estimate"]), 100*plogis(bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_low"]), 100*plogis(bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_high"]))` which includes 50% in the 95%CI.
+
+
+**Dataset (experiment)** The slope of *dataset* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_webfield$b3)["datasetfield", "Estimate"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[2,"CI_low"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[2,"CI_high"])` on the log odds ratio (LOR) scale, which is clearly > 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*>0)=%.2f\\%s", brms::hypothesis(b2_res_webfield$b3, "datasetfield > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_webfield$b3, "datasetfield > 0")[[1]][1, "Star"])`.
+In terms of probabilities, the field experiment (_dataset_ == "field") results in an _increase_ by `r sprintf("%.1f%%", 100*lo2ps(fixef(b2_res_webfield$b3)["Intercept", "Estimate"], fixef(b2_res_webfield$b3)["datasetfield", "Estimate"]))` in the probability of a match from the `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(fixef(b2_res_webfield$b3)["Intercept", "Estimate"]), 100*lo2p(bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_low"]), 100*lo2p(bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_high"]))` in the web experiment, to `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(fixef(b2_res_webfield$b3)["Intercept", "Estimate"] + fixef(b2_res_webfield$b3)["datasetfield", "Estimate"]), 100*lo2p(ci(rowSums(as.data.frame(b2_res_webfield$b3, variable=c("b_Intercept", "b_datasetfield"))))[1,"CI_low"]), 100*lo2p(ci(rowSums(as.data.frame(b2_res_webfield$b3, variable=c("b_Intercept", "b_datasetfield"))))[1,"CI_high"]))` in the field experiment.
+
+
+**Are [r] and [l] distinct in the L1(s) spoken by the participant?** The slope of *r_l_distinction_L1* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_webfield$b3)["r_l_distinction_L1distinct", "Estimate"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[3,"CI_low"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[3,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*>0)=%.2f\\%s", brms::hypothesis(b2_res_webfield$b3, "r_l_distinction_L1distinct > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_webfield$b3, "r_l_distinction_L1distinct > 0")[[1]][1, "Star"])`.
+
+
+**Are [r] and [l] distinct in the L2(s) spoken by the participant?** The slope of *r_l_distinction_L2* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_webfield$b3)["r_l_distinction_L2distinct", "Estimate"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[4,"CI_low"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[4,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b2_res_webfield$b3, "r_l_distinction_L2distinct < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_webfield$b3, "r_l_distinction_L2distinct < 0")[[1]][1, "Star"])`.
+
+
+**Is [r] the main allophone in the L1(s) spoken by the participant?** The slope of *trill_real_L1* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_webfield$b3)["trill_real_L1yes", "Estimate"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[5,"CI_low"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[5,"CI_high"])` on the log odds ratio (LOR) scale, which is clearly < 0; formal hypothesis testing against 0 is `r sprintf("*p*(*β*<0)=%.2f\\%s", brms::hypothesis(b2_res_webfield$b3, "trill_real_L1yes < 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_webfield$b3, "trill_real_L1yes < 0")[[1]][1, "Star"])`.
+In terms of probabilities, having [r] as the main allophone (_trill_real_L1_ == "yes") results in a _decrease_ by `r sprintf("%.1f%% [%.3f%%, %.1f%%]", abs(100*lo2ps(fixef(b2_res_webfield$b3)["Intercept", "Estimate"], fixef(b2_res_webfield$b3)["trill_real_L1yes", "Estimate"])), abs(100*lo2ps(bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_high"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[5,"CI_high"])), abs(100*lo2ps(bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_low"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[5,"CI_low"])))` in the probability of a match from the `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(fixef(b2_res_webfield$b3)["Intercept", "Estimate"]), 100*lo2p(bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_low"]), 100*lo2p(bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[1,"CI_high"]))` when [r] is not the primary allophone to `r sprintf("%.1f%% [%.1f%%, %.1f%%]", 100*lo2p(fixef(b2_res_webfield$b3)["Intercept", "Estimate"] + fixef(b2_res_webfield$b3)["trill_real_L1yes", "Estimate"]), 100*lo2p(ci(rowSums(as.data.frame(b2_res_webfield$b3, variable=c("b_Intercept", "b_trill_real_L1yes"))))[1,"CI_low"]), 100*lo2p(ci(rowSums(as.data.frame(b2_res_webfield$b3, variable=c("b_Intercept", "b_trill_real_L1yes"))))[1,"CI_high"]))` when it is.
+
+
+**Is [r] the main allophone in the L2(s) spoken by the participant?** The slope of *trill_real_L2* is `r sprintf("%.2f 95%%CI [%.2f, %.2f]", fixef(b2_res_webfield$b3)["trill_real_L2yes", "Estimate"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[6,"CI_low"], bayestestR::ci(b2_res_webfield$b3, ci=0.95, method="ETI")[6,"CI_high"])` on the log odds ratio (LOR) scale, which includes 0; formal hypothesis testing against 0 with `r sprintf("*p*(*β*>0)=%.2f\\%s", brms::hypothesis(b2_res_webfield$b3, "trill_real_L2yes > 0")[[1]][1, "Post.Prob"], brms::hypothesis(b2_res_webfield$b3, "trill_real_L2yes > 0")[[1]][1, "Star"])`.
+
+
+**Random effects**:
+```{r fig.width=3*4, fig.height=2*7, fig.cap=capFig("Posterior estimaes of the random effects showing the median (dot), 50% (thick line) and 95% (thin lines) quantiles. Also showing 0 as the vertical dotted line and negative (blue) vs positive (red) values."), results='hide', warning=FALSE}
+#get_variables(b2_res_webfield$b3);
+grid.arrange(
+  # 1 | Language:
+  b2_res_webfield$b3 %>%
+    spread_draws(b_Intercept, r_Language[Language, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Language") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # 1 | Family:
+  b2_res_webfield$b3 %>%
+    spread_draws(b_Intercept, r_Family[Family, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Family) %>%
+    ggplot(aes(y = Family, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Family") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # 1 | Autotyp_Area:
+  b2_res_webfield$b3 %>%
+    spread_draws(b_Intercept, r_Autotyp_Area[Autotyp_Area, Order]) %>%
+    filter(Order == "Intercept") %>%
+    mutate(condition_mean = r_Autotyp_Area) %>%
+    ggplot(aes(y = Autotyp_Area, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("1 | Area") + xlab("Intercept") + ylab(NULL) + xlim(-2,2) +
+    theme(legend.position="bottom") +
+    NULL,
+
+  # trill_real_L2 | Language:
+  b2_res_webfield$b3 %>%
+    spread_draws(b_Intercept, r_Language[Language, trill_real_L2]) %>%
+    filter(trill_real_L2 == "trill_real_L2yes") %>%
+    mutate(condition_mean = r_Language) %>%
+    ggplot(aes(y = Language, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("trill_real_L2 | Language") + xlab("Slope") + ylab(NULL) + xlim(-4, 4) +
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # trill_real_L2 | Family:
+  b2_res_webfield$b3 %>%
+    spread_draws(b_Intercept, r_Family[Family, trill_real_L2]) %>%
+    filter(trill_real_L2 == "trill_real_L2yes") %>%
+    mutate(condition_mean = r_Family) %>%
+    ggplot(aes(y = Family, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("trill_real_L2 | Family") + xlab("Slope") + ylab(NULL) + xlim(-3, 3) + 
+    theme(legend.position="bottom") +
+    NULL,
+  
+  # trill_real_L2 | Autotyp_Area:
+  b2_res_webfield$b3 %>%
+    spread_draws(b_Intercept, r_Autotyp_Area[Autotyp_Area, trill_real_L2]) %>%
+    filter(trill_real_L2 == "trill_real_L2yes") %>%
+    mutate(condition_mean = r_Autotyp_Area) %>%
+    ggplot(aes(y = Autotyp_Area, x = condition_mean, fill = after_stat(x < 0))) +
+    stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+    scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    ggtitle("trill_real_L2 | Area") + xlab("Slope") + ylab(NULL) + xlim(-3, 3) +  
+    theme(legend.position="bottom") +
+    NULL,
+  
+  nrow=2);
+```
+
+
+**Interpretation**: The overall probability of a "perfect" match in the online experiment when adding all the relevant [r]-related predictors for the L1(s) and L2(s) known to the participants, while controlling for Language, Family and Area, seem to still be higher than the conservative change level of 50%, being estimated as about 96% but with a much wider 95% credible interval of about [31%, 100.0%] which now includes 50%.
+If [r] is the main allophone in the L1(s) known by the participant or not clearly matters, in that those participants that have an L1 with [r] as the main allophone have a *slightly smaller* probability of a perfect match of about 91% [14%, 100%] than the others.
+Also, there is a clear difference between the two datasets, with the web participants having a lower probability of a match than the field participants by about 4%, to 100% [88%, 100%].
+
+
+# Plots
+
+Here we build the various plots for the paper.
+
+
+## Web experiment
+
+```{r fig.width=10, fig.height=5, fig.cap=capFig("Posterior estimaes of the fixed effects showing the median (dot), 50% (thick line) and 95% (thin lines) quantiles. Also showing 0 as the vertical dotted line and negative (blue) vs positive (red) values."), results='hide', warning=FALSE}
+p <- gather_draws(b2_res_web$b2, `b_.*`, regex = TRUE) %>%
+  # remove the b_ for plotting
+  #mutate(.variable = gsub("b_","", .variable)) %>%
+  ggplot(aes(x = .value, y = .variable, fill = after_stat(x < 0))) +
+  geom_vline(xintercept=0.0, linetype="dotted", color="gray30") +
+  stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+  scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+  xlim(-10, 10) +
+  scale_y_discrete(labels=c("b_Intercept" = "Intercept α", 
+                            "b_Order1" = "order ([r] first vs [l] first)",
+                            "b_r_l_distinction_L1distinct" = "are [r] and [l] contrasting in L1(s)?",
+                            "b_trill_real_L1yes" = "is [r] the main allophone in L1(s)?",
+                            "b_r_l_distinction_L2distinct" = "are [r] and [l] contrasting in L2(s)?",
+                            "b_trill_real_L2yes" = "is [r] the main allophone in L2(s)?")) +
+  ylab(NULL) + xlab("Estimate") + 
+  theme_timo + # Tweak cosmetics:
+  theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                    r = 0, l = 0),
+                                    face = 'bold', size = 14),
+        axis.text.x = element_text(face = 'bold', size = 12),
+        axis.text.y = element_text(face = 'bold', size = 12))+
+  NULL;
+# Show and save:
+p;
+ggsave(plot = p, filename = "./plots/figure_model_fixedeffects_web.pdf", width = 8, height = 4);
+ggsave(plot = p, filename = "./plots/figure_model_fixedeffects_web.jpg", width = 8, height = 4);
+ggsave(plot = p, filename = "./plots/figure_model_fixedeffects_web.tif", width = 8, height = 4, compression="lzw", dpi=600);
+```
+
+
+```{r results='hide', warning=FALSE}
+# take2: generate an exhaustive new dataset:
+# starting from the actual language coding:
+languages_data <- read.csv("./data/languages_data.csv", sep=","); # read the original language info
+newdata_web <- data.frame(Name = tolower(unique(web$Name)));
+newdata_web <- merge(newdata_web, languages_data, by.x="Name", by.y="Languages", all.x=TRUE, all.y=FALSE);
+# L1 coding:
+names(newdata_web)[3:5] <- c("r_l_distinction_L1", "trill_real_L1", "trill_occ_L1");
+newdata_web$r_l_distinction_L1 <- factor(c("same", "distinct")[newdata_web$r_l_distinction_L1 + 1], levels=c("same", "distinct"));
+newdata_web$trill_real_L1 <- factor(c("no", "yes")[newdata_web$trill_real_L1 + 1], levels=c("no", "yes"));
+newdata_web$trill_occ_L1 <- factor(c("no", "yes")[newdata_web$trill_occ_L1 + 1], levels=c("no", "yes"));
+# family and area:
+newdata_web <- merge(newdata_web, unique(web[,c("Language", "Name", "Family", "Autotyp_Area")]) %>% mutate(Name = tolower(Name)), by="Name", all.x=TRUE, all.y=FALSE);
+# add it to the both newdata:
+newdata_webfield <- newdata_web[  ,c("Name", "Language", "Family", "Autotyp_Area", "r_l_distinction_L1", "trill_real_L1", "trill_occ_L1")];
+
+# fit a new model considering only the L1 info:
+if( !file.exists("./cached_results/b_plotting_web.RData") )
+{
+  b_plotting_web <- brm(Match ~ 1 + 
+                          r_l_distinction_L1 + trill_real_L1 + 
+                          (1 | Language) +
+                          (1 | Family) +
+                          (1 | Autotyp_Area),
+                        data=web,
+                        family=bernoulli(link='logit'),
+                        prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                        save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                        sample_prior=TRUE,  # needed for hypotheses tests
+                        seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  summary(b_plotting_web); mcmc_plot(b_plotting_web, type="trace"); mcmc_plot(b_plotting_web); # very decent
+  bayestestR::hdi(b_plotting_web, ci=0.95);
+
+  # save the model:
+  saveRDS(b_plotting_web, "./cached_results/b_plotting_web.RData", compress="xz");
+} else
+{
+  b_plotting_web <- readRDS("./cached_results/b_plotting_web.RData");
+}
+fit <- fitted(b_plotting_web, newdata=newdata_web, re_formula=NULL, robust=TRUE);
+colnames(fit) = c('fit', 'se', 'lwr', 'upr');
+newdata_web <- cbind(newdata_web, fit);
+
+# Order predictions by descriptive average:
+newdata_web <- arrange(newdata_web, fit);
+newdata_web <- mutate(newdata_web, Language = factor(Language, levels = newdata_web$Language));
+
+# How many languages are over 0.5? (will be reported in paper)
+sum(newdata_web$lwr > 0.5);
+
+# Finally, add the averages to the plot:
+newdata_web$avg <- web_avg[match(newdata_web$Language, web_avg$Language), ]$M;
+
+# Match language names into there and order:
+newdata_web$Language <- web[match(newdata_web$Language, web$Language), ]$Name;
+newdata_web[newdata_web$Language == 'Chinese', ]$Language <- 'Mandarin Chinese';
+newdata_web <- mutate(newdata_web, Language = factor(Language, levels = newdata_web$Language));
+
+# Setup the plot:
+# Aesthetics and geom:
+plot_web <- newdata_web %>% 
+  ggplot(aes(x = Language, col = r_l_distinction_L1, y = fit, ymin = lwr, ymax = upr, shape = trill_real_L1)) +
+  #scale_shape_manual(values = c("no" = 1, "yes" = 3)) +
+  geom_errorbar(aes(col = r_l_distinction_L1), linewidth = 1.0, width = 0.3) +
+  geom_point(size = 5) +
+  geom_hline(yintercept = 0.5, linetype = 2, linewidth = 1.5, col = 'grey') + 
+  geom_point(aes(y = avg), col = 'black', shape = 23, size = 5, stroke = 1.0, alpha = 0.75)  +
+  ylim(0.5,1.00) +
+  labs(x = '', y = 'Proportion of congruent responses') + # Axis labels:
+  #ggtitle('Posterior medians and descriptive averages of congruent responses\nby language and R/L contrast (color) and [r] as primary rhotic in L1 (shape)') +
+  scale_color_manual(values = c("same"=colorBlindBlack8[2], "distinct"=colorBlindBlack8[3]), labels=c("same"="no [r]/[l] contrast", "distinct"="[r]/[l] contrast")) + # Tweak cosmetics:
+  scale_shape(labels=c("yes"="[r] is main allophone", "no"="[r] is not main allophone")) + 
+  theme_timo + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, face = 'bold', size = 10),
+        axis.text.y = element_text(face = 'bold', size = 10),
+        axis.title = element_text(face = 'bold', size = 12),
+        axis.title.y = element_text(face = 'bold', size = 12, margin = margin(t = 0, r = 35, b = 0, l = 0)),
+        plot.title = element_text(face = 'bold', size = 14, margin = margin(t = 0, r = 0, b = 30, l = 0)),
+        legend.text = element_text(size = 10),
+        legend.title = element_blank(),
+        legend.position = c(0.95, 0.10),
+        legend.justification = c('right', 'bottom'))
+
+# Save:
+ggsave(plot = plot_web, filename = "./plots/figure_model_languages_web.pdf", width = 12, height = 6);
+ggsave(plot = plot_web, filename = "./plots/figure_model_languages_web.jpg", width = 12, height = 6);
+ggsave(plot = plot_web, filename = "./plots/figure_model_languages_web.tif", width = 12, height = 6, compression="lzw", dpi=600);
+```
+```{r fig.width=10, fig.height=5, fig.cap=capFig("The distribution of the proportion of *matches* per language. Please note that this was obtained by fitting a model that includes only the relevant L1 characteristics, `Match ~ 1 + r_l_distinction_L1 + trill_real_L1 + (1 | Language) + (1 | Family) + (1 | Autotyp_Area)`."), results='hide', warning=FALSE}
+plot_web;
+```
+
+
+## Field experiment
+
+```{r fig.width=10, fig.height=5, fig.cap=capFig("Posterior estimaes of the fixed effects showing the median (dot), 50% (thick line) and 95% (thin lines) quantiles. Also showing 0 as the vertical dotted line and negative (blue) vs positive (red) values."), results='hide', warning=FALSE}
+p <- gather_draws(b2_res_field$b2, `b_.*`, regex = TRUE) %>%
+  # remove the b_ for plotting
+  #mutate(.variable = gsub("b_","", .variable)) %>%
+  ggplot(aes(x = .value, y = .variable, fill = after_stat(x < 0))) +
+  geom_vline(xintercept=0.0, linetype="dotted", color="gray30") +
+  stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+  scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+  xlim(-10, 20) +
+  scale_y_discrete(labels=c("b_Intercept" = "Intercept α", 
+                            "b_r_l_distinction_L1distinct" = "are [r] and [l] contrasting in L1(s)?",
+                            "b_trill_real_L1yes" = "is [r] the main allophone in L1(s)?",
+                            "b_r_l_distinction_L2distinct" = "are [r] and [l] contrasting in L2(s)?",
+                            "b_trill_real_L2yes" = "is [r] the main allophone in L2(s)?",
+                            "b_trill_occ_L1yes" = "is [r] an allophone in L1(s)?")) +
+  ylab(NULL) + xlab("Estimate") + 
+  theme_timo + # Tweak cosmetics:
+  theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                    r = 0, l = 0),
+                                    face = 'bold', size = 14),
+        axis.text.x = element_text(face = 'bold', size = 12),
+        axis.text.y = element_text(face = 'bold', size = 12))+
+  NULL;
+# Show and save:
+p;
+ggsave(plot = p, filename = "./plots/full_model_field_coefficients.pdf", width = 8, height = 4);
+ggsave(plot = p, filename = "./plots/full_model_field_coefficients.jpg", width = 8, height = 4);
+ggsave(plot = p, filename = "./plots/full_model_field_coefficients.tif", width = 8, height = 4, compression="lzw", dpi=600);
+```
+
+
+```{r results='hide', warning=FALSE}
+# take2: generate an exhaustive new dataset:
+# starting from the actual language coding:
+languages_data <- read.csv("./data/languages_data.csv", sep=","); # read the original language info
+newdata_field <- data.frame(Name = tolower(unique(field$Name)));
+newdata_field$Name2 <- newdata_field$Name;
+newdata_field$Name[ newdata_field$Name == "brazilian portuguese" ] <- "portuguese";
+newdata_field$Name[ newdata_field$Name == "english uk" ] <- "english";
+newdata_field$Name[ newdata_field$Name == "tashlhiyt berber" ] <- "berber";
+newdata_field <- merge(newdata_field, languages_data, by.x="Name", by.y="Languages", all.x=TRUE, all.y=FALSE);
+# manually fix some entries:
+# L1 coding:
+names(newdata_field)[4:6] <- c("r_l_distinction_L1", "trill_real_L1", "trill_occ_L1");
+newdata_field$r_l_distinction_L1 <- factor(c("same", "distinct")[newdata_field$r_l_distinction_L1 + 1], levels=c("same", "distinct"));
+newdata_field$trill_real_L1 <- factor(c("no", "yes")[newdata_field$trill_real_L1 + 1], levels=c("no", "yes"));
+newdata_field$trill_occ_L1 <- factor(c("no", "yes")[newdata_field$trill_occ_L1 + 1], levels=c("no", "yes"));
+# family and area:
+newdata_field <- merge(newdata_field, unique(field[,c("Language", "Name", "Family", "Autotyp_Area")]) %>% mutate(Name = tolower(Name)), by.x="Name2", by.y="Name", all.x=TRUE, all.y=FALSE);
+# add it to the both newdata:
+newdata_webfield <- rbind(newdata_webfield,
+                          newdata_field[,c("Name", "Language", "Family", "Autotyp_Area", "r_l_distinction_L1", "trill_real_L1", "trill_occ_L1")]);
+
+# fit a new model considering only the L1 info:
+if( !file.exists("./cached_results/b_plotting_field.RData") )
+{
+  b_plotting_field <- brm(Match ~ 1 + 
+                          r_l_distinction_L1 + trill_real_L1 + trill_occ_L1 +
+                          (1 | Language),
+                        data=field,
+                        family=bernoulli(link='logit'),
+                        prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                        save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                        sample_prior=TRUE,  # needed for hypotheses tests
+                        seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  summary(b_plotting_field); mcmc_plot(b_plotting_field, type="trace"); mcmc_plot(b_plotting_field); # very decent
+  bayestestR::hdi(b_plotting_field, ci=0.95);
+ 
+  # save the model:
+  saveRDS(b_plotting_field, "./cached_results/b_plotting_field.RData", compress="xz");
+} else
+{
+  b_plotting_field <- readRDS("./cached_results/b_plotting_field.RData");
+}
+fit <- fitted(b_plotting_field, newdata=newdata_field, re_formula=NULL, robust=TRUE);
+colnames(fit) = c('fit', 'se', 'lwr', 'upr');
+newdata_field <- cbind(newdata_field, fit);
+
+# Order predictions by descriptive average:
+newdata_field <- arrange(newdata_field, fit);
+newdata_field <- mutate(newdata_field, Language = factor(Language, levels = newdata_field$Language));
+
+# How many languages are over 0.5? (will be reported in paper)
+sum(newdata_field$lwr > 0.5);
+
+# Finally, add the averages to the plot:
+newdata_field$avg <- field_avg[match(newdata_field$Language, field_avg$Language), ]$M;
+
+# Match language names into there and order:
+newdata_field$Language <- field[match(newdata_field$Language, field$Language), ]$Name;
+newdata_field <- mutate(newdata_field, Language = factor(Language, levels = newdata_field$Language));
+
+# Setup the plot:
+# Aesthetics and geom:
+plot_field <- newdata_field %>% 
+  ggplot(aes(x = Language, col = r_l_distinction_L1, y = fit, ymin = lwr, ymax = upr, shape = trill_real_L1)) +
+  #scale_shape_manual(values = c("no" = 1, "yes" = 3)) +
+  geom_errorbar(aes(col = r_l_distinction_L1), linewidth = 1.0, width = 0.3) +
+  geom_point(size = 5) +
+  geom_hline(yintercept = 0.5, linetype = 2, linewidth = 1.5, col = 'grey') + 
+  geom_point(aes(y = avg), col = 'black', shape = 23, size = 5, stroke = 1.0, alpha = 0.75)  +
+  ylim(0.5,1.00) +
+  labs(x = '', y = 'Proportion of congruent responses') + # Axis labels:
+  #ggtitle('Posterior medians and descriptive averages of congruent responses\nby language and R/L contrast (color) and [r] as primary rhotic in L1 (shape)') +
+  scale_color_manual(values = c("same"=colorBlindBlack8[2], "distinct"=colorBlindBlack8[3]), labels=c("same"="no [r]/[l] contrast", "distinct"="[r]/[l] contrast")) + # Tweak cosmetics:
+  scale_shape(labels=c("yes"="[r] is main allophone", "no"="[r] is not main allophone")) + 
+  theme_timo + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, face = 'bold', size = 10),
+        axis.text.y = element_text(face = 'bold', size = 10),
+        axis.title = element_text(face = 'bold', size = 12),
+        axis.title.y = element_text(face = 'bold', size = 12, margin = margin(t = 0, r = 35, b = 0, l = 0)),
+        plot.title = element_text(face = 'bold', size = 14, margin = margin(t = 0, r = 0, b = 30, l = 0)),
+        legend.text = element_text(size = 10),
+        legend.title = element_blank(),
+        legend.position = c(0.95, 0.10),
+        legend.justification = c('right', 'bottom'))
+
+# Save:
+ggsave(plot = plot_field, filename = "./plots/figure_model_languages_field.pdf", width = 6, height = 6);
+ggsave(plot = plot_field, filename = "./plots/figure_model_languages_field.jpg", width = 6, height = 6);
+ggsave(plot = plot_field, filename = "./plots/figure_model_languages_field.tif", width = 6, height = 6, compression="lzw", dpi=600);
+```
+```{r fig.width=5, fig.height=5, fig.cap=capFig("The distribution of the proportion of *matches* per language. Please note that this was obtained by fitting a model that includes only the relevant L1 characteristics, `Match ~ 1 + r_l_distinction_L1 + trill_real_L1 + trill_occ_L1 + (1 | Language)`."), results='hide', warning=FALSE}
+plot_field;
+```
+
+
+
+## Both experiments
+
+```{r fig.width=10, fig.height=5, fig.cap=capFig("Posterior estimaes of the fixed effects showing the median (dot), 50% (thick line) and 95% (thin lines) quantiles. Also showing 0 as the vertical dotted line and negative (blue) vs positive (red) values."), results='hide', warning=FALSE}
+p <- gather_draws(b2_res_webfield$b3, `b_.*`, regex = TRUE) %>%
+  # remove the b_ for plotting
+  #mutate(.variable = gsub("b_","", .variable)) %>%
+  ggplot(aes(x = .value, y = .variable, fill = after_stat(x < 0))) +
+  geom_vline(xintercept=0.0, linetype="dotted", color="gray30") +
+  stat_halfeye(alpha=0.75, point_interval=median_qi, .width=c(.50, .95)) +
+  scale_fill_manual(values = c("lightsalmon", "skyblue"), name=NULL, labels=c("≥ 0", "< 0")) +
+  xlim(-10, 10) +
+  scale_y_discrete(labels=c("b_Intercept" = "Intercept α", 
+                            "b_datasetfield" = "the field vs the web dataset",
+                            "b_r_l_distinction_L1distinct" = "are [r] and [l] contrasting in L1(s)?",
+                            "b_trill_real_L1yes" = "is [r] the main allophone in L1(s)?",
+                            "b_r_l_distinction_L2distinct" = "are [r] and [l] contrasting in L2(s)?",
+                            "b_trill_real_L2yes" = "is [r] the main allophone in L2(s)?")) +
+  ylab(NULL) + xlab("Estimate") + 
+  theme_timo + # Tweak cosmetics:
+  theme(axis.title.x = element_text(margin = margin(t = 12, b = 0,
+                                                    r = 0, l = 0),
+                                    face = 'bold', size = 14),
+        axis.text.x = element_text(face = 'bold', size = 12),
+        axis.text.y = element_text(face = 'bold', size = 12))+
+  NULL;
+# Show and save:
+p;
+ggsave(plot = p, filename = "./plots/full_model_both_coefficients.pdf", width = 8, height = 4);
+ggsave(plot = p, filename = "./plots/full_model_both_coefficients.jpg", width = 8, height = 4);
+ggsave(plot = p, filename = "./plots/full_model_both_coefficients.tif", width = 8, height = 4, compression="lzw", dpi=600);
+```
+
+
+```{r results='hide', warning=FALSE}
+# take2: generate an exhaustive new dataset:
+newdata_webfield$dataset <- factor(c(rep("web", nrow(newdata_web)), rep("field", nrow(newdata_field))), levels=c("web", "field"));
+
+# fit a new model considering only the L1 info:
+if( !file.exists("./cached_results/b_plotting_webfield.RData") )
+{
+  b_plotting_webfield <- brm(Match ~ 1 + dataset + 
+                               r_l_distinction_L1 + trill_real_L1 + trill_occ_L1 +
+                               (1 | Language) +
+                               (1 | Family) +
+                               (1 | Autotyp_Area),
+                             data=webfield,
+                             family=bernoulli(link='logit'),
+                             prior=c(brms::set_prior("student_t(5, 0, 2.5)", class="b")),
+                             save_pars=save_pars(all=TRUE), # needed for Bayes factors
+                             sample_prior=TRUE,  # needed for hypotheses tests
+                             seed=998, cores=brms_ncores, iter=10000, warmup=4000, thin=2, control=list(adapt_delta=0.999, max_treedepth=13));
+  summary(b_plotting_webfield); mcmc_plot(b_plotting_webfield, type="trace"); mcmc_plot(b_plotting_webfield); # very decent
+  bayestestR::hdi(b_plotting_webfield, ci=0.95);
+  
+  # save the model:
+  saveRDS(b_plotting_webfield, "./cached_results/b_plotting_webfield.RData", compress="xz");
+} else
+{
+  b_plotting_webfield <- readRDS("./cached_results/b_plotting_webfield.RData");
+}
+fit <- fitted(b_plotting_webfield, newdata=newdata_webfield, re_formula=NULL, robust=TRUE);
+colnames(fit) = c('fit', 'se', 'lwr', 'upr');
+newdata_webfield <- cbind(newdata_webfield, fit);
+
+# Order predictions by descriptive average:
+newdata_webfield <- arrange(newdata_webfield, fit);
+#newdata_webfield <- mutate(newdata_webfield, Language = factor(Language, levels = newdata_webfield$Language));
+
+# How many languages are over 0.5? (will be reported in paper)
+sum(newdata_webfield$lwr > 0.5);
+
+# Finally, add the averages to the plot:
+newdata_webfield$avg[ newdata_webfield$dataset == "web" ]   <- web_avg[match(newdata_webfield$Language[ newdata_webfield$dataset == "web" ],     web_avg$Language), ]$M;
+newdata_webfield$avg[ newdata_webfield$dataset == "field" ] <- field_avg[match(newdata_webfield$Language[ newdata_webfield$dataset == "field" ], field_avg$Language), ]$M;
+
+# Match language names into there and order:
+newdata_webfield$Language[ newdata_webfield$dataset == "web" ]   <- paste0(web[match(newdata_webfield$Language[ newdata_webfield$dataset == "web" ],     web$Language),   ]$Name, " (W)");
+newdata_webfield$Language[ newdata_webfield$dataset == "field" ] <- paste0(field[match(newdata_webfield$Language[ newdata_webfield$dataset == "field" ], field$Language), ]$Name, " (F)");
+newdata_webfield <- mutate(newdata_webfield, Language = factor(Language, levels = newdata_webfield$Language));
+
+# Setup the plot:
+# Aesthetics and geom:
+plot_field <- newdata_webfield %>% 
+  ggplot(aes(x = Language, col = r_l_distinction_L1, y = fit, ymin = lwr, ymax = upr, shape = trill_real_L1)) +
+  #scale_shape_manual(values = c("no" = 1, "yes" = 3)) +
+  geom_errorbar(aes(col = r_l_distinction_L1), linewidth = 1.0, width = 0.3) +
+  geom_point(size = 5) +
+  geom_hline(yintercept = 0.5, linetype = 2, linewidth = 1.5, col = 'grey') + 
+  geom_point(aes(y = avg, fill=dataset), col = 'black', shape = 23, size = 5, stroke = 1.0, alpha = 0.25)  +
+  ylim(0.5,1.00) +
+  labs(x = '', y = 'Proportion of congruent responses') + # Axis labels:
+  #ggtitle('Posterior medians and descriptive averages of congruent responses\nby language and R/L contrast (color) and [r] as primary rhotic in L1 (shape)') +
+  scale_color_manual(values = c("same"=colorBlindBlack8[2], "distinct"=colorBlindBlack8[3]), labels=c("same"="no [r]/[l] contrast", "distinct"="[r]/[l] contrast")) + # Tweak cosmetics:
+  scale_shape(labels=c("yes"="[r] is main allophone", "no"="[r] is not main allophone")) + 
+  scale_fill_manual(values = c("web"="white", "field"="black"), labels=c("web"="web experiment", "field"="field experiment")) + 
+  theme_timo + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, face = 'bold', size = 10),
+        axis.text.y = element_text(face = 'bold', size = 10),
+        axis.title = element_text(face = 'bold', size = 12),
+        axis.title.y = element_text(face = 'bold', size = 12, margin = margin(t = 0, r = 35, b = 0, l = 0)),
+        plot.title = element_text(face = 'bold', size = 14, margin = margin(t = 0, r = 0, b = 30, l = 0)),
+        legend.text = element_text(size = 10),
+        legend.title = element_blank(),
+        legend.position = c(0.95, 0.10),
+        legend.justification = c('right', 'bottom'))
+
+# Save:
+ggsave(plot = plot_field, filename = "./plots/figure_model_languages_field.pdf", width = 18, height = 6);
+ggsave(plot = plot_field, filename = "./plots/figure_model_languages_field.jpg", width = 18, height = 6);
+ggsave(plot = plot_field, filename = "./plots/figure_model_languages_field.tif", width = 18, height = 6, compression="lzw", dpi=600);
+```
+```{r fig.width=10, fig.height=7, fig.cap=capFig("The distribution of the proportion of *matches* per language. Please note that this was obtained by fitting a model that includes only the relevant L1 characteristics, `Match ~ 1 + dataset + r_l_distinction_L1 + trill_real_L1 + trill_occ_L1 + (1 | Language) + (1 | Family) + (1 | Autotyp_Area)`."), results='hide', warning=FALSE}
+plot_field;
+```
+
+
+
+# Conclusions
+
+It is clear that across the two datasets our participants have a strong tendency to associate [r] with the zigzagy line and [l] with the straight line well above the conservative 50% chance level.
+Presenting [r] first seems to increase the probability of a match in the online experiment, compared to presenting [l] first. 
+The field experiment has an overall higher probability of a match than the online experiment.
+In the online experiment and in the combined datasets, having [r] as the primary allophone in the the L1(s) spoken by a participant slightly decreases the probability of a match.
+
+
+
+# Session information
+
+```{r warning=FALSE, results='asis', message=FALSE, warning=FALSE}
+if( require(benchmarkme) )
+{
+  # CPU:
+  cpu_info <- benchmarkme::get_cpu();
+  if( is.null(cpu_info) || all(is.na(cpu_info)) )
+  {
+    cat("**CPU:** unknown.\n\n");
+  } else
+  {
+    if( !is.null(cpu_info$model_name) && !is.na(cpu_info$model_name) )
+    {
+      cat(paste0("**CPU:** ",cpu_info$model_name));
+      if( !is.null(cpu_info$no_of_cores) && !is.na(cpu_info$no_of_cores) )
+      {
+        cat(paste0(" (",cpu_info$no_of_cores," threads)"));
+      }
+      cat("\n\n");
+    } else
+    {
+      cat("**CPU:** unknown.\n\n");
+    }
+  }
+  
+  # RAM:
+  ram_info <- benchmarkme::get_ram();
+  if( is.null(ram_info) || is.na(ram_info) )
+  {
+    cat("**RAM (memory):** unknown.\n\n");
+  } else
+  {
+    cat("**RAM (memory):** "); print(ram_info); cat("\n");
+  }
+} else
+{
+  cat("**RAM (memory):** cannot get info (try installing package 'benchmarkme').\n\n");
+}
+```
+
+```{r}
+pander::pander(sessionInfo());
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

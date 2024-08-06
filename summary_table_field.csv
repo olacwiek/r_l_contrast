@@ -1,8 +1,7 @@
-Family;Name;Num_IDs;r_l_distinction;trill_real_L1;trill_occ_L1
-Afro-Asiatic;Tashlhiyt Berber;20;1;1;1
-Arawakan;Palikur;8;0;0;0
-Austronesian;Daakie;12;1;1;1
-IE;Brazilian Portuguese;13;1;0;1
-IE;English UK;55;1;0;1
-IE;German;19;1;0;1
-;;127;0,8333333333;0,3333333333;0,8333333333
+"Family","Name","Num_IDs","r_l_distinction","trill_real_L1","trill_occ_L1"
+"Afro-Asiatic","Tashlhiyt Berber",20,1,1,1
+"Arawakan","Palikur",8,0,0,0
+"Austronesian","Daakie",12,1,1,1
+"IE","Brazilian Portuguese",13,1,0,1
+"IE","English UK",55,1,0,1
+"IE","German",19,1,0,1

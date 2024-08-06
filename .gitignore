@@ -2,11 +2,13 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rhistory
 
-# cached_results
-figures
-#*.html
 #cached_results
+#figures
+#*.html
+3_r_l_modeling_cache
+3_r_l_modeling_files
 
 # mac files
 .DS_Store
